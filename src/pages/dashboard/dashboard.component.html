@@ -1,0 +1,413 @@
+<app-navbar></app-navbar>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="tab_main fade-in one">
+            <ul class="nav nav-tabs custom_tab" role="tablist">
+                <li role="presentation" class="active"><a class="radius" href="#appointments" aria-controls="home" role="tab" data-toggle="tab">
+                    <span><img src="{{imgPrePath}}appointement.png"></span> Appointments</a>
+                </li>
+                <li role="presentation">
+                    <a href="#health_checks" aria-controls="health_checks" role="tab" data-toggle="tab">
+                    <span><img src="{{imgPrePath}}health_cards.png"></span>  Health Checks
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#discount_cards" aria-controls="discount_cards" role="tab" data-toggle="tab">
+                    <span><img src="{{imgPrePath}}gift_cards.png"></span>  Discount Cards</a>
+                </li>
+                <li role="presentation"><a href="#gift_health" aria-controls="gift_health" role="tab" data-toggle="tab">
+                    <span><img src="{{imgPrePath}}gift.png"></span> Gift Health</a>
+                </li>
+                <li role="presentation"><a class="radius1" href="#service_providers" aria-controls="service_providers" role="tab" data-toggle="tab">
+                    <span><img src="{{imgPrePath}}serv_prov.png"></span> Service Providers</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="appointments">
+                    <div class="row">
+                        <div class="full_width">
+                            <p class="more_for_git_card">Over 10,000+ Doctors available in India
+                                <span>&nbsp;<img src="{{imgPrePath}}icons/arrowgreen.png"></span>&nbsp; <a href="ap_result.html">Explore All</a>
+                            </p>
+                        </div>
+                        <form>
+                            <div class="form-group custom_md_3 custom_md_home">
+                                <div class="icon-addon addon-md">
+                                    <select class="combobox input-large form-control form-control" name="normal">
+                                      <option value="" selected="selected">Select a State</option>
+                                      <option value="AL">Hyderabad</option>
+                                      <option value="AK">Andhra Pradesh</option>
+                                      <option value="AZ">Karnool</option>
+                                      <option value="AR">Vizag</option>
+                                      <option value="CA">Mumbai</option>
+                                      <option value="CO">Kolkatta</option>
+                                    </select>
+                                    <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
+                            <div class="form-group custom_md_2">
+                                <div class="icon-addon addon-md">
+                                    <input type="text" placeholder="Location" class="form-control" id="email">
+                                    <label for="email" class="fa fa-map-marker" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
+                            <div class="form-group custom_md_2">
+                                <div class="icon-addon addon-md">
+                                    <input id="datepicker" type="text" placeholder="From" class="form-control">
+                                    <label for="email" class="fa fa-calendar" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
+                            <div class="form-group custom_md_2">
+                                <div class="icon-addon addon-md">
+                                    <input id="datepicker2" type="text" placeholder="From" class="form-control">
+                                    <label for="email" class="fa fa-calendar" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
+                            <div class="form-group custom_md_2">
+                                <div class="icon-addon addon-md">
+                                    <input type="text" placeholder="Time Session" class="form-control" id="email">
+                                    <label for="email" class="fa fa-clock-o" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
+                            <div class="custom_md_2">
+                                <a href="ap_result.html" class="search_vtm btn btn-4 btn-4c icon-arrow-right" type="submit">Search</a>
+                            </div>
+                        </form>
+                        <div class="full_width health_check_t_cpnt">
+                            <section class="car_top_city" id="demos">
+                                <p>TOP SEARCH SPECIALITIES </p>
+                                <div class="div_slde_main">
+                                    <div class="large-12 columns">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health5.png">
+                                                <span>Cardiologist </span>
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health6.png">
+                                                <span>Dermatologist</span>
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health7.png">
+                                                <span>Dentist</span>
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health8.png">
+                                                <span>Nephrologist</span>
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health9.png">
+                                                <span>Neurosurgeon</span>
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health6.png">
+                                                <span>Homoeopath</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane health_checks_le_pa" id="health_checks">
+                    <div class="row">
+                        <div class="full_width">
+                            <p class="more_for_git_card">Over 10+ Customzied Health Checks
+                                <span>&nbsp;<img src="{{imgPrePath}}icons/arrowgreen.png"></span>&nbsp; <a href="ap_result.html">Explore All</a>
+                            </p>
+                        </div>
+                        <form>
+                            <div style="width: 30% !important;" class="form-group custom_md_3 custom_md_gift custom_md_home">
+                                <div class="icon-addon addon-md">
+                                    <input type="text" placeholder="General/Specific" class="form-control" id="email">
+                                    <label for="email" class="fa fa-user" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
+                            <div style="width: 16%;" class="form-group custom_md_2">
+                                <div class="icon-addon addon-md">
+                                    <input type="text" placeholder="Age Group" class="form-control" id="email">
+                                    <label for="email" class="fa fa-users" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
+                            <div style="width: 16%;" class="form-group custom_md_2">
+                                <div class="icon-addon addon-md">
+                                    <input type="text" placeholder="Gender" class="form-control" id="email">
+                                    <label for="email" class="fa fa-transgender" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
+                            <div style="width: 16%;" class="form-group custom_md_2">
+                                <div class="icon-addon addon-md">
+                                    <input type="text" placeholder="Condition" class="form-control" id="email">
+                                    <label for="email" class="fa fa-file" rel="tooltip" title="email"></label>
+                                </div>
+                            </div>
+                            <div class="custom_md_2">
+                                <a href="hc_result.html" class="search_vtm btn btn-4 btn-4c icon-arrow-right" type="submit">Search Now</a>
+                            </div>
+                        </form>
+                        <div class="full_width health_check_t_cpnt">
+                            <section class="car_top_city" id="demos">
+                                <p>TOP SEARCH HEALTHCHECK</p>
+                                <div class="div_slde_main">
+                                    <div class="large-12 columns">
+                                        <div class="owl-carousel owl-theme">
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health5.png">
+                                                <span>Complete Body Check-Up</span>
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health6.png">
+                                                <span>Well Woman Check-Up</span>
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health7.png">
+                                                <span>Basic Health Check-Up</span>
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health8.png">
+                                                <span>Child Health Check-Up</span>
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health9.png">
+                                                <span>Comprehensive Heart Check-Up</span>
+                                            </div>
+                                            <div class="item">
+                                                <img src="{{imgPrePath}}health6.png">
+                                                <span>Essential Health Check-Up</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="discount_cards">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-3 col-xs-12">
+                            <div class="full_width discount_card_tab">
+                                <a href="dc.html"><img src="{{imgPrePath}}card.png"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
+                            <div class="full_width">
+                                <a href="dc.html"><img src="{{imgPrePath}}card1.png"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
+                            <div class="full_width">
+                                <a href="dc.html"><img src="{{imgPrePath}}card2.png"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
+                            <div class="full_width">
+                                <a href="dc.html"><img src="{{imgPrePath}}card3.png"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 disc_div_a">
+                            <a href="dc.html" class="search_vtm btn btn-4 btn-4c icon-arrow-right">explore all benefits</a>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="gift_health">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="full_width">
+                                <p class="more_for_git_card">Gift Health to your friends or family and make them happy
+                                    <span>&nbsp;<img src="{{imgPrePath}}icons/arrowgreen.png"></span>&nbsp; <a href="gh.html">Explore All</a>
+                                </p>
+                            </div>
+                            <div class="full_width health_che_div_com_main">
+                                <div class="health_che_div health_che_div_com">
+                                    <p class="qa-faq-title" id="optWeekly" data-target="#scheduleWeekly" data-toggle="tab">
+                                        <span class="fa fa-heartbeat"></span> Preventive Health Checks
+                                    </p>
+                                </div>
+                                <div class="disc_div health_che_div_com">
+                                    <p class="qa-faq-title" id="optMonthly" data-target="#scheduleMonthly" data-toggle="tab">
+                                        <span class="fa fa-gift"></span> Discount Cards
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-content" style="padding-top: 40px;">
+                            <div id="scheduleWeekly" class="tab-pane">
+                                <div class="row">
+
+                                    <form>
+                                        <div style="width: 30% !important;" class="form-group custom_md_3 custom_md_gift custom_md_home">
+                                            <div class="icon-addon addon-md">
+                                                <input type="text" placeholder="General/Specific" class="form-control" id="email">
+                                                <label for="email" class="fa fa-user" rel="tooltip" title="email"></label>
+                                            </div>
+                                        </div>
+                                        <div style="width: 16%;" class="form-group custom_md_2">
+                                            <div class="icon-addon addon-md">
+                                                <input type="text" placeholder="Age Group" class="form-control" id="email">
+                                                <label for="email" class="fa fa-users" rel="tooltip" title="email"></label>
+                                            </div>
+                                        </div>
+                                        <div style="width: 16%;" class="form-group custom_md_2">
+                                            <div class="icon-addon addon-md">
+                                                <input type="text" placeholder="Gender" class="form-control" id="email">
+                                                <label for="email" class="fa fa-transgender" rel="tooltip" title="email"></label>
+                                            </div>
+                                        </div>
+                                        <div style="width: 16%;" class="form-group custom_md_2">
+                                            <div class="icon-addon addon-md">
+                                                <input type="text" placeholder="Condition" class="form-control" id="email">
+                                                <label for="email" class="fa fa-file" rel="tooltip" title="email"></label>
+                                            </div>
+                                        </div>
+                                        <div class="custom_md_2">
+                                            <a href="hc_result.html" class="search_vtm btn btn-4 btn-4c icon-arrow-right" type="submit">Search Now</a>
+                                        </div>
+                                    </form>
+                                    <div class="full_width health_check_t_cpnt">
+                                        <section class="car_top_city" id="demos">
+                                            <p>TOP SEARCH Preventive Health Checks</p>
+                                            <div class="div_slde_main">
+                                                <div class="large-12 columns">
+                                                    <div class="owl-carousel owl-theme">
+                                                        <div class="item">
+                                                            <img src="{{imgPrePath}}health5.png">
+                                                            <span>Complete Body Check-Up</span>
+                                                        </div>
+                                                        <div class="item">
+                                                            <img src="{{imgPrePath}}health6.png">
+                                                            <span>Well Woman Check-Up</span>
+                                                        </div>
+                                                        <div class="item">
+                                                            <img src="{{imgPrePath}}health7.png">
+                                                            <span>Basic Health Check-Up</span>
+                                                        </div>
+                                                        <div class="item">
+                                                            <img src="{{imgPrePath}}health8.png">
+                                                            <span>Child Health Check-Up</span>
+                                                        </div>
+                                                        <div class="item">
+                                                            <img src="{{imgPrePath}}health9.png">
+                                                            <span>Comprehensive Heart Check-Up</span>
+                                                        </div>
+                                                        <div class="item">
+                                                            <img src="{{imgPrePath}}health6.png">
+                                                            <span>Essential Health Check-Up</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="scheduleMonthly" class="tab-pane">
+                                <div class="row">
+                                    <div class="col-md-3 col-sm-3 col-xs-12">
+                                        <div class="full_width discount_card_tab">
+                                            <a href="dc.html"><img src="{{imgPrePath}}card.png"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
+                                        <div class="full_width">
+                                            <a href="dc.html"><img src="{{imgPrePath}}card1.png"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
+                                        <div class="full_width">
+                                            <a href="dc.html"><img src="{{imgPrePath}}card2.png"></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
+                                        <div class="full_width">
+                                            <a href="dc.html"><img src="{{imgPrePath}}card3.png"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dvPassport" style="display: none">
+                            Passport Number:
+                            <input type="text" id="txtPassportNumber" />
+                        </div>
+                        <div id="chkPassport2" style="display: none">
+                            Passport Number:
+                            <input type="text" id="txtPassportNumber" />
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="service_providers">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="full_width">
+                                <p class="more_for_git_card">Over 500+ Network Service Providers around India
+                                    <span>&nbsp;<img src="{{imgPrePath}}icons/arrowgreen.png"></span>&nbsp; <a href="sp_hospital.html">Explore All</a>
+                                </p>
+                            </div>
+                            <div class="full_width">
+                                <div class="otp_scr2 otp_scr23">
+                                    <div class="input-group">
+                                        <label for="city" class="fa fa-building" rel="tooltip" title="city"></label>
+                                        <input id="msg" type="text" class="form-control" name="msg" placeholder="Type your city name *">
+                                        <a href="sp_result.html"><span class="input-group-addon">Search</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="full_width">
+                                <section class="car_top_city" id="demos">
+                                    <p>Top Search Result</p>
+                                    <div class="div_slde_main">
+                                        <div class="large-12 columns">
+                                            <div class="owl-carousel owl-theme">
+                                                <div class="item">
+                                                    <img src="{{imgPrePath}}hyd.png">
+                                                    <span>Hyderabad</span>
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{imgPrePath}}ban.png">
+                                                    <span>Bangalore</span>
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{imgPrePath}}che.png">
+                                                    <span>Chennai</span>
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{imgPrePath}}hyd.png">
+                                                    <span>Chennai</span>
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{imgPrePath}}dhe.png">
+                                                    <span>Mumbai</span>
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{imgPrePath}}hyd.png">
+                                                    <span>delhi</span>
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{imgPrePath}}mum.png">
+                                                    <span>Hyderabad</span>
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{imgPrePath}}hyd.png">
+                                                    <span>Hyderabad</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-welcome></app-welcome>
+<app-appointments-discounts></app-appointments-discounts>
+<app-about-doctors></app-about-doctors>
+<app-review></app-review>
+<app-partners></app-partners>
+<app-footer></app-footer>
