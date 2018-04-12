@@ -6,15 +6,16 @@ import { AppRoutingModule } from './app.routing';
 //Project entry component import
 import { AppComponent } from './app.component';
 
-//custom component imports go here..
+//custom re-usable component imports go here..
 import { NavbarComponent } from './../pages/navbar/navbar.component';
 import { FooterComponent } from './../pages/footer/footer.component';
 import { DashboardComponent } from './../pages/dashboard/dashboard.component';
-import { PartnersComponent } from './../pages/partners/partners.component';
-import { ReviewComponent } from './../pages/review/review.component';
-import { WelcomeComponent } from './../pages/welcome/welcome.component';
-import { AppointmentsDiscountsComponent } from './../pages/appointments-discounts/appointments-discounts';
-import { AboutDoctorsComponent } from './../pages/about-doctors/about-doctors.component';
+//Landing pages
+import { PartnersComponent } from './../pages/landing-pages/partners/partners.component';
+import { ReviewComponent } from './../pages/landing-pages/review/review.component';
+import { WelcomeComponent } from './../pages/landing-pages/welcome/welcome.component';
+import { AppointmentsDiscountsComponent } from './../pages/landing-pages/appointments-discounts/appointments-discounts';
+import { AboutDoctorsComponent } from './../pages/landing-pages/about-doctors/about-doctors.component';
 //tab components
 import { AppointmentsComponent } from './../pages/tabs/appointments/appointments.component';
 import { HealthCheckupComponent } from './../pages/tabs/health-checkups/health-checkups.component';
