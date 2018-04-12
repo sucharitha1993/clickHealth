@@ -8,11 +8,16 @@ export class DashboardComponent implements OnInit {
 
 
     imgPrePath: string;
+    activeTab: string = 'appointment';
 
     constructor() {
         this.imgPrePath = '../../assets/img/';
     }
 
     ngOnInit() {
+    }
+
+    selectedTab(value) {
+        this.activeTab = value;
     }
 }

@@ -1,0 +1,81 @@
+<div role="tabpanel" class="tab-pane active" id="appointments">
+    <div class="row">
+        <div class="full_width">
+            <p class="more_for_git_card">Over 10,000+ Doctors available in India
+                <span>&nbsp;<img src="{{imgPrePath}}icons/arrowgreen.png"></span>&nbsp; <a href="ap_result.html">Explore All</a>
+            </p>
+        </div>
+        <form>
+            <div class="form-group custom_md_3 custom_md_home">
+                <div class="icon-addon addon-md">
+                    <select class="combobox input-large form-control form-control" name="normal">
+                              <option *ngFor='let state of states' value="{{state.CODE}}">{{state.DESC}}</option>
+                            </select>
+                    <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
+                </div>
+            </div>
+            <div class="form-group custom_md_2">
+                <div class="icon-addon addon-md">
+                    <input type="text" placeholder="Location" class="form-control" id="email">
+                    <label for="email" class="fa fa-map-marker" rel="tooltip" title="email"></label>
+                </div>
+            </div>
+            <div class="form-group custom_md_2">
+                <div class="icon-addon addon-md">
+                    <input id="datepicker" type="text" placeholder="From" class="form-control">
+                    <label for="email" class="fa fa-calendar" rel="tooltip" title="email"></label>
+                </div>
+            </div>
+            <div class="form-group custom_md_2">
+                <div class="icon-addon addon-md">
+                    <input id="datepicker2" type="text" placeholder="From" class="form-control">
+                    <label for="email" class="fa fa-calendar" rel="tooltip" title="email"></label>
+                </div>
+            </div>
+            <div class="form-group custom_md_2">
+                <div class="icon-addon addon-md">
+                    <input type="text" placeholder="Time Session" class="form-control" id="email">
+                    <label for="email" class="fa fa-clock-o" rel="tooltip" title="email"></label>
+                </div>
+            </div>
+            <div class="custom_md_2">
+                <a href="ap_result.html" class="search_vtm btn btn-4 btn-4c icon-arrow-right" type="submit">Search</a>
+            </div>
+        </form>
+        <div class="full_width health_check_t_cpnt">
+            <section class="car_top_city" id="demos">
+                <p>TOP SEARCH SPECIALITIES </p>
+                <div class="div_slde_main">
+                    <div class="large-12 columns">
+                        <div class="owl-carousel owl-theme">
+                            <div class="item">
+                                <img src="{{imgPrePath}}health5.png">
+                                <span>Cardiologist </span>
+                            </div>
+                            <div class="item">
+                                <img src="{{imgPrePath}}health6.png">
+                                <span>Dermatologist</span>
+                            </div>
+                            <div class="item">
+                                <img src="{{imgPrePath}}health7.png">
+                                <span>Dentist</span>
+                            </div>
+                            <div class="item">
+                                <img src="{{imgPrePath}}health8.png">
+                                <span>Nephrologist</span>
+                            </div>
+                            <div class="item">
+                                <img src="{{imgPrePath}}health9.png">
+                                <span>Neurosurgeon</span>
+                            </div>
+                            <div class="item">
+                                <img src="{{imgPrePath}}health6.png">
+                                <span>Homoeopath</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
