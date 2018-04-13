@@ -1,3 +1,4 @@
+import { AppLitteralsConfig } from './../../providers/literals/app.literals';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,24 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class CategoryFiltersComponent implements OnInit {
 
 
-    medicalCenters: string[] = [
-        'A N N Hospital',
-        'Abhijay Hospital',
-        'Agada Hospital',
-        'Apollo Childrens Hospitals',
-        'Apollo Day Surgery',
-        'Apollo First Med Hospital'
-    ];
-
-    locations: string[] = [
-        'Adayar',
-        'Ayanambakkam',
-        'Chetpet',
-        'Greams Road',
-        'Kotturpuram',
-        'Hyderabad'
-    ];
-
+    medicalCenters: string[] = AppLitteralsConfig.medicalCenters;
+    locations: string[] = AppLitteralsConfig.locations;
     medicalSearchTerm: string;
     locationSearchTerm: string;
 
