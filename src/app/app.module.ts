@@ -32,6 +32,7 @@ import { DoctorDetailsComponent } from './../pages/results/appointment-results/d
 import { TimeSlotComponent } from './../pages/results/appointment-results/time-slot/time-slot';
 //importing pipes
 import { FilterPipe } from './../pipes/filter-pipe';
+import { SafeHtmlPipe } from './../pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { FilterPipe } from './../pipes/filter-pipe';
     DoctorDetailsComponent,
     TimeSlotComponent,
     //pipes
-    FilterPipe
+    FilterPipe,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

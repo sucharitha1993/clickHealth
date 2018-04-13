@@ -8,8 +8,7 @@
                     <h4>{{doctor.name}}</h4>
                 </div>
             </div>
-            <p>Dr. Harini is a Consultant General Surgeon, Female Fertility Specialist, Earlier, She worked as Registrar at
-                King's College Hospital, London, UK and Karolinska Institute, Stockholm, Sweden.
+            <p>{{doctor.name}} {{doctor.about_doctor}}
             </p>
         </div>
         <div class="full_width veiw_collaps veiw_collaps_23">
@@ -22,7 +21,7 @@
                 </div>
                 <div class="col-md-8">
                     <br>
-                    <p> Topper Fellowship in Surgical Gastro at NIMS – 2008</p>
+                    <p> {{doctor.awards_and_rewards}}</p>
                 </div>
             </div>
         </div>
@@ -34,10 +33,9 @@
         </div>
         <div class="full_width veiw_collaps veiw_collaps_23">
             <div class="header_main_col">
-                <h4>Awards and Rewards</h4>
+                <h4>Surgical</h4>
             </div>
-            <p> Conditions that require treatment from a medical or surgical specialist can be addressed at Mercy Personal Physicians
-                at Hegde through a network of Mercy specialists who provide on-site office visits.
+            <p> {{doctor.surgical}}
             </p>
         </div>
     </div>
@@ -46,37 +44,27 @@
             <div class="header_main_col">
                 <h4>condition treated </h4>
             </div>
-            <p>A Type of cancer that starts in the cells of the liver. Viral heatitis and liver damage from alcohol or fatty
-                liver are risk factors for liver cancer, An abnormal growth of cells within bone that may be cancerous or
-                cenign...
+            <p>{{doctor.condition_treated}}
             </p>
         </div>
         <div class="full_width veiw_collaps veiw_collaps_23">
             <div class="header_main_col">
                 <h4>Procedures / Surgeries</h4>
             </div>
-            <p>Hegde Hospitals has consistently led game-changing developments in healthcare by bringing to the people, the
-                latest innovations in key medical specialities and superspecialities on par with the West. We highlight in
-                this section some of the latest procedures, services and therapies that Hegde hospitals provides, in keeping
-                with the tradition of providing outstanding healthcare of international standards.
+            <p>{{doctor.procedures_or_surgeries}}
             </p>
         </div>
         <div class="full_width veiw_collaps veiw_collaps_23">
             <div class="header_main_col">
                 <h4>Experience</h4>
             </div>
-            <p>15 Years Experience in General Surgeon, Laparoscopic Surgeon, Gastroenterologist</p>
-            <ol class="insrurer">
-                <li>2014 - 2016 Consultant at Hegde Hospital Madhapur</li>
-                <li>2010 - 2014 Fellowship in Surgical Gastroenterology at NIMS</li>
-                <li>2006 - 2010 Registrar in Surgical Gastroenterology at NIMS</li>
-            </ol>
+           <div [innerHtml]='doctor.exp_details | safeHtml'></div>
         </div>
         <div class="full_width veiw_collaps veiw_collaps_23">
             <div class="header_main_col">
                 <h4>Registration</h4>
             </div>
-            <p>69690 Andhra Pradesh Medical Council, 2011</p>
+            <p>{{doctor.registration}}</p>
         </div>
     </div>
 </div>
