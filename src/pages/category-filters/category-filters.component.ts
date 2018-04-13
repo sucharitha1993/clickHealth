@@ -25,7 +25,8 @@ export class CategoryFiltersComponent implements OnInit {
         'Hyderabad'
     ];
 
-    medicalSearchTerm: string = '';
+    medicalSearchTerm: string;
+    locationSearchTerm: string;
 
     constructor() {
     }

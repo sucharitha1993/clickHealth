@@ -6,9 +6,10 @@ export class FilterPipe implements PipeTransform {
     transform(items: any[], searchText: string): any[] {
         if (!items) return [];
         if (!searchText) return items;
-        searchText = searchText.toLowerCase();
+        searchText = searchText.toLowerCase().replace(/ +/g, "");
         return items.filter(item => {
-            return item.toString().toLowerCase().includes(searchText);
+            let result = item.replace(/ +/g, "");
+            return result.toString().toLowerCase().includes(searchText);
         });
     }
 }

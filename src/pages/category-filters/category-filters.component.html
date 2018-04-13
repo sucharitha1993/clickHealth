@@ -28,10 +28,10 @@
                 <div class="side-padding">
                     <div class="side-lbl">Location</div>
                     <div class="searching_form">
-                        <input placeholder="Start Typing" type="text">
+                        <input placeholder="Start Typing" type="text" [(ngModel)]="locationSearchTerm">
                     </div>
                     <div class="list_filters scrollbar" id="style-3">
-                        <div class="checkbox" *ngFor='let location of locations'>
+                        <div class="checkbox" *ngFor='let location of locations | filter : locationSearchTerm'>
                             <label class="container12">{{location}}
                         <input type="checkbox">
                         <span class="checkmark"></span>
