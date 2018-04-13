@@ -10,10 +10,10 @@
                 <div class="side-padding">
                     <div class="side-lbl">Medical Center</div>
                     <div class="searching_form">
-                        <input placeholder="Start Typing" type="text">
+                        <input placeholder="Start Typing" type="text" [(ngModel)]="medicalSearchTerm">
                     </div>
                     <div class="list_filters scrollbar" id="style-3">
-                        <div class="checkbox" *ngFor='let medical of medicalCenters'>
+                        <div class="checkbox" *ngFor='let medical of medicalCenters | filter : medicalSearchTerm'>
                             <label class="container12">{{medical}}
                         <input type="checkbox">
                         <span class="checkmark"></span>

@@ -23,7 +23,9 @@ export class CategoryFiltersComponent implements OnInit {
         'Greams Road',
         'Kotturpuram',
         'Hyderabad'
-    ]
+    ];
+
+    medicalSearchTerm: string = '';
 
     constructor() {
     }

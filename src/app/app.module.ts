@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 //Routing Import
 import { AppRoutingModule } from './app.routing';
 
@@ -29,6 +30,8 @@ import { AppointmentResultsComponent } from './../pages/results/appointment-resu
 //Appontment Result sub components
 import { DoctorDetailsComponent } from './../pages/results/appointment-results/doctor-details/doctor-details';
 import { TimeSlotComponent } from './../pages/results/appointment-results/time-slot/time-slot';
+//importing pipes
+import { FilterPipe } from './../pipes/filter-pipe';
 
 @NgModule({
   declarations: [
@@ -53,10 +56,13 @@ import { TimeSlotComponent } from './../pages/results/appointment-results/time-s
     AppointmentResultsComponent,
     //Appontment Result sub components
     DoctorDetailsComponent,
-    TimeSlotComponent
+    TimeSlotComponent,
+    //pipes
+    FilterPipe
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],
