@@ -1,0 +1,45 @@
+<div class="col-md-3">
+    <div class="full_width sidebar_man">
+        <div class="srch-results-lbl fly-in">
+            <span>Category Filters</span>
+        </div>
+        <div class="side-block fly-in">
+        </div>
+        <div class="side-block fly-in">
+            <div class="side-stars">
+                <div class="side-padding">
+                    <div class="side-lbl">Medical Center</div>
+                    <div class="searching_form">
+                        <input placeholder="Start Typing" type="text">
+                    </div>
+                    <div class="list_filters scrollbar" id="style-3">
+                        <div class="checkbox" *ngFor='let medical of medicalCenters'>
+                            <label class="container12">{{medical}}
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="side-block fly-in">
+            <div class="side-stars">
+                <div class="side-padding">
+                    <div class="side-lbl">Location</div>
+                    <div class="searching_form">
+                        <input placeholder="Start Typing" type="text">
+                    </div>
+                    <div class="list_filters scrollbar" id="style-3">
+                        <div class="checkbox" *ngFor='let location of locations'>
+                            <label class="container12">{{location}}
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

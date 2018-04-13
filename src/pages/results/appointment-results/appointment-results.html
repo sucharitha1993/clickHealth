@@ -1,0 +1,240 @@
+<app-header></app-header>
+<section class="appointment_result">
+  <div class="body-wrapper">
+    <div class="container">
+      <div class="row">
+        <!-- START OF CATEGORY FILTERS -->
+        <app-category-filters></app-category-filters>
+        <!-- END OF CATEGORY FILTERS -->
+        <!-- START OF FILTERS -->
+        <div class="col-md-9">
+          <div class="two-colls-right-b">
+            <div class="padding">
+              <!-- START OF Search Params Display -->
+              <ul class="app_list_menu">
+                <li>Condition, Procedure...</li>
+                <li>Madhapur, Hyderabad</li>
+                <li>24-01-2018</li>
+                <li>25-01-2018</li>
+                <li><i class="fa fa-arrow-right"></i></li>
+                <li>Morning</li>
+                <li class="modify_searc pull-right">
+                  <a data-toggle="modal" data-target=".bs-example-modal-lg" href="#"><span><i class="fa fa-search"></i></span>&nbsp;Modify Search</a>
+                </li>
+                <!-- Modal to Modify Search -->
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modify Search</h4>
+                      </div>
+                      <div class="modal-body modify_search_modal">
+                        <form>
+                          <div class="form-group custom_md_3 custom_md_home">
+                            <div class="icon-addon addon-md">
+                              <input type="text" placeholder="Condition, Procedure, doctor.." class="form-control" id="email">
+                              <label for="email" class="fa fa-user" rel="tooltip" title="email"></label>
+                            </div>
+                          </div>
+                          <div class="form-group custom_md_2">
+                            <div class="icon-addon addon-md">
+                              <input type="text" placeholder="Location" class="form-control" id="email">
+                              <label for="email" class="fa fa-map-marker" rel="tooltip" title="email"></label>
+                            </div>
+                          </div>
+                          <div class="form-group custom_md_2">
+                            <div class="icon-addon addon-md">
+                              <input type="text" placeholder="From" class="form-control" id="email">
+                              <label for="email" class="fa fa-share-square-o" rel="tooltip" title="email"></label>
+                            </div>
+                          </div>
+                          <div class="form-group custom_md_2">
+                            <div class="icon-addon addon-md">
+                              <input type="text" placeholder="To" class="form-control" id="email">
+                              <label for="email" class="fa fa-share-square-o" rel="tooltip" title="email"></label>
+                            </div>
+                          </div>
+                          <div class="form-group custom_md_2">
+                            <div class="icon-addon addon-md">
+                              <input type="text" placeholder="Time Session" class="form-control" id="email">
+                              <label for="email" class="fa fa-clock-o" rel="tooltip" title="email"></label>
+                            </div>
+                          </div>
+                          <div class="custom_md_2">
+                            <a class="search_vtm btn btn-4 btn-4c icon-arrow-right" type="submit">Search</a>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- END OF Modal to Modify Search -->
+              </ul>
+              <!-- END OF Search Params Display -->
+              <!-- START OF SORT BY -->
+              <div class="catalog-head fly-in">
+                <label>Sort results by:</label>
+                <div class="search-select">
+                  <select>
+                    <option>Location</option>
+                    <option>Duration</option>
+                    <option>Duration</option>
+                    <option>Duration</option>
+                    <option>Duration</option>
+                  </select>
+                </div>
+                <div class="search-select">
+                  <select>
+                    <option>Nearest</option>
+                    <option>Name</option>
+                    <option>Name</option>
+                    <option>Name</option>
+                    <option>Name</option>
+                  </select>
+                </div>
+                <div class="search-select">
+                  <select>
+                    <option>Most Experience</option>
+                    <option>12 Years</option>
+                    <option>10 Years</option>
+                    <option>9 Years</option>
+                    <option>13 Years</option>
+                  </select>
+                </div>
+                <div class="search-select">
+                  <select>
+                    <option>Free</option>
+                    <option>Duration</option>
+                    <option>Duration</option>
+                    <option>Duration</option>
+                    <option>Duration</option>
+                  </select>
+                </div>
+                <div class="search-select">
+                  <select>
+                    <option>Gender</option>
+                    <option>Male Doctor</option>
+                    <option>Female Doctor</option>
+                  </select>
+                </div>
+                <div class="search-select pull-right">
+                  <select>
+                    <option>Language</option>
+                    <option>English</option>
+                    <option>Hindi</option>
+                  </select>
+                </div>
+                <a href="#" class="show-list"></a>
+                <a class="show-thumbs chosen" href="#"></a>
+              </div>
+              <!-- END OF SORT BY -->
+              <!-- DOCTOR DETAILS GOES HERE -->
+              <div class="catalog-row alternative">
+                <div class="appointment_main_hero"  *ngFor='let doctor of doctorDetails'>
+                  <div class="app_list_in">
+                    <div class="appointment_list_in">
+                      <div class="appointment_list_clo">
+                        <div class="alt-center">
+                          <div class="alt-center-l">
+                            <div class="alt-center-lp">
+                              <div class="alt-logo flight-line-b">
+                                <b><a href="#"><img alt="" src="{{doctor.img}}"></a></b>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="alt-center-c">
+                            <div class="alt-center-cb">
+                              <div class="row">
+                                <div class="col-md-5 col-lg-5">
+                                  <div class="full_width doctr_details">
+                                    <div class="flight-line-b">
+                                      <b>
+                                        <h4>{{doctor.name}}</h4>
+                                      </b>
+                                    </div>
+                                    <p>{{doctor.designation}} {{doctor.experience}} </p>
+                                    <span class="lagu_span">consultation: {{doctor.consultation}}</span>
+                                    <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{doctor.landLine_no}}</span>
+                                    <a data-toggle="tooltip" title="Add to favorite and get maximum discount" class="heart_fav activet" href=""><i class="fa fa-heart"></i></a>
+                                  </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 padding_left_0">
+                                  <div class="full_width doctr_details3">
+                                    <h4>{{doctor.timings}}</h4>
+                                    <p>{{doctor.address}}
+                                    </p>
+                                    <a data-toggle="modal" data-target="#myModal" href="#">View map <span class="fa fa-angle-right"></span></a>
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                      <div class="modal-dialog fade" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">View Map</h4>
+                                          </div>
+                                          <div class="modal-body">
+                                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.131522315598!2d78.39221431443993!3d17.453417988039117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb91638b1458e1%3A0x872cd53869cbcd42!2sMBR+Informatics+Pvt+Ltd!5e0!3m2!1sen!2sin!4v1517829412276"
+                                              width="100%" height="350" frameborder="0"
+                                              style="border:0" allowfullscreen></iframe>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-md-3 col-lg-3">
+                                  <div class="alt-flight-lr pricing_list">
+                                    <div class="padding">
+                                      <div class="flt-i-price"><span>Rs</span>&nbsp;{{doctor.consultation_fees}}</div>
+                                      <div class="flt-i-price-b">{{doctor.discount}}</div>
+                                      <a class="flight-line-b cat-list-btn popper" data-toggle="popover" id="timeslots" (click)='bookAppointment(doctor)'>book appointment</a>
+                                    </div>
+                                  </div>
+                                  <div class="popper-content hide">My first popover content goes here.</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="full_width">
+                              <div class="view_more_de">
+                                <div class="flight-line-b" (click)="viewMore(doctor)">
+                                  <b id="doctorinfo">View more details</b>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="alt-details">
+                      <app-doctor-details *ngIf='doctor?.showDetails' [doctor]='doctor'></app-doctor-details>
+                      <app-time-slot *ngIf='doctor?.isBookAppointment' [doctor]='doctor'></app-time-slot>
+                  </div>
+                </div>
+              </div>
+              <!-- END OF DOCTOR DETAILS -->
+            </div>
+            <!-- <div class="pagination">
+              <a href="#"><i class="fa fa-angle-left"></i></a>
+              <a class="active" href="#">1</a>
+              <a href="#">2</a>
+              <a href="#">3</a>
+              <a href="#">4</a>
+              <a href="#">5</a>
+              <a href="#">6</a>
+              <a href="#">7</a>
+              <a href="#">8</a>
+              <a href="#">9</a>
+              <a href="#">10</a>
+              <a href="#">11</a>
+              <a href="#">......</a>
+              <a href="#">1000</a>
+              <a href="#"><i class="fa fa-angle-right"></i></a>
+              <div class="clear"></div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

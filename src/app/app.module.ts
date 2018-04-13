@@ -22,6 +22,13 @@ import { HealthCheckupComponent } from './../pages/tabs/health-checkups/health-c
 import { DiscountCardsComponent } from './../pages/tabs/discount-cards/discount-cards.component';
 import { GiftHealthComponent } from './../pages/tabs/gift-health/gift-health.component';
 import { ServiceProvidersComponent } from './../pages/tabs/service-providers/service-providers.component';
+//Search Result view components
+import { HeaderComponent } from './../pages/header/header.component';
+import { CategoryFiltersComponent } from './../pages/category-filters/category-filters.component';
+import { AppointmentResultsComponent } from './../pages/results/appointment-results/appointment-results';
+//Appontment Result sub components
+import { DoctorDetailsComponent } from './../pages/results/appointment-results/doctor-details/doctor-details';
+import { TimeSlotComponent } from './../pages/results/appointment-results/time-slot/time-slot';
 
 @NgModule({
   declarations: [
@@ -39,7 +46,14 @@ import { ServiceProvidersComponent } from './../pages/tabs/service-providers/ser
     HealthCheckupComponent,
     DiscountCardsComponent,
     GiftHealthComponent,
-    ServiceProvidersComponent
+    ServiceProvidersComponent,
+    //search Result view components
+    HeaderComponent,
+    CategoryFiltersComponent,
+    AppointmentResultsComponent,
+    //Appontment Result sub components
+    DoctorDetailsComponent,
+    TimeSlotComponent
   ],
   imports: [
     BrowserModule,

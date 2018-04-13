@@ -1318,7 +1318,7 @@ width: 77%;
      display: block;
 }
  .alt-details {
-    display:none;
+    display:block;
     padding:0;
     float: left;
     width: 95%;
