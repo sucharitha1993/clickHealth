@@ -11,6 +11,8 @@ export class AppointmentResultsComponent implements OnInit {
         {
             'name': 'Dr. Harini',
             'img': `${this.imgPrePath}doctor_new.jpg`,
+            'sub_img': `${this.imgPrePath}avatar_ma.png`,
+            'award_img': `${this.imgPrePath}award1.png`,
             'designation': 'MS - General Surgery,',
             'experience': '15 Years Experience',
             'consultation': 'Telugu, Hindi',
@@ -18,11 +20,13 @@ export class AppointmentResultsComponent implements OnInit {
             'timings': '09:00 PM - 04:00 PM',
             'address': 'Ayyappa Society Main Road, Madhapur, Hyderabad',
             'consultation_fees': '599',
-            'discount': 'Get 25% Discount On First Consultation'
+            'discount': '25%'
         },
         {
             'name': 'Dr. Keerthi',
             'img': `${this.imgPrePath}doctor2.jpg`,
+            'sub_img': `${this.imgPrePath}avatar_ma.png`,
+            'award_img': `${this.imgPrePath}award1.png`,
             'designation': 'MS - General Surgery,',
             'experience': '15 Years Experience',
             'consultation': 'Telugu, Hindi',
@@ -30,11 +34,13 @@ export class AppointmentResultsComponent implements OnInit {
             'timings': '09:00 PM - 04:00 PM',
             'address': 'Ayyappa Society Main Road, Madhapur, Hyderabad',
             'consultation_fees': '599',
-            'discount': 'Get 25% Discount On First Consultation'
+            'discount': '25%'
         },
         {
             'name': 'Dr Rammohan MD',
             'img': `${this.imgPrePath}doctor1.jpg`,
+            'sub_img': `${this.imgPrePath}avatar_ma.png`,
+            'award_img': `${this.imgPrePath}award1.png`,
             'designation': 'MS - General Surgery,',
             'experience': '15 Years Experience',
             'consultation': 'Telugu, Hindi',
@@ -42,7 +48,7 @@ export class AppointmentResultsComponent implements OnInit {
             'timings': '09:00 PM - 04:00 PM',
             'address': 'Ayyappa Society Main Road, Madhapur, Hyderabad',
             'consultation_fees': '599',
-            'discount': 'Get 25% Discount On First Consultation'
+            'discount': '25%'
         }
     ];
 
