@@ -8,9 +8,10 @@
         <form>
             <div class="form-group custom_md_3 custom_md_home">
                 <div class="icon-addon addon-md">
-                    <select class="combobox input-large form-control form-control" name="normal">
+                    <input class="form-control" auto-complete [(ngModel)]="selectedState" name='state' (ngModelChange)="searchStates($event)" [source]="states" placeholder="Select a State" />
+                    <!-- <select class="combobox input-large form-control form-control" name="normal">
                               <option *ngFor='let state of states' value="{{state.CODE}}">{{state.DESC}}</option>
-                            </select>
+                            </select> -->
                     <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
                 </div>
             </div>

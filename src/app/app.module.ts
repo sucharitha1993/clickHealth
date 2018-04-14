@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
 //Routing Import
 import { AppRoutingModule } from './app.routing';
 
@@ -27,12 +29,19 @@ import { ServiceProvidersComponent } from './../pages/tabs/service-providers/ser
 import { HeaderComponent } from './../pages/header/header.component';
 import { CategoryFiltersComponent } from './../pages/category-filters/category-filters.component';
 import { AppointmentResultsComponent } from './../pages/results/appointment-results/appointment-results';
+import { HCResultsComponent } from './../pages/results/health-checkup-results/health-checkup-results';
+
 //Appontment Result sub components
 import { DoctorDetailsComponent } from './../pages/results/appointment-results/doctor-details/doctor-details';
 import { TimeSlotComponent } from './../pages/results/appointment-results/time-slot/time-slot';
 //importing pipes
 import { FilterPipe } from './../pipes/filter-pipe';
 import { SafeHtmlPipe } from './../pipes/safe-html.pipe';
+//importing Services
+import { AppointmentDataService } from './../providers/services/appointment-data.service';
+
+//importing third party modules
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 @NgModule({
   declarations: [
@@ -55,6 +64,7 @@ import { SafeHtmlPipe } from './../pipes/safe-html.pipe';
     HeaderComponent,
     CategoryFiltersComponent,
     AppointmentResultsComponent,
+    HCResultsComponent,
     //Appontment Result sub components
     DoctorDetailsComponent,
     TimeSlotComponent,
@@ -65,9 +75,14 @@ import { SafeHtmlPipe } from './../pipes/safe-html.pipe';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    HttpModule,
+    AppRoutingModule,
+    //third party
+    Ng2AutoCompleteModule
   ],
-  providers: [],
+  providers: [
+    AppointmentDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

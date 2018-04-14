@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AppointmentDataService } from './../../../providers/services/appointment-data.service';
 @Component({
     selector: 'app-appointments',
     templateUrl: './appointments.component.html'
@@ -7,19 +7,29 @@ import { Component, OnInit } from '@angular/core';
 export class AppointmentsComponent implements OnInit {
 
 
-    imgPrePath: string;
-    states: Object[] = [
-        { 'CODE': 'AP', 'DESC': 'Andhra Pradesh' },
-        { 'CODE': 'AZ', 'DESC': 'Kurnool' },
-        { 'CODE': 'AR', 'DESC': 'Vizag' },
-        { 'CODE': 'CA', 'DESC': 'Mumbai' },
-        { 'CODE': 'CO', 'DESC': 'Kolkatta' }
-    ];
+    imgPrePath: string = '../../assets/img/';;
+    states: any = [];
+    localities: any = [];
 
-    constructor() {
-        this.imgPrePath = '../../assets/img/';
+    constructor(private apiServices: AppointmentDataService) {
     }
 
     ngOnInit() {
+    }
+
+    //to search states on ngModelChange
+    searchStates(state) {
+        this.apiServices.getAutoCompleteData('condition', state)
+            .subscribe((result: any) => {
+                this.states = result.data;
+            });
+    }
+
+    //to search states on ngModelChange
+    searchLocality(location) {
+        this.apiServices.getAutoCompleteData('location', location)
+            .subscribe((result: any) => {
+                this.localities = result.data;
+            });
     }
 }
