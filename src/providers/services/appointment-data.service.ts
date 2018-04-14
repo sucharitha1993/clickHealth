@@ -23,7 +23,15 @@ export class AppointmentDataService {
 
     //to get Doctors list for Appointment
     getDocList(reqData) {
-        return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/doctors/`, reqData, options)
+        let body = new URLSearchParams();
+        body.set('symptom', reqData.symptom);
+        body.set('session', reqData.session);
+        body.set('location_type', reqData.location_type);
+        body.set('location', reqData.location);
+        body.set('from_date', reqData.from_date);
+        body.set('to_date', reqData.to_date);
+
+        return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/doctors/`, body.toString(), options)
             .map(response => response.json());
     }
 } 
