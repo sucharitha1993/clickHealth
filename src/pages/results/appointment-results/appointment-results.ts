@@ -1,5 +1,6 @@
 import { AppLitteralsConfig } from './../../../providers/literals/app.literals';
 import { Component, OnInit } from '@angular/core';
+import { AppointmentInfoService } from './../../../providers/services/appointment-info-service';
 
 @Component({
     selector: 'app-appointment-results',
@@ -10,7 +11,7 @@ export class AppointmentResultsComponent implements OnInit {
     imgPrePath: string = '../../assets/img/';
     doctorDetails: Object[] = AppLitteralsConfig.doctorDetails;
 
-    constructor() {
+    constructor(private appointmentInfo: AppointmentInfoService) {
     }
 
     ngOnInit() {

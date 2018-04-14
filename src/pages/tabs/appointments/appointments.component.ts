@@ -1,3 +1,4 @@
+import { AppointmentInfoService } from './../../../providers/services/appointment-info-service';
 import { Component, OnInit } from '@angular/core';
 import { AppointmentDataService } from './../../../providers/services/appointment-data.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -19,7 +20,7 @@ export class AppointmentsComponent implements OnInit {
 
     appointmentSearchForm: FormGroup;
 
-    constructor(private datePipe: DatePipe, private apiServices: AppointmentDataService, public formBuilder: FormBuilder, private router: Router) {
+    constructor(private appointmentInfo: AppointmentInfoService, private datePipe: DatePipe, private apiServices: AppointmentDataService, public formBuilder: FormBuilder, private router: Router) {
     }
 
     ngOnInit() {
@@ -75,13 +76,12 @@ export class AppointmentsComponent implements OnInit {
         }
         this.apiServices.getDocList(reqObj)
             .subscribe((res) => {
-                console.log(res);
-                // this.router.navigate(['/dashboard/ap_result'],
-                //     {
-                //         queryParams: this.appointmentSearchForm.value,
-                //         skipLocationChange: true
-                //     }
-                // );
+                if (res.status) {
+                    res.data = res.data || {};
+                    this.appointmentInfo.setHospitals(res.data.hospitals);
+                    this.appointmentInfo.setLocations(res.data.locations);
+                    this.router.navigate(['/dashboard/ap_result']);
+                }
             },
             error => {
                 console.log('unable to load doctors');

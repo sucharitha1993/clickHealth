@@ -44,6 +44,7 @@ import { DatePipe } from '@angular/common';
 import { DatePickerDirective } from './../providers/directives/date-picker-directive';
 //importing Services
 import { AppointmentDataService } from './../providers/services/appointment-data.service';
+import { AppointmentInfoService } from './../providers/services/appointment-info-service';
 
 //importing third party modules
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
@@ -90,6 +91,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
   ],
   providers: [
     AppointmentDataService,
+    AppointmentInfoService,
     DatePipe
   ],
   bootstrap: [AppComponent]
