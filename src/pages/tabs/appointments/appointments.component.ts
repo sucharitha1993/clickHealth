@@ -20,7 +20,7 @@ export class AppointmentsComponent implements OnInit {
     //to search states on ngModelChange
     searchStates(state) {
         this.apiServices.getAutoCompleteData('condition', state)
-            .subscribe((result: any) => {
+            .subscribe((result: any) => {debugger;
                 this.states = result.data;
             });
     }
@@ -32,4 +32,6 @@ export class AppointmentsComponent implements OnInit {
                 this.localities = result.data;
             });
     }
+
+    listFormatter = (data: any) => `<span>${data.name}</span>`;
 }

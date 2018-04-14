@@ -8,7 +8,8 @@
         <form>
             <div class="form-group custom_md_3 custom_md_home">
                 <div class="icon-addon addon-md">
-                    <input class="form-control" auto-complete [(ngModel)]="selectedState" name='state' (ngModelChange)="searchStates($event)" [source]="states" placeholder="Select a State" />
+                    <input class="form-control"  [list-formatter]="listFormatter" value-property-name="id"
+                    display-property-name="name" ng2-auto-complete [(ngModel)]="selectedState" name='condition' (ngModelChange)="searchStates($event)" [source]="states" placeholder="Condition, Procedure, Doctor.." />
                     <!-- <select class="combobox input-large form-control form-control" name="normal">
                               <option *ngFor='let state of states' value="{{state.CODE}}">{{state.DESC}}</option>
                             </select> -->
