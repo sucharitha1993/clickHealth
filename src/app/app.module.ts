@@ -1,4 +1,4 @@
-import { DatePickerDirective } from './../providers/directives/date-picker-directive';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -39,6 +39,9 @@ import { TimeSlotComponent } from './../pages/results/appointment-results/time-s
 //importing pipes
 import { FilterPipe } from './../pipes/filter-pipe';
 import { SafeHtmlPipe } from './../pipes/safe-html.pipe';
+import { DatePipe } from '@angular/common';
+//importing Directive
+import { DatePickerDirective } from './../providers/directives/date-picker-directive';
 //importing Services
 import { AppointmentDataService } from './../providers/services/appointment-data.service';
 
@@ -86,7 +89,8 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     Ng2AutoCompleteModule
   ],
   providers: [
-    AppointmentDataService
+    AppointmentDataService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

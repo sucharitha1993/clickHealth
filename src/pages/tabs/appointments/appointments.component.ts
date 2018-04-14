@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppointmentDataService } from './../../../providers/services/appointment-data.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-appointments',
@@ -18,7 +19,7 @@ export class AppointmentsComponent implements OnInit {
 
     appointmentSearchForm: FormGroup;
 
-    constructor(private apiServices: AppointmentDataService, public formBuilder: FormBuilder, private router: Router) {
+    constructor(private datePipe: DatePipe, private apiServices: AppointmentDataService, public formBuilder: FormBuilder, private router: Router) {
     }
 
     ngOnInit() {
@@ -49,7 +50,7 @@ export class AppointmentsComponent implements OnInit {
         this.apiServices.getAutoCompleteData('location', location)
             .subscribe((result: any) => {
                 this.localities = result.data;
-                for(var i=0;i<this.localities.length;i++) {
+                for (var i = 0; i < this.localities.length; i++) {
                     this.cities.push(this.localities[i].city);
                 }
             });
@@ -65,12 +66,12 @@ export class AppointmentsComponent implements OnInit {
         let location = this.appointmentSearchForm.controls['location'].value || {};
         location = location.name || '';
         let reqObj = {
-            'from_date': this.appointmentSearchForm.controls['from_date'].value,
-            'location': location,       
-            'location_type': this.appointmentSearchForm.controls['location_type'].value, 
-            'session': this.appointmentSearchForm.controls['session'].value,    
+            'from_date': this.datePipe.transform(this.appointmentSearchForm.controls['from_date'].value, 'yyyy-MM-dd'),
+            'location': location,
+            'location_type': this.appointmentSearchForm.controls['location_type'].value,
+            'session': this.appointmentSearchForm.controls['session'].value,
             'symptom': symptom,
-            'to_date': this.appointmentSearchForm.controls['to_date'].value
+            'to_date': this.datePipe.transform(this.appointmentSearchForm.controls['to_date'].value, 'yyyy-MM-dd'),
         }
         this.apiServices.getDocList(reqObj)
             .subscribe((res) => {
