@@ -8,40 +8,37 @@
         <form>
             <div class="form-group custom_md_3 custom_md_home">
                 <div class="icon-addon addon-md">
-                    <input class="form-control"  [list-formatter]="listFormatter" value-property-name="id"
-                    display-property-name="name" ng2-auto-complete [(ngModel)]="selectedState" name='condition' (ngModelChange)="searchStates($event)" [source]="states" placeholder="Condition, Procedure, Doctor.." />
-                    <!-- <select class="combobox input-large form-control form-control" name="normal">
-                              <option *ngFor='let state of states' value="{{state.CODE}}">{{state.DESC}}</option>
-                            </select> -->
+                    <input class="form-control"  [list-formatter]="listFormatter" value-property-name="id" [formControl]="appointmentSearchForm.controls['conditions']"
+                    display-property-name="name" ng2-auto-complete [(ngModel)]="selectedState" name='condition' (ngModelChange)="searchConditions($event)" [source]="conditions" placeholder="Condition, Procedure, Doctor.." />
                     <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
                 </div>
             </div>
             <div class="form-group custom_md_2">
                 <div class="icon-addon addon-md">
-                    <input type="text" placeholder="Location" class="form-control" id="email">
+                    <input type="text" [formControl]="appointmentSearchForm.controls['location']" placeholder="Location" class="form-control" id="email">
                     <label for="email" class="fa fa-map-marker" rel="tooltip" title="email"></label>
                 </div>
             </div>
             <div class="form-group custom_md_2">
-                <div class="icon-addon addon-md">
-                    <input id="datepicker" type="text" placeholder="From" class="form-control">
-                    <label for="email" class="fa fa-calendar" rel="tooltip" title="email"></label>
+                    <div class="icon-addon addon-md">
+                            <input name="fromdate" datepicker [formControl]="appointmentSearchForm.controls['from_date']" type="text" placeholder="From" class="form-control">
+                            <label for="email" class="fa fa-calendar" rel="tooltip" title="email"></label>
+                    </div>
                 </div>
-            </div>
+                <div class="form-group custom_md_2">
+                    <div class="icon-addon addon-md">
+                            <input name="todate" datepicker [formControl]="appointmentSearchForm.controls['to_date']" type="text" placeholder="To" class="form-control">
+                            <label for="email" class="fa fa-calendar" rel="tooltip" title="email"></label>
+                    </div>
+                </div>
             <div class="form-group custom_md_2">
                 <div class="icon-addon addon-md">
-                    <input id="datepicker2" type="text" placeholder="From" class="form-control">
-                    <label for="email" class="fa fa-calendar" rel="tooltip" title="email"></label>
-                </div>
-            </div>
-            <div class="form-group custom_md_2">
-                <div class="icon-addon addon-md">
-                    <input type="text" placeholder="Time Session" class="form-control" id="email">
+                    <input type="time" [formControl]="appointmentSearchForm.controls['time']" placeholder="Time Session" class="form-control" id="email">
                     <label for="email" class="fa fa-clock-o" rel="tooltip" title="email"></label>
                 </div>
             </div>
             <div class="custom_md_2">
-                <a routerLink='ap_result' class="search_vtm btn btn-4 btn-4c icon-arrow-right" type="submit">Search</a>
+                <a class="search_vtm btn btn-4 btn-4c icon-arrow-right" type="submit"  [class.disabled]='appointmentSearchForm.invalid' (click)='searchAppointments()'>Search</a>
             </div>
         </form>
         <div class="full_width health_check_t_cpnt">

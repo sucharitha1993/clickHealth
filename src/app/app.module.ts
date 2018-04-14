@@ -1,7 +1,9 @@
+import { DatePickerDirective } from './../providers/directives/date-picker-directive';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //Routing Import
 import { AppRoutingModule } from './app.routing';
@@ -70,11 +72,14 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     TimeSlotComponent,
     //pipes
     FilterPipe,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    //Directives
+    DatePickerDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
     //third party
