@@ -12,7 +12,7 @@ export class AppointmentsComponent implements OnInit {
 
 
     imgPrePath: string = '../../assets/img/';;
-    conditions: any = [];
+    symptom: any = [];
     localities: any = [];
 
     appointmentSearchForm: FormGroup;
@@ -26,11 +26,12 @@ export class AppointmentsComponent implements OnInit {
 
     initialiseAppointmentfields() {
         this.appointmentSearchForm = this.formBuilder.group({
-            "conditions": [null, Validators.required],
+            "symptom": [null, Validators.required],
+            "location_type": ['city'],
             "location": [null, Validators.required],
             "from_date": [null, Validators.required],
             "to_date": [null, Validators.required],
-            "time": [null, Validators.required]
+            "session": [null, Validators.required]
         });
     }
 
@@ -38,7 +39,7 @@ export class AppointmentsComponent implements OnInit {
     searchConditions(state) {
         this.apiServices.getAutoCompleteData('condition', state)
             .subscribe((result: any) => {
-                this.conditions = result.data;
+                this.symptom = result.data;
             });
     }
 
@@ -54,12 +55,27 @@ export class AppointmentsComponent implements OnInit {
 
     //navigate to Appointment Results
     searchAppointments() {
-        this.router.navigate(['/dashboard/ap_result'],
-            {
-                queryParams: this.appointmentSearchForm.value,
-                skipLocationChange: true
-            }
-        );
+        let staticObj = {
+            'from_date': '2018-03-09',
+            'location': 'mum',       
+            'location_type': 'city', 
+            'session': 'morning',    
+            'symptom': 'Cardiologis',
+            'to_date': '2018-04-01'
+        }
+        this.apiServices.getDocList(this.appointmentSearchForm.value)
+            .subscribe((res) => {
+                console.log(res);
+                // this.router.navigate(['/dashboard/ap_result'],
+                //     {
+                //         queryParams: this.appointmentSearchForm.value,
+                //         skipLocationChange: true
+                //     }
+                // );
+            },
+            error => {
+                console.log('unable to load doctors');
+            })
     }
 
 }

@@ -8,8 +8,8 @@
         <form>
             <div class="form-group custom_md_3 custom_md_home">
                 <div class="icon-addon addon-md">
-                    <input class="form-control"  [list-formatter]="listFormatter" value-property-name="id" [formControl]="appointmentSearchForm.controls['conditions']"
-                    display-property-name="name" ng2-auto-complete [(ngModel)]="selectedState" name='condition' (ngModelChange)="searchConditions($event)" [source]="conditions" placeholder="Condition, Procedure, Doctor.." />
+                    <input class="form-control"  [list-formatter]="listFormatter" value-property-name="id" [formControl]="appointmentSearchForm.controls['symptom']"
+                    display-property-name="name" ng2-auto-complete [(ngModel)]="selectedState" name='condition' (ngModelChange)="searchConditions($event)" [source]="symptom" placeholder="Condition, Procedure, Doctor.." />
                     <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                 </div>
             <div class="form-group custom_md_2">
                 <div class="icon-addon addon-md">
-                    <input type="time" [formControl]="appointmentSearchForm.controls['time']" placeholder="Time Session" class="form-control" id="email">
+                    <input type="session" [formControl]="appointmentSearchForm.controls['session']" placeholder="Time Session" class="form-control" id="email">
                     <label for="email" class="fa fa-clock-o" rel="tooltip" title="email"></label>
                 </div>
             </div>
