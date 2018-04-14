@@ -60,15 +60,17 @@ export class AppointmentsComponent implements OnInit {
 
     //navigate to Appointment Results
     searchAppointments() {
-        let staticObj = {
-            'from_date': '2018-03-09',
-            'location': 'mum',       
-            'location_type': 'city', 
-            'session': 'morning',    
-            'symptom': 'Cardiologis',
-            'to_date': '2018-04-01'
+        let symptom = this.appointmentSearchForm.controls['symptom'].value || {};
+        symptom = symptom.name || '';
+        let reqObj = {
+            'from_date': this.appointmentSearchForm.controls['from_date'].value,
+            'location': this.appointmentSearchForm.controls['location'].value,       
+            'location_type': this.appointmentSearchForm.controls['location_type'].value, 
+            'session': this.appointmentSearchForm.controls['session'].value,    
+            'symptom': symptom,
+            'to_date': this.appointmentSearchForm.controls['symptom'].value
         }
-        this.apiServices.getDocList(this.appointmentSearchForm.value)
+        this.apiServices.getDocList(reqObj)
             .subscribe((res) => {
                 console.log(res);
                 // this.router.navigate(['/dashboard/ap_result'],
