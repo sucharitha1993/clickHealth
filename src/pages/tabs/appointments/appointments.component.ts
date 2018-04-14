@@ -14,6 +14,7 @@ export class AppointmentsComponent implements OnInit {
     imgPrePath: string = '../../assets/img/';;
     conditions: any = [];
     localities: any = [];
+    cities: any = [];
 
     appointmentSearchForm: FormGroup;
 
@@ -47,10 +48,14 @@ export class AppointmentsComponent implements OnInit {
         this.apiServices.getAutoCompleteData('location', location)
             .subscribe((result: any) => {
                 this.localities = result.data;
+                for(var i=0;i<this.localities.length;i++) {
+                    this.cities.push(this.localities[i].city);
+                }
             });
     }
 
-    listFormatter = (data: any) => `<span>${data.name}</span>`;
+    conditionsListFormatter = (data: any) => `<span>${data.name}</span>`;
+    locationsListFormatter = (data: any) => `<span>${data.name}</span>`;
 
     //navigate to Appointment Results
     searchAppointments() {
