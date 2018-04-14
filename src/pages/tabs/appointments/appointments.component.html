@@ -8,14 +8,14 @@
         <form>
             <div class="form-group custom_md_3 custom_md_home">
                 <div class="icon-addon addon-md">
-                    <input class="form-control"  [list-formatter]="conditionsListFormatter" value-property-name="id" [formControl]="appointmentSearchForm.controls['symptom']"
+                    <input class="form-control"  [list-formatter]="listFormatter" value-property-name="id" [formControl]="appointmentSearchForm.controls['symptom']"
                     display-property-name="name" ng2-auto-complete [(ngModel)]="selectedState" name='condition' (ngModelChange)="searchConditions($event)" [source]="symptom" placeholder="Condition, Procedure, Doctor.." />
                     <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
                 </div>
             </div>
             <div class="form-group custom_md_2">
                 <div class="icon-addon addon-md">
-                    <input type="text" [(ngModel)]="selectedCity" [list-formatter]="locationsListFormatter" value-property-name="id" 
+                    <input type="text" [(ngModel)]="selectedCity" [list-formatter]="listFormatter" value-property-name="id" 
                     display-property-name="name" ng2-auto-complete (ngModelChange)="searchLocality($event)" [source]="cities" 
                     [formControl]="appointmentSearchForm.controls['location']" placeholder="Location" class="form-control">
                     <label for="email" class="fa fa-map-marker" rel="tooltip" title="email"></label>
@@ -35,7 +35,8 @@
                 </div>
             <div class="form-group custom_md_2">
                 <div class="icon-addon addon-md">
-                    <input type="session" [formControl]="appointmentSearchForm.controls['session']" placeholder="Time Session" class="form-control" id="email">
+                    <input type="session" [(ngModel)]="selectedSession" [list-formatter]="listFormatter" value-property-name="id" 
+                    display-property-name="name" ng2-auto-complete  [source]="sessions" [formControl]="appointmentSearchForm.controls['session']" placeholder="Time Session" class="form-control" id="email">
                     <label for="email" class="fa fa-clock-o" rel="tooltip" title="email"></label>
                 </div>
             </div>
