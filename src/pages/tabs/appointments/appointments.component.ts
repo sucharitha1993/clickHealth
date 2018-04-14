@@ -17,6 +17,20 @@ export class AppointmentsComponent implements OnInit {
     symptom: any = [];
     localities: any = [];
     cities: any = [];
+    sessions: any = [
+        {
+            id: 'morning', name: 'Morning'
+        },
+        {
+            id: 'afternoon', name: 'Afternoon'
+        },
+        {
+            id: 'evening', name: 'Evening'
+        },
+        {
+            id: 'night', name: 'Night'
+        }
+    ];
 
     appointmentSearchForm: FormGroup;
 
@@ -57,8 +71,7 @@ export class AppointmentsComponent implements OnInit {
             });
     }
 
-    conditionsListFormatter = (data: any) => `<span>${data.name}</span>`;
-    locationsListFormatter = (data: any) => `<span>${data.name}</span>`;
+    listFormatter = (data: any) => `<span>${data.name}</span>`;
 
     //navigate to Appointment Results
     searchAppointments() {
@@ -66,11 +79,13 @@ export class AppointmentsComponent implements OnInit {
         symptom = symptom.name || '';
         let location = this.appointmentSearchForm.controls['location'].value || {};
         location = location.name || '';
+        let session = this.appointmentSearchForm.controls['session'].value || {};
+        session = session.id || '';
         let reqObj = {
             'from_date': this.datePipe.transform(this.appointmentSearchForm.controls['from_date'].value, 'yyyy-MM-dd'),
             'location': location,
             'location_type': this.appointmentSearchForm.controls['location_type'].value,
-            'session': this.appointmentSearchForm.controls['session'].value,
+            'session': session,
             'symptom': symptom,
             'to_date': this.datePipe.transform(this.appointmentSearchForm.controls['to_date'].value, 'yyyy-MM-dd'),
         }
@@ -87,5 +102,7 @@ export class AppointmentsComponent implements OnInit {
                 console.log('unable to load doctors');
             })
     }
+
+   
 
 }
