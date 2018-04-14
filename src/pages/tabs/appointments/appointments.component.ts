@@ -62,13 +62,15 @@ export class AppointmentsComponent implements OnInit {
     searchAppointments() {
         let symptom = this.appointmentSearchForm.controls['symptom'].value || {};
         symptom = symptom.name || '';
+        let location = this.appointmentSearchForm.controls['location'].value || {};
+        location = location.name || '';
         let reqObj = {
             'from_date': this.appointmentSearchForm.controls['from_date'].value,
-            'location': this.appointmentSearchForm.controls['location'].value,       
+            'location': location,       
             'location_type': this.appointmentSearchForm.controls['location_type'].value, 
             'session': this.appointmentSearchForm.controls['session'].value,    
             'symptom': symptom,
-            'to_date': this.appointmentSearchForm.controls['symptom'].value
+            'to_date': this.appointmentSearchForm.controls['to_date'].value
         }
         this.apiServices.getDocList(reqObj)
             .subscribe((res) => {
