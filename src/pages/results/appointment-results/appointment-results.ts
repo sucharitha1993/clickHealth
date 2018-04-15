@@ -41,6 +41,7 @@ export class AppointmentResultsComponent implements OnInit {
     }
     //formatClinicians
     formatClinicians(clinicians) {
+        this.docList = [];
         let args = ['from_date','location', 'location_type','session','symptom','to_date']
         this.searchParams = this.appointmentInfo.getAppointmentSearchParams() || this.appointmentInfo.getLocalStorageParamsDynamically(args);
         for (let key in clinicians) {
