@@ -12,6 +12,7 @@ export class CategoryFiltersComponent implements OnInit {
 
     medicalCenters: any = [];
     locations: any = [];
+    cities: any = [];
     medicalSearchTerm: string;
     locationSearchTerm: string;
 
@@ -21,5 +22,10 @@ export class CategoryFiltersComponent implements OnInit {
     ngOnInit() {
         this.locations = this.appointmentInfo.getLocations();
         this.medicalCenters = this.appointmentInfo.getHospitals();
+        for (let i in this.locations) {
+            if (this.locations[i] && this.locations[i].city && this.locations[i].city.name) {
+                this.cities.push(this.locations[i].city.name);
+            }
+        }
     }
 }
