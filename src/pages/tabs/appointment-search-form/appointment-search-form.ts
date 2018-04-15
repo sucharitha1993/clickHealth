@@ -89,7 +89,7 @@ export class AppointmentsSearchFormComponent implements OnInit {
             'to_date': this.datePipe.transform(this.appointmentSearchForm.controls['to_date'].value, 'yyyy-MM-dd'),
         }
         this.appointmentInfo.setAppointmentSearchParams(reqObj);
-        this.close.emit(null);
+        this.close.emit(reqObj);
     }
 
 }
