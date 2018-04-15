@@ -12,17 +12,17 @@
             <div class="padding">
               <!-- START OF Search Params Display -->
               <ul class="app_list_menu">
-                <li>Condition, Procedure...</li>
-                <li>Madhapur, Hyderabad</li>
-                <li>24-01-2018</li>
-                <li>25-01-2018</li>
+                <li>{{searchParams?.symptom}}</li>
+                <li>{{searchParams?.location}}</li>
+                <li>{{searchParams?.from_date}}</li>
+                <li>{{searchParams?.to_date}}</li>
                 <li><i class="fa fa-arrow-right"></i></li>
-                <li>Morning</li>
+                <li>{{searchParams?.session}}</li>
                 <li class="modify_searc pull-right">
                   <a data-toggle="modal" data-target=".bs-example-modal-lg" href="#"><span><i class="fa fa-search"></i></span>&nbsp;Modify Search</a>
                 </li>
                 <!-- Modal to Modify Search -->
-                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                <div class="modal fade bs-example-modal-lg" id='modifyDialog' tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                   <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -30,41 +30,7 @@
                         <h4 class="modal-title" id="myModalLabel">Modify Search</h4>
                       </div>
                       <div class="modal-body modify_search_modal">
-                        <form>
-                          <div class="form-group custom_md_3 custom_md_home">
-                            <div class="icon-addon addon-md">
-                              <input type="text" placeholder="Condition, Procedure, doc.." class="form-control" id="email">
-                              <label for="email" class="fa fa-user" rel="tooltip" title="email"></label>
-                            </div>
-                          </div>
-                          <div class="form-group custom_md_2">
-                            <div class="icon-addon addon-md">
-                              <input type="text" placeholder="Location" class="form-control" id="email">
-                              <label for="email" class="fa fa-map-marker" rel="tooltip" title="email"></label>
-                            </div>
-                          </div>
-                          <div class="form-group custom_md_2">
-                            <div class="icon-addon addon-md">
-                              <input type="text" placeholder="From" class="form-control" id="email">
-                              <label for="email" class="fa fa-share-square-o" rel="tooltip" title="email"></label>
-                            </div>
-                          </div>
-                          <div class="form-group custom_md_2">
-                            <div class="icon-addon addon-md">
-                              <input type="text" placeholder="To" class="form-control" id="email">
-                              <label for="email" class="fa fa-share-square-o" rel="tooltip" title="email"></label>
-                            </div>
-                          </div>
-                          <div class="form-group custom_md_2">
-                            <div class="icon-addon addon-md">
-                              <input type="text" placeholder="Time Session" class="form-control" id="email">
-                              <label for="email" class="fa fa-clock-o" rel="tooltip" title="email"></label>
-                            </div>
-                          </div>
-                          <div class="custom_md_2">
-                            <a class="search_vtm btn btn-4 btn-4c icon-arrow-right" type="submit">Search</a>
-                          </div>
-                        </form>
+                          <app-appointments-search-from (close)="onClose($event)"></app-appointments-search-from>
                       </div>
                     </div>
                   </div>

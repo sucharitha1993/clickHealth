@@ -7,6 +7,7 @@ export class AppointmentInfoService {
     locations: any = [];
     cities: any = [];
     clinicians: any = [];
+    appointmentSearchParams: any;
 
     constructor() {
     }
@@ -42,5 +43,13 @@ export class AppointmentInfoService {
     }
     getClinicians() {
         return this.clinicians;
+    }
+
+    // to set n get Appointment search params
+    setAppointmentSearchParams(params) {
+        this.appointmentSearchParams = params;
+    }
+    getAppointmentSearchParams() {
+        return this.appointmentSearchParams;
     }
 } 

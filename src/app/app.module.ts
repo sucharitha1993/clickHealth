@@ -23,6 +23,7 @@ import { AppointmentsDiscountsComponent } from './../pages/landing-pages/appoint
 import { AboutDoctorsComponent } from './../pages/landing-pages/about-doctors/about-doctors.component';
 //tab components
 import { AppointmentsComponent } from './../pages/tabs/appointments/appointments.component';
+import { AppointmentsSearchFormComponent } from './../pages/tabs/appointment-search-form/appointment-search-form';
 import { HealthCheckupComponent } from './../pages/tabs/health-checkups/health-checkups.component';
 import { DiscountCardsComponent } from './../pages/tabs/discount-cards/discount-cards.component';
 import { GiftHealthComponent } from './../pages/tabs/gift-health/gift-health.component';
@@ -62,6 +63,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     AboutDoctorsComponent,
     //tab components
     AppointmentsComponent,
+    AppointmentsSearchFormComponent,
     HealthCheckupComponent,
     DiscountCardsComponent,
     GiftHealthComponent,
