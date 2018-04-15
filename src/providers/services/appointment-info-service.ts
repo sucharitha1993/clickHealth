@@ -8,6 +8,7 @@ export class AppointmentInfoService {
     cities: any = [];
     clinicians: any = [];
     appointmentSearchParams: any;
+    otp: any;
 
     constructor() {
     }
@@ -65,5 +66,13 @@ export class AppointmentInfoService {
             obj[args[i]] = localStorage.getItem(args[i])
         }
         return obj;
+    }
+
+    //to set and get OTP
+    setOTP(otp) {
+        this.otp = otp;
+    }
+    getOTP(otp) {
+        return this.otp;
     }
 } 

@@ -20,34 +20,34 @@
                         <div class="row">
                             <div class="form-group custom_md_3 col-md-12">
                                 <div class="icon-addon addon-md">
-                                    <input type="text" placeholder="Full Name" class="form-control" id="FirstN">
+                                    <input type="text" [formControl]="confirmAppointmentForm.controls['name']" placeholder="Full Name" class="form-control" id="FirstN">
                                     <label for="text" rel="tooltip" title="firstname"><img src="{{imgPrePath}}icons/ficon1.png"></label>
                                 </div>
                             </div>
                             <div class="form-group custom_md_3 col-md-6">
                                 <div class="icon-addon addon-md">
-                                    <input type="text" placeholder="Phone" class="form-control" id="phone">
+                                    <input type="text"  [formControl]="confirmAppointmentForm.controls['mobile']"  placeholder="Phone" class="form-control" id="phone">
                                     <label for="text" rel="tooltip" title="phone"><img src="{{imgPrePath}}icons/ficon2.png"></label>
                                 </div>
                             </div>
                             <div class="form-group custom_md_3 col-md-6">
                                 <div class="icon-addon addon-md">
-                                    <input type="text" placeholder="Email" class="form-control" id="email">
+                                    <input type="text" [formControl]="confirmAppointmentForm.controls['email']" placeholder="Email" class="form-control" id="email">
                                     <label for="email" rel="tooltip" title="email"><img src="{{imgPrePath}}icons/ficon3.png"></label>
                                 </div>
                             </div>
                             <div class="form-group custom_md_3 col-md-12">
                                 <div class="icon-addon addon-md">
-                                    <textarea name="message">Reasons / Complaints</textarea>
+                                    <textarea name="message" [formControl]="confirmAppointmentForm.controls['reason']" >Reasons / Complaints</textarea>
                                     <label for="email" rel="tooltip" title="email"><img src="{{imgPrePath}}icons/ficon4.png"></label>
                                 </div>
                             </div>
                         </div>
                         <label class="container12"><p>By Booking Appointment You are agreeing <a href="#">Terms & Conditions</a></p>
-                              <input type="checkbox">
+                              <input type="checkbox" [formControl]="confirmAppointmentForm.controls['agreeing_to_tnc']" >
                               <span class="checkmark"></span>
                             </label>
-                        <a class="search_vtm btn btn-4 btn-4c icon-arrow-right" href="ap_otp.html">Book Appointment</a>
+                        <a class="search_vtm btn btn-4 btn-4c icon-arrow-right" [class.disabled]='confirmAppointmentForm.invalid' (click)='generateOTP()'>Book Appointment</a>
                     </form>
                 </div>
             </div>

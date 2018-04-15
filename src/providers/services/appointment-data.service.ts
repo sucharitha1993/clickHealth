@@ -32,14 +32,39 @@ export class AppointmentDataService {
         body.set('to_date', reqData.to_date);
 
         return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/doctors/`, body.toString(), options)
-            .map(function(response){
+            .map(function (response) {
                 let res = response.json();
-            for(var i=0;i<res.data.hospitals.length;i++) {
-                for(var j=0;j<res.data.clinicians[res.data.hospitals[i]].length;j++) {
-                    res.data.clinicians[res.data.hospitals[i]][j].locations = res.data.locations[i];
+                for (let i = 0; i < res.data.hospitals.length; i++) {
+                    for (let j = 0; j < res.data.clinicians[res.data.hospitals[i]].length; j++) {
+                        res.data.clinicians[res.data.hospitals[i]][j].locations = res.data.locations[i];
+                    }
                 }
-            }
-            return res;
+                return res;
             });
     }
-} 
+
+    //to confirm booking Appointment
+    bookAppointment(argument) {
+        let body = new URLSearchParams();
+        // body.set('clinician_id', argument.clinician_id);
+        // body.set('provider_id', argument.provider_id);
+        // body.set('date', argument.date);
+        // body.set('time', argument.time);
+        body.set('clinician_id', '6');
+        body.set('provider_id', '1');
+        body.set('date', '2018-03-01');
+        body.set('time', '13:25');
+        return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/appointment/`, body.toString(), options)
+            .map(response => response.json());
+    }
+
+    //to generate OTP or booking appointment
+    generateOtp(argument) {
+        let body = new URLSearchParams();
+        body.set('generate', 'true');
+        body.set('email', argument.email);
+        body.set('mobile', argument.mobile);
+        return this.http.post(`${AppConfig.API_ENDPOINT}common/otp/`, body.toString(), options)
+            .map(response => response.json());
+    }
+}
