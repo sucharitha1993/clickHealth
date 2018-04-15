@@ -33,9 +33,16 @@ export class AppointmentResultsComponent implements OnInit {
     }
     //to get Clinicians
     getClinicians() {
-        this.searchParams = this.appointmentInfo.getAppointmentSearchParams();
-        let clinicians = this.appointmentInfo.getClinicians();
-        for (var key in clinicians) {
+        this.searchParams = this.appointmentInfo.getAppointmentSearchParams() || this.appointmentInfo.getParamsFromLocalStorage();
+        let clinicianLength = Object.values(this.appointmentInfo.clinicians).length;
+        let clinicians = clinicianLength > 0 ? this.appointmentInfo.getClinicians() : this.getDocList(this.searchParams);
+        if (clinicianLength > 0) {
+            this.formatClinicians(clinicians);
+        }
+    }
+    //formatClinicians
+    formatClinicians(clinicians) {
+        for (let key in clinicians) {
             if (clinicians.hasOwnProperty(key)) {
                 this.docList.push({
                     "data": clinicians[key],
@@ -47,7 +54,12 @@ export class AppointmentResultsComponent implements OnInit {
     //On close of Modal
     onClose(reqObj) {
         $("#modifyDialog").hide();
-        $('.modal-backdrop').remove();        
+        $('.modal-backdrop').remove();
+        this.getDocList(reqObj);
+    }
+
+    // to get Doc List
+    getDocList(reqObj) {
         this.apiServices.getDocList(reqObj)
             .subscribe((res) => {
                 if (res.status) {
@@ -55,7 +67,7 @@ export class AppointmentResultsComponent implements OnInit {
                     this.medicalCenters = res.data.hospitals;
                     this.locations = res.data.locations;
                     this.appointmentInfo.setClinicians(res.data.clinicians);
-                    this.getClinicians();
+                    this.formatClinicians(res.data.clinicians);
                 }
             },
             error => {
