@@ -88,8 +88,9 @@ export class AppointmentsSearchFormComponent implements OnInit {
             'symptom': symptom,
             'to_date': this.datePipe.transform(this.appointmentSearchForm.controls['to_date'].value, 'yyyy-MM-dd'),
         }
+         let args = ['from_date','location', 'location_type','session','symptom','to_date'];
         this.appointmentInfo.setAppointmentSearchParams(reqObj);
-        this.appointmentInfo.setParamstoLocalStorage(reqObj);
+        this.appointmentInfo.setLocalStorageParamsDynamically(args,reqObj);
         this.close.emit(reqObj);
     }
 

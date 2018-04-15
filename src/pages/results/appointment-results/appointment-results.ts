@@ -33,7 +33,8 @@ export class AppointmentResultsComponent implements OnInit {
     }
     //to get Clinicians
     getClinicians() {
-        this.searchParams = this.appointmentInfo.getAppointmentSearchParams() || this.appointmentInfo.getParamsFromLocalStorage();
+        let args = ['from_date','location', 'location_type','session','symptom','to_date']
+        this.searchParams = this.appointmentInfo.getAppointmentSearchParams() || this.appointmentInfo.getLocalStorageParamsDynamically(args);
         let clinicianLength = Object.values(this.appointmentInfo.clinicians).length;
         let clinicians = clinicianLength > 0 ? this.appointmentInfo.getClinicians() : this.getDocList(this.searchParams);
         if (clinicianLength > 0) {
