@@ -5,8 +5,9 @@ import { DashboardComponent } from './../pages/dashboard/dashboard.component';
 import { MainDashboardComponent } from './../pages/main-dashboard/main-dashboard';
 //Appointments
 import { AppointmentResultsComponent } from './../pages/results/appointment-results/appointment-results';
-import { ConfirmAppointmentComponent } from './../pages/results/appointment-results/confirm-appointment/confirm-appointment';
+import { ConfirmAppointmentComponent } from './../pages/results/appointment-results/ap_confirm/ap_confirm';
 import { AppointmentOTPComponent } from './../pages/results/appointment-results/ap_otp/ap_otp';
+import { BookAppointmentComponent } from './../pages/results/appointment-results/ap_details/ap_details';
 
 
 const routes: Routes = [
@@ -19,11 +20,14 @@ const routes: Routes = [
                 path: 'ap_result', component: AppointmentResultsComponent
             },
             {
-                path: 'ap_details', component: ConfirmAppointmentComponent
+                path: 'ap_details', component: BookAppointmentComponent
             },
             {
                 path: 'ap_otp', component: AppointmentOTPComponent
-            }
+            },
+            {
+                path: 'ap_confirm', component: ConfirmAppointmentComponent
+            },
         ]
     }
 ];

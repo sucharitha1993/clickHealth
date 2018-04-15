@@ -9,6 +9,7 @@ export class AppointmentInfoService {
     clinicians: any = [];
     appointmentSearchParams: any;
     otp: any;
+    appointmentDetails: any;
 
     constructor() {
     }
@@ -74,5 +75,14 @@ export class AppointmentInfoService {
     }
     getOTP() {
         return this.otp;
+    }
+
+    //to set Appointment Details
+    setAppointmentDetails(details) {
+        this.appointmentDetails = details;
+    }
+
+    getAppointmentDetails() {
+        return this.appointmentDetails;
     }
 } 

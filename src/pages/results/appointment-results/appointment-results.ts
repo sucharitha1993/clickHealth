@@ -35,6 +35,7 @@ export class AppointmentResultsComponent implements OnInit {
     }
     //to get Clinicians
     getClinicians() {
+        this.searchParams = this.getSearchParams();
         let clinicianLength = Object.values(this.appointmentInfo.clinicians).length;
         let clinicians = clinicianLength > 0 ? this.appointmentInfo.getClinicians() : this.getDocList(this.searchParams);
         if (clinicianLength > 0) {
@@ -44,8 +45,7 @@ export class AppointmentResultsComponent implements OnInit {
     //formatClinicians
     formatClinicians(clinicians) {
         this.docList = [];
-        let args = ['from_date','location', 'location_type','session','symptom','to_date']
-        this.searchParams = this.appointmentInfo.getAppointmentSearchParams() || this.appointmentInfo.getLocalStorageParamsDynamically(args);
+        this.searchParams = this.getSearchParams();
         for (let key in clinicians) {
             if (clinicians.hasOwnProperty(key)) {
                 this.docList.push({
@@ -54,6 +54,12 @@ export class AppointmentResultsComponent implements OnInit {
                 })
             }
         }
+    }
+    //to get Search params
+    getSearchParams() {
+        let args = ['from_date','location', 'location_type','session','symptom','to_date']
+        this.searchParams = this.appointmentInfo.getAppointmentSearchParams() || this.appointmentInfo.getLocalStorageParamsDynamically(args);
+        return this.searchParams;
     }
     //On close of Modal
     onClose(reqObj) {

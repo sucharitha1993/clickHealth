@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
 import { AppLitteralsConfig } from './../../../../providers/literals/app.literals';
 import { Component, Input } from '@angular/core';
 
@@ -11,7 +13,7 @@ import { Component, Input } from '@angular/core';
 export class TimeSlotComponent {
 
     @Input('doc')
-    doc: Object;
+    doc: any;
 
     timings = AppLitteralsConfig.timings;
 
@@ -19,7 +21,30 @@ export class TimeSlotComponent {
     aftrnTimings: string[] = this.timings.aftrn;
     evengTimings: string[] = this.timings.eveng;
 
-    constructor() { }
+    selectedAppointment: any = {};
+
+    constructor(private apInfoService: AppointmentInfoService, private router: Router) { }
 
     ngOnInit() { }
+
+    chosenAppointment() {
+        let doc = this.doc.data[0];
+        this.selectedAppointment.appointmentDetails = {
+            clinician_id: doc.id,
+            provider_id: doc.provider_id,
+            date: '2018-03-01',
+            time: '13:25'
+        }
+        this.selectedAppointment.docDetails = {
+            fee: doc.fee,
+            name: doc.user.name,
+            id: doc.user.id,
+            mobile: doc.user.mobile,
+            specialities: doc.specialities,
+            discounts: doc.first_fee,
+            docImage: doc.user.profile_pic
+        }
+        this.apInfoService.setAppointmentDetails(this.selectedAppointment);
+        this.router.navigateByUrl('/dashboard/ap_details');
+    }
 }

@@ -35,8 +35,9 @@ import { HeaderComponent } from './../pages/header/header.component';
 import { CategoryFiltersComponent } from './../pages/category-filters/category-filters.component';
 import { AppointmentResultsComponent } from './../pages/results/appointment-results/appointment-results';
 import { HCResultsComponent } from './../pages/results/health-checkup-results/health-checkup-results';
-import { ConfirmAppointmentComponent } from './../pages/results/appointment-results/confirm-appointment/confirm-appointment';
+import { BookAppointmentComponent } from './../pages/results/appointment-results/ap_details/ap_details';
 import { AppointmentOTPComponent } from './../pages/results/appointment-results/ap_otp/ap_otp';
+import { ConfirmAppointmentComponent } from './../pages/results/appointment-results/ap_confirm/ap_confirm';
 import { ChosenDoctorComponent } from './../pages/results/appointment-results/chosen-doctor-details/chosen-doctor-details';
 
 //Appontment Result sub components
@@ -78,6 +79,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     HeaderComponent,
     CategoryFiltersComponent,
     AppointmentResultsComponent,
+    BookAppointmentComponent,
     ConfirmAppointmentComponent,
     AppointmentOTPComponent,
     ChosenDoctorComponent,

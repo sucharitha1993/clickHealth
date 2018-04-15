@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AppointmentDataService } from './../../../../providers/services/appointment-data.service';
 import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
 import { Component, Input } from '@angular/core';
 
@@ -10,13 +12,24 @@ import { Component, Input } from '@angular/core';
 export class AppointmentOTPComponent {
 
     public otp: any;
-    constructor(public apInfoService: AppointmentInfoService) { }
+    constructor(public router: Router, public apiServices: AppointmentDataService, public apInfoService: AppointmentInfoService) { }
 
     ngOnInit() { }
 
     verifyOTP(otp) {
+        let selectedAppointment = this.apInfoService.getAppointmentDetails();
+        let obj = selectedAppointment.appointmentDetails;
         if (otp == this.apInfoService.getOTP()) {
-
+            this.apiServices.bookAppointment(obj)
+                .subscribe(res => {
+                    console.log(res);
+                    if (res.status) {
+                        this.router.navigateByUrl('/dashboard/ap_confirm')
+                    }
+                },
+                error => {
+                    console.log(error);
+                })
         } else {
             console.log('please enter correct otp');
         }

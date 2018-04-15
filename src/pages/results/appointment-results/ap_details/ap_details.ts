@@ -6,10 +6,10 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'app-confirm-appointment',
-    templateUrl: './confirm-appointment.html'
+    selector: 'app-book-appointment',
+    templateUrl: './ap_details.html'
 })
-export class ConfirmAppointmentComponent implements OnInit {
+export class BookAppointmentComponent implements OnInit {
 
 
     imgPrePath: string = '../../assets/img/';

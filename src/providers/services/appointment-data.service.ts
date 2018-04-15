@@ -37,6 +37,7 @@ export class AppointmentDataService {
                 for (let i = 0; i < res.data.hospitals.length; i++) {
                     for (let j = 0; j < res.data.clinicians[res.data.hospitals[i]].length; j++) {
                         res.data.clinicians[res.data.hospitals[i]][j].locations = res.data.locations[i];
+                        res.data.clinicians[res.data.hospitals[i]][j].provider_id = i;
                     }
                 }
                 return res;
