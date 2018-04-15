@@ -10,8 +10,8 @@ import { Component, Input } from '@angular/core';
 
 export class TimeSlotComponent {
 
-    @Input('doctor')
-    doctor: Object;
+    @Input('doc')
+    doc: Object;
 
     timings = AppLitteralsConfig.timings;
 

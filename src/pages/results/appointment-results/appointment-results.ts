@@ -10,11 +10,21 @@ export class AppointmentResultsComponent implements OnInit {
 
     imgPrePath: string = '../../assets/img/';
     doctorDetails: Object[] = AppLitteralsConfig.doctorDetails;
+    docList: any = [];
 
     constructor(private appointmentInfo: AppointmentInfoService) {
     }
 
     ngOnInit() {
+        let clinicians = this.appointmentInfo.getClinicians();
+        for (var key in clinicians) {
+            if (clinicians.hasOwnProperty(key)) {
+                this.docList.push({
+                    "data": clinicians[key],
+                    "name": key
+                })
+            }
+        }
     }
 
     // to toggle Doctor details

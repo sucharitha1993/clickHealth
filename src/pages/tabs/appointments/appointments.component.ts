@@ -95,6 +95,7 @@ export class AppointmentsComponent implements OnInit {
                     res.data = res.data || {};
                     this.appointmentInfo.setHospitals(res.data.hospitals);
                     this.appointmentInfo.setLocations(res.data.locations);
+                    this.appointmentInfo.setClinicians(res.data.clinicians);
                     this.router.navigate(['/dashboard/ap_result']);
                 }
             },

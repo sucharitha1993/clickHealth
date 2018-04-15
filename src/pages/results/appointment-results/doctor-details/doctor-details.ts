@@ -8,8 +8,8 @@ import { Component, Input } from '@angular/core';
 
 export class DoctorDetailsComponent {
 
-    @Input('doctor')
-    doctor: Object;
+    @Input('doc')
+    doc: any;
 
     constructor() { }
 

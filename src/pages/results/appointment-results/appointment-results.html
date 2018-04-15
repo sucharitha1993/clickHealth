@@ -33,7 +33,7 @@
                         <form>
                           <div class="form-group custom_md_3 custom_md_home">
                             <div class="icon-addon addon-md">
-                              <input type="text" placeholder="Condition, Procedure, doctor.." class="form-control" id="email">
+                              <input type="text" placeholder="Condition, Procedure, doc.." class="form-control" id="email">
                               <label for="email" class="fa fa-user" rel="tooltip" title="email"></label>
                             </div>
                           </div>
@@ -131,7 +131,8 @@
               <!-- END OF SORT BY -->
               <!-- DOCTOR DETAILS GOES HERE -->
               <div class="catalog-row alternative">
-                <div class="appointment_main_hero"  *ngFor='let doctor of doctorDetails'>
+                <div *ngFor='let doc of docList'>
+                <div class="appointment_main_hero" *ngIf="doc?.data?.length>0" >
                   <div class="app_list_in">
                     <div class="appointment_list_in">
                       <div class="appointment_list_clo">
@@ -139,7 +140,7 @@
                           <div class="alt-center-l">
                             <div class="alt-center-lp">
                               <div class="alt-logo flight-line-b">
-                                <b><a href="#"><img alt="" src="{{doctor.img}}"></a></b>
+                                <b><a href="#"><img alt="" src="{{doc?.data[0]?.user?.profile_pic}}"></a></b>
                               </div>
                             </div>
                           </div>
@@ -150,20 +151,25 @@
                                   <div class="full_width doctr_details">
                                     <div class="flight-line-b">
                                       <b>
-                                        <h4>{{doctor.name}}</h4>
+                                        <h4>{{doc?.data[0]?.user?.name}}</h4>
                                       </b>
                                     </div>
-                                    <p>{{doctor.designation}} {{doctor.experience}} </p>
-                                    <span class="lagu_span">consultation: {{doctor.consultation}}</span>
-                                    <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{doctor.landLine_no}}</span>
+                                    <p *ngFor="let speci of doc?.data[0]?.specialities">
+                                      {{speci.name + ' ' + speci.description}}
+                                    </p>
+                                    <span class="lagu_span">consultation: {{doc?.data[0]?.language}}</span>
+                                    <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{doc?.data[0]?.user.mobile}}</span>
                                     <a data-toggle="tooltip" title="Add to favorite and get maximum discount" class="heart_fav activet" href=""><i class="fa fa-heart"></i></a>
                                   </div>
                                 </div>
                                 <div class="col-md-4 col-lg-4 padding_left_0">
                                   <div class="full_width doctr_details3">
-                                    <h4>{{doctor.timings}}</h4>
-                                    <p>{{doctor.address}}
-                                    </p>
+                                    <h4>09:00 PM - 04:00 PM</h4>
+                                    <p>{{
+                                      doc?.name + ',' +
+                                      doc?.location?.city?.name + ',' +
+                                      doc?.location?.city?.state?.name}}
+                                  </p>
                                     <a data-toggle="modal" data-target="#myModal" href="#">View map <span class="fa fa-angle-right"></span></a>
                                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                       <div class="modal-dialog fade" role="document">
@@ -185,9 +191,9 @@
                                 <div class="col-md-3 col-lg-3">
                                   <div class="alt-flight-lr pricing_list">
                                     <div class="padding">
-                                      <div class="flt-i-price"><span>Rs</span>&nbsp;{{doctor.consultation_fees}}</div>
-                                      <div class="flt-i-price-b">Get {{doctor.discount}} Discount On First Consultation</div>
-                                      <a class="flight-line-b cat-list-btn popper" data-toggle="popover" id="timeslots" (click)='bookAppointment(doctor)'>book appointment</a>
+                                      <div class="flt-i-price"><span>Rs</span>&nbsp;{{doc?.data[0]?.fee}}</div>
+                                      <div class="flt-i-price-b">Get {{doc?.data[0]?.discount_offerings[0].amount}}% Discount On First Consultation</div>
+                                      <a class="flight-line-b cat-list-btn popper" data-toggle="popover" id="timeslots" (click)='bookAppointment(doc)'>book appointment</a>
                                     </div>
                                   </div>
                                   <div class="popper-content hide">My first popover content goes here.</div>
@@ -196,7 +202,7 @@
                             </div>
                             <div class="full_width">
                               <div class="view_more_de">
-                                <div class="flight-line-b" (click)="viewMore(doctor)">
+                                <div class="flight-line-b" (click)="viewMore(doc)">
                                   <b id="doctorinfo">View more details</b>
                                 </div>
                               </div>
@@ -207,10 +213,11 @@
                     </div>
                   </div>
                   <div class="alt-details">
-                      <app-doctor-details *ngIf='doctor?.showDetails' [doctor]='doctor'></app-doctor-details>
-                      <app-time-slot *ngIf='doctor?.isBookAppointment' [doctor]='doctor'></app-time-slot>
+                      <app-doctor-details *ngIf='doc?.showDetails' [doc]='doc'></app-doctor-details>
+                      <app-time-slot *ngIf='doc?.isBookAppointment' [doc]='doc'></app-time-slot>
                   </div>
                 </div>
+              </div>
               </div>
               <!-- END OF DOCTOR DETAILS -->
             </div>

@@ -2,14 +2,16 @@
     <div class="col-md-5 padding_right_0">
         <div class="full_width veiw_collaps">
             <div class="header_main_col">
-                <img src="{{doctor.sub_img}}">
+                <img src="">
                 <div class="avatar_main_des">
                     <span>About</span>
-                    <h4>{{doctor.name}}</h4>
+                    <h4>{{doc?.data[0]?.user?.name}}</h4>
                 </div>
             </div>
-            <p>{{doctor.name}} {{doctor.about_doctor}}
-            </p>
+            <p>Dr. {{doc?.data[0]?.user?.name}} <span *ngFor="let speci of doc?.data[0]?.specialities">
+                {{speci.name + ' ' + speci.description}}
+        </span>
+        </p>
         </div>
         <div class="full_width veiw_collaps veiw_collaps_23">
             <div class="header_main_col">
@@ -17,11 +19,11 @@
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <img src="{{doctor.award_img}}">
+                    <img src="">
                 </div>
                 <div class="col-md-8">
                     <br>
-                    <p> {{doctor.awards_and_rewards}}</p>
+                    <p *ngFor="let award of doc?.data[0]?.awards"> {{award}}</p>
                 </div>
             </div>
         </div>
@@ -29,13 +31,11 @@
             <div class="header_main_col">
                 <h4>Discount</h4>
             </div>
-            <p>{{doctor.discount}} Discount</p>
-        </div>
-        <div class="full_width veiw_collaps veiw_collaps_23">
-            <div class="header_main_col">
-                <h4>Surgical</h4>
-            </div>
-            <p> {{doctor.surgical}}
+            <p *ngFor="let discount of doc?.data[0]?.discount_offerings">
+                {{discount.name}}, 
+                {{discount.type}}, 
+                {{discount.amount}}, 
+                {{discount.description}}
             </p>
         </div>
     </div>
@@ -44,27 +44,46 @@
             <div class="header_main_col">
                 <h4>condition treated </h4>
             </div>
-            <p>{{doctor.condition_treated}}
-            </p>
+            <p *ngFor="let condition of doc?.data[0]?.procedure_conditions">
+                {{condition.name}}, 
+                {{condition.type}}, 
+                {{condition.date}}, 
+                {{condition.description}}    
+        </p>
         </div>
         <div class="full_width veiw_collaps veiw_collaps_23">
             <div class="header_main_col">
                 <h4>Procedures / Surgeries</h4>
             </div>
-            <p>{{doctor.procedures_or_surgeries}}
-            </p>
+            <p *ngFor="let procedur of doc?.data[0]?.procedure_conditions">
+                {{procedur.name}}, 
+                {{procedur.type}}, 
+                {{procedur.date}}, 
+                {{procedur.description}}  
+        </p>
         </div>
         <div class="full_width veiw_collaps veiw_collaps_23">
             <div class="header_main_col">
                 <h4>Experience</h4>
             </div>
-           <div [innerHtml]='doctor.exp_details | safeHtml'></div>
+            <p>{{doc?.data[0]?.experience_training[0].description}}
+            </p>
+            <ol class="insrurer">
+                <li *ngFor="let exp of doc?.data[0]?.experience_training">
+                    {{exp.position}}, {{exp.type}} {{exp.year}} {{exp.description}}
+                </li>
+            </ol>
         </div>
         <div class="full_width veiw_collaps veiw_collaps_23">
             <div class="header_main_col">
                 <h4>Registration</h4>
             </div>
-            <p>{{doctor.registration}}</p>
+            <p *ngFor="let reg of doc?.data[0]?.registrations">
+                {{reg.name}},
+                {{reg.reg_no}},
+                {{reg.year}}
+
+            </p>
         </div>
     </div>
 </div>
