@@ -11,7 +11,8 @@ declare var $: any;
 export class AppointmentResultsComponent implements OnInit {
 
     imgPrePath: string = '../../assets/img/';
-    doctorDetails: Object[] = AppLitteralsConfig.doctorDetails;
+    medicalCenters: any = [];
+    locations: any = [];
     docList: any = [];
     searchParams: any;
 
@@ -50,8 +51,8 @@ export class AppointmentResultsComponent implements OnInit {
             .subscribe((res) => {
                 if (res.status) {
                     res.data = res.data || {};
-                    this.appointmentInfo.setHospitals(res.data.hospitals);
-                    this.appointmentInfo.setLocations(res.data.locations);
+                    this.medicalCenters = res.data.hospitals;
+                    this.locations = res.data.locations;
                     this.appointmentInfo.setClinicians(res.data.clinicians);
                     this.getClinicians();
                 }

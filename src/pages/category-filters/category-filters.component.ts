@@ -1,6 +1,6 @@
 import { AppointmentInfoService } from './../../providers/services/appointment-info-service';
 import { AppLitteralsConfig } from './../../providers/literals/app.literals';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,9 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoryFiltersComponent implements OnInit {
 
-
-    medicalCenters: any = [];
-    locations: any = [];
+    @Input('medicalCenters') medicalCenters: any;
+    @Input('locations') locations: any;
     cities: any = [];
     medicalSearchTerm: string;
     locationSearchTerm: string;
@@ -20,8 +19,8 @@ export class CategoryFiltersComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.locations = this.appointmentInfo.getLocations();
-        this.medicalCenters = this.appointmentInfo.getHospitals();
+        this.locations = this.locations.length > 0 ? this.locations : this.appointmentInfo.getLocations();
+        this.medicalCenters = this.medicalCenters.length > 0 ? this.medicalCenters : this.appointmentInfo.getHospitals();
         this.cities = this.appointmentInfo.getCities(this.locations);
     }
 }
