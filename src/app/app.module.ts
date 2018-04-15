@@ -15,6 +15,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './../pages/navbar/navbar.component';
 import { FooterComponent } from './../pages/footer/footer.component';
 import { DashboardComponent } from './../pages/dashboard/dashboard.component';
+import { MainDashboardComponent } from './../pages/main-dashboard/main-dashboard';
+
 //Landing pages
 import { PartnersComponent } from './../pages/landing-pages/partners/partners.component';
 import { ReviewComponent } from './../pages/landing-pages/review/review.component';
@@ -33,6 +35,7 @@ import { HeaderComponent } from './../pages/header/header.component';
 import { CategoryFiltersComponent } from './../pages/category-filters/category-filters.component';
 import { AppointmentResultsComponent } from './../pages/results/appointment-results/appointment-results';
 import { HCResultsComponent } from './../pages/results/health-checkup-results/health-checkup-results';
+import { ConfirmAppointmentComponent } from './../pages/results/appointment-results/confirm-appointment/confirm-appointment';
 
 //Appontment Result sub components
 import { DoctorDetailsComponent } from './../pages/results/appointment-results/doctor-details/doctor-details';
@@ -52,6 +55,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 @NgModule({
   declarations: [
+    MainDashboardComponent,
     AppComponent,
     NavbarComponent,
     FooterComponent,
@@ -72,6 +76,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     HeaderComponent,
     CategoryFiltersComponent,
     AppointmentResultsComponent,
+    ConfirmAppointmentComponent,
     HCResultsComponent,
     //Appontment Result sub components
     DoctorDetailsComponent,
