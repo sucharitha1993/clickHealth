@@ -72,7 +72,7 @@ export class AppointmentInfoService {
     setOTP(otp) {
         this.otp = otp;
     }
-    getOTP(otp) {
+    getOTP() {
         return this.otp;
     }
 } 

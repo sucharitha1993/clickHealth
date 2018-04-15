@@ -1,0 +1,21 @@
+<section class="succes_main Confirm_Appointment_main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="full_width Confirm_Appointment otp_scr">
+                    <p>Enter <span>OTP</span> Sent your Mobile</p>
+                    <div class="otp_scr2">
+                        <div class="input-group">
+                            <label for="email" class="fa fa-mobile-phone" rel="tooltip" title="email"></label>
+                            <input id="msg" type="text" [(ngModel)]='otp' class="form-control" name="msg" placeholder="Otp">
+                            <a (click)='verifyOTP(otp)'><span class="input-group-addon">Verify</span></a>
+                        </div>
+                    </div>
+                    <i>One time Password (OTP) has been sent to your mobile .....0039,<br> 
+                            rajes.....@gmail.com, Please entr the same here to Login</i>
+                </div>
+            </div>
+            <app-chosen-doctor-details></app-chosen-doctor-details>
+        </div>
+    </div>
+</section>
