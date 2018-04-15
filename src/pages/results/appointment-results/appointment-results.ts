@@ -47,6 +47,7 @@ export class AppointmentResultsComponent implements OnInit {
     //On close of Modal
     onClose(reqObj) {
         $("#modifyDialog").hide();
+        $('.modal-backdrop').remove();        
         this.apiServices.getDocList(reqObj)
             .subscribe((res) => {
                 if (res.status) {
