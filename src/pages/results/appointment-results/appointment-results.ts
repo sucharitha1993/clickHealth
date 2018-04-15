@@ -26,10 +26,12 @@ export class AppointmentResultsComponent implements OnInit {
     // to toggle Doctor details
     viewMore(doctor) {
         doctor.showDetails = doctor.showDetails == undefined ? true : !doctor.showDetails;
+        doctor.isBookAppointment = doctor.showDetails == true ? false : doctor.isBookAppointment;
     }
     //to toggle book appoinments
     bookAppointment(doctor) {
         doctor.isBookAppointment = doctor.isBookAppointment == undefined ? true : !doctor.isBookAppointment;
+        doctor.showDetails = doctor.isBookAppointment == true ? false : doctor.showDetails;
     }
     //to get Clinicians
     getClinicians() {
