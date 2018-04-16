@@ -1,9 +1,20 @@
 <form>
-        <div class="form-group custom_md_3 custom_md_home">
+        <!-- <div class="form-group custom_md_3 custom_md_home">
             <div class="icon-addon addon-md">
                 <input class="form-control"  [list-formatter]="listFormatter" value-property-name="id" [formControl]="appointmentSearchForm.controls['symptom']"
                 display-property-name="name" ng2-auto-complete [(ngModel)]="selectedState" name='condition' (ngModelChange)="searchConditions($event)" [source]="symptom" placeholder="Condition, Procedure, Doctor.." />
                 <label for="email" class="fa fa-search" rel="tooltip" title="email"></label>
+            </div>
+        </div> -->
+        <div class="form-group custom_md_3 custom_md_home">
+            <div class="icon-addon addon-md">
+                <p-autoComplete field="name" [formControl]="appointmentSearchForm.controls['symptom']" class="form-control ui-fluid" placeholder="Condition, Procedure, Doctor.." [suggestions]="symptom"
+                    (completeMethod)="searchConditions($event)">
+                </p-autoComplete>
+                <!-- <ng-template let-value pTemplate="selectedItem">
+                    <span style="font-size:18px">>{{value.name}}</span>
+                </ng-template> -->
+                <!-- <label for="email" class="fa fa-map-marker" rel="tooltip" title="email"></label> -->
             </div>
         </div>
         <div class="form-group custom_md_2">

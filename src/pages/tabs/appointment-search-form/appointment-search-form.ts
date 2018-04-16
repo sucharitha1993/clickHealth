@@ -7,7 +7,8 @@ import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-appointments-search-from',
-    templateUrl: './appointment-search-form.html'
+    templateUrl: './appointment-search-form.html',
+    styleUrls: ['ap_search_from.css']
 })
 export class AppointmentsSearchFormComponent implements OnInit {
 
@@ -53,7 +54,7 @@ export class AppointmentsSearchFormComponent implements OnInit {
 
     //to search states on ngModelChange
     searchConditions(state) {
-        this.apiServices.getAutoCompleteData('condition', state)
+        this.apiServices.getAutoCompleteData('condition', state.query)
             .subscribe((result: any) => {
                 this.symptom = result.data;
             });

@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
+//Prime ng
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 //Routing Import
 import { AppRoutingModule } from './app.routing';
@@ -100,7 +102,8 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     HttpModule,
     AppRoutingModule,
     //third party
-    Ng2AutoCompleteModule
+    Ng2AutoCompleteModule,
+    AutoCompleteModule
   ],
   providers: [
     AppointmentDataService,

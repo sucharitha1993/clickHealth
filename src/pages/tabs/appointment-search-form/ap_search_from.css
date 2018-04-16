@@ -1,0 +1,7 @@
+::ng-deep  .ui-inputwrapper-focus,.ui-autocomplete:focus, .ui-autocomplete::-moz-focus-inner {
+    outline: 0;
+    border: 0;
+}
+/deep/ .ui-autocomplete {
+    box-shadow: 0 !important;
+} 
