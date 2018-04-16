@@ -86,20 +86,22 @@ export class AppointmentResultsComponent implements OnInit {
                 console.log('unable to load doctors');
             })
     }
-    onViewMapClick(a) {
-    var mapOptions = {
-        zoom: 8,
-        center: {lat: -34.397, lng: 150.644}
-    };
-    setTimeout(function(){
-        let map = new google.maps.Map(document.getElementById('ap-map'), mapOptions);
-        let marker = new google.maps.Marker({
-            map: map,
-            animation: google.maps.Animation.DROP,
-            position: {lat: -34.397, lng: 150.644}
-          });
-    
-    },500);
+
+    // to view Map
+    onViewMapClick(a,latitude,longitude,mapId) {
+        var mapOptions = {
+            zoom: 8,
+            center: { lat: latitude, lng: longitude }
+        };
+        setTimeout(function () {
+            let map = new google.maps.Map(document.getElementById(`ap-map-${mapId}`), mapOptions);
+            let marker = new google.maps.Marker({
+                map: map,
+                animation: google.maps.Animation.DROP,
+                position: { lat: latitude, lng: longitude }
+            });
+
+        }, 500);
     }
   
 }
