@@ -29,6 +29,8 @@ export class TimeSlotComponent {
 
     chosenAppointment() {
         let doc = this.doc.data[0] || {};
+        doc.user = doc.user || {};
+        doc.discount_offerings[0] = doc.discount_offerings[0] || {};
         this.selectedAppointment.appointmentDetails = {
             clinician_id: doc.id,
             provider_id: doc.provider_id,
@@ -41,7 +43,7 @@ export class TimeSlotComponent {
             id: doc.user.id,
             mobile: doc.user.mobile,
             specialities: doc.specialities,
-            discounts: doc.first_fee,
+            discounts: doc.discount_offerings[0].amount,
             docImage: doc.user.profile_pic,
             language: doc.language
         }

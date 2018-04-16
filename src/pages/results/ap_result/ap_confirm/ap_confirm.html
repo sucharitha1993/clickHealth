@@ -1,6 +1,6 @@
 <section class="Confirm_Appointment_main">
     <div class="container">
-        <div class="row">
+        <div class="row" id="print-section">
             <div class="col-md-7">
                 <div class="full_width booking_confirm booking_confirm_finald">
                     <div class="booking_con_header">
@@ -24,21 +24,24 @@
                                         <div class="content_confirm">
                                             <div class="content_confirm_in">
                                                 <div class="full_width doctr_details">
-                                                    <h4>Dr. Harini</h4>
-                                                    <p>MS - General Surgery, 15 Years Experience</p>
-                                                    <span class="lagu_span">consultation: Telugu, Hindi</span>
-                                                    <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;040 123456789</span>
+                                                    <h4>Dr. {{doc.name}}</h4>
+                                                    <p>
+                                                        {{bookingDetails?.under?.experience_training[0]?.description}} {{bookingDetails?.under?.experience_training[0]?.position}}
+                                                        {{bookingDetails?.under?.experience_training[0]?.type}} {{bookingDetails?.under?.experience_training[0]?.year}}
+                                                    </p>
+                                                    <span class="lagu_span">consultation: {{bookingDetails?.under?.language}}</span>
+                                                    <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{doc?.mobile}}</span>
                                                 </div>
                                             </div>
                                             <div class="content_confirm_in content_confirm_in_r">
                                                 <div class="final_amount_d">
                                                     <span>Final Amount</span>
-                                                    <span class="fnal_amoun_act">Rs 499</span>
+                                                    <span class="fnal_amoun_act">Rs {{bookingDetails?.under?.fee}}</span>
                                                 </div>
 
                                                 <div class="final_amount_d">
                                                     <span>Actual Amount</span>
-                                                    <span class="actutal_amount"><del>Rs 599</del></span>
+                                                    <span class="actutal_amount"><del>Rs {{bookingDetails?.under?.first_fee}}</del></span>
                                                 </div>
 
                                                 <div class="final_amount_d">
@@ -62,7 +65,7 @@
 
                     <div class="full_width date_based_select">
                         <div class="date_based_select_text">
-                            <p><span>Date : 24-01-2018 </span> &nbsp;&nbsp;<span><img src="{{imgPrePath}}icons/arrow.png"></span>&nbsp;&nbsp;<span>Time : 01:25 AM</span></p>
+                            <p><span>Date : {{bookingDetails?.date }} </span> &nbsp;&nbsp;<span><img src="{{imgPrePath}}icons/arrow.png"></span>&nbsp;&nbsp;<span>Time : {{bookingDetails?.time}}</span></p>
                         </div>
 
                     </div>
@@ -74,28 +77,28 @@
                                 <h4>Health Seeker Details</h4>
                                 <ul>
                                     <li>Name</li>
-                                    <li>Rajesh P</li>
+                                    <li>{{healthSeeker.name}}</li>
                                 </ul>
 
                                 <ul>
                                     <li>Mobile Number</li>
-                                    <li>9988776655</li>
+                                    <li>{{healthSeeker.mobile}}</li>
                                 </ul>
 
                                 <ul>
                                     <li>Email Address</li>
-                                    <li>rajeshp@gmail.com</li>
+                                    <li>{{healthSeeker.email}}</li>
                                 </ul>
                                 <ul>
                                     <li>Category</li>
-                                    <li>Cardiologist</li>
+                                    <li>{{searchParams.symptom}}</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="ful_width health_seeker_detials">
                                 <h4>Health Providers Details</h4>
-                                <h5>Appolo Hospitals</h5>
+                                <h5>{{bookingDetails?.provider?.name}}</h5>
                                 <p>Opp: Saibaba Temple, Bhagyanagar Colony, Kukatpally, Hyderabad, Telangana 500072</p><br>
                                 <p>Phone: 040 2316 0039</p>
                             </div>
@@ -108,7 +111,7 @@
                                         and email.</p>
                                 </div>
                                 <div class="col-md-4">
-                                    <a class="search_vtm btn btn-4 btn-4c icon-arrow-right pull-right" href="#">Print</a>
+                                    <a class="search_vtm btn btn-4 btn-4c icon-arrow-right pull-right" (click)='print()'>Print</a>
                                 </div>
                             </div>
                         </div>

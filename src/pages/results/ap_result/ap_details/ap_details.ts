@@ -24,17 +24,18 @@ export class BookAppointmentComponent implements OnInit {
 
     initialiseConfirmAppointmentfields() {
         this.confirmAppointmentForm = this.formBuilder.group({
-            "name": [null],
+            "name": [null, Validators.required],
             "email": [null, Validators.compose([Validators.required, Validators.pattern(AppRegExpressionsConfig.email)])],
             "generate": [true],
             "mobile": [null, Validators.compose([Validators.required, Validators.pattern(AppRegExpressionsConfig.mobile)])],
             "reason": [null],
-            "agreeing_to_tnc": [null]
+            "agreeing_to_tnc": [null, Validators.required]
         });
     }
 
     //to generate otp for booking appointment
     generateOTP() {
+        this.appointmentInfo.setUserDetails(this.confirmAppointmentForm.value);
         let obj = {
             "generate": true,
             "email": this.confirmAppointmentForm.controls['email'].value,

@@ -22,8 +22,8 @@ export class AppointmentOTPComponent {
         if (otp == this.apInfoService.getOTP()) {
             this.apiServices.bookAppointment(obj)
                 .subscribe(res => {
-                    console.log(res);
                     if (res.status) {
+                        this.apInfoService.setbookingDetails(res.data);
                         this.router.navigateByUrl('/main/ap_confirm')
                     }
                 },

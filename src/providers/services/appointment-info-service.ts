@@ -10,6 +10,8 @@ export class AppointmentInfoService {
     appointmentSearchParams: any;
     otp: any;
     appointmentDetails: any;
+    userDetails: any;
+    bookingDetails: any;
 
     constructor() {
     }
@@ -84,5 +86,21 @@ export class AppointmentInfoService {
 
     getAppointmentDetails() {
         return this.appointmentDetails;
+    }
+
+    //to set user details
+    setUserDetails(details) {
+        this.userDetails = details;
+    }
+    getUserDetails() {
+        return this.userDetails;
+    }
+
+    // to set booking details
+    setbookingDetails(details) {
+        this.bookingDetails = details;
+    }
+    getbookingDetails() {
+        return this.bookingDetails;
     }
 } 
