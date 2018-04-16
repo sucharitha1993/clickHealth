@@ -28,7 +28,7 @@ export class TimeSlotComponent {
     ngOnInit() { }
 
     chosenAppointment() {
-        let doc = this.doc.data[0] || {};
+        let doc = this.doc || {};
         doc.user = doc.user || {};
         doc.discount_offerings[0] = doc.discount_offerings[0] || {};
         this.selectedAppointment.appointmentDetails = {

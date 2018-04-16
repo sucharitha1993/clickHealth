@@ -5,10 +5,10 @@
                 <img src="">
                 <div class="avatar_main_des">
                     <span>About</span>
-                    <h4>{{doc?.data[0]?.user?.name}}</h4>
+                    <h4>{{doc?.user?.name}}</h4>
                 </div>
             </div>
-            <p>Dr. {{doc?.data[0]?.user?.name}} <span *ngFor="let speci of doc?.data[0]?.specialities">
+            <p>Dr. {{doc?.user?.name}} <span *ngFor="let speci of doc?.specialities">
                 {{speci.name + ' ' + speci.description}}
         </span>
         </p>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-8">
                     <br>
-                    <p *ngFor="let award of doc?.data[0]?.awards"> {{award}}</p>
+                    <p *ngFor="let award of doc?.awards"> {{award}}</p>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="header_main_col">
                 <h4>Discount</h4>
             </div>
-            <p *ngFor="let discount of doc?.data[0]?.discount_offerings">
+            <p *ngFor="let discount of doc?.discount_offerings">
                 {{discount.name}}, 
                 {{discount.type}}, 
                 {{discount.amount}}, 
@@ -44,7 +44,7 @@
             <div class="header_main_col">
                 <h4>condition treated </h4>
             </div>
-            <p *ngFor="let condition of doc?.data[0]?.procedure_conditions">
+            <p *ngFor="let condition of doc?.procedure_conditions">
                 {{condition.name}}, 
                 {{condition.type}}, 
                 {{condition.date}}, 
@@ -55,7 +55,7 @@
             <div class="header_main_col">
                 <h4>Procedures / Surgeries</h4>
             </div>
-            <p *ngFor="let procedur of doc?.data[0]?.procedure_conditions">
+            <p *ngFor="let procedur of doc?.procedure_conditions">
                 {{procedur.name}}, 
                 {{procedur.type}}, 
                 {{procedur.date}}, 
@@ -66,10 +66,10 @@
             <div class="header_main_col">
                 <h4>Experience</h4>
             </div>
-            <p>{{doc?.data[0]?.experience_training[0].description}}
+            <p>{{doc?.experience_training[0].description}}
             </p>
             <ol class="insrurer">
-                <li *ngFor="let exp of doc?.data[0]?.experience_training">
+                <li *ngFor="let exp of doc?.experience_training">
                     {{exp.position}}, {{exp.type}} {{exp.year}} {{exp.description}}
                 </li>
             </ol>
@@ -78,7 +78,7 @@
             <div class="header_main_col">
                 <h4>Registration</h4>
             </div>
-            <p *ngFor="let reg of doc?.data[0]?.registrations">
+            <p *ngFor="let reg of doc?.registrations">
                 {{reg.name}},
                 {{reg.reg_no}},
                 {{reg.year}}
