@@ -167,7 +167,10 @@
                                   <div class="full_width">
                                     <div class="view_more_de">
                                       <div class="flight-line-b" (click)="viewMore(doc)">
-                                        <b id="doctorinfo">View more details</b>
+                                        <b id="doctorinfo">View 
+                                          <span style='font-weight: 600;color: #48ba49 !important;font-size: 11px;' *ngIf='!doc?.showDetails'>More</span>
+                                          <span style='font-weight: 600;color: #48ba49 !important;font-size: 11px;' *ngIf='doc?.showDetails'>Less</span> details
+                                        </b>
                                       </div>
                                     </div>
                                   </div>
