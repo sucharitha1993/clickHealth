@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+.ap-search-ngprime span {
+    width: 100%;
+}
+.ap-search-ngprime span input {
+        width: 100%;
+        border: none;
+        outline: none;
+        margin-left: 10%;
+ }

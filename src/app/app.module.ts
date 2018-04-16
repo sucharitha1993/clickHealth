@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
-//Prime ng
-import { AutoCompleteModule } from 'primeng/autocomplete';
 
 //Routing Import
 import { AppRoutingModule } from './app.routing';
@@ -56,7 +54,7 @@ import { AppointmentDataService } from './../providers/services/appointment-data
 import { AppointmentInfoService } from './../providers/services/appointment-info-service';
 
 //importing third party modules
-import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 @NgModule({
   declarations: [
@@ -102,8 +100,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     HttpModule,
     AppRoutingModule,
     //third party
-    Ng2AutoCompleteModule,
-    AutoCompleteModule
+    TypeaheadModule.forRoot()
   ],
   providers: [
     AppointmentDataService,
