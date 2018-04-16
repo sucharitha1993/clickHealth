@@ -28,7 +28,7 @@ export class TimeSlotComponent {
     ngOnInit() { }
 
     chosenAppointment() {
-        let doc = this.doc.data[0];
+        let doc = this.doc.data[0] || {};
         this.selectedAppointment.appointmentDetails = {
             clinician_id: doc.id,
             provider_id: doc.provider_id,
@@ -42,9 +42,10 @@ export class TimeSlotComponent {
             mobile: doc.user.mobile,
             specialities: doc.specialities,
             discounts: doc.first_fee,
-            docImage: doc.user.profile_pic
+            docImage: doc.user.profile_pic,
+            language: doc.language
         }
         this.apInfoService.setAppointmentDetails(this.selectedAppointment);
-        this.router.navigateByUrl('/dashboard/ap_details');
+        this.router.navigateByUrl('/main/ap_details');
     }
 }

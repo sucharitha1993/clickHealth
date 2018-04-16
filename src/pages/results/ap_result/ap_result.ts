@@ -5,8 +5,8 @@ import { AppointmentInfoService } from './../../../providers/services/appointmen
 
 declare var $: any;
 @Component({
-    selector: 'app-appointment-results',
-    templateUrl: './appointment-results.html'
+    selector: 'app-ap-result',
+    templateUrl: './ap_result.html'
 })
 export class AppointmentResultsComponent implements OnInit {
 

@@ -4,17 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './../pages/dashboard/dashboard.component';
 import { MainDashboardComponent } from './../pages/main-dashboard/main-dashboard';
 //Appointments
-import { AppointmentResultsComponent } from './../pages/results/appointment-results/appointment-results';
-import { ConfirmAppointmentComponent } from './../pages/results/appointment-results/ap_confirm/ap_confirm';
-import { AppointmentOTPComponent } from './../pages/results/appointment-results/ap_otp/ap_otp';
-import { BookAppointmentComponent } from './../pages/results/appointment-results/ap_details/ap_details';
+import { AppointmentResultsComponent } from './../pages/results/ap_result/ap_result';
+import { ConfirmAppointmentComponent } from './../pages/results/ap_result/ap_confirm/ap_confirm';
+import { AppointmentOTPComponent } from './../pages/results/ap_result/ap_otp/ap_otp';
+import { BookAppointmentComponent } from './../pages/results/ap_result/ap_details/ap_details';
 
 
 const routes: Routes = [
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-    { path: 'dashboard', component: DashboardComponent },
+    { path: '', redirectTo: '/main', pathMatch: 'full' },
+    { path: 'main', component: DashboardComponent },
     {
-        path: 'dashboard', component: MainDashboardComponent,
+        path: 'main', component: MainDashboardComponent,
         children: [
             {
                 path: 'ap_result', component: AppointmentResultsComponent

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-    selector: 'app-book-appointment',
+    selector: 'app-ap-details',
     templateUrl: './ap_details.html'
 })
 export class BookAppointmentComponent implements OnInit {
@@ -45,7 +45,7 @@ export class BookAppointmentComponent implements OnInit {
                 if (res.status) {
                     res.data = res.data || [];
                     this.appointmentInfo.setOTP(res.data['0']);
-                    this.router.navigateByUrl('dashboard/ap_otp');
+                    this.router.navigateByUrl('main/ap_otp');
                 }
             },
             (err) => {

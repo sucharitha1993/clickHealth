@@ -24,7 +24,7 @@ export class AppointmentOTPComponent {
                 .subscribe(res => {
                     console.log(res);
                     if (res.status) {
-                        this.router.navigateByUrl('/dashboard/ap_confirm')
+                        this.router.navigateByUrl('/main/ap_confirm')
                     }
                 },
                 error => {

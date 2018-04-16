@@ -33,16 +33,16 @@ import { ServiceProvidersComponent } from './../pages/tabs/service-providers/ser
 //Search Result view components
 import { HeaderComponent } from './../pages/header/header.component';
 import { CategoryFiltersComponent } from './../pages/category-filters/category-filters.component';
-import { AppointmentResultsComponent } from './../pages/results/appointment-results/appointment-results';
-import { HCResultsComponent } from './../pages/results/health-checkup-results/health-checkup-results';
-import { BookAppointmentComponent } from './../pages/results/appointment-results/ap_details/ap_details';
-import { AppointmentOTPComponent } from './../pages/results/appointment-results/ap_otp/ap_otp';
-import { ConfirmAppointmentComponent } from './../pages/results/appointment-results/ap_confirm/ap_confirm';
-import { ChosenDoctorComponent } from './../pages/results/appointment-results/chosen-doctor-details/chosen-doctor-details';
+import { AppointmentResultsComponent } from './../pages/results/ap_result/ap_result';
+import { HCResultsComponent } from './../pages/results/hc_result/hc_result';
+import { BookAppointmentComponent } from './../pages/results/ap_result/ap_details/ap_details';
+import { AppointmentOTPComponent } from './../pages/results/ap_result/ap_otp/ap_otp';
+import { ConfirmAppointmentComponent } from './../pages/results/ap_result/ap_confirm/ap_confirm';
+import { ChosenDoctorComponent } from './../pages/results/ap_result/chosen-doctor-details/chosen-doctor-details';
 
 //Appontment Result sub components
-import { DoctorDetailsComponent } from './../pages/results/appointment-results/doctor-details/doctor-details';
-import { TimeSlotComponent } from './../pages/results/appointment-results/time-slot/time-slot';
+import { DoctorDetailsComponent } from './../pages/results/ap_result/doctor-details/doctor-details';
+import { TimeSlotComponent } from './../pages/results/ap_result/time-slot/time-slot';
 //importing pipes
 import { FilterPipe } from './../pipes/filter-pipe';
 import { SafeHtmlPipe } from './../pipes/safe-html.pipe';

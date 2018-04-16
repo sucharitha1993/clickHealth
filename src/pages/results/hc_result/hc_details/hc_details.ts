@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'app-hc-details',
-    templateUrl: './hc-details.html'
+    templateUrl: './hc_details.html'
 })
 
 export class HCDetailsComponent {

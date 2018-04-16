@@ -7,12 +7,14 @@
             </div>
             <div class="col-md-7">
                 <div class="full_width doctr_details">
-                    <h4>Dr. Harini</h4>
-                    <p>MS - General Surgery, 15 Years Experience</p>
-                    <span class="lagu_span">consultation: Telugu, Hindi</span>
-                    <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;040 123456789</span>
-                    <h3 class="col-md-5"><small>Rs</small> 599</h3>
-                    <div class="col-md-7 discount_for_bok">Get 25% Discount On First Consultation</div>
+                    <h4>{{doc?.name}}</h4>
+                    <p *ngFor="let speci of doc?.specialities">
+                        {{speci?.name + ' ' + speci?.description}}
+                      </p>
+                    <span class="lagu_span">consultation: {{doc?.language}}</span>
+                    <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{doc?.mobile}}</span>
+                    <h3 class="col-md-5"><small>Rs</small> {{doc?.fee}}</h3>
+                    <div class="col-md-7 discount_for_bok">Get {{doc?.discounts}}% Discount On First Consultation</div>
                 </div>
             </div>
         </div>
@@ -22,7 +24,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="full_width map_view">
-                    <img src="img/map.png">
+                    <img src="{{imgPrePath}}map.png">
                 </div>
             </div>
             <div class="col-md-12">

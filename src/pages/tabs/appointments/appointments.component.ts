@@ -26,7 +26,7 @@ export class AppointmentsComponent implements OnInit {
                     this.appointmentInfo.setHospitals(res.data.hospitals);
                     this.appointmentInfo.setLocations(res.data.locations);
                     this.appointmentInfo.setClinicians(res.data.clinicians);
-                    this.router.navigate(['/dashboard/ap_result']);
+                    this.router.navigate(['/main/ap_result']);
                 }
             },
             error => {
