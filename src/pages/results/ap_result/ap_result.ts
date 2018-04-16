@@ -1,9 +1,11 @@
+
 import { AppointmentDataService } from './../../../providers/services/appointment-data.service';
 import { AppLitteralsConfig } from './../../../providers/literals/app.literals';
 import { Component, OnInit } from '@angular/core';
 import { AppointmentInfoService } from './../../../providers/services/appointment-info-service';
 
 declare var $: any;
+declare var google: any;
 @Component({
     selector: 'app-ap-result',
     templateUrl: './ap_result.html'
@@ -84,4 +86,20 @@ export class AppointmentResultsComponent implements OnInit {
                 console.log('unable to load doctors');
             })
     }
+    onViewMapClick(a) {
+    var mapOptions = {
+        zoom: 8,
+        center: {lat: -34.397, lng: 150.644}
+    };
+    setTimeout(function(){
+        let map = new google.maps.Map(document.getElementById('ap-map'), mapOptions);
+        let marker = new google.maps.Marker({
+            map: map,
+            animation: google.maps.Animation.DROP,
+            position: {lat: -34.397, lng: 150.644}
+          });
+    
+    },500);
+    }
+  
 }
