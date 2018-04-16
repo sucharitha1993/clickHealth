@@ -89,19 +89,19 @@ export class AppointmentResultsComponent implements OnInit {
     }
 
     // to view Map
-    onViewMapClick(a,latitude,longitude,mapId) {
+    onViewMapClick(a, latitude, longitude, mapId) {
         var mapOptions = {
             zoom: 8,
             center: { lat: latitude, lng: longitude }
         };
-        setTimeout(function () {
-            let map = new google.maps.Map(document.getElementById(`ap-map-${mapId}`), mapOptions);
+        setTimeout(() => {
+            let mapArea = document.getElementById(`ap-map-${mapId}`);
+            let map = new google.maps.Map(mapArea, mapOptions);
             let marker = new google.maps.Marker({
                 map: map,
                 animation: google.maps.Animation.DROP,
                 position: { lat: latitude, lng: longitude }
             });
-
         }, 500);
     }
   
