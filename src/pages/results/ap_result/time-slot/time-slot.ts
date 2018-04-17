@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
 import { AppLitteralsConfig } from './../../../../providers/literals/app.literals';
@@ -20,14 +21,26 @@ export class TimeSlotComponent {
     morningTimings: string[] = this.timings.morning;
     aftrnTimings: string[] = this.timings.aftrn;
     evengTimings: string[] = this.timings.eveng;
+    searchParams: any = {};
+    selectedAppointment: any = {
+        appointmentDetails: {},
+        docDetails: {},
+        loaction: {}
+    }
+    public weekDays: any = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+    public monthsList: any = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    selectedAppointment: any = {};
+    constructor(private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
 
-    constructor(private apInfoService: AppointmentInfoService, private router: Router) { }
+    ngOnInit() {
+        this.doc = this.doc || {};
+        let vacations = this.doc.vacations || [];
+        let args = ['from_date','location', 'location_type','session','symptom','to_date']
+        this.searchParams = this.apInfoService.getAppointmentSearchParams() || this.apInfoService.getLocalStorageParamsDynamically(args) || {};
+        this.doc.vacationLists = this.getVacationsDateList(vacations);
+    }
 
-    ngOnInit() { }
-
-    chosenAppointment() {
+    chosenAppointment(session) {
         let doc = this.doc || {};
         doc.user = doc.user || {};
         doc.discount_offerings[0] = doc.discount_offerings[0] || {};
@@ -50,4 +63,115 @@ export class TimeSlotComponent {
         this.apInfoService.setAppointmentDetails(this.selectedAppointment);
         this.router.navigateByUrl('/main/ap_details');
     }
+
+    getVacationsDateList(vacList) {
+        let vacationList: any = []
+        vacList.forEach(element => {
+            var dates = [],
+                currentDate = new Date(element[0]),
+                addDays = function (days) {
+                    var date = new Date(this.valueOf());
+                    date.setDate(date.getDate() + days);
+                    return date;
+                };
+            while (currentDate <= (new Date(element[1]))) {
+                vacationList.push(currentDate);
+                currentDate = addDays.call(currentDate, 1);
+            }
+        });
+        let dateRange: any = this.getDateRange();
+
+        vacationList.forEach(date => {
+            dateRange = dateRange.filter((i) => {
+                return i.toDateString() !== date.toDateString();
+            })
+        });
+
+        dateRange.forEach(obj => {
+            obj.activeClass = false;
+            obj.exactDate = obj;
+            obj.date = obj.getDate();
+            obj.day = obj.getDay();
+            obj.month = obj.getMonth();
+        });
+        return dateRange;
+    }
+
+    getDateRange() {
+        this.searchParams.from_date = this.datePipe.transform(this.searchParams.from_date, 'yyyy-MM-dd');
+        this.searchParams.to_date = this.datePipe.transform(this.searchParams.to_date, 'yyyy-MM-dd');
+        var dates = [],
+        currentDate = new Date(this.searchParams.from_date),
+            addDays = function (days) {
+                var date = new Date(this.valueOf());
+                date.setDate(date.getDate() + days);
+                return date;
+            };
+        while (currentDate <= (new Date(this.searchParams.to_date))) {
+            dates.push(currentDate);
+            currentDate = addDays.call(currentDate, 1);
+        }
+        return dates;
+    }
+
+    dateSelectEvent(item, index, list?) {
+        list.daysList = list.daysList || {};
+       // this.selectedSlots.date = item;
+        //$("#timimgs" + list.id).slideDown();
+        list.timings.forEach(element => {
+            if (this.weekDays[item.day] == element.day) {
+                list.daysList.morning = [];
+                list.daysList.afternoon = [];
+                list.daysList.evening = [];
+                list.daysList.night = [];
+                element.morning.forEach(morningObj => {
+                    morningObj.forEach(times => {
+                        let dateToday = new Date();
+                        let splitTime = times.split(":");
+                        dateToday.setHours(splitTime[0]);
+                        dateToday.setMinutes(splitTime[1]);
+                        dateToday.setSeconds(splitTime[2]);
+                        list.daysList.morning.push(dateToday);
+                    });
+                });
+                element.afternoon.forEach(afternoonObj => {
+                    afternoonObj.forEach(times => {
+                        let dateToday = new Date();
+                        let splitTime = times.split(":");
+                        dateToday.setHours(splitTime[0]);
+                        dateToday.setMinutes(splitTime[1]);
+                        dateToday.setSeconds(splitTime[2]);
+                        list.daysList.afternoon.push(dateToday);
+                    });
+                });
+                element.evening.forEach(eveningObj => {
+                    eveningObj.forEach(times => {
+                        let dateToday = new Date();
+                        let splitTime = times.split(":");
+                        dateToday.setHours(splitTime[0]);
+                        dateToday.setMinutes(splitTime[1]);
+                        dateToday.setSeconds(splitTime[2]);
+                        list.daysList.evening.push(dateToday);
+                    });
+                });
+                element.night.forEach(nightObj => {
+                    nightObj.forEach(times => {
+                        let dateToday = new Date();
+                        let splitTime = times.split(":");
+                        dateToday.setHours(splitTime[0]);
+                        dateToday.setMinutes(splitTime[1]);
+                        dateToday.setSeconds(splitTime[2]);
+                        list.daysList.night.push(dateToday);
+                    });
+                });
+            }
+        });
+
+        index.forEach(element => {
+            element.activeClass = false;
+        });
+        item.activeClass = true;
+      //  this.selectedDate = item;
+    }
+
 }

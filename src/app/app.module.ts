@@ -55,6 +55,7 @@ import { AppointmentInfoService } from './../providers/services/appointment-info
 
 //importing third party modules
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
     HttpModule,
     AppRoutingModule,
     //third party
+    Ng2CarouselamosModule,
     TypeaheadModule.forRoot()
   ],
   providers: [
