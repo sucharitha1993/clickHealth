@@ -27,6 +27,10 @@ export class TimeSlotComponent {
         docDetails: {},
         loaction: {}
     }
+    selectedSlots: any = {
+        date: '',
+        time: ''
+    }
     public weekDays: any = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
     public monthsList: any = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -35,20 +39,21 @@ export class TimeSlotComponent {
     ngOnInit() {
         this.doc = this.doc || {};
         let vacations = this.doc.vacations || [];
-        let args = ['from_date','location', 'location_type','session','symptom','to_date']
+        let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date']
         this.searchParams = this.apInfoService.getAppointmentSearchParams() || this.apInfoService.getLocalStorageParamsDynamically(args) || {};
         this.doc.vacationLists = this.getVacationsDateList(vacations);
     }
 
-    chosenAppointment(session) {
+    chosenAppointment(selectedTime, doctor) {
+        this.selectedSlots.time = selectedTime;        
         let doc = this.doc || {};
         doc.user = doc.user || {};
         doc.discount_offerings[0] = doc.discount_offerings[0] || {};
         this.selectedAppointment.appointmentDetails = {
             clinician_id: doc.id,
             provider_id: doc.provider_id,
-            date: '2018-03-01',
-            time: '13:25'
+            date: this.selectedSlots.date,
+            time: selectedTime
         }
         this.selectedAppointment.docDetails = {
             fee: doc.fee,
@@ -61,7 +66,6 @@ export class TimeSlotComponent {
             language: doc.language
         }
         this.apInfoService.setAppointmentDetails(this.selectedAppointment);
-        this.router.navigateByUrl('/main/ap_details');
     }
 
     getVacationsDateList(vacList) {
@@ -101,7 +105,7 @@ export class TimeSlotComponent {
         this.searchParams.from_date = this.datePipe.transform(this.searchParams.from_date, 'yyyy-MM-dd');
         this.searchParams.to_date = this.datePipe.transform(this.searchParams.to_date, 'yyyy-MM-dd');
         var dates = [],
-        currentDate = new Date(this.searchParams.from_date),
+            currentDate = new Date(this.searchParams.from_date),
             addDays = function (days) {
                 var date = new Date(this.valueOf());
                 date.setDate(date.getDate() + days);
@@ -116,8 +120,8 @@ export class TimeSlotComponent {
 
     dateSelectEvent(item, index, list?) {
         list.daysList = list.daysList || {};
-       // this.selectedSlots.date = item;
-        //$("#timimgs" + list.id).slideDown();
+        this.selectedSlots.date = item;
+        this.selectedSlots.time = null;
         list.timings.forEach(element => {
             if (this.weekDays[item.day] == element.day) {
                 list.daysList.morning = [];
@@ -171,7 +175,10 @@ export class TimeSlotComponent {
             element.activeClass = false;
         });
         item.activeClass = true;
-      //  this.selectedDate = item;
+    }
+
+    navigateToApDetails() {
+        this.router.navigateByUrl('/main/ap_details');
     }
 
 }

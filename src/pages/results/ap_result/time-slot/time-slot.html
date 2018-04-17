@@ -37,7 +37,7 @@
           <h3>Morning</h3>
         </div>
         <ul>
-          <li *ngFor="let morning of doc?.daysList?.morning">
+          <li *ngFor="let morning of doc?.daysList?.morning" (click)="chosenAppointment(morning, doc)">
             <div class="checkbox">
               <label class="container12">{{morning | date:'shortTime'}}
                               <input type="radio" name="colorRadio" value="red">
@@ -60,7 +60,7 @@
           <li *ngIf="doc?.daysList?.afternoon?.length == 0">
             No slots available
           </li>
-          <li *ngFor="let afternoon of doc?.daysList?.afternoon" (click)="chosenAppointment(afternoon)">
+          <li *ngFor="let afternoon of doc?.daysList?.afternoon" (click)="chosenAppointment(afternoon,doc)">
             <div class="checkbox">
               <label class="container12">{{afternoon | date:'shortTime'}}
                               <input type="radio" name="colorRadio" value="red">
@@ -80,7 +80,7 @@
           <li *ngIf="doc?.daysList?.evening?.length == 0">
             No slots available
           </li>
-          <li *ngFor="let evening of doc?.daysList?.evening" (click)="chosenAppointment(evening)">
+          <li *ngFor="let evening of doc?.daysList?.evening" (click)="chosenAppointment(evening, doc)">
             <div class="checkbox">
               <label class="container12">{{evening | date:'shortTime'}}
                               <input type="radio" name="colorRadio" value="red">
@@ -91,13 +91,13 @@
         </ul>
       </div>
     </div>
-    <div class="col-md-12 red box">
+    <div class="col-md-12 red" *ngIf='selectedSlots?.date && selectedSlots?.time'>
       <div class="full_width date_based_select">
         <div class="date_based_select_text">
-          <p><span>Date : 24-01-2018 </span> &nbsp;&nbsp;<span><img src="{{imgPrePath}}icons/arrow.png"></span>&nbsp;&nbsp;<span>Time : 01:25 AM</span></p>
+          <p><span>Date : {{selectedSlots?.date | date:'fullDate' }} </span> &nbsp;&nbsp;<span><img src="{{imgPrePath}}icons/arrow.png"></span>&nbsp;&nbsp;<span>Time : {{selectedSlots?.time  | date:'shortTime'}}</span></p>
         </div>
         <div class="date_based_select_date">
-          <a href="ap_details.html">continue</a>
+          <a (click)='navigateToApDetails()'>continue</a>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ export class DatePickerDirective implements ControlValueAccessor {
     ngAfterViewInit(){
       $(this.el.nativeElement).datepicker({
         changeMonth: true,
-        //minDate: new Date(),
+        minDate: new Date(),
         changeYear: true
       }).on('change', e => this.onModelChange(e.target.value));
     } 
