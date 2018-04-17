@@ -56,6 +56,7 @@ import { AppointmentInfoService } from './../providers/services/appointment-info
 //importing third party modules
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+import { MapComponent } from './../pages/feature/map/map';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
     FilterPipe,
     SafeHtmlPipe,
     //Directives
-    DatePickerDirective
+    DatePickerDirective,
+    MapComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@
                     <h4>Dr. {{doc?.name}}</h4>
                     <p *ngFor="let speci of doc?.specialities">
                         {{speci?.name + ' ' + speci?.description}}
-                      </p>
+                    </p>
                     <span class="lagu_span">consultation: {{doc?.language}}</span>
                     <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{doc?.mobile}}</span>
                     <h3 class="col-md-5"><small>Rs</small> {{doc?.fee}}</h3>
@@ -19,23 +19,5 @@
             </div>
         </div>
     </div>
-
-    <div class="full_width right_sidebar map_view_main">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="full_width map_view">
-                    <img src="{{imgPrePath}}map.png">
-                </div>
-            </div>
-            <div class="col-md-12">
-                <div class="full_width doctr_details">
-                    <div class="full_width hc_fin_hos_add">
-                        <h4>09:00 PM - 04:00 PM</h4>
-                        <p>Ayyappa Society main Road, <br>Madhapur, Hyderabad</p>
-                    </div>
-                    <a class="search_vtm btn btn-4 btn-4c icon-arrow-right" href="#">get directions</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-map *ngIf='doc?.locations' [mapData]='doc?.locations'></app-map>
 </div>
