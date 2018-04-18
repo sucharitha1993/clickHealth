@@ -20,7 +20,7 @@ export class AppointmentsComponent implements OnInit {
 
     onClose(reqObj) {
         this.apiServices.getDocList(reqObj)
-            .subscribe((res) => {
+            .subscribe(res => {
                 if (res.status) {
                     res.data = res.data || {};
                     this.appointmentInfo.setHospitals(res.data.hospitals);

@@ -7,6 +7,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 
+declare var google: any;
+
 @Component({
     selector: 'app-appointments-search-from',
     templateUrl: './appointment-search-form.html'
@@ -63,6 +65,24 @@ export class AppointmentsSearchFormComponent implements OnInit {
                     this.cities = this.appointmentInfo.getCities(result.data);
                     observer.next(result.data);
                 })
+        });
+    }
+
+    //get Location on search
+    getLocation() {
+        let place = "";
+        let defaultBounds = new google.maps.LatLngBounds(
+            new google.maps.LatLng(-33.8902, 151.1759),
+            new google.maps.LatLng(-33.8474, 151.2631));
+        let input = document.getElementById('location');
+        let options = {
+            types: ['geocode']
+        };
+        let autocomplete = new google.maps.places.Autocomplete(input, options);
+        autocomplete.addListener('place_changed', () => {
+            place = autocomplete.getPlace();
+            let loc: any = this.sharingService.placeToJSON(place);
+            this.appointmentSearchForm.controls['location'].setValue(loc.vicinity);
         });
     }
 

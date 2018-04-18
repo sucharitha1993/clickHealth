@@ -8,7 +8,7 @@
     </div>
     <div class="form-group custom_md_2">
         <div class="icon-addon addon-md">
-            <input type="text" [(ngModel)]="searchLocation" [typeahead]="localities" [typeaheadOptionField]="'city.name'" [formControl]="appointmentSearchForm.controls['location']"
+            <input type="text" [(ngModel)]="searchLocation" id='location' (ngModelChange)='getLocation()' [formControl]="appointmentSearchForm.controls['location']"
                 placeholder="Location" class="form-control">
             <label for="email" class="fa fa-map-marker" rel="tooltip" title="email"></label>
         </div>
