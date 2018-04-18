@@ -52,6 +52,7 @@ import { DatePickerDirective } from './../providers/directives/date-picker-direc
 //importing Services
 import { AppointmentDataService } from './../providers/services/appointment-data.service';
 import { AppointmentInfoService } from './../providers/services/appointment-info-service';
+import { SharingService } from './../providers/services/sharing-service';
 
 //importing third party modules
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
@@ -109,6 +110,7 @@ import { MapComponent } from './../pages/feature/map/map';
   providers: [
     AppointmentDataService,
     AppointmentInfoService,
+    SharingService,
     DatePipe
   ],
   bootstrap: [AppComponent]

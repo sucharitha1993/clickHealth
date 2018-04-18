@@ -1,3 +1,4 @@
+import { SharingService } from './../../../../providers/services/sharing-service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
@@ -34,7 +35,7 @@ export class TimeSlotComponent {
     public weekDays: any = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
     public monthsList: any = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-    constructor(private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
+    constructor(private sharingService: SharingService, private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
 
     ngOnInit() {
         this.doc = this.doc || {};
@@ -45,7 +46,7 @@ export class TimeSlotComponent {
     }
 
     chosenAppointment(selectedTime, doctor) {
-        this.selectedSlots.time = selectedTime;        
+        this.selectedSlots.time = selectedTime;
         let doc = this.doc || {};
         doc.user = doc.user || {};
         doc.discount_offerings[0] = doc.discount_offerings[0] || {};
@@ -66,6 +67,7 @@ export class TimeSlotComponent {
             language: doc.language
         }
         this.apInfoService.setAppointmentDetails(this.selectedAppointment);
+        this.sharingService.setParams('selectedAppointment',this.selectedAppointment);
     }
 
     getVacationsDateList(vacList) {

@@ -1,3 +1,4 @@
+import { SharingService } from './../../../providers/services/sharing-service';
 
 import { AppointmentDataService } from './../../../providers/services/appointment-data.service';
 import { AppLitteralsConfig } from './../../../providers/literals/app.literals';
@@ -18,7 +19,7 @@ export class AppointmentResultsComponent implements OnInit {
     docList: any = [];
     searchParams: any;
 
-    constructor(private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
+    constructor(private sharingService: SharingService, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
 
     ngOnInit() {
@@ -60,8 +61,8 @@ export class AppointmentResultsComponent implements OnInit {
     }
     //to get Search params
     getSearchParams() {
-        let args = ['from_date','location', 'location_type','session','symptom','to_date']
-        this.searchParams = this.appointmentInfo.getAppointmentSearchParams() || this.appointmentInfo.getLocalStorageParamsDynamically(args);
+       // let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date']
+        this.searchParams = this.appointmentInfo.getAppointmentSearchParams() || this.sharingService.getParams('appointments');
         return this.searchParams;
     }
     //On close of Modal

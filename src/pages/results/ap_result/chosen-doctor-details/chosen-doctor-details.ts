@@ -1,3 +1,4 @@
+import { SharingService } from './../../../../providers/services/sharing-service';
 import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
 import { Component } from '@angular/core';
 
@@ -11,10 +12,10 @@ export class ChosenDoctorComponent {
 
     public doc: any;
     imgPrePath: string = '../../assets/img/';
-    constructor(private appInfoService: AppointmentInfoService) { }
+    constructor(private sharingService: SharingService, private appInfoService: AppointmentInfoService) { }
 
     ngOnInit() {
-        let selectedAppointment = this.appInfoService.getAppointmentDetails() || {};
+        let selectedAppointment = this.appInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};
         this.doc = selectedAppointment.docDetails || {};
     }
 }

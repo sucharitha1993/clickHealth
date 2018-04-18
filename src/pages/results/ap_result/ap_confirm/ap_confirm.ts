@@ -1,3 +1,4 @@
+import { SharingService } from './../../../../providers/services/sharing-service';
 import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
 import { Component, Input } from '@angular/core';
 
@@ -15,20 +16,14 @@ export class ConfirmAppointmentComponent {
     healthSeeker: any;
     bookingDetails: any;
 
-    constructor(private apInfoService: AppointmentInfoService) { }
+    constructor(private sharingService: SharingService, private apInfoService: AppointmentInfoService) { }
 
     ngOnInit() {
-        this.healthSeeker = this.apInfoService.getUserDetails() || {};
-        this.bookingDetails = this.apInfoService.getbookingDetails() || {};
-        let selectedAppointment = this.apInfoService.getAppointmentDetails() || {};
+        this.healthSeeker = this.apInfoService.getUserDetails() || this.sharingService.getParams('healthSeeker') || {};
+        this.bookingDetails = this.apInfoService.getbookingDetails() || this.sharingService.getParams('bookedAppointment') || {};
+        let selectedAppointment = this.apInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};
         this.doc = selectedAppointment.docDetails || {};
-        this.getSearchParams();
-    }
-
-    //to get Search params
-    getSearchParams() {
-        let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date']
-        this.searchParams = this.apInfoService.getAppointmentSearchParams() || this.apInfoService.getLocalStorageParamsDynamically(args);
+        this.searchParams = this.apInfoService.getAppointmentSearchParams() || this.sharingService.getParams('appointments');        
     }
 
     //to print appointment slip

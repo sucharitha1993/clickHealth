@@ -1,3 +1,4 @@
+import { SharingService } from './../../../../providers/services/sharing-service';
 import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
 import { AppRegExpressionsConfig } from './../../../../providers/literals/app.regularExp';
 import { AppointmentDataService } from './../../../../providers/services/appointment-data.service';
@@ -15,7 +16,7 @@ export class BookAppointmentComponent implements OnInit {
     imgPrePath: string = '../../assets/img/';
     confirmAppointmentForm: FormGroup;
 
-    constructor(private router: Router, public formBuilder: FormBuilder, private apiSerives: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
+    constructor(private sharingService: SharingService, private router: Router, public formBuilder: FormBuilder, private apiSerives: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
 
     ngOnInit() {
@@ -36,6 +37,7 @@ export class BookAppointmentComponent implements OnInit {
     //to generate otp for booking appointment
     generateOTP() {
         this.appointmentInfo.setUserDetails(this.confirmAppointmentForm.value);
+        this.sharingService.setParams('healthSeeker',this.confirmAppointmentForm.value);
         let obj = {
             "generate": true,
             "email": this.confirmAppointmentForm.controls['email'].value,

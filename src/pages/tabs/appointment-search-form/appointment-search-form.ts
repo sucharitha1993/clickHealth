@@ -1,3 +1,4 @@
+import { SharingService } from './../../../providers/services/sharing-service';
 import { Observable } from 'rxjs/Rx';
 import { AppointmentInfoService } from './../../../providers/services/appointment-info-service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
@@ -19,17 +20,17 @@ export class AppointmentsSearchFormComponent implements OnInit {
     cities: any = [];
     sessions: string[] = [
         "morning",
-		"afternoon",
-		"evening",
-		"night"
+        "afternoon",
+        "evening",
+        "night"
     ];
 
     appointmentSearchForm: FormGroup;
     searchSymptom: any;
     searchLocation: any;
     selectedSession: any;
-    
-    constructor(private appointmentInfo: AppointmentInfoService, private datePipe: DatePipe, private apiServices: AppointmentDataService, public formBuilder: FormBuilder, private router: Router) {
+
+    constructor(private sharingService: SharingService, private appointmentInfo: AppointmentInfoService, private datePipe: DatePipe, private apiServices: AppointmentDataService, public formBuilder: FormBuilder, private router: Router) {
 
     }
 
@@ -75,9 +76,10 @@ export class AppointmentsSearchFormComponent implements OnInit {
             'symptom': this.appointmentSearchForm.controls['symptom'].value,
             'to_date': this.datePipe.transform(this.appointmentSearchForm.controls['to_date'].value, 'yyyy-MM-dd'),
         }
-        let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date'];
+        //let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date'];
+        //this.appointmentInfo.setLocalStorageParamsDynamically(args, reqObj);
         this.appointmentInfo.setAppointmentSearchParams(reqObj);
-        this.appointmentInfo.setLocalStorageParamsDynamically(args, reqObj);
+        this.sharingService.setParams('appointments', reqObj);
         this.close.emit(reqObj);
     }
 
