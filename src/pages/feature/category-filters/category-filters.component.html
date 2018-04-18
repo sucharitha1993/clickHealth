@@ -41,5 +41,41 @@
                 </div>
             </div>
         </div>
+        <div class="side-block fly-in">
+            <div class="side-stars">
+                <div class="side-padding">
+                    <div class="side-lbl">Language</div>
+                    <div class="searching_form">
+                        <input placeholder="Start Typing" type="text" [(ngModel)]="language">
+                    </div>
+                    <div class="list_filters scrollbar" id="style-3">
+                        <div class="checkbox" *ngFor='let lang of languages | filter : language'>
+                            <label class="container12">{{lang.name}}
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="side-block fly-in">
+            <div class="side-stars">
+                <div class="side-padding">
+                    <div class="side-lbl">Gender</div>
+                    <div class="searching_form">
+                        <input placeholder="Start Typing" type="text" [(ngModel)]="gender">
+                    </div>
+                    <div class="list_filters scrollbar" id="style-3">
+                        <div class="checkbox" *ngFor='let gender of genders | filter : gender'>
+                            <label class="container12">{{gender.name}}
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

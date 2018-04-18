@@ -32,7 +32,6 @@ import { GiftHealthComponent } from './../pages/tabs/gift-health/gift-health.com
 import { ServiceProvidersComponent } from './../pages/tabs/service-providers/service-providers.component';
 //Search Result view components
 import { HeaderComponent } from './../pages/header/header.component';
-import { CategoryFiltersComponent } from './../pages/category-filters/category-filters.component';
 import { AppointmentResultsComponent } from './../pages/results/ap_result/ap_result';
 import { HCResultsComponent } from './../pages/results/hc_result/hc_result';
 import { BookAppointmentComponent } from './../pages/results/ap_result/ap_details/ap_details';
@@ -57,7 +56,9 @@ import { SharingService } from './../providers/services/sharing-service';
 //importing third party modules
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
+//Feature Components
 import { MapComponent } from './../pages/feature/map/map';
+import { CategoryFiltersComponent } from './../pages/feature/category-filters/category-filters.component';
 
 @NgModule({
   declarations: [
