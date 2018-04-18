@@ -9,3 +9,6 @@
         outline: none;
         margin-left: 10%;
  }
+ .pac-container {
+    z-index: 1051 !important;
+}

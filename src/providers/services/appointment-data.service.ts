@@ -32,7 +32,18 @@ export class AppointmentDataService {
         body.set('to_date', reqData.to_date);
 
         return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/doctors/`, body.toString(), options)
-            .map(response => response.json());
+            .map(response => {
+                let res = response.json();
+                if (res.status) {
+                    res.data = res.data || {};
+                    for (let i = 0; i < res.data.hospitals.length; i++) {
+                        for (let j = 0; j < res.data.clinicians[res.data.hospitals[i].name].length; j++) {
+                            res.data.clinicians[res.data.hospitals[i].name][j].locations = res.data.locations[i];
+                        }
+                    }
+                }
+                return res;
+            });
     }
 
     //to confirm booking Appointment
