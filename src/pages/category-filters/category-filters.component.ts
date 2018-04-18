@@ -11,7 +11,6 @@ export class CategoryFiltersComponent implements OnInit {
 
     @Input('medicalCenters') medicalCenters: any;
     @Input('locations') locations: any;
-    cities: any = [];
     medicalSearchTerm: string;
     locationSearchTerm: string;
 
@@ -21,6 +20,5 @@ export class CategoryFiltersComponent implements OnInit {
     ngOnInit() {
         this.locations = this.locations.length > 0 ? this.locations : this.appointmentInfo.getLocations();
         this.medicalCenters = this.medicalCenters.length > 0 ? this.medicalCenters : this.appointmentInfo.getHospitals();
-        this.cities = this.appointmentInfo.getCities(this.locations);
     }
 }
