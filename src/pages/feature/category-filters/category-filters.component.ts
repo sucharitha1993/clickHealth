@@ -15,7 +15,7 @@ export class CategoryFiltersComponent implements OnInit {
     medicalSearchTerm: string;
     locationSearchTerm: string;
     languages: object[] = [{ id: 'en', name: 'English' }, { id: 'tel', name: 'Telugu' }, { id: 'fr', name: 'french' }, { id: 'kn', name: 'kannada' }];
-    genders: object[] = [{ id: 'male', name: 'Male' }, { id: 'female', name: 'Female' }];
+    genders: object[] = [{ id: 'male', name: 'Male' }, { id: 'female', name: 'Female' }, { id: 'transgender', name: 'Transgender' }];
 
     constructor(private route: ActivatedRoute, private appointmentInfo: AppointmentInfoService) {
     }

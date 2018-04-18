@@ -16,13 +16,9 @@ import { NavbarComponent } from './../pages/navbar/navbar.component';
 import { FooterComponent } from './../pages/footer/footer.component';
 import { DashboardComponent } from './../pages/dashboard/dashboard.component';
 import { MainDashboardComponent } from './../pages/main-dashboard/main-dashboard';
+// Landing Template
+import { LandingTemplate } from './../pages/landing-template/landing-template';
 
-//Landing pages
-import { PartnersComponent } from './../pages/landing-pages/partners/partners.component';
-import { ReviewComponent } from './../pages/landing-pages/review/review.component';
-import { WelcomeComponent } from './../pages/landing-pages/welcome/welcome.component';
-import { AppointmentsDiscountsComponent } from './../pages/landing-pages/appointments-discounts/appointments-discounts';
-import { AboutDoctorsComponent } from './../pages/landing-pages/about-doctors/about-doctors.component';
 //tab components
 import { AppointmentsComponent } from './../pages/tabs/appointments/appointments.component';
 import { AppointmentsSearchFormComponent } from './../pages/tabs/appointment-search-form/appointment-search-form';
@@ -64,14 +60,10 @@ import { CategoryFiltersComponent } from './../pages/feature/category-filters/ca
   declarations: [
     MainDashboardComponent,
     AppComponent,
+    LandingTemplate,
     NavbarComponent,
     FooterComponent,
     DashboardComponent,
-    WelcomeComponent,
-    PartnersComponent,
-    ReviewComponent,
-    AppointmentsDiscountsComponent,
-    AboutDoctorsComponent,
     //tab components
     AppointmentsComponent,
     AppointmentsSearchFormComponent,
