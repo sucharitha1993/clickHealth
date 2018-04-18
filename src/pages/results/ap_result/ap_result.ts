@@ -90,10 +90,10 @@ export class AppointmentResultsComponent implements OnInit {
     }
 
     // to view Map
-    onViewMapClick(a, latitude, longitude, mapId) {
+    onViewMapClick(latitude, longitude, mapId) {
         var mapOptions = {
             zoom: 8,
-            center: { lat: latitude, lng: longitude }
+            center: { lat: parseFloat(latitude), lng: parseFloat(longitude) }
         };
         setTimeout(() => {
             let mapArea = document.getElementById(`ap-map-${mapId}`);
@@ -101,7 +101,7 @@ export class AppointmentResultsComponent implements OnInit {
             let marker = new google.maps.Marker({
                 map: map,
                 animation: google.maps.Animation.DROP,
-                position: { lat: latitude, lng: longitude }
+                position: { lat: parseFloat(latitude), lng: parseFloat(longitude) }
             });
         }, 500);
     }
