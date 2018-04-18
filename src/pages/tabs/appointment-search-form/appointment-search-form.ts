@@ -82,7 +82,7 @@ export class AppointmentsSearchFormComponent implements OnInit {
         autocomplete.addListener('place_changed', () => {
             place = autocomplete.getPlace();
             let loc: any = this.sharingService.placeToJSON(place);
-            this.appointmentSearchForm.controls['location'].setValue(loc.vicinity);
+            this.appointmentSearchForm.controls['location'].setValue(loc.name);
         });
     }
 
