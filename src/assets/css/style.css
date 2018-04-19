@@ -8049,3 +8049,6 @@ img {
     width: 112px;
     float: left;
 }
+.modal-open {
+    overflow: scroll !important;
+}
