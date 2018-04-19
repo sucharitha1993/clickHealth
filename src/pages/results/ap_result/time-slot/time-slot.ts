@@ -64,10 +64,11 @@ export class TimeSlotComponent {
             specialities: doc.specialities,
             discounts: doc.discount_offerings[0].amount,
             docImage: doc.user.profile_pic,
-            language: doc.language
+            language: doc.language,
+            first_fee: doc.first_fee
         }
         this.apInfoService.setAppointmentDetails(this.selectedAppointment);
-        this.sharingService.setParams('selectedAppointment',this.selectedAppointment);
+        this.sharingService.setParams('selectedAppointment', this.selectedAppointment);
     }
 
     getVacationsDateList(vacList) {
