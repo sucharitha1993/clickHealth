@@ -124,54 +124,54 @@ export class TimeSlotComponent {
         list.daysList = list.daysList || {};
         this.selectedSlots.date = item;
         this.selectedSlots.time = null;
-        list.timings.forEach(element => {
-            if (this.weekDays[item.day] == element.day) {
-                list.daysList.morning = [];
-                list.daysList.afternoon = [];
-                list.daysList.evening = [];
-                list.daysList.night = [];
-                element.morning.forEach(morningObj => {
-                    morningObj.forEach(times => {
-                        let dateToday = new Date();
-                        let splitTime = times.split(":");
-                        dateToday.setHours(splitTime[0]);
-                        dateToday.setMinutes(splitTime[1]);
-                        dateToday.setSeconds(splitTime[2]);
-                        list.daysList.morning.push(dateToday);
-                    });
-                });
-                element.afternoon.forEach(afternoonObj => {
-                    afternoonObj.forEach(times => {
-                        let dateToday = new Date();
-                        let splitTime = times.split(":");
-                        dateToday.setHours(splitTime[0]);
-                        dateToday.setMinutes(splitTime[1]);
-                        dateToday.setSeconds(splitTime[2]);
-                        list.daysList.afternoon.push(dateToday);
-                    });
-                });
-                element.evening.forEach(eveningObj => {
-                    eveningObj.forEach(times => {
-                        let dateToday = new Date();
-                        let splitTime = times.split(":");
-                        dateToday.setHours(splitTime[0]);
-                        dateToday.setMinutes(splitTime[1]);
-                        dateToday.setSeconds(splitTime[2]);
-                        list.daysList.evening.push(dateToday);
-                    });
-                });
-                element.night.forEach(nightObj => {
-                    nightObj.forEach(times => {
-                        let dateToday = new Date();
-                        let splitTime = times.split(":");
-                        dateToday.setHours(splitTime[0]);
-                        dateToday.setMinutes(splitTime[1]);
-                        dateToday.setSeconds(splitTime[2]);
-                        list.daysList.night.push(dateToday);
-                    });
-                });
-            }
-        });
+        // list.work_timings.forEach(element => {
+        //     if (this.weekDays[item.day] == element.day) {
+        //         list.daysList.morning = [];
+        //         list.daysList.afternoon = [];
+        //         list.daysList.evening = [];
+        //         list.daysList.night = [];
+        //         element.morning.forEach(morningObj => {
+        //             morningObj.forEach(times => {
+        //                 let dateToday = new Date();
+        //                 let splitTime = times.split(":");
+        //                 dateToday.setHours(splitTime[0]);
+        //                 dateToday.setMinutes(splitTime[1]);
+        //                 dateToday.setSeconds(splitTime[2]);
+        //                 list.daysList.morning.push(dateToday);
+        //             });
+        //         });
+        //         element.afternoon.forEach(afternoonObj => {
+        //             afternoonObj.forEach(times => {
+        //                 let dateToday = new Date();
+        //                 let splitTime = times.split(":");
+        //                 dateToday.setHours(splitTime[0]);
+        //                 dateToday.setMinutes(splitTime[1]);
+        //                 dateToday.setSeconds(splitTime[2]);
+        //                 list.daysList.afternoon.push(dateToday);
+        //             });
+        //         });
+        //         element.evening.forEach(eveningObj => {
+        //             eveningObj.forEach(times => {
+        //                 let dateToday = new Date();
+        //                 let splitTime = times.split(":");
+        //                 dateToday.setHours(splitTime[0]);
+        //                 dateToday.setMinutes(splitTime[1]);
+        //                 dateToday.setSeconds(splitTime[2]);
+        //                 list.daysList.evening.push(dateToday);
+        //             });
+        //         });
+        //         element.night.forEach(nightObj => {
+        //             nightObj.forEach(times => {
+        //                 let dateToday = new Date();
+        //                 let splitTime = times.split(":");
+        //                 dateToday.setHours(splitTime[0]);
+        //                 dateToday.setMinutes(splitTime[1]);
+        //                 dateToday.setSeconds(splitTime[2]);
+        //                 list.daysList.night.push(dateToday);
+        //             });
+        //         });
+        //     }
+        // });
 
         index.forEach(element => {
             element.activeClass = false;
