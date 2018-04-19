@@ -118,7 +118,7 @@
     <div class="col-md-12 red" *ngIf='selectedSlots?.date && selectedSlots?.time'>
       <div class="full_width date_based_select">
         <div class="date_based_select_text">
-          <p><span>Date : {{selectedSlots?.date | date:'fullDate' }} </span> &nbsp;&nbsp;<span><img src="{{imgPrePath}}icons/arrow.png"></span>&nbsp;&nbsp;<span>Time : {{selectedSlots?.time}}</span></p>
+          <p><span>Date : {{selectedSlots?.date | date:'dd-MM-yyyy' }} </span> &nbsp;&nbsp;<span><img src="{{imgPrePath}}icons/arrow.png"></span>&nbsp;&nbsp;<span>Time : {{selectedSlots?.time}}</span></p>
         </div>
         <div class="date_based_select_date">
           <a (click)='navigateToApDetails()'>continue</a>
