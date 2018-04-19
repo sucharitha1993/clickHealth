@@ -6128,7 +6128,7 @@ ol.insrurer li{
 }   
 
 .heart_fav {
-    z-index: 9999999;
+    z-index: 0;
     right: 22px;
     font-size: 20px;
     color: #ccc;

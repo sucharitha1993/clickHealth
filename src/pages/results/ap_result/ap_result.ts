@@ -124,7 +124,18 @@ export class AppointmentResultsComponent implements OnInit {
     }
 
     onModifySearch() {
+
         this.ap_search.initialiseAppointmentfields(true);
+        
+        setTimeout(()=>{
+            let from_date = this.ap_search.appointmentSearchForm.controls['from_date'].value;
+            let to_date = this.ap_search.appointmentSearchForm.controls['to_date'].value;
+            $('#ap-search-from-date').val(from_date);
+            $('#ap-search-to-date').val(to_date);
+        }
+        ,500);
+        
     }
+    
 
 }
