@@ -5,7 +5,7 @@
                 <span>&nbsp;<img src="{{imgPrePath}}icons/arrowgreen.png"></span>&nbsp; <a href="ap_result.html">Explore All</a>
             </p>
         </div>
-        <app-appointments-search-from (close)="onClose($event)"></app-appointments-search-from>        
+        <app-appointments-search-from [isModal]='false' (close)="onClose($event)"></app-appointments-search-from>        
         <div class="full_width health_check_t_cpnt">
             <section class="car_top_city" id="demos">
                 <p>TOP SEARCH SPECIALITIES </p>

@@ -1,7 +1,7 @@
 import { SharingService } from './../../../providers/services/sharing-service';
 import { Observable } from 'rxjs/Rx';
 import { AppointmentInfoService } from './../../../providers/services/appointment-info-service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { AppointmentDataService } from './../../../providers/services/appointment-data.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,6 +16,9 @@ declare var google: any;
 export class AppointmentsSearchFormComponent implements OnInit {
 
     @Output() close: EventEmitter<any> = new EventEmitter();
+    @Input('isModal')
+    isModal: boolean;
+
     imgPrePath: string = '../../assets/img/';
     symptom: any = [];
     localities: any = [];
@@ -31,6 +34,7 @@ export class AppointmentsSearchFormComponent implements OnInit {
     searchSymptom: any;
     searchLocation: any;
     selectedSession: any;
+    searchParams: any;
 
     constructor(private sharingService: SharingService, private appointmentInfo: AppointmentInfoService, private datePipe: DatePipe, private apiServices: AppointmentDataService, public formBuilder: FormBuilder, private router: Router) {
 
@@ -42,14 +46,19 @@ export class AppointmentsSearchFormComponent implements OnInit {
     }
 
     initialiseAppointmentfields() {
+        if (this.isModal) {
+            this.searchParams = this.appointmentInfo.getAppointmentSearchParams() || this.sharingService.getParams('appointments') || {};
+        }
+        let searchParams = this.searchParams || {};
         this.appointmentSearchForm = this.formBuilder.group({
-            "symptom": [null, Validators.required],
+            "symptom": [searchParams.symptom, Validators.required],
             "location_type": ['city'],
-            "location": [null, Validators.required],
-            "from_date": [null, Validators.required],
-            "to_date": [null, Validators.required],
-            "session": [null, Validators.required]
+            "location": [searchParams.location, Validators.required],
+            "from_date": [searchParams.from_date, Validators.required],
+            "to_date": [searchParams.to_date, Validators.required],
+            "session": [searchParams.session, Validators.required]
         });
+        this.appointmentSearchForm.updateValueAndValidity();
     }
 
     startObserver() {
