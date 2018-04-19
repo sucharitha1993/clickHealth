@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CategoryFilterPipe implements PipeTransform {
     transform(items: any, medicalSearch?: string[], locSearch?: string[], langSearch?: string[], genderSearch?: string[]) {
-        if (items) {
+        if (items && (medicalSearch || locSearch || langSearch || genderSearch) && (medicalSearch.length>0 || locSearch.length>0 || langSearch.length>0 || genderSearch.length>0)) {
             return items.filter(item => {
                 if (medicalSearch) {
                     let medical = medicalSearch.some(medical => medical == item.name);
