@@ -27,6 +27,14 @@ export class AppointmentResultsComponent implements OnInit {
     medicalFilter: any;
     genderFilter: any;
 
+    sortItems: any = [{ id: 'free', name: 'Free' },
+    { id: 'fee', name: 'Price - High to Low' },
+    { id: 'fee', name: 'Price - Low to High' },
+    { id: 'nearest', name: 'Nearest' }
+    ];
+
+    selectedSort: any = null;
+
     constructor(private sharingService: SharingService, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
 
@@ -137,5 +145,11 @@ export class AppointmentResultsComponent implements OnInit {
         
     }
     
+
+    //selected Sort value
+    selectedVal(e) {
+        this.selectedSort = e.target.value;
+    }
+
 
 }

@@ -41,12 +41,8 @@
               <div class="catalog-head fly-in">
                 <label>Sort results by:</label>
                 <div class="search-select">
-                  <select>
-                    <option>Free</option>
-                    <option>Price - High to Low</option>
-                    <option>Price - Low to High</option>
-                    <option>Years of Experience</option>
-                    <option>Nearest</option>
+                  <select [(ngModel)]='selectedSort' (change)="selectedVal($event)" >
+                    <option *ngFor='let sort of sortItems' [value]="sort.id" >{{sort.name}}</option>
                   </select>
                 </div>
                 <a href="#" class="show-list"></a>
@@ -55,7 +51,7 @@
               <!-- END OF SORT BY -->
               <!-- DOCTOR DETAILS GOES HERE -->
               <div class="catalog-row alternative">
-                <div *ngFor='let doctor of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter'>
+                <div *ngFor='let doctor of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter | sortBy: selectedSort' >
                   <div *ngIf="doctor?.data?.length>0">
                     <div *ngFor='let doc of doctor?.data'>
                       <div class="appointment_main_hero">

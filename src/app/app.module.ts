@@ -44,6 +44,7 @@ import { FilterPipe } from './../pipes/filter-pipe';
 import { SafeHtmlPipe } from './../pipes/safe-html.pipe';
 import { DatePipe } from '@angular/common';
 import { CategoryFilterPipe } from './../pipes/category-filter-pipe';
+import { SortByPipe } from './../pipes/sortBy-pipe';
 
 //importing Directive
 import { DatePickerDirective } from './../providers/directives/date-picker-directive';
@@ -91,6 +92,7 @@ import { CategoryFiltersComponent } from './../pages/feature/category-filters/ca
     FilterPipe,
     SafeHtmlPipe,
     CategoryFilterPipe,
+    SortByPipe,
     //Directives
     DatePickerDirective,
     MapComponent
