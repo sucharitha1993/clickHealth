@@ -6,23 +6,42 @@ export class CategoryFilterPipe implements PipeTransform {
     transform(items: any, medicalSearch?: string[], locSearch?: string[], langSearch?: string[], genderSearch?: string[]) {
         if (items && (medicalSearch || locSearch || langSearch || genderSearch) && (medicalSearch.length>0 || locSearch.length>0 || langSearch.length>0 || genderSearch.length>0)) {
             return items.filter(item => {
-                if (medicalSearch) {
-                    let medical = medicalSearch.some(medical => medical == item.name);
-                    return medical;
+                var medical = true,
+                loc = true,
+                lang = true,
+                gender = true;
+
+                if (medicalSearch && medicalSearch.length >0) {
+                    medical = medicalSearch.some(medical => medical == item.name);
+                    //return medical;
                 }
-                if (locSearch) {
-                    let loc = locSearch.some(loc => loc == item.data[0].locations.landmark);
-                    return loc;
+                if (locSearch && locSearch.length >0) {
+                    loc = locSearch.some(loc => loc == item.data[0].locations.landmark);
+                    //return loc;
                 }
-                if (langSearch) {
-                    let lang = langSearch.some(lang => lang == item.data[0].language);
-                    return lang;
+                if (langSearch && langSearch.length >0) {
+                    lang = langSearch.some(lang => lang == item.data[0].language);
+                    //return lang;
                 }
-                if (genderSearch) {
-                    let gender = genderSearch.some(gender => gender == item.data[0].gender);
-                    return gender;
+                if (genderSearch && genderSearch.length >0) {
+                    gender = genderSearch.some(gender => gender == item.data[0].gender);
+                    //return gender;
+                }debugger;
+                let filterObj = {
+                    medical: medical,
+                    loc: loc,
+                    lang: lang,
+                    gender: gender
+                };
+                let includeRecord = true;;
+                let filterkeys = Object.keys(filterObj);
+                 for(var i=0;i<filterkeys.length;i++){
+                    if(filterObj[filterkeys[i]] == false) {
+                        includeRecord = false;
+                        return;
+                    }
                 }
-                return true;
+                return includeRecord;
             })
         }
         else {
