@@ -25,18 +25,17 @@
                                             <div class="content_confirm_in">
                                                 <div class="full_width doctr_details">
                                                     <h4>Dr. {{doc.name}}</h4>
-                                                    <p>
-                                                        {{bookingDetails?.under?.experience_training[0]?.description}} {{bookingDetails?.under?.experience_training[0]?.position}}
-                                                        {{bookingDetails?.under?.experience_training[0]?.type}} {{bookingDetails?.under?.experience_training[0]?.year}}
+                                                    <p *ngFor='let speciality of doc?.specialities'>
+                                                        {{speciality?.description}}
                                                     </p>
-                                                    <span class="lagu_span">consultation: {{bookingDetails?.under?.language}}</span>
+                                                    <span class="lagu_span">consultation: {{doc?.language}}</span>
                                                     <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{doc?.mobile}}</span>
                                                 </div>
                                             </div>
                                             <div class="content_confirm_in content_confirm_in_r">
                                                 <div class="final_amount_d">
                                                     <span>Final Amount</span>
-                                                    <span class="fnal_amoun_act">Rs {{bookingDetails?.under?.fee}}</span>
+                                                    <span class="fnal_amoun_act">Rs {{doc?.fee}}</span>
                                                 </div>
 
                                                 <div class="final_amount_d">
