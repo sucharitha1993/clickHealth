@@ -15,7 +15,7 @@
                     <div class="list_filters scrollbar" id="style-3">
                         <div class="checkbox" *ngFor='let medical of medicalCenters | filter : medicalSearchTerm'>
                             <label class="container12">{{medical.name}}
-                        <input type="checkbox">
+                        <input type="checkbox" (change)='filterData($event,"medical",medical.name)'>
                         <span class="checkmark"></span>
                         </label>
                         </div>
@@ -33,7 +33,7 @@
                     <div class="list_filters scrollbar" id="style-3">
                         <div class="checkbox" *ngFor='let location of locations | filter : locationSearchTerm'>
                             <label class="container12">{{location.name}}
-                        <input type="checkbox">
+                        <input type="checkbox" (change)='filterData($event,"location",location.name)'>
                         <span class="checkmark"></span>
                         </label>
                         </div>
@@ -46,12 +46,12 @@
                 <div class="side-padding">
                     <div class="side-lbl">Language</div>
                     <div class="searching_form">
-                        <input placeholder="Start Typing" type="text" [(ngModel)]="language">
+                        <input placeholder="Start Typing" type="text" [(ngModel)]="languageSearchTerm">
                     </div>
                     <div class="list_filters scrollbar" id="style-3">
-                        <div class="checkbox" *ngFor='let lang of languages | filter : language'>
+                        <div class="checkbox" *ngFor='let lang of languages | filter : languageSearchTerm'>
                             <label class="container12">{{lang.name}}
-                        <input type="checkbox">
+                        <input type="checkbox" (change)='filterData($event,"language",lang.name)'>
                         <span class="checkmark"></span>
                         </label>
                         </div>
@@ -64,12 +64,12 @@
                 <div class="side-padding">
                     <div class="side-lbl">Gender</div>
                     <div class="searching_form">
-                        <input placeholder="Start Typing" type="text" [(ngModel)]="gender">
+                        <input placeholder="Start Typing" type="text" [(ngModel)]="genderSearchTerm">
                     </div>
                     <div class="list_filters scrollbar" id="style-3">
-                        <div class="checkbox" *ngFor='let gender of genders | filter : gender'>
+                        <div class="checkbox" *ngFor='let gender of genders | filter : genderSearchTerm'>
                             <label class="container12">{{gender.name}}
-                        <input type="checkbox">
+                        <input type="checkbox" (change)='filterData($event,"gender",gender.name)'>
                         <span class="checkmark"></span>
                         </label>
                         </div>

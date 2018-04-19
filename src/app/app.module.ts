@@ -34,6 +34,7 @@ import { BookAppointmentComponent } from './../pages/results/ap_result/ap_detail
 import { AppointmentOTPComponent } from './../pages/results/ap_result/ap_otp/ap_otp';
 import { ConfirmAppointmentComponent } from './../pages/results/ap_result/ap_confirm/ap_confirm';
 import { ChosenDoctorComponent } from './../pages/results/ap_result/chosen-doctor-details/chosen-doctor-details';
+import { HCDetailsComponent } from './../pages/results/hc_result/hc_details/hc_details';
 
 //Appontment Result sub components
 import { DoctorDetailsComponent } from './../pages/results/ap_result/doctor-details/doctor-details';
@@ -42,6 +43,8 @@ import { TimeSlotComponent } from './../pages/results/ap_result/time-slot/time-s
 import { FilterPipe } from './../pipes/filter-pipe';
 import { SafeHtmlPipe } from './../pipes/safe-html.pipe';
 import { DatePipe } from '@angular/common';
+import { CategoryFilterPipe } from './../pipes/category-filter-pipe';
+
 //importing Directive
 import { DatePickerDirective } from './../providers/directives/date-picker-directive';
 //importing Services
@@ -80,12 +83,14 @@ import { CategoryFiltersComponent } from './../pages/feature/category-filters/ca
     AppointmentOTPComponent,
     ChosenDoctorComponent,
     HCResultsComponent,
+    HCDetailsComponent,
     //Appontment Result sub components
     DoctorDetailsComponent,
     TimeSlotComponent,
     //pipes
     FilterPipe,
     SafeHtmlPipe,
+    CategoryFilterPipe,
     //Directives
     DatePickerDirective,
     MapComponent

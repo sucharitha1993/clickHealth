@@ -1,8 +1,9 @@
+import { AppointmentsSearchFormComponent } from './../../tabs/appointment-search-form/appointment-search-form';
 import { SharingService } from './../../../providers/services/sharing-service';
 
 import { AppointmentDataService } from './../../../providers/services/appointment-data.service';
 import { AppLitteralsConfig } from './../../../providers/literals/app.literals';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AppointmentInfoService } from './../../../providers/services/appointment-info-service';
 
 declare var $: any;
@@ -13,11 +14,18 @@ declare var google: any;
 })
 export class AppointmentResultsComponent implements OnInit {
 
+    @ViewChild('apsearch') ap_search: AppointmentsSearchFormComponent;
+
     imgPrePath: string = '../../assets/img/';
     medicalCenters: any = [];
     locations: any = [];
     docList: any = [];
     searchParams: any;
+
+    locationFilter: any;
+    langFilter: any;
+    medicalFilter: any;
+    genderFilter: any;
 
     constructor(private sharingService: SharingService, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
@@ -61,7 +69,7 @@ export class AppointmentResultsComponent implements OnInit {
     }
     //to get Search params
     getSearchParams() {
-       // let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date']
+        // let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date']
         this.searchParams = this.appointmentInfo.getAppointmentSearchParams() || this.sharingService.getParams('appointments');
         return this.searchParams;
     }
@@ -105,5 +113,18 @@ export class AppointmentResultsComponent implements OnInit {
             });
         }, 500);
     }
-  
+
+    //filter data
+    filterData(event) {
+        this.locationFilter = event.location;
+        this.langFilter = event.language;
+        this.medicalFilter = event.medical;
+        this.genderFilter = event.gender;
+        this.docList = Object.assign([], this.docList);
+    }
+
+    onModifySearch() {
+        this.ap_search.initialiseAppointmentfields(true);
+    }
+
 }

@@ -41,15 +41,17 @@ export class AppointmentsSearchFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.initialiseAppointmentfields();
+        this.initialiseAppointmentfields(this.isModal);
         this.startObserver();
     }
 
-    initialiseAppointmentfields() {
-        if (this.isModal) {
+    initialiseAppointmentfields(isModal) {
+        if (isModal) {
             this.searchParams = this.appointmentInfo.getAppointmentSearchParams() || this.sharingService.getParams('appointments') || {};
         }
         let searchParams = this.searchParams || {};
+        //if(searchParams.from_date)
+       // searchParams.from_date = new Date(searchParams.from_date);
         this.appointmentSearchForm = this.formBuilder.group({
             "symptom": [searchParams.symptom, Validators.required],
             "location_type": ['city'],
