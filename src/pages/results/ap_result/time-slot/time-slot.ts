@@ -16,7 +16,7 @@ export class TimeSlotComponent {
 
     @Input('doc')
     doc: any;
-
+    imgPrePath: string = '../../assets/img/';
     timings = AppLitteralsConfig.timings;
 
     morningTimings: string[] = this.timings.morning;
