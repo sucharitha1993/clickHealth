@@ -115,7 +115,7 @@ export class AppointmentResultsComponent implements OnInit {
     // to view Map
     onViewMapClick(latitude, longitude, mapId) {
         var mapOptions = {
-            zoom: 8,
+            zoom:16,
             center: { lat: parseFloat(latitude), lng: parseFloat(longitude) }
         };
         setTimeout(() => {
