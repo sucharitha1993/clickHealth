@@ -40,9 +40,10 @@ export class AppointmentDataService {
                         for (let j = 0; j < res.data.clinicians[res.data.hospitals[i].name].length; j++) {
                             res.data.clinicians[res.data.hospitals[i].name][j].locations = res.data.locations[i];
                             res.data.clinicians[res.data.hospitals[i].name][j].provider_id = res.data.hospitals[i].id;
+                            res.data.clinicians[res.data.hospitals[i].name][j].provider_name = res.data.hospitals[i].name;
                         }
                     }
-                }
+                }debugger;
                 return res;
             });
     }
