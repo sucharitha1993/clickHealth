@@ -60,6 +60,9 @@ import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 import { MapComponent } from './../pages/feature/map/map';
 import { CategoryFiltersComponent } from './../pages/feature/category-filters/category-filters.component';
 
+//Ngx Pagintor Module
+import { NgxPaginationModule } from 'ngx-pagination';
+
 @NgModule({
   declarations: [
     MainDashboardComponent,
@@ -105,7 +108,9 @@ import { CategoryFiltersComponent } from './../pages/feature/category-filters/ca
     AppRoutingModule,
     //third party
     Ng2CarouselamosModule,
-    TypeaheadModule.forRoot()
+    TypeaheadModule.forRoot(),
+    //Paginator Module
+    NgxPaginationModule
   ],
   providers: [
     AppointmentDataService,

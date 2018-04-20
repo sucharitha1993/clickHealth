@@ -52,7 +52,7 @@
               <!-- DOCTOR DETAILS GOES HERE -->
               <div class="catalog-row alternative">
                   <p *ngIf="docList?.length == 0 || (docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter).length == 0">NO data found</p>                                                        
-                    <div *ngFor='let doc of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter | sortBy: selectedSort : direction' >
+                    <div *ngFor='let doc of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter | sortBy: selectedSort : direction | paginate: { itemsPerPage: 2, currentPage: p ,totalItems:docList?.length}'>
                       <div class="appointment_main_hero" *ngIf="docList?.length>0">
                         <div class="app_list_in">
                           <div class="appointment_list_in">
@@ -162,6 +162,7 @@
             </div> -->
           </div>
         </div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>                  
       </div>
     </div>
   </div>

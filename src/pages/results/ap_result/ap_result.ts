@@ -39,6 +39,8 @@ export class AppointmentResultsComponent implements OnInit {
     selectedSort: any = null;    
     direction: number;
 
+    p: number = 1;
+
     constructor(private sharingService: SharingService, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
 
