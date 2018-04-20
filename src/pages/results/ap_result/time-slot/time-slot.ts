@@ -122,73 +122,34 @@ export class TimeSlotComponent {
     }
 
     dateSelectEvent(item, index, list?) {
-        let unAvailableList = [];
+        //var unAvailableList = [];
         
-        for(let i=0;i<list.pending_appointments.length;i++) {
-            if(new Date(item.exactDate).getTime() == new Date(list.pending_appointments[i].from_timestamp).getTime()) {
-                unAvailableList.push(list.pending_appointments[i]);
-            }
+        // for(let i=0;i<list.pending_appointments.length;i++) {
+        //     if(new Date(item.exactDate).getTime() == new Date(list.pending_appointments[i].from_timestamp).getTime()) {
+        //         unAvailableList.push(list.pending_appointments[i]);
+        //     }
             
-        }
-        for(let i=0;i<list.confirmed_appointments.length;i++) {
-            if(new Date(item.exactDate).getTime() == new Date(list.confirmed_appointments[i].from_timestamp).getTime()) {
-                unAvailableList.push(list.confirmed_appointments[i]);
-            }
-        }
+        // }
+        // for(let i=0;i<list.confirmed_appointments.length;i++) {
+        //     if(new Date(item.exactDate).getTime() == new Date(list.confirmed_appointments[i].from_timestamp).getTime()) {
+        //         unAvailableList.push(list.confirmed_appointments[i]);
+        //     }
+        // }
         
-        //if(new Date(item.exactDate) == new Date())
+        
         list.daysList = list.daysList || {};
         this.selectedSlots.date = item;
         this.selectedSlots.time = null;
-        // list.work_timings.forEach(element => {
-        //     if (this.weekDays[item.day] == element.day) {
-        //         list.daysList.morning = [];
-        //         list.daysList.afternoon = [];
-        //         list.daysList.evening = [];
-        //         list.daysList.night = [];
-        //         element.morning.forEach(morningObj => {
-        //             morningObj.forEach(times => {
-        //                 let dateToday = new Date();
-        //                 let splitTime = times.split(":");
-        //                 dateToday.setHours(splitTime[0]);
-        //                 dateToday.setMinutes(splitTime[1]);
-        //                 dateToday.setSeconds(splitTime[2]);
-        //                 list.daysList.morning.push(dateToday);
-        //             });
-        //         });
-        //         element.afternoon.forEach(afternoonObj => {
-        //             afternoonObj.forEach(times => {
-        //                 let dateToday = new Date();
-        //                 let splitTime = times.split(":");
-        //                 dateToday.setHours(splitTime[0]);
-        //                 dateToday.setMinutes(splitTime[1]);
-        //                 dateToday.setSeconds(splitTime[2]);
-        //                 list.daysList.afternoon.push(dateToday);
-        //             });
-        //         });
-        //         element.evening.forEach(eveningObj => {
-        //             eveningObj.forEach(times => {
-        //                 let dateToday = new Date();
-        //                 let splitTime = times.split(":");
-        //                 dateToday.setHours(splitTime[0]);
-        //                 dateToday.setMinutes(splitTime[1]);
-        //                 dateToday.setSeconds(splitTime[2]);
-        //                 list.daysList.evening.push(dateToday);
-        //             });
-        //         });
-        //         element.night.forEach(nightObj => {
-        //             nightObj.forEach(times => {
-        //                 let dateToday = new Date();
-        //                 let splitTime = times.split(":");
-        //                 dateToday.setHours(splitTime[0]);
-        //                 dateToday.setMinutes(splitTime[1]);
-        //                 dateToday.setSeconds(splitTime[2]);
-        //                 list.daysList.night.push(dateToday);
-        //             });
-        //         });
-        //     }
-        // });
-
+        var intervals = [];
+        var timeSession: any;
+        
+        for(var j=0;j<list.work_timings.length;j++) {
+            var element;
+            if (item.day == j) {
+                intervals = this.getIntervals(list.work_timings[j][0],list.work_timings[j][1]);
+                timeSession = this.getTimeSessionBasedData(intervals);
+            }
+        }
         index.forEach(element => {
             element.activeClass = false;
         });
@@ -197,6 +158,47 @@ export class TimeSlotComponent {
 
     navigateToApDetails() {
         this.router.navigateByUrl('/main/ap_details');
+    }
+    getIntervals(fromTime,toTime) {
+        var duration = 30;
+        fromTime = this.convertTimeToInt(fromTime);
+        toTime = this.convertTimeToInt(toTime);
+        var intervals = [];
+        while(fromTime < toTime){
+            intervals.push(fromTime.toTimeString().substring(0,5));
+            fromTime.setMinutes(fromTime.getMinutes() + duration);
+        }
+        return intervals;
+      
+    }
+    convertTimeToInt(date_time) {
+        var dt = new Date();
+        dt.setHours(date_time.substring(0,2));
+        dt.setMinutes(date_time.substring(3,5));
+        return dt;
+    }
+
+    getTimeSessionBasedData(intervals) {
+        var timeSession = {
+            morning: [],
+            afternoon: [],
+            evening: [],
+            night: []
+        };
+        for(var i=0;i<intervals.length;i++) {
+           var currentHour =  parseInt(intervals[i].substring(0,2));
+           if (currentHour < 12) {
+            timeSession.morning.push(intervals[i]);
+                
+          } else if (currentHour < 17) {
+            timeSession.afternoon.push(intervals[i]);
+          } else if (currentHour < 21) {
+            timeSession.evening.push(intervals[i]);
+          } else {
+            timeSession.night.push(intervals[i]);
+          }
+        }
+        return timeSession;
     }
 
 }
