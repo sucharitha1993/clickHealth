@@ -131,7 +131,6 @@ export class TimeSlotComponent {
 
     dateSelectEvent(item, index, list?) {
         var unAvailableList = [];
-        debugger;
         for(let i=0;i<list.pending_appointments.length;i++) {
             let selectedDate = this.datePipe.transform(item.exactDate, 'yyyy-MM-dd');
             if(selectedDate == list.pending_appointments[i].date) {
@@ -145,7 +144,6 @@ export class TimeSlotComponent {
                 unAvailableList.push(list.confirmed_appointments[i]);
             }
         }
-        debugger;
         var unAvailableListIntervals = [];
         for(let i=0;i<unAvailableList.length;i++) {
             unAvailableListIntervals.push(unAvailableList[i].time.substring(0,5));
