@@ -1,3 +1,4 @@
+import { AppConfig } from './../../../providers/services/app-config.service';
 import { AppointmentsSearchFormComponent } from './../../tabs/appointment-search-form/appointment-search-form';
 import { SharingService } from './../../../providers/services/sharing-service';
 
@@ -16,6 +17,7 @@ export class AppointmentResultsComponent implements OnInit {
 
     @ViewChild('apsearch') ap_search: AppointmentsSearchFormComponent;
 
+    public AppConfig = AppConfig;
     imgPrePath: string = '../../assets/img/';
     medicalCenters: any = [];
     locations: any = [];
