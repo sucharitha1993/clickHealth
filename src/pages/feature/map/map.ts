@@ -21,7 +21,7 @@ export class MapComponent {
     displayMap(latitude, longitude, mapId?) {
         var mapOptions = {
             zoom: 8,
-            center: { lat: latitude, lng: longitude }
+            center: { lat: parseFloat(latitude), lng: parseFloat(longitude) }
         };
         setTimeout(() => {
             let mapArea = document.getElementById('ap-map');
@@ -29,7 +29,7 @@ export class MapComponent {
             let marker = new google.maps.Marker({
                 map: map,
                 animation: google.maps.Animation.DROP,
-                position: { lat: latitude, lng: longitude }
+                position: { lat: parseFloat(latitude), lng: parseFloat(longitude) }
             });
         }, 500);
     }

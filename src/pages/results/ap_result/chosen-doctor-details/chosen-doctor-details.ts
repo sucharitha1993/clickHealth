@@ -19,5 +19,6 @@ export class ChosenDoctorComponent {
     ngOnInit() {
         let selectedAppointment = this.appInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};
         this.doc = selectedAppointment.docDetails || {};
+        this.doc.mapData = selectedAppointment.location;
     }
 }

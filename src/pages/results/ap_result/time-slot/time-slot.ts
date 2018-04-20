@@ -69,6 +69,12 @@ export class TimeSlotComponent {
             language: doc.language,
             first_fee: doc.first_fee
         }
+        this.selectedAppointment.location = {
+            lat: doc.locations.lat,
+            long: doc.locations.long,
+            address: doc.provider_name + ', ' + doc.locations.landmark ,
+            pincode: doc.locations.pincode
+        }
         this.apInfoService.setAppointmentDetails(this.selectedAppointment);
         this.sharingService.setParams('selectedAppointment', this.selectedAppointment);
     }

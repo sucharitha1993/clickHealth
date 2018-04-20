@@ -15,6 +15,7 @@ export class ConfirmAppointmentComponent {
     searchParams: any;
     healthSeeker: any;
     bookingDetails: any;
+    address: any;
 
     constructor(private sharingService: SharingService, private apInfoService: AppointmentInfoService) { }
 
@@ -23,6 +24,8 @@ export class ConfirmAppointmentComponent {
         this.bookingDetails = this.apInfoService.getbookingDetails() || this.sharingService.getParams('bookedAppointment') || {};
         let selectedAppointment = this.apInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};
         this.doc = selectedAppointment.docDetails || {};
+        selectedAppointment.location = selectedAppointment.location;
+        this.address = selectedAppointment.location.address;
         this.searchParams = this.apInfoService.getAppointmentSearchParams() || this.sharingService.getParams('appointments');        
     }
 
