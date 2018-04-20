@@ -8053,3 +8053,9 @@ img {
 .modal-open {
     overflow: scroll !important;
 }
+.modify_search_modal .dropdown{
+    position: fixed !important;
+    top: 0px !important;
+    bottom: 45px !important;
+    left: auto !important;
+}
