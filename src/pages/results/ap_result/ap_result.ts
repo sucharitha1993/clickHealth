@@ -160,5 +160,8 @@ export class AppointmentResultsComponent implements OnInit {
         this.docList = Object.assign([], this.docList);
     }
 
-
+    scrollTop(page) {
+        this.p = page;
+        window.scrollTo(0, 0);
+    }
 }

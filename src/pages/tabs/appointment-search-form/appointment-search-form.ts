@@ -26,8 +26,7 @@ export class AppointmentsSearchFormComponent implements OnInit {
     sessions: string[] = [
         "morning",
         "afternoon",
-        "evening",
-        "night"
+        "evening"
     ];
 
     appointmentSearchForm: FormGroup;
