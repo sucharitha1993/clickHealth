@@ -27,13 +27,16 @@ export class AppointmentResultsComponent implements OnInit {
     medicalFilter: any;
     genderFilter: any;
 
-    sortItems: any = [{ id: 'free', name: 'Free' },
-    { id: 'fee', name: 'Price - High to Low' },
-    { id: 'fee', name: 'Price - Low to High' },
-    { id: 'nearest', name: 'Nearest' }
+    sortItems: any = [{ id: 'free', name: 'Free', direction: 1 },
+    { id: 'fee', name: 'Price - High to Low', direction: -1 },
+    { id: 'fee', name: 'Price - Low to High', direction: 1 },
+    { id: 'nearest', name: 'Nearest', direction: 1 }
     ];
 
-    selectedSort: any = null;
+    selectedValue: any = null;
+    //sorting variables
+    selectedSort: any = null;    
+    direction: number;
 
     constructor(private sharingService: SharingService, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
@@ -145,10 +148,12 @@ export class AppointmentResultsComponent implements OnInit {
         
     }
     
-
-    //selected Sort value
-    selectedVal(e) {
-        this.selectedSort = e.target.value;
+    //sort function
+    sort(e) {
+       // let sortData = e.target.value;
+        this.direction = this.selectedValue.direction;
+        this.selectedSort = this.selectedValue.id;
+        this.docList = Object.assign([], this.docList);
     }
 
 
