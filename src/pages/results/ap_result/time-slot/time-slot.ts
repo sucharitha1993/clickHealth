@@ -5,6 +5,7 @@ import { AppointmentInfoService } from './../../../../providers/services/appoint
 import { AppLitteralsConfig } from './../../../../providers/literals/app.literals';
 import { Component, Input } from '@angular/core';
 
+declare var $: any;
 
 @Component({
     selector: 'app-time-slot',
@@ -142,12 +143,16 @@ export class TimeSlotComponent {
         this.selectedSlots.date = item;
         this.selectedSlots.time = null;
         var intervals = [];
+        var breakIntervals = [];
+        var finalIntervals = [];
         
         for(var j=0;j<list.work_timings.length;j++) {
             var element;
             if (item.day == j) {
                 intervals = this.getIntervals(list.work_timings[j][0],list.work_timings[j][1]);
-                this.timeSession = this.getTimeSessionBasedData(intervals);
+                breakIntervals = this.getIntervals(list.break_timings[j][0],list.break_timings[j][1]);
+                finalIntervals = $(intervals).not(breakIntervals).get();
+                this.timeSession = this.getTimeSessionBasedData(finalIntervals);
             }
         }
         index.forEach(element => {
