@@ -1,3 +1,4 @@
+import { AppConfig } from './../../../../providers/services/app-config.service';
 import { SharingService } from './../../../../providers/services/sharing-service';
 import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
 import { Component, Input } from '@angular/core';
@@ -16,6 +17,7 @@ export class ConfirmAppointmentComponent {
     healthSeeker: any;
     bookingDetails: any;
     address: any;
+    AppConfig = AppConfig;
 
     constructor(private sharingService: SharingService, private apInfoService: AppointmentInfoService) { }
 

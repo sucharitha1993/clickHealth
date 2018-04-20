@@ -1,7 +1,7 @@
 <section class="Confirm_Appointment_main">
     <div class="container">
-        <div class="row" id="print-section">
-            <div class="col-md-7">
+        <div class="row">
+            <div class="col-md-7"  id="print-section">
                 <div class="full_width booking_confirm booking_confirm_finald">
                     <div class="booking_con_header">
                         <h2>Booking Done! &nbsp;<img src="{{imgPrePath}}icons/success_hand.png"></h2>
@@ -16,7 +16,7 @@
                                         <div class="alt-center-l">
                                             <div class="alt-center-lp">
                                                 <div class="alt-logo">
-                                                    <a href="#"><img alt="" src="{{imgPrePath}}doctor_new.jpg"></a>
+                                                    <a href="#"><img alt="" src="{{AppConfig?.IMG_URL}}{{doc?.docImage}}"></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +99,7 @@
                                 <h4>Health Providers Details</h4>
                                 <h5>{{bookingDetails?.provider?.name}}</h5>
                                 <p>{{address}}</p><br>
-                                <p>Phone: 040 2316 0039</p>
+                                <p>Phone: {{doc?.mobile}}</p>
                             </div>
                         </div>
 

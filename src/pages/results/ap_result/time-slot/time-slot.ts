@@ -42,8 +42,8 @@ export class TimeSlotComponent {
     ngOnInit() {
         this.doc = this.doc || {};
         let vacations = this.doc.vacations || [];
-        let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date']
-        this.searchParams = this.apInfoService.getAppointmentSearchParams() || this.apInfoService.getLocalStorageParamsDynamically(args) || {};
+        //let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date']
+        this.searchParams = this.apInfoService.getAppointmentSearchParams() || this.sharingService.getParams('appointment') || {};
         this.doc.vacationLists = this.getVacationsDateList(vacations);
     }
 
