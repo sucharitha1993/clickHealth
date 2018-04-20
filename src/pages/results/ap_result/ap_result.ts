@@ -71,6 +71,9 @@ export class AppointmentResultsComponent implements OnInit {
     }
     //formatClinicians
     formatClinicians(clinicians) {
+        this.medicalCenters = this.appointmentInfo.getHospitals();
+        this.locations = this.appointmentInfo.getLocations();
+        this.languages = this.appointmentInfo.getLanguages();
         this.docList = [];
         this.searchParams = this.getSearchParams();
         for (let key in clinicians) {
@@ -100,9 +103,9 @@ export class AppointmentResultsComponent implements OnInit {
             .subscribe((res) => {
                 if (res.status) {
                     res.data = res.data || {};
-                    this.medicalCenters = res.data.hospitals;
-                    this.locations = res.data.locations;
-                    this.languages = res.data.languages;
+                    this.appointmentInfo.setHospitals(res.data.hospitals);
+                    this.appointmentInfo.setLocations(res.data.locations);
+                    this.appointmentInfo.setLanguages(res.data.languages);
                     this.appointmentInfo.setClinicians(res.data.clinicians);
                     this.formatClinicians(res.data.clinicians);
                 }

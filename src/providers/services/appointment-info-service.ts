@@ -12,6 +12,7 @@ export class AppointmentInfoService {
     appointmentDetails: any;
     userDetails: any;
     bookingDetails: any;
+    languages: any;
 
     constructor() {
     }
@@ -39,6 +40,14 @@ export class AppointmentInfoService {
     }
     getHospitals() {
         return this.medicalCenters;
+    }
+
+    //to set and get Languages
+    setLanguages(languages) {
+        this.languages = languages;
+    }
+    getLanguages() {
+        return this.languages;
     }
 
     // to set and get clinicians
