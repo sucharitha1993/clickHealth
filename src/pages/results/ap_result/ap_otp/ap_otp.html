@@ -10,6 +10,7 @@
                             <input id="msg" type="text" [(ngModel)]='otp' class="form-control" name="msg" placeholder="Otp">
                             <a (click)='verifyOTP(otp)'><span class="input-group-addon">Verify</span></a>
                         </div>
+                        <span *ngIf='(otp != serverOtp || otpErr)' style='color:red'>please enter correct otp</span>
                     </div>
                     <i>One time Password (OTP) has been sent to your mobile .....{{healthSeeker.mobile}},<br> 
                         {{healthSeeker.email}}, Please entr the same here to Login</i>

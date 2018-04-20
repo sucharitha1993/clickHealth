@@ -51,6 +51,7 @@ export class BookAppointmentComponent implements OnInit {
                 if (res.status) {
                     res.data = res.data || [];
                     this.appointmentInfo.setOTP(res.data['0']);
+                    this.sharingService.setParams('otp',res.data['0']);
                     this.router.navigateByUrl('main/ap_otp');
                 }
             },
