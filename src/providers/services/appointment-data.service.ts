@@ -43,7 +43,7 @@ export class AppointmentDataService {
                             res.data.clinicians[res.data.hospitals[i].name][j].provider_name = res.data.hospitals[i].name;
                         }
                     }
-                }debugger;
+                }
                 return res;
             });
     }

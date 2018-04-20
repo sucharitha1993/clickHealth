@@ -2145,8 +2145,9 @@ ul.succ_time_date_ye li {
     background: url(../img/icons/check.png);
     width: 14px;
     height: 13px;
-    float: left;
-    position: absolute;
+    float: right;
+    /* float: left; */
+    /* position: absolute; */
     right: 10px;
     top: 38px;
     background-size: 14px;

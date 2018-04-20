@@ -32,7 +32,7 @@ export class TimeSlotComponent {
         date: '',
         time: ''
     }
-    public weekDays: any = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+    public weekDays: any = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     public monthsList: any = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     constructor(private sharingService: SharingService, private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
@@ -121,7 +121,22 @@ export class TimeSlotComponent {
         return dates;
     }
 
-    dateSelectEvent(item, index, list?) {
+    dateSelectEvent(item, index, list?) {debugger;
+        let unAvailableList = [];
+        
+        for(let i=0;i<list.pending_appointments.length;i++) {
+            if(new Date(item.exactDate).getTime() == new Date(list.pending_appointments[i].from_timestamp).getTime()) {
+                unAvailableList.push(list.pending_appointments[i]);
+            }
+            
+        }
+        for(let i=0;i<list.confirmed_appointments.length;i++) {
+            if(new Date(item.exactDate).getTime() == new Date(list.confirmed_appointments[i].from_timestamp).getTime()) {
+                unAvailableList.push(list.confirmed_appointments[i]);
+            }
+        }
+        
+        //if(new Date(item.exactDate) == new Date())
         list.daysList = list.daysList || {};
         this.selectedSlots.date = item;
         this.selectedSlots.time = null;
