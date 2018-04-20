@@ -15,12 +15,15 @@ export class BookAppointmentComponent implements OnInit {
 
     imgPrePath: string = '../../assets/img/';
     confirmAppointmentForm: FormGroup;
+    selectedAppointment:any;
 
     constructor(private sharingService: SharingService, private router: Router, public formBuilder: FormBuilder, private apiSerives: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
 
     ngOnInit() {
         this.initialiseConfirmAppointmentfields();
+        let selectedAppointment = this.appointmentInfo.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment');
+        this.selectedAppointment = selectedAppointment.appointmentDetails;
     }
 
     initialiseConfirmAppointmentfields() {

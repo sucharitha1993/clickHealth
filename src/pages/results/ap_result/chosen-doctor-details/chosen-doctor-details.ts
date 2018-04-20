@@ -1,3 +1,4 @@
+import { AppConfig } from './../../../../providers/services/app-config.service';
 import { SharingService } from './../../../../providers/services/sharing-service';
 import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
 import { Component } from '@angular/core';
@@ -10,6 +11,7 @@ import { Component } from '@angular/core';
 
 export class ChosenDoctorComponent {
 
+    public AppConfig = AppConfig;
     public doc: any;
     imgPrePath: string = '../../assets/img/';
     constructor(private sharingService: SharingService, private appInfoService: AppointmentInfoService) { }
