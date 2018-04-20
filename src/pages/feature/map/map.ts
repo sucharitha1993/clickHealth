@@ -20,7 +20,7 @@ export class MapComponent {
     // to view Map
     displayMap(latitude, longitude, mapId?) {
         var mapOptions = {
-            zoom: 8,
+            zoom: 16,
             center: { lat: parseFloat(latitude), lng: parseFloat(longitude) }
         };
         setTimeout(() => {
