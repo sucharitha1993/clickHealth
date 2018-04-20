@@ -39,25 +39,17 @@
           <h3>Morning</h3>
         </div>
         <ul>
-          <!-- <li *ngFor="let morning of doc?.daysList?.morning" (click)="chosenAppointment(morning, doc)">
+          <li *ngFor="let morning of timeSession?.morning" (click)="chosenAppointment(morning, doc)">
             <div class="checkbox">
-              <label class="container12">{{morning | date:'shortTime'}}
-                              <input type="radio" name="colorRadio" value="red">
-                              <span class="checkmark"></span>
-                          </label>
-            </div>
-          </li> -->
-          <li *ngFor="let morning of morningTimings" (click)="chosenAppointment(morning, doc)">
-            <div class="checkbox">
-              <label class="container12">{{morning}}
+              <label class="container12">{{morning}} AM
                               <input type="radio" name="colorRadio" value="red">
                               <span class="checkmark"></span>
                           </label>
             </div>
           </li>
-          <!-- <li *ngIf="doc?.daysList?.morning?.length == 0">
+          <li *ngIf="timeSession?.morning?.length == 0">
             No slots available
-          </li> -->
+          </li>
         </ul>
       </div>
     </div>
@@ -67,20 +59,12 @@
           <h3>Afternoon</h3>
         </div>
         <ul>
-          <!-- <li *ngIf="doc?.daysList?.afternoon?.length == 0">
+          <li *ngIf="timeSession?.afternoon?.length == 0">
             No slots available
           </li>
-          <li *ngFor="let afternoon of doc?.daysList?.afternoon" (click)="chosenAppointment(afternoon,doc)">
+          <li *ngFor="let afternoon of timeSession?.afternoon" (click)="chosenAppointment(afternoon,doc)">
             <div class="checkbox">
-              <label class="container12">{{afternoon | date:'shortTime'}}
-                              <input type="radio" name="colorRadio" value="red">
-                              <span class="checkmark"></span>
-                          </label>
-            </div>
-          </li> -->
-          <li *ngFor="let afternoon of aftrnTimings" (click)="chosenAppointment(afternoon,doc)">
-            <div class="checkbox">
-              <label class="container12">{{afternoon}}
+              <label class="container12">{{afternoon}} PM
                               <input type="radio" name="colorRadio" value="red">
                               <span class="checkmark"></span>
                           </label>
@@ -95,20 +79,12 @@
           <h3>Evening</h3>
         </div>
         <ul>
-          <!-- <li *ngIf="doc?.daysList?.evening?.length == 0">
+          <li *ngIf="timeSession?.evening?.length == 0">
             No slots available
           </li>
-          <li *ngFor="let evening of doc?.daysList?.evening" (click)="chosenAppointment(evening, doc)">
+          <li *ngFor="let evening of timeSession?.evening" (click)="chosenAppointment(evening, doc)">
             <div class="checkbox">
-              <label class="container12">{{evening | date:'shortTime'}}
-                              <input type="radio" name="colorRadio" value="red">
-                              <span class="checkmark"></span>
-                          </label>
-            </div>
-          </li> -->
-          <li *ngFor="let evening of evengTimings" (click)="chosenAppointment(evening, doc)">
-            <div class="checkbox">
-              <label class="container12">{{evening }}
+              <label class="container12">{{evening}} PM
                               <input type="radio" name="colorRadio" value="red">
                               <span class="checkmark"></span>
                           </label>

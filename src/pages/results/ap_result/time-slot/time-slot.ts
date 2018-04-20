@@ -34,6 +34,7 @@ export class TimeSlotComponent {
     }
     public weekDays: any = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     public monthsList: any = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    public timeSession : any;
 
     constructor(private sharingService: SharingService, private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
 
@@ -141,13 +142,12 @@ export class TimeSlotComponent {
         this.selectedSlots.date = item;
         this.selectedSlots.time = null;
         var intervals = [];
-        var timeSession: any;
         
         for(var j=0;j<list.work_timings.length;j++) {
             var element;
             if (item.day == j) {
                 intervals = this.getIntervals(list.work_timings[j][0],list.work_timings[j][1]);
-                timeSession = this.getTimeSessionBasedData(intervals);
+                this.timeSession = this.getTimeSessionBasedData(intervals);
             }
         }
         index.forEach(element => {
@@ -182,21 +182,17 @@ export class TimeSlotComponent {
         var timeSession = {
             morning: [],
             afternoon: [],
-            evening: [],
-            night: []
+            evening: []
         };
-        for(var i=0;i<intervals.length;i++) {
-           var currentHour =  parseInt(intervals[i].substring(0,2));
-           if (currentHour < 12) {
-            timeSession.morning.push(intervals[i]);
-                
-          } else if (currentHour < 17) {
-            timeSession.afternoon.push(intervals[i]);
-          } else if (currentHour < 21) {
-            timeSession.evening.push(intervals[i]);
-          } else {
-            timeSession.night.push(intervals[i]);
-          }
+        for (var i = 0; i < intervals.length; i++) {
+            var currentHour = parseInt(intervals[i].substring(0, 2));
+            if (currentHour < 12) {
+                timeSession.morning.push(intervals[i]);
+            } else if (currentHour < 17) {
+                timeSession.afternoon.push(intervals[i]);
+            } else {
+                timeSession.evening.push(intervals[i]);
+            }
         }
         return timeSession;
     }
