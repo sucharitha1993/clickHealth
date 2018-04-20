@@ -10,20 +10,18 @@ export class CategoryFilterPipe implements PipeTransform {
                     loc = true,
                     lang = true,
                     gender = true;
-                for (let i in item.data) {
-                    if (medicalSearch && medicalSearch.length > 0) {
-                        medical = medicalSearch.some(medical => medical == item.name);
-                    }
-                    if (locSearch && locSearch.length > 0 && item.data[i] && item.data[i].locations) {
-                        loc = locSearch.some(loc => loc == item.data[i].locations.landmark);
-                    }
-                    if (langSearch && langSearch.length > 0 && item.data[i] && item.data[i].language) {
-                        lang = langSearch.some(lang => lang == item.data[i].language);
-                    }
-                    if (genderSearch && genderSearch.length > 0 && item.data[i] && item.data[i].gender) {
-                        gender = genderSearch.some(gender => gender == item.data[i].gender);
-                    }
-                }                 
+                if (medicalSearch && medicalSearch.length > 0) {
+                    medical = medicalSearch.some(medical => medical == item.provider_name);
+                }
+                if (locSearch && locSearch.length > 0 && item.locations) {
+                    loc = locSearch.some(loc => loc == item.locations.landmark);
+                }
+                if (langSearch && langSearch.length > 0 && item.language) {
+                    lang = langSearch.some(lang => lang == item.language);
+                }
+                if (genderSearch && genderSearch.length > 0 && item.gender) {
+                    gender = genderSearch.some(gender => gender == item.gender);
+                }
                 let filterObj = {
                     medical: medical,
                     loc: loc,
