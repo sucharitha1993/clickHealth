@@ -13,9 +13,13 @@ import { Component, Input } from '@angular/core';
 export class AppointmentOTPComponent {
 
     public otp: any;
+    public healthSeeker: any;
+    
     constructor(public sharingService: SharingService, public router: Router, public apiServices: AppointmentDataService, public apInfoService: AppointmentInfoService) { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        this.healthSeeker = this.apInfoService.getUserDetails() || this.sharingService.getParams('healthSeeker') || {};
+    }
 
     verifyOTP(otp) {
         let selectedAppointment = this.apInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};

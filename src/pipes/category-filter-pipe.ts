@@ -19,8 +19,8 @@ export class CategoryFilterPipe implements PipeTransform {
                 if (langSearch && langSearch.length > 0 && item.language) {
                     lang = langSearch.some(lang => lang.toLowerCase() == item.language.toLowerCase());
                 }
-                if (genderSearch && genderSearch.length > 0 && item.gender) {
-                    gender = genderSearch.some(gender => gender == item.gender);
+                if (genderSearch && genderSearch.length > 0 && item.user && item.user.gender) {
+                    gender = genderSearch.some(gender => gender.toLowerCase() == item.user.gender.toLowerCase());
                 }
                 let filterObj = {
                     medical: medical,

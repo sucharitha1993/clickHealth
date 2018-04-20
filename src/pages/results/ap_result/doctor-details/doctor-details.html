@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-8">
                     <br>
-                    <p *ngFor="let award of doc?.awards"> {{award.name}} at {{award.recognised_by}} - {{award.year}}</p>
+                    <p *ngFor="let award of doc?.awards"> {{award?.name}} at {{award?.recognised_by}} - {{award?.year}}</p>
                 </div>
             </div>
         </div>

@@ -22,7 +22,7 @@ export class CategoryFiltersComponent implements OnInit {
 
 
     //languages: object[] = [{ id: 'en', name: 'English' }, { id: 'tel', name: 'Telugu' }, { id: 'fr', name: 'french' }, { id: 'kn', name: 'kannada' }];
-    genders: object[] = [{ id: 'male', name: 'Male' }, { id: 'female', name: 'Female' }];
+    genders: object[] = [{ id: 'm', name: 'Male' }, { id: 'f', name: 'Female' }];
 
     constructor(private appointmentInfo: AppointmentInfoService) {
     }

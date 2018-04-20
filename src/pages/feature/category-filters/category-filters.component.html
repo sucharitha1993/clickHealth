@@ -69,7 +69,7 @@
                     <div class="list_filters scrollbar" id="style-3">
                         <div class="checkbox" *ngFor='let gender of genders | filter : genderSearchTerm'>
                             <label class="container12">{{gender.name}}
-                        <input type="checkbox" (change)='filterData($event,"gender",gender.name)'>
+                        <input type="checkbox" (change)='filterData($event,"gender",gender.id)'>
                         <span class="checkmark"></span>
                         </label>
                         </div>
