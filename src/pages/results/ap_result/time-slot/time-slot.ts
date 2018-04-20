@@ -121,7 +121,7 @@ export class TimeSlotComponent {
         return dates;
     }
 
-    dateSelectEvent(item, index, list?) {debugger;
+    dateSelectEvent(item, index, list?) {
         let unAvailableList = [];
         
         for(let i=0;i<list.pending_appointments.length;i++) {
