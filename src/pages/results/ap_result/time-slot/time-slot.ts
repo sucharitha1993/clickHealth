@@ -130,20 +130,26 @@ export class TimeSlotComponent {
     }
 
     dateSelectEvent(item, index, list?) {
-        //var unAvailableList = [];
-        
-        // for(let i=0;i<list.pending_appointments.length;i++) {
-        //     if(new Date(item.exactDate).getTime() == new Date(list.pending_appointments[i].from_timestamp).getTime()) {
-        //         unAvailableList.push(list.pending_appointments[i]);
-        //     }
+        var unAvailableList = [];
+        debugger;
+        for(let i=0;i<list.pending_appointments.length;i++) {
+            let selectedDate = this.datePipe.transform(item.exactDate, 'yyyy-MM-dd');
+            if(selectedDate == list.pending_appointments[i].date) {
+                unAvailableList.push(list.pending_appointments[i]);
+            }
             
-        // }
-        // for(let i=0;i<list.confirmed_appointments.length;i++) {
-        //     if(new Date(item.exactDate).getTime() == new Date(list.confirmed_appointments[i].from_timestamp).getTime()) {
-        //         unAvailableList.push(list.confirmed_appointments[i]);
-        //     }
-        // }
-        
+        }
+        for(let i=0;i<list.confirmed_appointments.length;i++) {
+            let selectedDate = this.datePipe.transform(item.exactDate, 'yyyy-MM-dd');
+            if(selectedDate == list.confirmed_appointments[i].date) {
+                unAvailableList.push(list.confirmed_appointments[i]);
+            }
+        }
+        debugger;
+        var unAvailableListIntervals = [];
+        for(let i=0;i<unAvailableList.length;i++) {
+            unAvailableListIntervals.push(unAvailableList[i].time.substring(0,5));
+        }
         
         list.daysList = list.daysList || {};
         this.selectedSlots.date = item;
@@ -158,9 +164,10 @@ export class TimeSlotComponent {
                 intervals = this.getIntervals(list.work_timings[j][0],list.work_timings[j][1]);
                 breakIntervals = this.getIntervals(list.break_timings[j][0],list.break_timings[j][1]);
                 finalIntervals = $(intervals).not(breakIntervals).get();
-                this.timeSession = this.getTimeSessionBasedData(finalIntervals);
             }
         }
+        finalIntervals = $(intervals).not(unAvailableListIntervals).get();
+        this.timeSession = this.getTimeSessionBasedData(finalIntervals);
         index.forEach(element => {
             element.activeClass = false;
         });
