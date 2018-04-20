@@ -58,4 +58,8 @@ export class BookAppointmentComponent implements OnInit {
                 console.log(err);
             })
     }
+
+    navigateBack() {
+        this.router.navigateByUrl('main/ap_result');
+    }
 }
