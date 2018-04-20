@@ -51,9 +51,8 @@
               <!-- END OF SORT BY -->
               <!-- DOCTOR DETAILS GOES HERE -->
               <div class="catalog-row alternative">
-                <div *ngFor='let doctor of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter | sortBy: selectedSort : direction' >
-                  <div *ngIf="doctor?.data?.length>0">
-                    <div *ngFor='let doc of doctor?.data'>
+                <div *ngFor='let doc of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter | sortBy: selectedSort : direction' >
+                  <div *ngIf="docList?.length>0">
                       <div class="appointment_main_hero">
                         <div class="app_list_in">
                           <div class="appointment_list_in">
@@ -87,7 +86,7 @@
                                       <div class="col-md-4 col-lg-4 padding_left_0">
                                         <div class="full_width doctr_details3">
                                           <h4>09:00 PM - 04:00 PM</h4>
-                                          <p>{{ doctor?.data?.name + ',' + doc?.locations?.landmark}}
+                                          <p>{{ doc?.provider_name + ',' + doc?.locations?.landmark}}
                                           </p>
                                           <a data-toggle="modal" data-target="#myModal" href="#" (click)="onViewMapClick(doc?.locations.lat,doc?.locations.long,doc?.id)">View map <span class="fa fa-angle-right"></span></a>
                                           <div height="410" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -141,7 +140,6 @@
                       </div>
                     </div>
                   </div>
-                </div>
               </div>
               <!-- END OF DOCTOR DETAILS -->
             </div>

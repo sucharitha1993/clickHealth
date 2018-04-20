@@ -69,12 +69,10 @@ export class AppointmentResultsComponent implements OnInit {
         this.docList = [];
         this.searchParams = this.getSearchParams();
         for (let key in clinicians) {
-            if (clinicians.hasOwnProperty(key)) {
-                clinicians[key].name = key;
-                this.docList.push({
-                    "data": clinicians[key],
-                    "name": key
-                })
+            if (clinicians[key].length > 0) {
+                for(let i in clinicians[key]) {
+                    this.docList.push(clinicians[key][i]);                    
+                }
             }
         }
     }
