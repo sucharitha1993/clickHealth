@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,10 +10,14 @@ export class NavbarComponent implements OnInit {
 
     imgPrePath: string;
 
-    constructor() {
+    constructor(private router: Router) {
         this.imgPrePath = '../../assets/img/';
     }
 
     ngOnInit() {
+    }
+
+    navigateToMain() {
+        this.router.navigateByUrl('/main');
     }
 }
