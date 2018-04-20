@@ -19,11 +19,11 @@
             </div>
             <div class="row">
                 <div class="col-md-3">
-                    <img src="">
+                    <img src="../../../assets/img/award1.png">
                 </div>
                 <div class="col-md-8">
                     <br>
-                    <p *ngFor="let award of doc?.awards"> {{award.name}}</p>
+                    <p *ngFor="let award of doc?.awards"> {{award.name}} at {{award.recognised_by}} - {{award.year}}</p>
                 </div>
             </div>
         </div>
