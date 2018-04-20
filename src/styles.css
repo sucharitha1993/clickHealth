@@ -18,3 +18,8 @@
     position: relative !important;
     left: 20% !important;
 } */
+.app_list_menu li {
+    margin-left: 35px !important;
+    width: 100% !important;
+    text-align: left !important;
+}
