@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-    constructor(public router: Router;) {
+    constructor(public router: Router) {
     }
 
     ngOnInit() {

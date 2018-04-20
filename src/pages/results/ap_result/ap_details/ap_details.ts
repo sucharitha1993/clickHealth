@@ -1,3 +1,4 @@
+import { AppLitteralsConfig } from './../../../../providers/literals/app.literals';
 import { SharingService } from './../../../../providers/services/sharing-service';
 import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
 import { AppRegExpressionsConfig } from './../../../../providers/literals/app.regularExp';
@@ -12,7 +13,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class BookAppointmentComponent implements OnInit {
 
-
+    AppLitteralsConfig = AppLitteralsConfig;
     imgPrePath: string = '../../assets/img/';
     confirmAppointmentForm: FormGroup;
     selectedAppointment:any;
@@ -44,7 +45,10 @@ export class BookAppointmentComponent implements OnInit {
         let obj = {
             "generate": true,
             "email": this.confirmAppointmentForm.controls['email'].value,
-            'mobile': this.confirmAppointmentForm.controls['mobile'].value
+            'mobile': this.confirmAppointmentForm.controls['mobile'].value,
+            "name": this.confirmAppointmentForm.controls['name'].value,
+            "reason": this.confirmAppointmentForm.controls['reason'].value,
+            "agreeing_to_tnc": this.confirmAppointmentForm.controls['agreeing_to_tnc'].value
         }
         this.apiSerives.generateOtp(obj)
             .subscribe((res) => {
@@ -62,5 +66,12 @@ export class BookAppointmentComponent implements OnInit {
 
     navigateBack() {
         this.router.navigateByUrl('main/ap_result');
+    }
+
+    agreeTnC(e) {
+        if (e.target.checked)
+            this.confirmAppointmentForm.controls['agreeing_to_tnc'].setValue(e.target.checked)
+        else
+            this.confirmAppointmentForm.controls['agreeing_to_tnc'].setValue(null);
     }
 }
