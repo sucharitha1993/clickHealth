@@ -51,9 +51,9 @@
               <!-- END OF SORT BY -->
               <!-- DOCTOR DETAILS GOES HERE -->
               <div class="catalog-row alternative">
-                <div *ngFor='let doc of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter | sortBy: selectedSort : direction' >
-                  <div *ngIf="docList?.length>0">
-                      <div class="appointment_main_hero">
+                  <p *ngIf="docList?.length == 0 || (docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter).length == 0">NO data found</p>                                                        
+                    <div *ngFor='let doc of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter | sortBy: selectedSort : direction' >
+                      <div class="appointment_main_hero" *ngIf="docList?.length>0">
                         <div class="app_list_in">
                           <div class="appointment_list_in">
                             <div class="appointment_list_clo">
@@ -138,7 +138,6 @@
                           <app-time-slot *ngIf='doc?.isBookAppointment' [doc]='doc'></app-time-slot>
                         </div>
                       </div>
-                    </div>
                   </div>
               </div>
               <!-- END OF DOCTOR DETAILS -->
