@@ -50,8 +50,8 @@
                     </div>
                     <div class="list_filters scrollbar" id="style-3">
                         <div class="checkbox" *ngFor='let lang of languages | filter : languageSearchTerm'>
-                            <label class="container12">{{lang.name}}
-                        <input type="checkbox" (change)='filterData($event,"language",lang.name)'>
+                            <label class="container12">{{lang}}
+                        <input type="checkbox" (change)='filterData($event,"language",lang)'>
                         <span class="checkmark"></span>
                         </label>
                         </div>

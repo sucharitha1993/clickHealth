@@ -12,6 +12,7 @@ export class CategoryFiltersComponent implements OnInit {
 
     @Input('medicalCenters') medicalCenters: any;
     @Input('locations') locations: any;
+    @Input('languages') languages: any;
     medicalSearchTerm: string;
     locationSearchTerm: string;
     genderSearchTerm: string;
@@ -20,7 +21,7 @@ export class CategoryFiltersComponent implements OnInit {
     public genderArr = []; public locArr = []; public languageArr = [];
 
 
-    languages: object[] = [{ id: 'en', name: 'English' }, { id: 'tel', name: 'Telugu' }, { id: 'fr', name: 'french' }, { id: 'kn', name: 'kannada' }];
+    //languages: object[] = [{ id: 'en', name: 'English' }, { id: 'tel', name: 'Telugu' }, { id: 'fr', name: 'french' }, { id: 'kn', name: 'kannada' }];
     genders: object[] = [{ id: 'male', name: 'Male' }, { id: 'female', name: 'Female' }];
 
     constructor(private appointmentInfo: AppointmentInfoService) {

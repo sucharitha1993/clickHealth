@@ -17,7 +17,7 @@ export class CategoryFilterPipe implements PipeTransform {
                     loc = locSearch.some(loc => loc == item.locations.landmark);
                 }
                 if (langSearch && langSearch.length > 0 && item.language) {
-                    lang = langSearch.some(lang => lang == item.language);
+                    lang = langSearch.some(lang => lang.toLowerCase() == item.language.toLowerCase());
                 }
                 if (genderSearch && genderSearch.length > 0 && item.gender) {
                     gender = genderSearch.some(gender => gender == item.gender);

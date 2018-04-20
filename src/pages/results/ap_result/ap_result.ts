@@ -19,6 +19,7 @@ export class AppointmentResultsComponent implements OnInit {
     imgPrePath: string = '../../assets/img/';
     medicalCenters: any = [];
     locations: any = [];
+    languages: any = [];
     docList: any = [];
     searchParams: any;
 
@@ -97,6 +98,7 @@ export class AppointmentResultsComponent implements OnInit {
                     res.data = res.data || {};
                     this.medicalCenters = res.data.hospitals;
                     this.locations = res.data.locations;
+                    this.languages = res.data.languages;
                     this.appointmentInfo.setClinicians(res.data.clinicians);
                     this.formatClinicians(res.data.clinicians);
                 }
