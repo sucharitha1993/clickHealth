@@ -12,3 +12,9 @@
  .pac-container {
     z-index: 1051 !important;
 }
+pagination-controls {
+    margin-top: 2% !important;
+    bottom: 5% !important;
+    position: relative !important;
+    left: 20% !important;
+}
