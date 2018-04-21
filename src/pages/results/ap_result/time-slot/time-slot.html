@@ -6,8 +6,8 @@
 
         <div class="owl-carousel owl-theme owl-loaded owl-drag">
           <div class="owl-stage-outer">
-            <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s;">
-              <div ng2-carouselamos class="slides-wrapper" [items]="doc?.vacationLists" [width]="1000" [$prev]="prev" [$next]="next" [$item]="item">
+            <div class="owl-stage">
+              <!-- <div ng2-carouselamos class="slides-wrapper" [items]="doc?.vacationLists" [width]="1000" [$prev]="prev" [$next]="next" [$item]="item">
               </div>
               <ng-template #prev>
                 <span class="fa fa-chevron-left" id="left"></span>
@@ -25,7 +25,16 @@
                     <span>{{monthsList[item.month]}}</span>
                   </div>
                 </div>
-              </ng-template>
+              </ng-template> -->
+              <ngx-carousel [inputs]="carouselConfig">
+                <button NgxCarouselPrev class="leftRs">&lt;</button>                  
+                <ngx-item [ngClass]="{'activen': item.activeClass == true}" style='width:15% !important;margin: 0% 1%;' (click)="dateSelectEvent(item, doc.vacationLists, doc)"  *ngFor="let item of doc?.vacationLists" NgxCarouselItem>
+                      <span>{{weekDays[item.day]}}</span>
+                      <h2>{{item.date}}</h2>
+                      <span>{{monthsList[item.month]}}</span>
+                </ngx-item>
+                <button NgxCarouselNext class="rightRs">&gt;</button>
+              </ngx-carousel>
             </div>
           </div>
         </div>

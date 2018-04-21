@@ -62,6 +62,7 @@ import { CategoryFiltersComponent } from './../pages/feature/category-filters/ca
 
 //Ngx Pagintor Module
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxCarouselModule } from 'ngx-carousel'
 
 @NgModule({
   declarations: [
@@ -110,7 +111,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     Ng2CarouselamosModule,
     TypeaheadModule.forRoot(),
     //Paginator Module
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxCarouselModule
   ],
   providers: [
     AppointmentDataService,

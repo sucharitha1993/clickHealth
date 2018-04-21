@@ -37,6 +37,18 @@ export class TimeSlotComponent {
     public monthsList: any = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     public timeSession : any;
 
+    private carouselConfig = {
+        grid: { xs: 1, sm: 1, md: 3, lg: 3, all: 0 },
+        slide: 2,
+        speed: 400,
+        interval: 10000,
+        point: {
+            visible: false
+        },
+        loop: true,
+        touch: true
+    }
+
     constructor(private sharingService: SharingService, private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
 
     ngOnInit() {
