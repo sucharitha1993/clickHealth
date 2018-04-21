@@ -48,7 +48,11 @@ ngx-carousel  button {
 
 ngx-carousel button[NgxCarouselPrev] {
   left: 0px;
+  background: white;
+  border: 1px solid #ccc;
 }
 ngx-carousel button[NgxCarouselNext] {
   right: 0px;
+  background: white;
+  border: 1px solid #ccc;
 }
