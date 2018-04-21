@@ -9,7 +9,7 @@ declare var google: any;
 
 export class MapComponent {
     @Input('mapData')
-    private mapData: any = {};
+    public mapData: any = {};
 
     constructor() { }
 
