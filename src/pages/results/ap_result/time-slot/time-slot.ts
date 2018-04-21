@@ -41,7 +41,7 @@ export class TimeSlotComponent {
         grid: { xs: 1, sm: 1, md: 3, lg: 3, all: 0 },
         slide: 2,
         speed: 400,
-        interval: 10000,
+        interval: 50000,
         point: {
             visible: false
         },
