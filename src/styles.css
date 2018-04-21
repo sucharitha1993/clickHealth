@@ -20,6 +20,8 @@
 } */
 .app_list_menu li {
     margin-left: 35px !important;
-    width: 100% !important;
     text-align: left !important;
+}
+typeahead-container> ul li {
+    width: 100% !important;    
 }
