@@ -30,10 +30,11 @@ export class AppointmentResultsComponent implements OnInit {
     medicalFilter: any;
     genderFilter: any;
 
-    sortItems: any = [{ id: 'free', name: 'Free', direction: 1 },
+    sortItems: any = [
+    //{ id: 'free', name: 'Free', direction: 1 },
     { id: 'fee', name: 'Price - High to Low', direction: -1 },
     { id: 'fee', name: 'Price - Low to High', direction: 1 },
-    { id: 'nearest', name: 'Nearest', direction: 1 }
+    //{ id: 'nearest', name: 'Nearest', direction: 1 }
     ];
 
     selectedValue: any = null;
