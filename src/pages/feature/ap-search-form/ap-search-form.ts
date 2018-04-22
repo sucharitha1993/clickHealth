@@ -108,6 +108,7 @@ export class ApSearchFormComponent implements OnInit {
         }
         //let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date'];
         //this.appointmentInfo.setLocalStorageParamsDynamically(args, reqObj);
+        this.sharingService.setParams('activeClass','ap');
         this.appointmentInfo.setAppointmentSearchParams(reqObj);
         this.sharingService.setParams('appointments', reqObj);
         this.close.emit(reqObj);

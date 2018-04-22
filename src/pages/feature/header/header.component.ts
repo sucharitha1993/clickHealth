@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { SharingService } from './../../../providers/services/sharing-service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-    constructor(public router: Router) {
+    public activeClass: string;
+
+    constructor(public SharingService: SharingService) {
     }
 
     ngOnInit() {
+        this.activeClass = this.SharingService.getParams('activeClass');
     }
 
     navigateToMain() {
