@@ -59,6 +59,34 @@ export class TimeSlotComponent {
         this.doc.vacationLists = this.getVacationsDateList(vacations);
     }
 
+    ngAfterViewInit() {
+        this.loadOwlCarousel();
+    }
+
+    //to load Carousel css
+    loadOwlCarousel() {
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            margin: 10,
+            nav: true,
+            loop: true,
+            dot: false,
+
+            navText: ["<span class='fa fa-chevron-left'></span>", "<span class='fa fa-chevron-right'></span>"],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 5
+                }
+            }
+        })
+    }
+
     chosenAppointment(selectedTime, doctor) {
         this.selectedSlots.time = selectedTime;
         let doc = this.doc || {};
