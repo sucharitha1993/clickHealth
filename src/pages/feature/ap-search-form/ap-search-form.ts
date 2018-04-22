@@ -11,9 +11,9 @@ declare var google: any;
 
 @Component({
     selector: 'app-appointments-search-from',
-    templateUrl: './appointment-search-form.html'
+    templateUrl: './ap-search-form.html'
 })
-export class AppointmentsSearchFormComponent implements OnInit {
+export class ApSearchFormComponent implements OnInit {
 
     @Output() close: EventEmitter<any> = new EventEmitter();
     @Input('isModal')

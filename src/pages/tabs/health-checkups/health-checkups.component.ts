@@ -15,4 +15,8 @@ export class HealthCheckupComponent implements OnInit {
 
     ngOnInit() {
     }
+
+    searchHCRes(reqObj) {
+        console.log(reqObj);
+    }
 }

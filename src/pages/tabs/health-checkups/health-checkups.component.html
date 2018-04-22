@@ -2,38 +2,12 @@
     <div class="row">
         <div class="full_width">
             <p class="more_for_git_card">Over 10+ Customzied Health Checks
-                <span>&nbsp;<img src="{{imgPrePath}}icons/arrowgreen.png"></span>&nbsp; <a href="ap_result.html">Explore All</a>
+                <span>&nbsp;<img src="{{imgPrePath}}icons/arrowgreen.png"></span>&nbsp; <a>Explore All</a>
             </p>
         </div>
-        <form>
-            <div style="width: 30% !important;" class="form-group custom_md_3 custom_md_gift custom_md_home">
-                <div class="icon-addon addon-md">
-                    <input type="text" placeholder="General/Specific" class="form-control" id="email">
-                    <label for="email" class="fa fa-user" rel="tooltip" title="email"></label>
-                </div>
-            </div>
-            <div style="width: 16%;" class="form-group custom_md_2">
-                <div class="icon-addon addon-md">
-                    <input type="text" placeholder="Age Group" class="form-control" id="email">
-                    <label for="email" class="fa fa-users" rel="tooltip" title="email"></label>
-                </div>
-            </div>
-            <div style="width: 16%;" class="form-group custom_md_2">
-                <div class="icon-addon addon-md">
-                    <input type="text" placeholder="Gender" class="form-control" id="email">
-                    <label for="email" class="fa fa-transgender" rel="tooltip" title="email"></label>
-                </div>
-            </div>
-            <div style="width: 16%;" class="form-group custom_md_2">
-                <div class="icon-addon addon-md">
-                    <input type="text" placeholder="Condition" class="form-control" id="email">
-                    <label for="email" class="fa fa-file" rel="tooltip" title="email"></label>
-                </div>
-            </div>
-            <div class="custom_md_2">
-                <a href="hc_result.html" class="search_vtm btn btn-4 btn-4c icon-arrow-right" type="submit">Search Now</a>
-            </div>
-        </form>
+        <!-- START OF HC SEARCH COMPONENT -->
+        <app-hc-search-form [isModal]='false' (close)='searchHCRes($event)'></app-hc-search-form>
+        <!--  END OF HC SEARCH COMPONENT -->
         <div class="full_width health_check_t_cpnt">
             <section class="car_top_city" id="demos">
                 <p>TOP SEARCH HEALTHCHECK</p>

@@ -1,9 +1,9 @@
 
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 
 //Routing Import
 import { AppRoutingModule } from './app.routing';
@@ -11,9 +11,8 @@ import { AppRoutingModule } from './app.routing';
 //Project entry component import
 import { AppComponent } from './app.component';
 
-//custom re-usable component imports go here..
+//custom component imports go here..
 import { NavbarComponent } from './../pages/navbar/navbar.component';
-import { FooterComponent } from './../pages/footer/footer.component';
 import { DashboardComponent } from './../pages/dashboard/dashboard.component';
 import { MainDashboardComponent } from './../pages/main-dashboard/main-dashboard';
 // Landing Template
@@ -21,13 +20,11 @@ import { LandingTemplate } from './../pages/landing-template/landing-template';
 
 //tab components
 import { AppointmentsComponent } from './../pages/tabs/appointments/appointments.component';
-import { AppointmentsSearchFormComponent } from './../pages/tabs/appointment-search-form/appointment-search-form';
 import { HealthCheckupComponent } from './../pages/tabs/health-checkups/health-checkups.component';
 import { DiscountCardsComponent } from './../pages/tabs/discount-cards/discount-cards.component';
 import { GiftHealthComponent } from './../pages/tabs/gift-health/gift-health.component';
 import { ServiceProvidersComponent } from './../pages/tabs/service-providers/service-providers.component';
 //Search Result view components
-import { HeaderComponent } from './../pages/header/header.component';
 import { AppointmentResultsComponent } from './../pages/results/ap_result/ap_result';
 import { HCResultsComponent } from './../pages/results/hc_result/hc_result';
 import { BookAppointmentComponent } from './../pages/results/ap_result/ap_details/ap_details';
@@ -58,6 +55,10 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 //Feature Components
 import { MapComponent } from './../pages/feature/map/map';
+import { HeaderComponent } from './../pages/feature/header/header.component';
+import { FooterComponent } from './../pages/feature/footer/footer.component';
+import { ApSearchFormComponent } from './../pages/feature/ap-search-form/ap-search-form';
+import { HCSearchFormComponent } from './../pages/feature/hc-search-form/hc-search-form';
 import { CategoryFiltersComponent } from './../pages/feature/category-filters/category-filters.component';
 
 //Ngx Pagintor Module
@@ -74,7 +75,7 @@ import { NgxCarouselModule } from 'ngx-carousel'
     DashboardComponent,
     //tab components
     AppointmentsComponent,
-    AppointmentsSearchFormComponent,
+    ApSearchFormComponent,
     HealthCheckupComponent,
     DiscountCardsComponent,
     GiftHealthComponent,
@@ -89,6 +90,7 @@ import { NgxCarouselModule } from 'ngx-carousel'
     ChosenDoctorComponent,
     HCResultsComponent,
     HCDetailsComponent,
+    HCSearchFormComponent,
     //Appontment Result sub components
     DoctorDetailsComponent,
     TimeSlotComponent,

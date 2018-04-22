@@ -8,6 +8,7 @@ import { AppointmentResultsComponent } from './../pages/results/ap_result/ap_res
 import { ConfirmAppointmentComponent } from './../pages/results/ap_result/ap_confirm/ap_confirm';
 import { AppointmentOTPComponent } from './../pages/results/ap_result/ap_otp/ap_otp';
 import { BookAppointmentComponent } from './../pages/results/ap_result/ap_details/ap_details';
+import { HCResultsComponent } from './../pages/results/hc_result/hc_result';
 
 
 const routes: Routes = [
@@ -28,6 +29,9 @@ const routes: Routes = [
             {
                 path: 'ap_confirm', component: ConfirmAppointmentComponent
             },
+            {
+                path: 'hc_result', component: HCResultsComponent
+            }
         ]
     }
 ];

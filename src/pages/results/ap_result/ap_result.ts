@@ -1,5 +1,5 @@
 import { AppConfig } from './../../../providers/services/app-config.service';
-import { AppointmentsSearchFormComponent } from './../../tabs/appointment-search-form/appointment-search-form';
+import { ApSearchFormComponent } from './../../feature/ap-search-form/ap-search-form';
 import { SharingService } from './../../../providers/services/sharing-service';
 
 import { AppointmentDataService } from './../../../providers/services/appointment-data.service';
@@ -15,7 +15,7 @@ declare var google: any;
 })
 export class AppointmentResultsComponent implements OnInit {
 
-    @ViewChild('apsearch') ap_search: AppointmentsSearchFormComponent;
+    @ViewChild('apsearch') ap_search: ApSearchFormComponent;
 
     public AppConfig = AppConfig;
     imgPrePath: string = '../../assets/img/';

@@ -1,0 +1,29 @@
+<form>
+    <div style="width: 30% !important;" class="form-group custom_md_3 custom_md_gift custom_md_home">
+        <div class="icon-addon addon-md">
+            <input type="text" [formControl]="hcSearchForm.controls['general']" placeholder="General/Specific" class="form-control" id="email">
+            <label for="email" class="fa fa-user" rel="tooltip" title="email"></label>
+        </div>
+    </div>
+    <div style="width: 16%;" class="form-group custom_md_2">
+        <div class="icon-addon addon-md">
+            <input type="text" [formControl]="hcSearchForm.controls['age']" placeholder="Age Group" class="form-control" id="email">
+            <label for="email" class="fa fa-users" rel="tooltip" title="email"></label>
+        </div>
+    </div>
+    <div style="width: 16%;" class="form-group custom_md_2">
+        <div class="icon-addon addon-md">
+            <input type="text" [formControl]="hcSearchForm.controls['gender']" placeholder="Gender" class="form-control" id="email">
+            <label for="email" class="fa fa-transgender" rel="tooltip" title="email"></label>
+        </div>
+    </div>
+    <div style="width: 16%;" class="form-group custom_md_2">
+        <div class="icon-addon addon-md">
+            <input type="text" [formControl]="hcSearchForm.controls['condition']" placeholder="Condition" class="form-control" id="email">
+            <label for="email" class="fa fa-file" rel="tooltip" title="email"></label>
+        </div>
+    </div>
+    <div class="custom_md_2">
+        <a class="search_vtm btn btn-4 btn-4c icon-arrow-right" type="submit" (click)='naviagteToHCRes()'>Search Now</a>
+    </div>
+</form>
