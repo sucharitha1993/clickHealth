@@ -32,6 +32,8 @@ import { AppointmentOTPComponent } from './../pages/results/ap_result/ap_otp/ap_
 import { ConfirmAppointmentComponent } from './../pages/results/ap_result/ap_confirm/ap_confirm';
 import { ChosenDoctorComponent } from './../pages/results/ap_result/chosen-doctor-details/chosen-doctor-details';
 import { HCDetailsComponent } from './../pages/results/hc_result/hc_details/hc_details';
+//DC components
+import { DCResultComponent } from './../pages/results/dc_result/dc_result';
 
 //Appontment Result sub components
 import { DoctorDetailsComponent } from './../pages/results/ap_result/doctor-details/doctor-details';
@@ -101,7 +103,9 @@ import { NgxCarouselModule } from 'ngx-carousel'
     SortByPipe,
     //Directives
     DatePickerDirective,
-    MapComponent
+    MapComponent,
+    //DC components
+    DCResultComponent
   ],
   imports: [
     BrowserModule,

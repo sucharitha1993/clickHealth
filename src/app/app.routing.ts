@@ -10,6 +10,8 @@ import { AppointmentOTPComponent } from './../pages/results/ap_result/ap_otp/ap_
 import { BookAppointmentComponent } from './../pages/results/ap_result/ap_details/ap_details';
 import { HCResultsComponent } from './../pages/results/hc_result/hc_result';
 
+//DC components
+import { DCResultComponent } from './../pages/results/dc_result/dc_result';
 
 const routes: Routes = [
     { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -31,6 +33,9 @@ const routes: Routes = [
             },
             {
                 path: 'hc_result', component: HCResultsComponent
+            },
+            {
+                path: 'dc_result', component: DCResultComponent
             }
         ]
     }
