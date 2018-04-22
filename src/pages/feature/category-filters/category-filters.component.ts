@@ -10,9 +10,9 @@ export class CategoryFiltersComponent implements OnInit {
 
     @Output() filterItems: EventEmitter<any> = new EventEmitter();
 
-    @Input('medicalCenters') medicalCenters: any;
-    @Input('locations') locations: any;
-    @Input('languages') languages: any;
+    public medicalCenters: any;
+    public locations: any;
+    public languages: any;
     medicalSearchTerm: string;
     locationSearchTerm: string;
     genderSearchTerm: string;
@@ -28,8 +28,9 @@ export class CategoryFiltersComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.locations = this.locations.length > 0 ? this.locations : this.appointmentInfo.getLocations();
-        this.medicalCenters = this.medicalCenters.length > 0 ? this.medicalCenters : this.appointmentInfo.getHospitals();
+        this.medicalCenters = this.appointmentInfo.getHospitals();
+        this.locations = this.appointmentInfo.getLocations();
+        this.languages = this.appointmentInfo.getLanguages();
     }
 
     filterData(event, type, value) {

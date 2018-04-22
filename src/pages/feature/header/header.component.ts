@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { SharingService } from './../../../providers/services/sharing-service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,7 +10,7 @@ export class HeaderComponent implements OnInit {
 
     public activeClass: string;
 
-    constructor(public SharingService: SharingService) {
+    constructor(public router: Router, public SharingService: SharingService) {
     }
 
     ngOnInit() {
