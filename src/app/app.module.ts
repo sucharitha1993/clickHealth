@@ -66,6 +66,7 @@ import { CategoryFiltersComponent } from './../pages/feature/category-filters/ca
 //Ngx Pagintor Module
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxCarouselModule } from 'ngx-carousel'
+import { TopSearchSpecialists } from './../pages/tabs/top-specialists/top-specialists';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { NgxCarouselModule } from 'ngx-carousel'
     DatePickerDirective,
     MapComponent,
     //DC components
-    DCResultComponent
+    DCResultComponent,
+    TopSearchSpecialists
   ],
   imports: [
     BrowserModule,
