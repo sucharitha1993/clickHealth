@@ -9,7 +9,9 @@ import { ConfirmAppointmentComponent } from './../pages/results/ap_result/ap_con
 import { AppointmentOTPComponent } from './../pages/results/ap_result/ap_otp/ap_otp';
 import { BookAppointmentComponent } from './../pages/results/ap_result/ap_details/ap_details';
 import { HCResultsComponent } from './../pages/results/hc_result/hc_result';
-
+import { HCDetailsComponent } from './../pages/results/hc_result/hc-details/hc-details';
+import { HCConfirmComponent } from './../pages/results/hc_result/hc-confirm/hc-confirm';
+import { HCOTPComponent } from './../pages/results/hc_result/hc-otp/hc-otp';
 //DC components
 import { DCResultComponent } from './../pages/results/dc_result/dc_result';
 
@@ -36,6 +38,15 @@ const routes: Routes = [
             },
             {
                 path: 'dc_result', component: DCResultComponent
+            },
+            {
+                path: 'hc_details', component: HCDetailsComponent
+            },
+            {
+                path: 'hc_otp', component: HCOTPComponent
+            },
+            {
+                path: 'hc_confirm', component: HCConfirmComponent
             }
         ]
     }

@@ -33,7 +33,9 @@ import { ConfirmAppointmentComponent } from './../pages/results/ap_result/ap_con
 import { ChosenDoctorComponent } from './../pages/results/ap_result/chosen-doctor-details/chosen-doctor-details';
 import { HCToggleDetailsComponent } from './../pages/results/hc_result/hc-toggle-details/hc-toggle-details';
 import { HCModalComponent } from './../pages/results/hc_result/hc-modal/hc-modal';
-
+import { HCDetailsComponent } from './../pages/results/hc_result/hc-details/hc-details';
+import { HCConfirmComponent } from './../pages/results/hc_result/hc-confirm/hc-confirm';
+import { HCOTPComponent } from './../pages/results/hc_result/hc-otp/hc-otp';
 //DC components
 import { DCResultComponent } from './../pages/results/dc_result/dc_result';
 
@@ -97,6 +99,9 @@ import { TopSearchSpecialists } from './../pages/tabs/top-specialists/top-specia
     HCToggleDetailsComponent,
     HCSearchFormComponent,
     HCModalComponent,
+    HCDetailsComponent,
+    HCOTPComponent,
+    HCConfirmComponent,
     //Appontment Result sub components
     DoctorDetailsComponent,
     TimeSlotComponent,

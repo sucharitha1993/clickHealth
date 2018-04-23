@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
 declare var $: any;
 
@@ -12,7 +13,7 @@ export class HCModalComponent {
     // hc: Object;
     public imgPrePath: string = '../../assets/img/';
 
-    constructor() { }
+    constructor(public router: Router) { }
 
     ngOnInit() { }
 
@@ -45,7 +46,6 @@ export class HCModalComponent {
     }
 
     closeModal() {
-        console.log('func called');
-        //$('#hcmodal').hide();
+        this.router.navigateByUrl('/main/hc_details');
     }
 }
