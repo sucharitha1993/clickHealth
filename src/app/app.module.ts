@@ -1,3 +1,4 @@
+import { CaroselService } from './../providers/services/carosel-service';
 
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -38,6 +39,8 @@ import { HCConfirmComponent } from './../pages/results/hc_result/hc-confirm/hc-c
 import { HCOTPComponent } from './../pages/results/hc_result/hc-otp/hc-otp';
 //DC components
 import { DCResultComponent } from './../pages/results/dc_result/dc_result';
+// GH components
+import { GHResultComponent } from './../pages/results/gh_result/gh_result';
 
 //Appontment Result sub components
 import { DoctorDetailsComponent } from './../pages/results/ap_result/doctor-details/doctor-details';
@@ -115,7 +118,9 @@ import { TopSearchSpecialists } from './../pages/tabs/top-specialists/top-specia
     MapComponent,
     //DC components
     DCResultComponent,
-    TopSearchSpecialists
+    TopSearchSpecialists,
+    //GH 
+    GHResultComponent
   ],
   imports: [
     BrowserModule,
@@ -134,7 +139,8 @@ import { TopSearchSpecialists } from './../pages/tabs/top-specialists/top-specia
     AppointmentDataService,
     AppointmentInfoService,
     SharingService,
-    DatePipe
+    DatePipe,
+    CaroselService
   ],
   bootstrap: [AppComponent]
 })

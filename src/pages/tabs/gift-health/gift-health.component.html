@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="full_width">
                 <p class="more_for_git_card">Gift Health to your friends or family and make them happy
-                    <span>&nbsp;<img src="{{imgPrePath}}icons/arrowgreen.png"></span>&nbsp; <a href="gh.html">Explore All</a>
+                    <span>&nbsp;<img src="{{imgPrePath}}icons/arrowgreen.png"></span>&nbsp; <a routerLink='gh_result'>Explore All</a>
                 </p>
             </div>
             <div class="full_width health_che_div_com_main">
@@ -22,36 +22,7 @@
         <div class="tab-content" style="padding-top: 40px;">
             <div id="scheduleWeekly" class="tab-pane">
                 <div class="row">
-
-                    <form>
-                        <div style="width: 30% !important;" class="form-group custom_md_3 custom_md_gift custom_md_home">
-                            <div class="icon-addon addon-md">
-                                <input type="text" placeholder="General/Specific" class="form-control" id="email">
-                                <label for="email" class="fa fa-user" rel="tooltip" title="email"></label>
-                            </div>
-                        </div>
-                        <div style="width: 16%;" class="form-group custom_md_2">
-                            <div class="icon-addon addon-md">
-                                <input type="text" placeholder="Age Group" class="form-control" id="email">
-                                <label for="email" class="fa fa-users" rel="tooltip" title="email"></label>
-                            </div>
-                        </div>
-                        <div style="width: 16%;" class="form-group custom_md_2">
-                            <div class="icon-addon addon-md">
-                                <input type="text" placeholder="Gender" class="form-control" id="email">
-                                <label for="email" class="fa fa-transgender" rel="tooltip" title="email"></label>
-                            </div>
-                        </div>
-                        <div style="width: 16%;" class="form-group custom_md_2">
-                            <div class="icon-addon addon-md">
-                                <input type="text" placeholder="Condition" class="form-control" id="email">
-                                <label for="email" class="fa fa-file" rel="tooltip" title="email"></label>
-                            </div>
-                        </div>
-                        <div class="custom_md_2">
-                            <a href="hc_result.html" class="search_vtm btn btn-4 btn-4c icon-arrow-right" type="submit">Search Now</a>
-                        </div>
-                    </form>
+                    <app-hc-search-form [isModal]='false'></app-hc-search-form>
                     <div class="full_width health_check_t_cpnt">
                         <app-top-specialists [type]=' "hc" '></app-top-specialists>
                     </div>

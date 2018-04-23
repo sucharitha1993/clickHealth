@@ -1,3 +1,4 @@
+import { CaroselService } from './../../../../providers/services/carosel-service';
 import { SharingService } from './../../../../providers/services/sharing-service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
@@ -49,7 +50,7 @@ export class TimeSlotComponent {
         touch: true
     }
 
-    constructor(private sharingService: SharingService, private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
+    constructor(public CaroselService: CaroselService, private sharingService: SharingService, private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
 
     ngOnInit() {
         this.doc = this.doc || {};
@@ -60,31 +61,7 @@ export class TimeSlotComponent {
     }
 
     ngAfterViewInit() {
-        this.loadOwlCarousel();
-    }
-
-    //to load Carousel css
-    loadOwlCarousel() {
-        var owl = $('.owl-carousel');
-        owl.owlCarousel({
-            margin: 10,
-            nav: true,
-            loop: true,
-            dot: false,
-
-            navText: ["<span class='fa fa-chevron-left'></span>", "<span class='fa fa-chevron-right'></span>"],
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 3
-                },
-                1000: {
-                    items: 5
-                }
-            }
-        })
+        this.CaroselService.loadOwlCarousel();
     }
 
     chosenAppointment(selectedTime, doctor) {
