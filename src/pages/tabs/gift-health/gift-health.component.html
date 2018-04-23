@@ -22,7 +22,7 @@
         <div class="tab-content" style="padding-top: 40px;">
             <div id="scheduleWeekly" class="tab-pane">
                 <div class="row">
-                    <app-hc-search-form [isModal]='false'></app-hc-search-form>
+                    <app-hc-search-form [isModal]='false' (close)='searchHCRes($event)'></app-hc-search-form>
                     <div class="full_width health_check_t_cpnt">
                         <app-top-specialists [type]=' "hc" '></app-top-specialists>
                     </div>
@@ -32,22 +32,22 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-12">
                         <div class="full_width discount_card_tab">
-                            <a href="dc.html"><img src="{{imgPrePath}}card.png"></a>
+                            <a routerLink='dc_result'><img src="{{imgPrePath}}card.png"></a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
                         <div class="full_width">
-                            <a href="dc.html"><img src="{{imgPrePath}}card1.png"></a>
+                            <a routerLink='dc_result'><img src="{{imgPrePath}}card1.png"></a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
                         <div class="full_width">
-                            <a href="dc.html"><img src="{{imgPrePath}}card2.png"></a>
+                            <a routerLink='dc_result'><img src="{{imgPrePath}}card2.png"></a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
                         <div class="full_width">
-                            <a href="dc.html"><img src="{{imgPrePath}}card3.png"></a>
+                            <a routerLink='dc_result'><img src="{{imgPrePath}}card3.png"></a>
                         </div>
                     </div>
                 </div>

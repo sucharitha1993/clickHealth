@@ -19,7 +19,7 @@ export class HCResultsComponent implements OnInit {
     }
 
     searchHCRes(reqObj) {
-        this.router.navigateByUrl('/main/hc_details');
+        //this.router.navigateByUrl('/main/hc_details');
     }
 
     // to toggle hc details

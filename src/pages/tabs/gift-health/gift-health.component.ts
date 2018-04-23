@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,10 +10,14 @@ export class GiftHealthComponent implements OnInit {
 
     imgPrePath: string;
 
-    constructor() {
+    constructor(public router: Router) {
         this.imgPrePath = '../../assets/img/';
     }
 
     ngOnInit() {
+    }
+
+    searchHCRes(reqObj) {
+        this.router.navigateByUrl('/main/hc_result');
     }
 }
