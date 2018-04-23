@@ -1,3 +1,4 @@
+import { HCModalComponent } from './hc-modal/hc-modal';
 import { AppLitteralsConfig } from './../../../providers/literals/app.literals';
 import { Component, OnInit } from '@angular/core';
 
@@ -15,8 +16,12 @@ export class HCResultsComponent implements OnInit {
     ngOnInit() {
     }
 
-    // to toggle details
-    viewMore(hc) {
-        hc.showDetails = hc.showDetails == undefined ? true : !hc.showDetails;
+    searchHCRes(reqObj) {
     }
+
+    // to toggle hc details
+    viewMore() {
+        // hc.showDetails = hc.showDetails == undefined ? true : !hc.showDetails;
+    }
+
 }

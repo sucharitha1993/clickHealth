@@ -5,6 +5,140 @@
         <!-- START OF CATEGORY FILTERS -->
         <app-category-filters></app-category-filters>
         <!-- END OF CATEGORY FILTERS -->
+        <div class="col-md-9">
+          <div class="two-colls-right-b">
+            <div class="padding">
+
+              <ul class="app_list_menu">
+                <li>General/Specific</li>
+                <li>Age Group</li>
+                <li>Male</li>
+                <li>Diabetic Health Check</li>
+                <li class="modify_searc pull-right">
+                  <a data-toggle="modal" data-target=".bs-example-modal-lg" href="#"><span><i class="fa fa-search"></i></span>&nbsp;Modify Search</a>
+                </li>
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modify Search</h4>
+                      </div>
+                      <div class="modal-body modify_search_modal">
+                        <!-- START OF HC SEARCH COMPONENT -->
+                        <app-hc-search-form [isModal]='true' (close)='searchHCRes($event)'></app-hc-search-form>
+                        <!--  END OF HC SEARCH COMPONENT -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ul>
+
+              <!-- START OF SORTING -->
+              <div class="catalog-head fly-in">
+                <label>Sort results by:</label>
+                <div class="search-select">
+                  <select>
+                        <option>Recommended</option>
+                        <option>Duration</option>
+                        <option>Duration</option>
+                        <option>Duration</option>
+                        <option>Duration</option>
+                    </select>
+                </div>
+                <div class="search-select">
+                  <select>
+                        <option>Free</option>
+                        <option>Name</option>
+                        <option>Name</option>
+                        <option>Name</option>
+                        <option>Name</option>
+                    </select>
+                </div>
+              </div>
+              <!-- END OF SORTING -->
+
+              <!-- START OF HC CARDS -->
+              <div class="catalog-row alternative">
+
+                <div class="appointment_main_hero">
+                  <div class="app_list_in">
+                    <div class="appointment_list_in health_chesks_main">
+                      <div class="appointment_list_clo">
+                        <div class="alt-center">
+                          <div class="row">
+                            <div class="col-md-5">
+                              <div class="alt-center-l full_width">
+                                <div class="alt-center-lp">
+                                  <div class="alt-logo flight-line-b">
+                                    <b><a href="#"><img alt="" src="{{imgPrePath}}health1.png"></a></b>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                            <div class="col-md-7">
+                              <div class="alt-center-c">
+                                <div class="alt-center-cb">
+                                  <div class="full_width">
+                                    <div class="col-md-6 no_padding_left">
+                                      <div class="full_width doctr_details healths_details">
+                                        <div class="flight-line-b">
+                                          <b><h4>Basic Health Check-Up</h4></b>
+                                        </div>
+                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                          Ipsum dummy...</p>
+
+                                        <div class="flight-line-b">
+                                          <b class="view_more_cur" (click)='viewMore()'>View more details</b>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="col-md-6 no_padding_left">
+                                      <div class="content_confirm_in content_confirm_in_r pricing_de_healht">
+                                        <div class="health_chec_boo_inf">
+                                          <div class="final_amount_d">
+                                            <span>Final Amount</span>
+                                            <span class="fnal_amoun_act">Rs 6,500</span>
+                                          </div>
+                                          <div class="final_amount_d">
+                                            <span>Actual Amount</span>
+                                            <span class="actutal_amount"><del>Rs 599</del></span>
+                                          </div>
+                                          <div class="final_amount_d">
+                                            <span>Save Price</span>
+                                            <span class="acutl_amount pull-right">100</span>
+                                          </div>
+                                        </div>
+                                        <div class="full_width butns_book_gift">
+                                          <a data-toggle="modal" data-target="#hcmodal" class="gift_now_btn_main book_now_btn">Book Now </a>
+                                          <a data-toggle="modal" data-target="#hcmodal" class="gift_now_btn_main gift_now_btn">gift now</a>
+                                        </div>
+                                        <!-- START OF HC MODAL -->
+                                        <hc-modal></hc-modal>
+                                        <!-- END OF HC MODAL -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- START OF HC DETAILS -->
+                  <app-hc-details></app-hc-details>
+                  <!-- END OF HC DETAILS -->
+                </div>
+              </div>
+              <!-- END OF HC CARDS -->
+            </div>
+            <!-- PAGINATION -->
+          </div>
+        </div>
       </div>
     </div>
   </div>

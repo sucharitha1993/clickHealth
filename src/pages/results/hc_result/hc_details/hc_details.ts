@@ -8,9 +8,9 @@ import { Component, Input } from '@angular/core';
 
 export class HCDetailsComponent {
 
-    @Input('hc')
-    hc: Object;
-
+    // @Input('hc')
+    // hc: Object;
+    public imgPrePath: string = '../../assets/img/';
     constructor() { }
 
     ngOnInit() { }
