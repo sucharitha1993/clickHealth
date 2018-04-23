@@ -93,8 +93,8 @@ export class AppointmentResultsComponent implements OnInit {
     }
     //On close of Modal
     onClose(reqObj) {
-        $("#modifyDialog").hide();
-        $('.modal-backdrop').remove();
+       // $("#modifyDialog").hide();
+       // $('.modal-backdrop').remove();
         this.getDocList(reqObj);
     }
 
