@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 
 
 @Component({
-    selector: 'app-hc-details',
-    templateUrl: './hc_details.html'
+    selector: 'app-hc-toggle-details',
+    templateUrl: './hc-toggle-details.html'
 })
 
-export class HCDetailsComponent {
+export class HCToggleDetailsComponent {
 
     // @Input('hc')
     // hc: Object;

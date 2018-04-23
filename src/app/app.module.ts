@@ -31,7 +31,7 @@ import { BookAppointmentComponent } from './../pages/results/ap_result/ap_detail
 import { AppointmentOTPComponent } from './../pages/results/ap_result/ap_otp/ap_otp';
 import { ConfirmAppointmentComponent } from './../pages/results/ap_result/ap_confirm/ap_confirm';
 import { ChosenDoctorComponent } from './../pages/results/ap_result/chosen-doctor-details/chosen-doctor-details';
-import { HCDetailsComponent } from './../pages/results/hc_result/hc_details/hc_details';
+import { HCToggleDetailsComponent } from './../pages/results/hc_result/hc-toggle-details/hc-toggle-details';
 import { HCModalComponent } from './../pages/results/hc_result/hc-modal/hc-modal';
 
 //DC components
@@ -94,7 +94,7 @@ import { TopSearchSpecialists } from './../pages/tabs/top-specialists/top-specia
     AppointmentOTPComponent,
     ChosenDoctorComponent,
     HCResultsComponent,
-    HCDetailsComponent,
+    HCToggleDetailsComponent,
     HCSearchFormComponent,
     HCModalComponent,
     //Appontment Result sub components
