@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class HCResultsComponent implements OnInit {
 
     imgPrePath: string = '../../assets/img/';
+    showDetails: boolean = false;
 
     constructor() {
     }
@@ -22,6 +23,7 @@ export class HCResultsComponent implements OnInit {
     // to toggle hc details
     viewMore() {
         // hc.showDetails = hc.showDetails == undefined ? true : !hc.showDetails;
+        this.showDetails = !this.showDetails;
     }
 
 }

@@ -90,7 +90,10 @@
                                           Ipsum dummy...</p>
 
                                         <div class="flight-line-b">
-                                          <b class="view_more_cur" (click)='viewMore()'>View more details</b>
+                                          <b class="view_more_cur" (click)='viewMore()'>
+                                            View<span style='font-weight: 600;color: #48ba49 !important;font-size: 11px;' *ngIf='!showDetails'>More details</span>
+                                              <span style='font-weight: 600;color: #48ba49 !important;font-size: 11px;' *ngIf='showDetails'>Less details</span>
+                                          </b>
                                         </div>
                                       </div>
                                     </div>
@@ -130,7 +133,7 @@
                     </div>
                   </div>
                   <!-- START OF HC DETAILS -->
-                  <app-hc-details></app-hc-details>
+                  <app-hc-details *ngIf='showDetails'></app-hc-details>
                   <!-- END OF HC DETAILS -->
                 </div>
               </div>
