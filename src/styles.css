@@ -56,3 +56,10 @@ ngx-carousel button[NgxCarouselNext] {
   background: white;
   border: 1px solid #ccc;
 }
+.date_based_select {
+  float: none;
+  width: 60%;
+}
+.date_based_select_date {
+  width: 28%;
+}

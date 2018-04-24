@@ -24,7 +24,7 @@
                   </div>
                 </div>
               </ng-template> -->
-              <div class="item"  [ngClass]="{'activen': item.activeClass == true}" (click)="dateSelectEvent(item, doc.vacationLists, doc)"  *ngFor="let item of doc?.vacationLists">
+              <div class="item"  style='width: 94.286px;cursor:pointer' [ngClass]="{'activen': item.activeClass == true}" (click)="dateSelectEvent(item, doc.vacationLists, doc)"  *ngFor="let item of doc?.vacationLists">
                   <span>{{weekDays[item.day]}}</span>
                   <h2>{{item.date}}</h2>
                   <span>{{monthsList[item.month]}}</span>
