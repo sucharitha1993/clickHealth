@@ -63,3 +63,12 @@ ngx-carousel button[NgxCarouselNext] {
 .date_based_select_date {
   width: 28%;
 }
+.loader-overlay {
+  position: absolute;
+  width:100%;
+  top:0;
+  left: 0;
+  opacity: 1;
+  z-index: 500000;
+  background: linear-gradient(to bottom, #ffffff 0%, #ccccff 100%);
+}

@@ -1,3 +1,4 @@
+import { LoaderService } from './../../../providers/services/loader-service';
 import { AppConfig } from './../../../providers/services/app-config.service';
 import { ApSearchFormComponent } from './../../feature/ap-search-form/ap-search-form';
 import { SharingService } from './../../../providers/services/sharing-service';
@@ -44,7 +45,7 @@ export class AppointmentResultsComponent implements OnInit {
 
     p: number = 1;
 
-    constructor(private sharingService: SharingService, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
+    constructor(private loader: LoaderService, private sharingService: SharingService, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
 
     ngOnInit() {
@@ -100,8 +101,10 @@ export class AppointmentResultsComponent implements OnInit {
 
     // to get Doc List
     getDocList(reqObj) {
+       // this.loader.showLoader();
         this.apiServices.getDocList(reqObj)
             .subscribe((res) => {
+               // this.loader.hideLoader();
                 if (res.status) {
                     res.data = res.data || {};
                     this.appointmentInfo.setHospitals(res.data.hospitals);
@@ -112,6 +115,7 @@ export class AppointmentResultsComponent implements OnInit {
                 }
             },
             error => {
+                //this.loader.hideLoader();
                 console.log('unable to load doctors');
             })
     }

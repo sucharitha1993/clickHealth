@@ -1,3 +1,4 @@
+import { LoaderService } from './../providers/services/loader-service';
 import { CaroselService } from './../providers/services/carosel-service';
 
 import { NgModule } from '@angular/core';
@@ -140,7 +141,8 @@ import { TopSearchSpecialists } from './../pages/tabs/top-specialists/top-specia
     AppointmentInfoService,
     SharingService,
     DatePipe,
-    CaroselService
+    CaroselService,
+    LoaderService
   ],
   bootstrap: [AppComponent]
 })
