@@ -1,3 +1,6 @@
 .list_filters {
-    height: 100px !important;
+    height: 25vh !important;
+}
+.list_filters_last {
+    height: 10vh !important;
 }

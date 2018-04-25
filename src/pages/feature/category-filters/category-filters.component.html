@@ -66,7 +66,7 @@
                     <div class="searching_form">
                         <input placeholder="Start Typing" type="text" [(ngModel)]="genderSearchTerm">
                     </div>
-                    <div class="list_filters scrollbar" id="style-3">
+                    <div class="list_filters  list_filters_last  scrollbar" id="style-3">
                         <div class="checkbox" *ngFor='let gender of genders | filter : genderSearchTerm'>
                             <label class="container12">{{gender.name}}
                         <input type="checkbox" (change)='filterData($event,"gender",gender.id)'>
