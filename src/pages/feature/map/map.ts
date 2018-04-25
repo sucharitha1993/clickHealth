@@ -4,7 +4,8 @@ declare var google: any;
 
 @Component({
     selector: 'app-map',
-    templateUrl: './map.html'
+    templateUrl: './map.html',
+    styleUrls: ['./map.css']
 })
 
 export class MapComponent {
