@@ -61,7 +61,7 @@ export class TimeSlotComponent {
     }
 
     ngAfterViewInit() {
-        this.CaroselService.loadOwlCarousel();
+        this.CaroselService.loadUnLoopedOwlCarosel();
     }
 
     chosenAppointment(selectedTime, doctor) {
