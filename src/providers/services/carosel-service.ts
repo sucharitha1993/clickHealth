@@ -66,7 +66,7 @@ export class CaroselService {
                     items: 3
                 },
                 1000: {
-                    items: 5
+                    items: 7
                 }
             }
         })
@@ -88,7 +88,7 @@ export class CaroselService {
                     items: 3
                 },
                 1000: {
-                    items: 5
+                    items: 7
                 }
             }
         })
