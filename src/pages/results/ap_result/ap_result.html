@@ -52,25 +52,24 @@
               <!-- DOCTOR DETAILS GOES HERE -->
               <div class="catalog-row alternative">
                   <p *ngIf="docList?.length == 0 || (docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter).length == 0">NO data found</p>                                                        
-                    <div *ngFor='let doc of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter  | paginate: { itemsPerPage: 2, currentPage: p ,totalItems:(docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter).length} | sortBy: selectedSort : direction'>
-                      <div class="appointment_main_hero" *ngIf="docList?.length>0">
-                        <div class="app_list_in">
+                      <div class="appointment_main_hero" *ngFor='let doc of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter  | paginate: { itemsPerPage: 2, currentPage: p ,totalItems:(docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter).length} | sortBy: selectedSort : direction'>
+                        <div class="app_list_in" *ngIf="docList?.length>0">
                           <div class="appointment_list_in">
                             <div class="appointment_list_clo">
                               <div class="alt-center">
                                 <div class="alt-center-l">
                                   <div class="alt-center-lp">
                                     <div class="alt-logo flight-line-b">
-                                      <b><a><img alt="" src="{{AppConfig?.IMG_URL}}{{doc?.user?.profile_pic}}"></a></b>
+                                      <b><a><img alt="" src="{{AppConfig?.IMG_URL}}{{doc?.user?.profile_pic}}" style='height: 25vh;width: 100%;'></a></b>
                                     </div>
                                   </div>
                                 </div>
                                 <div class="alt-center-c">
                                   <div class="alt-center-cb">
                                     <div class="row">
-                                      <div class="col-md-5 col-lg-5">
+                                      <div class="col-md-4 col-lg-4">
                                         <div class="full_width doctr_details">
-                                          <div class="flight-line-b">
+                                          <div class="flight-line-b" style='width:100%'>
                                             <b>
                                         <h4>{{doc?.user?.name}}</h4>
                                       </b>
@@ -83,7 +82,7 @@
                                           <a data-toggle="tooltip" title="Add to favorite and get maximum discount" class="heart_fav activet" href=""><i class="fa fa-heart"></i></a>
                                         </div>
                                       </div>
-                                      <div class="col-md-4 col-lg-4 padding_left_0">
+                                      <div class="col-md-4 col-lg-4">
                                         <div class="full_width doctr_details3">
                                           <h4>09:00 PM - 04:00 PM</h4>
                                           <p>{{ doc?.provider_name + ',' + doc?.locations?.landmark}}
@@ -106,7 +105,7 @@
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="col-md-3 col-lg-3">
+                                      <div class="col-md-4 col-lg-4">
                                         <div class="alt-flight-lr pricing_list">
                                           <div class="padding">
                                             <div class="flt-i-price"><span>Rs</span>&nbsp;{{doc?.fee}}</div>
@@ -118,7 +117,7 @@
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="full_width">
+                                  <div class="full_width" style='width: 85%;'>
                                     <div class="view_more_de">
                                       <div class="flight-line-b" (click)="viewMore(doc)">
                                         <b id="doctorinfo">View 
@@ -133,12 +132,11 @@
                             </div>
                           </div>
                         </div>
-                        <div class="alt-details">
+                        <div class="alt-details" *ngIf='doc?.showDetails || doc?.isBookAppointment'>
                           <app-doctor-details *ngIf='doc?.showDetails' [doc]='doc'></app-doctor-details>
                           <app-time-slot *ngIf='doc?.isBookAppointment' [doc]='doc'></app-time-slot>
                         </div>
                       </div>
-                  </div>
               </div>
               <!-- END OF DOCTOR DETAILS -->
             </div>
