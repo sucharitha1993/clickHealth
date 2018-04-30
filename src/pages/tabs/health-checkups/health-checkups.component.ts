@@ -1,3 +1,4 @@
+import { HCDataService } from './../../../providers/services/health-checkups/hc-data-service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,7 +11,7 @@ export class HealthCheckupComponent implements OnInit {
 
     imgPrePath: string;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, public hcDataService: HCDataService) {
         this.imgPrePath = '../../assets/img/';
     }
 
@@ -18,6 +19,15 @@ export class HealthCheckupComponent implements OnInit {
     }
 
     searchHCRes(reqObj) {
-        this.router.navigateByUrl('/main/hc_result')
+        this.hcDataService.getHCSearchResults(reqObj)
+            .subscribe(res => {
+                if (res.status) {
+                    res.data = res.data || {};
+                    this.router.navigateByUrl('/main/hc_result')
+                }
+            },
+            error => {
+                console.log('unable to load doctors');
+            })
     }
 }

@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions} from '@angular/http';
-import {AppConfig} from './../app-config.service';
+import { Injectable } from '@angular/core';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import { AppConfig } from './../app-config.service';
 import 'rxjs/add/operator/map';
 
-let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-let options = new RequestOptions({headers: headers});
+let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+let options = new RequestOptions({ headers: headers });
 
 @Injectable()
 export class HCDataService {
@@ -26,12 +26,7 @@ export class HCDataService {
         body.set('type', 'preventive');
         body.set('age_range', '0-40');
         return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/healthchecks/`, body.toString(), options)
-        .map(response => {
-            let res = response.json();
-            if (res.status) {
-                res.data = res.data || {};
-            }
-            return res;
-        });
+            .map(response => response.json()
+            );
     }
 }
