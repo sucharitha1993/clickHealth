@@ -1,7 +1,7 @@
 import { SharingService } from './../../../providers/services/sharing-service';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+declare var $: any;
 
 @Component({
     selector: 'app-hc-search-form',
@@ -18,7 +18,28 @@ export class HCSearchFormComponent implements OnInit {
     hcSearchForm: FormGroup;
     searchParams: any;
 
-    constructor(private formBuilder: FormBuilder,public sharingService:SharingService) {
+    generals: string[] = [
+        "Preventive",
+        "Diabetes",
+        "Cancer",
+        "Antenatal"
+    ];
+
+    ageGroup: string[] = [
+        "0-10",
+        "10-20",
+        "20-30",
+        "30-40",
+        "40-50",
+        "50-60",
+        "60+"
+    ];
+    genders: string[] = [
+        "Male",
+        "Female"
+    ];
+
+    constructor(private formBuilder: FormBuilder, public sharingService: SharingService) {
 
     }
 
@@ -32,7 +53,6 @@ export class HCSearchFormComponent implements OnInit {
         }
         let searchParams = this.searchParams || {};
         this.hcSearchForm = this.formBuilder.group({
-            "condition": [searchParams.symptom, Validators.required],
             "gender": [searchParams.location, Validators.required],
             "general": [searchParams.from_date, Validators.required],
             "age": [searchParams.to_date, Validators.required],
@@ -42,12 +62,11 @@ export class HCSearchFormComponent implements OnInit {
     //navigate to HC Results
     naviagteToHCRes() {
         let reqObj = {
-            'condition': this.hcSearchForm.controls['condition'].value,
-            'gender': this.hcSearchForm.controls['gender'].value,
-            'general': this.hcSearchForm.controls['general'].value,
+            'gender': (this.hcSearchForm.controls['gender'].value).toLowerCase(),
+            'general': (this.hcSearchForm.controls['general'].value).toLowerCase(),
             'age': this.hcSearchForm.controls['age'].value
         }
-        this.sharingService.setParams('activeClass','hc'); 
+        this.sharingService.setParams('activeClass', 'hc');
         this.close.emit(reqObj);
     }
 

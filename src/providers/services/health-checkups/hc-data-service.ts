@@ -22,9 +22,9 @@ export class HCDataService {
     //to get HC Search Results
     getHCSearchResults(reqData) {
         let body = new URLSearchParams();
-        body.set('gender', 'male');
-        body.set('type', 'preventive');
-        body.set('age_range', '0-40');
+        body.set('gender', reqData.gender);
+        body.set('type', reqData.general);
+        body.set('age_range', reqData.age);
         return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/healthchecks/`, body.toString(), options)
             .map(response => response.json()
             );

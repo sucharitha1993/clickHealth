@@ -72,3 +72,6 @@ ngx-carousel button[NgxCarouselNext] {
   z-index: 500000;
   background: linear-gradient(to bottom, #ffffff 0%, #ccccff 100%);
 }
+.owl-carousel {
+  z-index : 0 !important;
+}

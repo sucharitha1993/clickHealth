@@ -59,8 +59,8 @@ import { DatePickerDirective } from './../providers/directives/date-picker-direc
 import { AppointmentDataService } from './../providers/services/appointment-data.service';
 import { AppointmentInfoService } from './../providers/services/appointment-info-service';
 import { SharingService } from './../providers/services/sharing-service';
-import {HCDataService} from './../providers/services/health-checkups/hc-data-service';
-import {HCInfoService} from './../providers/services/health-checkups/hc-info-service';
+import { HCDataService } from './../providers/services/health-checkups/hc-data-service';
+import { HCInfoService } from './../providers/services/health-checkups/hc-info-service';
 
 //importing third party modules
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
@@ -77,6 +77,7 @@ import { CategoryFiltersComponent } from './../pages/feature/category-filters/ca
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxCarouselModule } from 'ngx-carousel'
 import { TopSearchSpecialists } from './../pages/tabs/top-specialists/top-specialists';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 @NgModule({
   declarations: [
@@ -136,7 +137,8 @@ import { TopSearchSpecialists } from './../pages/tabs/top-specialists/top-specia
     TypeaheadModule.forRoot(),
     //Paginator Module
     NgxPaginationModule,
-    NgxCarouselModule
+    NgxCarouselModule,
+    Ng2AutoCompleteModule
   ],
   providers: [
     AppointmentDataService,
