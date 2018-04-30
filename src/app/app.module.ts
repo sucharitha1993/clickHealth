@@ -59,6 +59,8 @@ import { DatePickerDirective } from './../providers/directives/date-picker-direc
 import { AppointmentDataService } from './../providers/services/appointment-data.service';
 import { AppointmentInfoService } from './../providers/services/appointment-info-service';
 import { SharingService } from './../providers/services/sharing-service';
+import {HCDataService} from './../providers/services/health-checkups/hc-data-service';
+import {HCInfoService} from './../providers/services/health-checkups/hc-info-service';
 
 //importing third party modules
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
@@ -142,7 +144,9 @@ import { TopSearchSpecialists } from './../pages/tabs/top-specialists/top-specia
     SharingService,
     DatePipe,
     CaroselService,
-    LoaderService
+    LoaderService,
+    HCDataService,
+    HCInfoService
   ],
   bootstrap: [AppComponent]
 })

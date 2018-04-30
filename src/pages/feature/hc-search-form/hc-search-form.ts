@@ -1,6 +1,7 @@
 import { SharingService } from './../../../providers/services/sharing-service';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HCDataService } from './../../../providers/services/health-checkups/hc-data-service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class HCSearchFormComponent implements OnInit {
     hcSearchForm: FormGroup;
     searchParams: any;
 
-    constructor(private formBuilder: FormBuilder,public sharingService:SharingService) {
+    constructor(private formBuilder: FormBuilder,public sharingService:SharingService, public hcDataService: HCDataService) {
 
     }
 
@@ -47,7 +48,8 @@ export class HCSearchFormComponent implements OnInit {
             'general': this.hcSearchForm.controls['general'].value,
             'age': this.hcSearchForm.controls['age'].value
         }
-        this.sharingService.setParams('activeClass','hc');        
+        this.sharingService.setParams('activeClass','hc'); 
+        let res = this.hcDataService.getHCSearchResults('');    
         this.close.emit(reqObj);
     }
 
