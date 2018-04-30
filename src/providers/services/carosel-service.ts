@@ -66,7 +66,7 @@ export class CaroselService {
                     items: 3
                 },
                 1000: {
-                    items: 7
+                    items: 5
                 }
             }
         })
