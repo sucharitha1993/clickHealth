@@ -1,3 +1,4 @@
+import { HCInfoService } from './../../../providers/services/health-checkups/hc-info-service';
 import { SharingService } from './../../../providers/services/sharing-service';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -39,7 +40,7 @@ export class HCSearchFormComponent implements OnInit {
         "Female"
     ];
 
-    constructor(private formBuilder: FormBuilder, public sharingService: SharingService) {
+    constructor(private formBuilder: FormBuilder, public sharingService: SharingService, public hcInfoService: HCInfoService) {
 
     }
 
@@ -66,6 +67,8 @@ export class HCSearchFormComponent implements OnInit {
             'general': (this.hcSearchForm.controls['general'].value).toLowerCase(),
             'age': this.hcSearchForm.controls['age'].value
         }
+        this.hcInfoService.setHCSearchParams(reqObj);
+        this.sharingService.setParams('hcSearchParams', reqObj);
         this.sharingService.setParams('activeClass', 'hc');
         this.close.emit(reqObj);
     }
