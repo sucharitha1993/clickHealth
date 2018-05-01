@@ -54,6 +54,7 @@ import { SafeHtmlPipe } from './../pipes/safe-html.pipe';
 import { DatePipe } from '@angular/common';
 import { CategoryFilterPipe } from './../pipes/category-filter-pipe';
 import { SortByPipe } from './../pipes/sortBy-pipe';
+import { ToINRCurrencyFormat } from './../pipes/currency-pipe';
 
 //importing Directive
 import { DatePickerDirective } from './../providers/directives/date-picker-directive';
@@ -119,6 +120,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     SafeHtmlPipe,
     CategoryFilterPipe,
     SortByPipe,
+    ToINRCurrencyFormat,
     //Directives
     DatePickerDirective,
     MapComponent,
