@@ -32,20 +32,36 @@
                                 <div role="tabpanel" class="tab-pane active" id="appointments">
 
                                     <div class="col-md-6">
-                                        <div class="full_width health_check_mainTo_in" *ngFor='let detail of hcDetails'>
-                                            <div class="image_siph">
-                                                <img src="{{imgPrePath}}icons/hc1.png">
-                                            </div>
-
-                                            <div class="full_width specialities">
-                                                <h3>{{detail?.name}}</h3>
-                                                <ul>
-                                                    <li><i class="fa fa-plus-circle"></i>{{detail?.description}}</li>
-                                                </ul>
+                                        <div *ngFor='let detail of hcDetails;let i = index;let even = even'>
+                                            <div class="full_width health_check_mainTo_in" *ngIf='!even;'>
+                                                <div class="image_siph">
+                                                    <img src="{{imgPrePath}}icons/hc1.png">
+                                                </div>
+                                                <div class="full_width specialities">
+                                                    <h3>{{detail?.name}}</h3>
+                                                    <ul>
+                                                        <li><i class="fa fa-plus-circle"></i>{{detail?.description}}</li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <div class="col-md-6">
+                                        <div *ngFor='let detail of hcDetails;let i = index;let even = even'>
+                                            <div class="full_width health_check_mainTo_in" *ngIf='even;'>
+                                                <div class="image_siph">
+                                                    <img src="{{imgPrePath}}icons/hc1.png">
+                                                </div>
+                                                <div class="full_width specialities">
+                                                    <h3>{{detail?.name}}</h3>
+                                                    <ul>
+                                                        <li><i class="fa fa-plus-circle"></i>{{detail?.description}}</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
                                 <div role="tabpanel" class="tab-pane" id="health_checks">
                                     <ol class="insrurer">
                                         <li>Get enough sleep, at least 6 hours, prior to the check-up - Lack of sleep may cause
