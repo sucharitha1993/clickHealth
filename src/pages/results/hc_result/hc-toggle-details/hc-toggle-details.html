@@ -12,7 +12,7 @@
                                     <a class="radius" href="#appointments" aria-controls="home" role="tab" data-toggle="tab">
                                         <span><i class="fa fa-user-md"></i></span>
                                         <span>
-                                            <strong>Health checak <br>package details</strong>
+                                            <strong>Health check <br>package details</strong>
                                             
                                         </span>
                                     </a>
@@ -32,150 +32,19 @@
                                 <div role="tabpanel" class="tab-pane active" id="appointments">
 
                                     <div class="col-md-6">
-                                        <div class="full_width health_check_mainTo_in">
+                                        <div class="full_width health_check_mainTo_in" *ngFor='let detail of hcDetails'>
                                             <div class="image_siph">
                                                 <img src="{{imgPrePath}}icons/hc1.png">
                                             </div>
 
                                             <div class="full_width specialities">
-                                                <h3>Infection Marker</h3>
+                                                <h3>{{detail?.name}}</h3>
                                                 <ul>
-                                                    <li><i class="fa fa-plus-circle"></i>Complete Blood Picture with ESR</li>
-                                                    <li><i class="fa fa-plus-circle"></i>Complete Urine Examination</li>
-                                                    <li><i class="fa fa-plus-circle"></i>Stool Routine</li>
-
+                                                    <li><i class="fa fa-plus-circle"></i>{{detail?.description}}</li>
                                                 </ul>
                                             </div>
                                         </div>
-
-                                        <div class="full_width health_check_mainTo_in">
-                                            <div class="image_siph">
-                                                <img src="{{imgPrePath}}icons/hc2.png">
-                                            </div>
-
-                                            <div class="full_width specialities">
-                                                <h3>Diabetes Screening</h3>
-                                                <ul>
-                                                    <li><i class="fa fa-plus-circle"></i>Fasting Blood Sugar</li>
-                                                    <li><i class="fa fa-plus-circle"></i>Post Lunch Blood Sugar</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="full_width health_check_mainTo_in">
-                                            <div class="image_siph">
-                                                <img src="{{imgPrePath}}icons/hc3.png">
-                                            </div>
-
-                                            <div class="full_width specialities">
-                                                <h3>Cholesterol Levels Screening</h3>
-                                                <ul>
-                                                    <li><i class="fa fa-plus-circle"></i>Complete Blood Picture with ESR</li>
-                                                    <li><i class="fa fa-plus-circle"></i>Complete Urine Examination</li>
-                                                    <li><i class="fa fa-plus-circle"></i>Stool Routine</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="full_width health_check_mainTo_in">
-                                            <div class="image_siph">
-                                                <img src="{{imgPrePath}}icons/hc4.png">
-                                            </div>
-
-                                            <div class="full_width specialities">
-                                                <h3>Blood Group Screening</h3>
-                                                <ul>
-                                                    <li><i class="fa fa-plus-circle"></i>Blood Grouping & Rh Typing</li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="full_width health_check_mainTo_in">
-                                            <div class="image_siph">
-                                                <img src="{{imgPrePath}}icons/hc5.png">
-                                            </div>
-
-                                            <div class="full_width specialities">
-                                                <h3>Abdomen Screening</h3>
-                                                <ul>
-                                                    <li><i class="fa fa-plus-circle"></i>Ultrasound Whole Abdomen</li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-
-
                                     </div>
-
-                                    <div class="col-md-6">
-                                        <div class="full_width health_check_mainTo_in">
-                                            <div class="image_siph">
-                                                <img src="{{imgPrePath}}icons/hc6.png">
-                                            </div>
-                                            <div class="full_width specialities">
-                                                <h3>Cancer Screening</h3>
-                                                <ul>
-                                                    <li><i class="fa fa-plus-circle"></i>Pap Smear (Only For Female)</li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="full_width health_check_mainTo_in">
-                                            <div class="image_siph">
-                                                <img src="{{imgPrePath}}icons/hc7.png">
-                                            </div>
-                                            <div class="full_width specialities">
-                                                <h3>Kidney Function Screening</h3>
-                                                <ul>
-                                                    <li><i class="fa fa-plus-circle"></i>Blood Urea / BUN</li>
-                                                    <li><i class="fa fa-plus-circle"></i>Serum Uric Acid</li>
-                                                    <li><i class="fa fa-plus-circle"></i>Serum Createnine</li>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="full_width health_check_mainTo_in">
-                                            <div class="image_siph">
-                                                <img src="{{imgPrePath}}icons/hc8.png">
-                                            </div>
-                                            <div class="full_width specialities">
-                                                <h3>Liver Function Screening</h3>
-                                                <ul>
-                                                    <li><i class="fa fa-plus-circle"></i>Liver Function Test</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="full_width health_check_mainTo_in">
-                                            <div class="image_siph">
-                                                <img src="{{imgPrePath}}icons/hc9.png">
-                                            </div>
-                                            <div class="full_width specialities">
-                                                <h3>Heart Function Screening</h3>
-                                                <ul>
-                                                    <li><i class="fa fa-plus-circle"></i>Electro Cardiogramv</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="full_width health_check_mainTo_in">
-                                            <div class="image_siph">
-                                                <img src="{{imgPrePath}}icons/hc10.png">
-                                            </div>
-                                            <div class="full_width specialities">
-                                                <h3>Examination & Consultation</h3>
-                                                <ul>
-                                                    <li><i class="fa fa-plus-circle"></i>General Physician Consultation</li>
-                                                    <li><i class="fa fa-plus-circle"></i>Gynacology Consultation</li>
-                                                    <li><i class="fa fa-plus-circle"></i>Diet & Lifestyle Counseling</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="health_checks">
                                     <ol class="insrurer">

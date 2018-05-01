@@ -10,12 +10,11 @@
             <div class="padding">
 
               <ul class="app_list_menu">
-                <li>General/Specific</li>
-                <li>Age Group</li>
-                <li>Male</li>
-                <li>Diabetic Health Check</li>
+                <li>{{searchParams?.general}}</li>
+                <li>{{searchParams?.age}}</li>
+                <li>{{searchParams?.gender}}</li>
                 <li class="modify_searc pull-right">
-                  <a data-toggle="modal" data-target=".bs-example-modal-lg" href="#"><span><i class="fa fa-search"></i></span>&nbsp;Modify Search</a>
+                  <a data-toggle="modal" data-target=".bs-example-modal-lg" (click)='onModifySearch()'><span><i class="fa fa-search"></i></span>&nbsp;Modify Search</a>
                 </li>
                 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
                   <div class="modal-dialog modal-lg" role="document">
@@ -26,7 +25,7 @@
                       </div>
                       <div class="modal-body modify_search_modal">
                         <!-- START OF HC SEARCH COMPONENT -->
-                        <app-hc-search-form [isModal]='true' (close)='searchHCRes($event)'></app-hc-search-form>
+                        <app-hc-search-form #hcsearch [isModal]='true' (close)='searchHCRes($event)'></app-hc-search-form>
                         <!--  END OF HC SEARCH COMPONENT -->
                       </div>
                     </div>
@@ -61,7 +60,7 @@
               <!-- START OF HC CARDS -->
               <div class="catalog-row alternative">
 
-                <div class="appointment_main_hero">
+                <div class="appointment_main_hero" *ngFor='let hc of hcData'>
                   <div class="app_list_in">
                     <div class="appointment_list_in health_chesks_main">
                       <div class="appointment_list_clo">
@@ -71,7 +70,7 @@
                               <div class="alt-center-l full_width">
                                 <div class="alt-center-lp">
                                   <div class="alt-logo flight-line-b">
-                                    <b><a href="#"><img alt="" src="{{imgPrePath}}health1.png"></a></b>
+                                    <b><a href="#"><img alt="" src="{{AppConfig?.IMG_URL}}{{hc?.image}}"></a></b>
                                   </div>
                                 </div>
 
@@ -84,10 +83,9 @@
                                     <div class="col-md-6 no_padding_left">
                                       <div class="full_width doctr_details healths_details">
                                         <div class="flight-line-b">
-                                          <b><h4>Basic Health Check-Up</h4></b>
+                                          <b><h4>{{hc?.name}}</h4></b>
                                         </div>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                          Ipsum dummy...</p>
+                                        <p>{{hc?.description}}</p>
 
                                         <div class="flight-line-b">
                                           <b class="view_more_cur" (click)='viewMore()'>
@@ -103,7 +101,7 @@
                                         <div class="health_chec_boo_inf">
                                           <div class="final_amount_d">
                                             <span>Final Amount</span>
-                                            <span class="fnal_amoun_act">Rs 6,500</span>
+                                            <span class="fnal_amoun_act">Rs {{hc?.price}}</span>
                                           </div>
                                           <div class="final_amount_d">
                                             <span>Actual Amount</span>
@@ -119,7 +117,7 @@
                                           <a data-toggle="modal" data-target="#hcmodal" class="gift_now_btn_main gift_now_btn">gift now</a>
                                         </div>
                                         <!-- START OF HC MODAL -->
-                                        <hc-modal></hc-modal>
+                                        <hc-modal [hospitals]='hc?.hospitals'></hc-modal>
                                         <!-- END OF HC MODAL -->
                                       </div>
                                     </div>
@@ -133,7 +131,7 @@
                     </div>
                   </div>
                   <!-- START OF HC DETAILS -->
-                  <app-hc-toggle-details *ngIf='showDetails'></app-hc-toggle-details>
+                  <app-hc-toggle-details *ngIf='showDetails' [hcDetails]='hc?.tests'></app-hc-toggle-details>
                   <!-- END OF HC DETAILS -->
                 </div>
               </div>

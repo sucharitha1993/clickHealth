@@ -51,12 +51,13 @@ export class HCSearchFormComponent implements OnInit {
     //to initialise form fields
     initialiseFields(isModal) {
         if (isModal) {
+            this.searchParams = this.hcInfoService.getHCSearchParams() || this.sharingService.getParams('hcSearchParams') || {};
         }
         let searchParams = this.searchParams || {};
         this.hcSearchForm = this.formBuilder.group({
-            "gender": [searchParams.location, Validators.required],
-            "general": [searchParams.from_date, Validators.required],
-            "age": [searchParams.to_date, Validators.required],
+            "gender": [searchParams.gender, Validators.required],
+            "general": [searchParams.general, Validators.required],
+            "age": [searchParams.age, Validators.required],
         });
     }
 

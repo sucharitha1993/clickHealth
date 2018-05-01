@@ -10,8 +10,8 @@ declare var $: any;
 
 export class HCModalComponent {
 
-    // @Input('hc')
-    // hc: Object;
+    @Input('hospitals')
+    hospitals: any = [];
     public imgPrePath: string = '../../assets/img/';
 
     constructor(public router: Router, public CaroselService: CaroselService) { }
@@ -19,7 +19,7 @@ export class HCModalComponent {
     ngOnInit() { }
 
     ngAfterViewInit() {
-        this.CaroselService.loadOwlCarousel();
+        this.CaroselService.loadUnLoopedOwlCarosel();
     }
 
     closeModal() {

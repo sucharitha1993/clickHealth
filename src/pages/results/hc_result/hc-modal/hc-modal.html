@@ -21,10 +21,7 @@
                             <div class="full_width">
                                 <div class="selec_hospitl_list">
                                     <select>
-                                            <option>--Slect--</option>
-                                            <option>Appolo Hospitals</option>
-                                            <option>Hedge</option>
-                                            <option>yashoda</option>
+                                            <option *ngFor='let hospital of hospitals'>{{hospital.name}}</option>
                                         </select>
                                 </div>
                             </div>
