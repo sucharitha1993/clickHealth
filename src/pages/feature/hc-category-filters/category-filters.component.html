@@ -1,0 +1,63 @@
+<div class="col-md-3">
+    <div class="full_width sidebar_man">
+        <div class="srch-results-lbl fly-in">
+            <span>Category Filters</span>
+        </div>
+        <div class="side-block fly-in">
+        </div>
+        <div class="side-block fly-in">
+            <div class="side-stars">
+                <div class="side-padding">
+                    <div class="side-lbl">Medical Center</div>
+                    <div class="searching_form">
+                        <input placeholder="Start Typing" type="text" [(ngModel)]="medicalSearchTerm">
+                    </div>
+                    <div class="list_filters scrollbar" id="style-3">
+                        <div class="checkbox" *ngFor='let medical of medicalCenters | filter : medicalSearchTerm'>
+                            <label class="container12">{{medical.name}}
+                        <input type="checkbox" (change)='filterData($event,"medical",medical.name)'>
+                        <span class="checkmark"></span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="side-block fly-in">
+            <div class="side-stars">
+                <div class="side-padding">
+                    <div class="side-lbl">Location</div>
+                    <div class="searching_form">
+                        <input placeholder="Start Typing" type="text" [(ngModel)]="locationSearchTerm">
+                    </div>
+                    <div class="list_filters scrollbar" id="style-3">
+                        <div class="checkbox" *ngFor='let location of locations | filter : locationSearchTerm'>
+                            <label class="container12">{{location.name}}
+                        <input type="checkbox" (change)='filterData($event,"location",location.name)'>
+                        <span class="checkmark"></span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="side-block fly-in">
+            <div class="side-stars">
+                <div class="side-padding">
+                    <div class="side-lbl">Language</div>
+                    <div class="searching_form">
+                        <input placeholder="Start Typing" type="text" [(ngModel)]="languageSearchTerm">
+                    </div>
+                    <div class="list_filters scrollbar" id="style-3">
+                        <div class="checkbox" *ngFor='let lang of languages | filter : languageSearchTerm'>
+                            <label class="container12">{{lang}}
+                        <input type="checkbox" (change)='filterData($event,"language",lang)'>
+                        <span class="checkmark"></span>
+                        </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

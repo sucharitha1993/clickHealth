@@ -38,6 +38,8 @@ import { HCModalComponent } from './../pages/results/hc_result/hc-modal/hc-modal
 import { HCDetailsComponent } from './../pages/results/hc_result/hc-details/hc-details';
 import { HCConfirmComponent } from './../pages/results/hc_result/hc-confirm/hc-confirm';
 import { HCOTPComponent } from './../pages/results/hc_result/hc-otp/hc-otp';
+import { HCCategoryFiltersComponent } from './../pages/feature/hc-category-filters/category-filters.component';
+
 //DC components
 import { DCResultComponent } from './../pages/results/dc_result/dc_result';
 // GH components
@@ -124,7 +126,8 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     DCResultComponent,
     TopSearchSpecialists,
     //GH 
-    GHResultComponent
+    GHResultComponent,
+    HCCategoryFiltersComponent
   ],
   imports: [
     BrowserModule,
