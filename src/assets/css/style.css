@@ -5467,7 +5467,7 @@ a.gift_now_btn_main{
     font-weight: 600;
 }
 .selec_hospitl_list select{
-    width: 100%;
+    width: 150%;
     height: 55px;
     padding: 10px 12px;
 }

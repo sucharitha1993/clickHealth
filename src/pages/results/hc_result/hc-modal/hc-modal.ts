@@ -5,13 +5,18 @@ declare var $: any;
 
 @Component({
     selector: 'hc-modal',
-    templateUrl: './hc-modal.html'
+    templateUrl: './hc-modal.html',
+    styleUrls: ['./hc-modal.css']
 })
 
 export class HCModalComponent {
 
     @Input('hospitals')
     hospitals: any = [];
+
+    @Input('address')
+    address: any;
+    
     public imgPrePath: string = '../../assets/img/';
 
     constructor(public router: Router, public CaroselService: CaroselService) { }

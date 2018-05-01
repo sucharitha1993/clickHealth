@@ -29,4 +29,10 @@ export class HCDataService {
             .map(response => response.json()
             );
     }
+
+    getVisitorLocation(lat, long) {
+        let mapUrl = `http://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&sensor=true/false`;
+        return this.http.post(mapUrl, '')
+            .map(res => res.json())
+    }
 }
