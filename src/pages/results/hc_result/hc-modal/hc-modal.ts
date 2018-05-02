@@ -5,8 +5,7 @@ declare var $: any;
 
 @Component({
     selector: 'hc-modal',
-    templateUrl: './hc-modal.html',
-    styleUrls: ['./hc-modal.css']
+    templateUrl: './hc-modal.html'
 })
 
 export class HCModalComponent {
