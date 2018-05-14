@@ -20,11 +20,6 @@ export class ToINRCurrencyFormat implements PipeTransform {
             lastThree = ',' + lastThree;
         let output = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
 
-        if (result.length > 1) {
-            output += "." + result[1];
-        } else {
-            output += ".00";
-        }
         return output;
     }
 }
