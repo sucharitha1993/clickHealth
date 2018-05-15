@@ -1,3 +1,4 @@
+import { Toastr } from './../../../providers/services/toastr.service';
 import { HCSearchFormComponent } from './../../feature/hc-search-form/hc-search-form';
 import { AppConfig } from './../../../providers/services/app-config.service';
 import { SharingService } from './../../../providers/services/sharing-service';
@@ -19,13 +20,14 @@ export class HCResultsComponent implements OnInit {
     @ViewChild('hcsearch') hc_search: HCSearchFormComponent;
 
     public AppConfig: AppConfig;
+    public AppLitteralsConfig = AppLitteralsConfig;
     imgPrePath: string = '../../assets/img/';
     showDetails: boolean = false;
     searchParams: any = {};
     hcData: any = [];
     address: any;
 
-    constructor(public router: Router, public hcDataService: HCDataService, public hcInfoService: HCInfoService, public sharingService: SharingService) {
+    constructor(public toastr: Toastr, public router: Router, public hcDataService: HCDataService, public hcInfoService: HCInfoService, public sharingService: SharingService) {
     }
 
     ngOnInit() {
@@ -43,6 +45,9 @@ export class HCResultsComponent implements OnInit {
                 }
             },
             error => {
+                let options: any = AppLitteralsConfig.toastOptions;
+                options.body = error;
+                this.toastr.showToastr(options);
                 console.log('unable to load doctors');
             })
     }

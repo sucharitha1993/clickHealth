@@ -1,6 +1,6 @@
 import { AppConfig } from './../../../../providers/services/app-config.service';
 import { SharingService } from './../../../../providers/services/sharing-service';
-import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
+import { AppointmentInfoService } from './../../../../providers/services/appointments/appointment-info-service';
 import { Component } from '@angular/core';
 
 

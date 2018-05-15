@@ -1,7 +1,7 @@
 import { SharingService } from './../../../../providers/services/sharing-service';
 import { Router } from '@angular/router';
-import { AppointmentDataService } from './../../../../providers/services/appointment-data.service';
-import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
+import { AppointmentDataService } from './../../../../providers/services/appointments/appointment-data.service';
+import { AppointmentInfoService } from './../../../../providers/services/appointments/appointment-info-service';
 import { Component, Input } from '@angular/core';
 
 

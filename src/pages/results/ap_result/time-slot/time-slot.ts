@@ -2,7 +2,7 @@ import { CaroselService } from './../../../../providers/services/carosel-service
 import { SharingService } from './../../../../providers/services/sharing-service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
+import { AppointmentInfoService } from './../../../../providers/services/appointments/appointment-info-service';
 import { AppLitteralsConfig } from './../../../../providers/literals/app.literals';
 import { Component, Input } from '@angular/core';
 
@@ -19,11 +19,6 @@ export class TimeSlotComponent {
     @Input('doc')
     doc: any;
     imgPrePath: string = '../../assets/img/';
-    timings = AppLitteralsConfig.timings;
-
-    morningTimings: string[] = this.timings.morning;
-    aftrnTimings: string[] = this.timings.aftrn;
-    evengTimings: string[] = this.timings.eveng;
     searchParams: any = {};
     selectedAppointment: any = {
         appointmentDetails: {},

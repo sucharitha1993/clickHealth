@@ -1,5 +1,5 @@
-import { AppointmentDataService } from './../../../providers/services/appointment-data.service';
-import { AppointmentInfoService } from './../../../providers/services/appointment-info-service';
+import { AppointmentDataService } from './../../../providers/services/appointments/appointment-data.service';
+import { AppointmentInfoService } from './../../../providers/services/appointments/appointment-info-service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 

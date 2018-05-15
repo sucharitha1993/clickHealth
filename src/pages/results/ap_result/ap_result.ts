@@ -3,10 +3,10 @@ import { AppConfig } from './../../../providers/services/app-config.service';
 import { ApSearchFormComponent } from './../../feature/ap-search-form/ap-search-form';
 import { SharingService } from './../../../providers/services/sharing-service';
 
-import { AppointmentDataService } from './../../../providers/services/appointment-data.service';
+import { AppointmentDataService } from './../../../providers/services/appointments/appointment-data.service';
 import { AppLitteralsConfig } from './../../../providers/literals/app.literals';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AppointmentInfoService } from './../../../providers/services/appointment-info-service';
+import { AppointmentInfoService } from './../../../providers/services/appointments/appointment-info-service';
 
 declare var $: any;
 declare var google: any;

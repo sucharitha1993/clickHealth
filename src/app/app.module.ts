@@ -1,3 +1,5 @@
+import { Toastr } from './../providers/services/toastr.service';
+import { LoginComponent } from './../pages/login/login';
 import { LoaderService } from './../providers/services/loader-service';
 import { CaroselService } from './../providers/services/carosel-service';
 
@@ -59,8 +61,8 @@ import { ToINRCurrencyFormat } from './../pipes/currency-pipe';
 //importing Directive
 import { DatePickerDirective } from './../providers/directives/date-picker-directive';
 //importing Services
-import { AppointmentDataService } from './../providers/services/appointment-data.service';
-import { AppointmentInfoService } from './../providers/services/appointment-info-service';
+import { AppointmentDataService } from './../providers/services/appointments/appointment-data.service';
+import { AppointmentInfoService } from './../providers/services/appointments/appointment-info-service';
 import { SharingService } from './../providers/services/sharing-service';
 import { HCDataService } from './../providers/services/health-checkups/hc-data-service';
 import { HCInfoService } from './../providers/services/health-checkups/hc-info-service';
@@ -84,6 +86,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 @NgModule({
   declarations: [
+    LoginComponent,
     MainDashboardComponent,
     AppComponent,
     LandingTemplate,
@@ -153,7 +156,8 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     CaroselService,
     LoaderService,
     HCDataService,
-    HCInfoService
+    HCInfoService,
+    Toastr
   ],
   bootstrap: [AppComponent]
 })

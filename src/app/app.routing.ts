@@ -15,6 +15,7 @@ import { HCOTPComponent } from './../pages/results/hc_result/hc-otp/hc-otp';
 //DC components
 import { DCResultComponent } from './../pages/results/dc_result/dc_result';
 import { GHResultComponent } from './../pages/results/gh_result/gh_result';
+import { LoginComponent } from './../pages/login/login';
 
 const routes: Routes = [
     { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -48,8 +49,10 @@ const routes: Routes = [
             },
             {
                 path: 'hc_confirm', component: HCConfirmComponent
-            },{
+            }, {
                 path: 'gh_result', component: GHResultComponent
+            }, {
+                path: 'login', component: LoginComponent
             }
         ]
     }

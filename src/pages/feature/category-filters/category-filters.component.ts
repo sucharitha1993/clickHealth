@@ -1,4 +1,4 @@
-import { AppointmentInfoService } from './../../../providers/services/appointment-info-service';
+import { AppointmentInfoService } from './../../../providers/services/appointments/appointment-info-service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({

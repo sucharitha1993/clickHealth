@@ -1,0 +1,81 @@
+<section class="login_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="login-box">
+                    <div class="lb-header">
+                        <a style='cursor:pointer' [ngClass]="{'active': activeClass == 'login'}" id="login-box-link" (click)='type("login")'>Login</a>
+                        <a style='cursor:pointer' [ngClass]="{'active': activeClass == 'signup'}" id="signup-box-link" (click)='type("signup")'>Sign Up</a>
+                    </div>
+
+                    <form class="email-login" *ngIf='activeClass == "login"' [formGroup]='loginFg'>
+                        <div class="u-form-group">
+                            <input type="email" [formControl]='loginFg.controls["name"]' placeholder="Enter your mobile number or email id" />
+                            <span *ngIf='loginFg.controls["name"].invalid && loginFg.controls["name"].dirty'>Please enter valid mobile number or email.</span>
+                        </div>
+                        <div class="u-form-group">
+                            <input type="password" [formControl]='loginFg.controls["password"]' placeholder="Password" />
+                            <span *ngIf='loginFg.controls["password"].hasError("required") && loginFg.controls["password"].touched'>This Field is required.</span>
+                        </div>
+
+                        <div class="u-form-group">
+                            <a class="forgot-password">Forgot password?</a>
+                        </div>
+                        <div class="u-form-group">
+                            <button [disabled]='loginFg.invalid' (click)='onLogin()'>Log in</button>
+                            <button [disabled]='loginFg.invalid' class="btn_right">Login via OTP</button>
+                        </div>
+
+                    </form>
+                    <form class="email-signup" *ngIf='activeClass == "signup"' [formGroup]='signupFg'>
+                        <div class="u-form-group">
+                            <input type="email" [formControl]='signupFg.controls["name"]' placeholder="Full Name or Email" />
+                            <span *ngIf='signupFg.controls["name"].invalid && signupFg.controls["name"].dirty'>Please enter valid name or email.</span>
+                        </div>
+
+                        <div class="u-form-group">
+                            <select class="no_code">
+                            <option>+91(IND)</option>
+                            <option>+65(SGP)</option>
+                            <option>+63(PHL)</option>
+                            <option>+60(MYS)</option>
+                            <option>+62(IDN)</option>
+                            <option>+55(BRA)</option>
+                            <option>+52(MEX)</option>
+                            <option>+54(ARG)</option>
+                            <option>+56(CHL)</option>
+                            <option>+84(VNM)</option>
+                            <option>+971(UAE)</option>
+                            <option>+255(TZA)</option>
+                            <option>+1(USA)</option>
+                        </select>
+                            <input class="no_number" [formControl]='signupFg.controls["mobile"]' type="password" placeholder="Mobile Number" />
+                            <span *ngIf='signupFg.controls["mobile"].invalid && signupFg.controls["mobile"].dirty'>Please enter valid mobile number.</span>
+                        </div>
+
+                        <div class="u-form-group">
+                            <input type="password" [formControl]='signupFg.controls["password"]' placeholder="Create Password" />
+                            <span *ngIf='signupFg.controls["password"].hasError("required") && signupFg.controls["password"].touched'>This Field is required.</span>                            
+                        </div>
+
+                        <div class="u-form-group send_otp">
+                            <button>Send OTP</button>
+                        </div>
+                    </form>
+
+                    <div class="social-login">
+
+                        <div class="col-md-12">
+                            <span class="socail_login">Social Login</span>
+                        </div>
+                        <a class="fblogin"><i class="fa fa-facebook fa-lg"></i>Login in with facebook</a>
+                        <a><img src="{{imgPrePath}}icons/google.png">log in with Google</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>

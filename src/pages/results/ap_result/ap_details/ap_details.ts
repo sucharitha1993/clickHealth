@@ -1,8 +1,8 @@
 import { AppLitteralsConfig } from './../../../../providers/literals/app.literals';
 import { SharingService } from './../../../../providers/services/sharing-service';
-import { AppointmentInfoService } from './../../../../providers/services/appointment-info-service';
+import { AppointmentInfoService } from './../../../../providers/services/appointments/appointment-info-service';
 import { AppRegExpressionsConfig } from './../../../../providers/literals/app.regularExp';
-import { AppointmentDataService } from './../../../../providers/services/appointment-data.service';
+import { AppointmentDataService } from './../../../../providers/services/appointments/appointment-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';

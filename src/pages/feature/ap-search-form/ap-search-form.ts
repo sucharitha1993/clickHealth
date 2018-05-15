@@ -1,8 +1,8 @@
 import { SharingService } from './../../../providers/services/sharing-service';
 import { Observable } from 'rxjs/Rx';
-import { AppointmentInfoService } from './../../../providers/services/appointment-info-service';
+import { AppointmentInfoService } from './../../../providers/services/appointments/appointment-info-service';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { AppointmentDataService } from './../../../providers/services/appointment-data.service';
+import { AppointmentDataService } from './../../../providers/services/appointments/appointment-data.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
