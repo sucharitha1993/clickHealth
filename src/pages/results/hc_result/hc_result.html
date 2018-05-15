@@ -88,9 +88,9 @@
                                         <p style='width:100%'>{{hc?.description}}</p>
 
                                         <div class="flight-line-b">
-                                          <b class="view_more_cur" (click)='viewMore()'>
-                                            View<span style='font-weight: 600;color: #48ba49 !important;font-size: 11px;' *ngIf='!showDetails'>More details</span>
-                                              <span style='font-weight: 600;color: #48ba49 !important;font-size: 11px;' *ngIf='showDetails'>Less details</span>
+                                          <b class="view_more_cur" (click)='viewMore(hc)'>
+                                            View<span style='font-weight: 600;color: #48ba49 !important;font-size: 11px;' *ngIf='!hc?.showDetails'>More details</span>
+                                              <span style='font-weight: 600;color: #48ba49 !important;font-size: 11px;' *ngIf='hc?.showDetails'>Less details</span>
                                           </b>
                                         </div>
                                       </div>
@@ -131,7 +131,7 @@
                     </div>
                   </div>
                   <!-- START OF HC DETAILS -->
-                  <app-hc-toggle-details *ngIf='showDetails' [hcDetails]='hc?.tests'></app-hc-toggle-details>
+                  <app-hc-toggle-details *ngIf='hc?.showDetails' [hcDetails]='hc' [hcTests]='hc?.tests'></app-hc-toggle-details>
                   <!-- END OF HC DETAILS -->
                 </div>
               </div>

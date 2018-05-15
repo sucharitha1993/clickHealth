@@ -9,7 +9,11 @@ import { Component, Input } from '@angular/core';
 export class HCToggleDetailsComponent {
 
     @Input('hcDetails')
-    hcDetails: any = [];
+    hcDetails: any;
+
+    @Input('hcTests')
+    hcTests: any = [];
+
     public imgPrePath: string = '../../assets/img/';
     constructor() { }
 

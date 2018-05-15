@@ -53,9 +53,8 @@ export class HCResultsComponent implements OnInit {
     }
 
     // to toggle hc details
-    viewMore() {
-        // hc.showDetails = hc.showDetails == undefined ? true : !hc.showDetails;
-        this.showDetails = !this.showDetails;
+    viewMore(hc) {
+        hc.showDetails = hc.showDetails == undefined ? true : !hc.showDetails;
     }
 
     onModifySearch() {

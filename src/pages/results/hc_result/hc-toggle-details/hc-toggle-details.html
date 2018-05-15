@@ -9,7 +9,7 @@
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs custom_tab" role="tablist">
                                 <li role="presentation" class="active">
-                                    <a class="radius" href="#appointments" aria-controls="home" role="tab" data-toggle="tab">
+                                    <a class="radius" href="#appointments_{{hcDetails?.id}}" aria-controls="home" role="tab" data-toggle="tab">
                                         <span><i class="fa fa-user-md"></i></span>
                                         <span>
                                             <strong>Health check <br>package details</strong>
@@ -18,7 +18,7 @@
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="#health_checks" aria-controls="health_checks" role="tab" data-toggle="tab">
+                                    <a href="#health_checks_{{hcDetails?.id}}" role="tab" data-toggle="tab">
                                         <span><i class="fa fa-medkit"></i></span>
                                         <span>
                                             <strong>Instuctions & <br>Precautions</strong>
@@ -29,10 +29,10 @@
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content health_check_mainTo">
-                                <div role="tabpanel" class="tab-pane active" id="appointments">
+                                <div role="tabpanel" class="tab-pane active" id="appointments_{{hcDetails?.id}}">
 
                                     <div class="col-md-6">
-                                        <div *ngFor='let detail of hcDetails;let i = index;let even = even'>
+                                        <div *ngFor='let detail of hcTests;let i = index;let even = even'>
                                             <div class="full_width health_check_mainTo_in" *ngIf='!even;'>
                                                 <div class="image_siph">
                                                     <img src="{{imgPrePath}}icons/hc1.png">
@@ -62,36 +62,9 @@
                                         </div>
                                     </div>
                                     </div>
-                                <div role="tabpanel" class="tab-pane" id="health_checks">
+                                <div role="tabpanel" class="tab-pane" id="health_checks_{{hcDetails?.id}}">
                                     <ol class="insrurer">
-                                        <li>Get enough sleep, at least 6 hours, prior to the check-up - Lack of sleep may cause
-                                            abnormal results such as blood pressure, heart beat, and body temperature. The
-                                            doctor may not be able to assess if any change is a real abnormality.</li>
-                                        <li class="add_color">Do not eat or drink at least 10 – 12 hours prior to the check-up. Do not chew gum,
-                                            eat breath mints or consume other food substitutes during the fast time.Water,
-                                            however may be freely taken to avoid dehydration effects on blood sugar and cholesterol
-                                            tests in the program. </li>
-                                        <li>Please do not drink alcohol for at least 24 hours prior to appointment as alcohol
-                                            may affect some tests. Please inform the doctor or nurse before the test.</li>
-                                        <li class="add_color">Kindly avoid smoking 5 – 12 hours prior to the health check-up</li>
-                                        <li>If you are taking medicine for Hypertension/Hyperthyroidism etc. you can continue
-                                            taking as per doctor’s prescription after blood is collected post overnight Fasting.
-                                            Please carry regular medication along.</li>
-                                        <li class="add_color">If you are diabetic, avoid taking your insulin injections / anti diabetic tablets
-                                            on the morning of health Check up. Please carry your insulin / anti diabetic
-                                            tablets which you can be taken as instructed by the doctor. Please carry regular
-                                            medication along.
-                                        </li>
-                                        <li>If you have a chronic illness or other health problems, please bring any test results
-                                            or medical report with you to assist in diagnosis.</li>
-                                        <li class="add_color">Please bring your medical accessories like glasses, hearing aid if you have any when
-                                            you come for Health Check Up.
-                                        </li>
-                                        <li>Stool samples should be collected in a sterile container and bought to the health
-                                            check if part of your package.Sterile container can be collected at the health
-                                            check centre or can be purchased in nearby pharmacy</li>
-                                        <li class="add_color">Please avoid wearing contact lenses and use Glasses on the day of health check</li>
-                                        <li>Wear loose clothing, No jewellery (Necklaces / Chains) and easily removable footwear</li>
+                                       <li>{{hcDetails?.description}}</li> 
                                     </ol>
                                 </div>
                             </div>
