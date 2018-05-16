@@ -67,7 +67,7 @@ export class TimeSlotComponent {
         this.selectedAppointment.appointmentDetails = {
             clinician_id: doc.id,
             provider_id: doc.provider_id,
-            date: this.selectedSlots.date,
+            date: this.datePipe.transform(this.selectedSlots.date, 'yyyy-MM-dd'),
             time: selectedTime
         }
         this.selectedAppointment.docDetails = {

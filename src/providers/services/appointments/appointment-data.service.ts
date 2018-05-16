@@ -51,14 +51,14 @@ export class AppointmentDataService {
     //to confirm booking Appointment
     bookAppointment(argument) {
         let body = new URLSearchParams();
-        // body.set('clinician_id', argument.clinician_id);
-        // body.set('provider_id', argument.provider_id);
-        // body.set('date', argument.date);
-        // body.set('time', argument.time);
-        body.set('clinician_id', '6');
-        body.set('provider_id', '1');
-        body.set('date', '2018-03-01');
-        body.set('time', '13:25');
+        body.set('clinician_id', argument.clinician_id);
+        body.set('provider_id', argument.provider_id);
+        body.set('date', argument.date);
+        body.set('time', argument.time);
+        // body.set('clinician_id', '6');
+        // body.set('provider_id', '1');
+        // body.set('date', '2018-03-01');
+        // body.set('time', '13:25');
         return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/appointment/`, body.toString(), options)
             .map(response => response.json());
     }

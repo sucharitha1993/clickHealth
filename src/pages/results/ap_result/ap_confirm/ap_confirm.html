@@ -64,7 +64,7 @@
 
                     <div class="full_width date_based_select">
                         <div class="date_based_select_text">
-                            <p><span>Date : {{bookingDetails?.date }} </span> &nbsp;&nbsp;<span><img src="{{imgPrePath}}icons/arrow.png"></span>&nbsp;&nbsp;<span>Time : {{bookingDetails?.time}}</span></p>
+                            <p><span>Date : {{bookingDetails?.date | date:'dd-MM-yyyy' }} </span> &nbsp;&nbsp;<span><img src="{{imgPrePath}}icons/arrow.png"></span>&nbsp;&nbsp;<span>Time : {{bookingDetails?.time}}</span></p>
                         </div>
 
                     </div>
