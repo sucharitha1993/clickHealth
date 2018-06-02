@@ -19,12 +19,23 @@ export class HCDataService {
             .map(res => res.json())
     }
 
+    //to get Specialities
+    getGenerals() {
+        let url = `${AppConfig.API_ENDPOINT}api/speciality/`;
+        return this.http.get(url, '')
+            .map(res => res.json())
+    }
+
     //to get HC Search Results
     getHCSearchResults(reqData) {
         let body = new URLSearchParams();
         body.set('gender', reqData.gender);
         body.set('type', reqData.general);
         body.set('age_range', reqData.age);
+ 		//body.set('speciality_id', reqData.speciality_id);
+        //body.set('applicability', "general/specific");
+        //body.set('agegroup', '20-40');
+
         return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/healthchecks/`, body.toString(), options)
             .map(response => response.json()
             );

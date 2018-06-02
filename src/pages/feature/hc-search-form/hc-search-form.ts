@@ -1,3 +1,4 @@
+import { HCDataService } from './../../../providers/services/health-checkups/hc-data-service';
 import { HCInfoService } from './../../../providers/services/health-checkups/hc-info-service';
 import { SharingService } from './../../../providers/services/sharing-service';
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
@@ -40,11 +41,18 @@ export class HCSearchFormComponent implements OnInit {
         "Female"
     ];
 
-    constructor(private formBuilder: FormBuilder, public sharingService: SharingService, public hcInfoService: HCInfoService) {
+    constructor(private hcDataService: HCDataService, private formBuilder: FormBuilder, public sharingService: SharingService, public hcInfoService: HCInfoService) {
 
     }
 
     ngOnInit() {
+        this.hcDataService.getGenerals()
+            .subscribe((res) => {
+                this.generals = res.data;
+            },
+            err => {
+
+            })
         this.initialiseFields(this.isModal);
     }
 
@@ -63,10 +71,17 @@ export class HCSearchFormComponent implements OnInit {
 
     //navigate to HC Results
     naviagteToHCRes() {
+        let speciality_id: any;
+        for (let i in this.generals) {
+            if (this.hcSearchForm.controls['general'].value == this.generals[i])
+                speciality_id = i;
+        }
         let reqObj = {
+            "applicability": "general/specific",
             'gender': (this.hcSearchForm.controls['gender'].value).toLowerCase(),
-            'general': (this.hcSearchForm.controls['general'].value).toLowerCase(),
-            'age': this.hcSearchForm.controls['age'].value
+            //'general': (this.hcSearchForm.controls['general'].value).toLowerCase(),
+            'age': this.hcSearchForm.controls['age'].value,
+            "speciality_id": speciality_id
         }
         this.hcInfoService.setHCSearchParams(reqObj);
         this.sharingService.setParams('hcSearchParams', reqObj);
