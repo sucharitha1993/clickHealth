@@ -5,13 +5,13 @@
                 <div class="tab_main fade-in one tab_main_insds">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs custom_tab_3" role="tablist">
-                        <li role="presentation" class="happp_wed_a" [ngClass]="{'active': data?.activeClass}"  *ngFor='let data of dcData'>
+                        <li role="presentation" class="happp_wed_a" [ngClass]="{'active': data?.activeClass}" *ngFor='let data of dcData'>
                             <a aria-controls="home" role="tab" data-toggle="tab" (click)='checkActiveClass(data)'>
-                            <!-- <span><i class="fa fa-user-md"></i></span> -->
-                            <span>
+                                <!-- <span><i class="fa fa-user-md"></i></span> -->
+                                <span>
                                {{data?.name}}
                             </span>
-                        </a>
+                            </a>
                         </li>
                     </ul>
 
@@ -28,13 +28,13 @@
 
                                                 <p class="family_card_de">
                                                     <span><i class="fa fa-clock-o"></i>&nbsp;Valid Till {{activeDiscount?.validity}}</span>&nbsp;|&nbsp;
-                                                    {{activeDiscount?.coverage}}
-                                                    (<span *ngFor='let member of activeDiscount?.applicable_family_members;let last = last'>{{member}} 
+                                                    {{activeDiscount?.coverage}} (
+                                                    <span *ngFor='let member of activeDiscount?.applicable_family_members;let last = last'>{{member}} 
                                                         <span *ngIf='!last'>,</span>
                                                     </span>)
                                                 </p>
-                                                <a  class="search_vtm btn btn-4 wedding_a btn-4c icon-arrow-right">Buy</a>
-                                                <a  class="search_vtm btn btn-4 btn-4c icon-arrow-right">Gift</a>
+                                                <a class="search_vtm btn btn-4 wedding_a btn-4c icon-arrow-right">Buy</a>
+                                                <a class="search_vtm btn btn-4 btn-4c icon-arrow-right">Gift</a>
                                             </div>
                                         </div>
 
@@ -88,8 +88,8 @@
                 </div>
             </div>
             <div class="col-xs-18 col-sm-6 col-md-4" style='margin-top: 25%;'>
-                    <a  class="search_vtm btn btn-4 wedding_a btn-4c icon-arrow-right">Buy</a>
-                    <a  class="search_vtm btn btn-4 btn-4c icon-arrow-right">Gift</a>
+                <a href='{{url}}' target='blank' class="search_vtm btn btn-4 wedding_a btn-4c icon-arrow-right">Buy</a>
+                <a class="search_vtm btn btn-4 btn-4c icon-arrow-right">Gift</a>
             </div>
         </div>
     </div>
@@ -130,7 +130,7 @@
     <div class="container">
         <div class="row">
             <h2>Explore our 500+ Network Health Providers</h2>
-            <a  class="search_vtm btn btn-4 btn-4c icon-arrow-right">CONTINUE</a>
+            <a class="search_vtm btn btn-4 btn-4c icon-arrow-right">CONTINUE</a>
         </div>
     </div>
 </section>
