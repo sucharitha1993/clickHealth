@@ -16,8 +16,15 @@
                 <li><a>For Corporates</a></li>
                 <li><a>For Health Providers</a></li>
                 <li><a>Contact</a></li>
-                <li routerLink='login'>
+                <li>
                     <a style="padding: 0;"><button type="button" class="sign_in login_c btn">Login / Sign Up</button></a>
+                    <ul class="dropdown">
+                        <li><a href="{{healthSeekerSigin}}" target='blank'>Health Seeker</a></li>
+                        <li><a href="{{healthProviderSignin}}" target='blank'>Health Provider</a></li>
+                        <li><a href="{{clinicianSignin}}" target='blank'>Clinicians</a></li>
+                        <li><a href="{{sponsorSignin}}" target='blank'>Sponsor</a></li>
+                        <li><a href="{{adminSignin}}" target='blank'>Admin</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
