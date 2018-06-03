@@ -1,3 +1,4 @@
+import { DCInfoService } from './../providers/services/discounts/dc-info.service';
 import { DiscountDataService } from './../providers/services/discounts/dc-data.service';
 import { Toastr } from './../providers/services/toastr.service';
 import { LoginComponent } from './../pages/login/login';
@@ -159,7 +160,8 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     HCDataService,
     HCInfoService,
     Toastr,
-    DiscountDataService
+    DiscountDataService,
+    DCInfoService
   ],
   bootstrap: [AppComponent]
 })

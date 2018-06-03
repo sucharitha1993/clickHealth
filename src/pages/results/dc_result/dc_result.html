@@ -5,32 +5,14 @@
                 <div class="tab_main fade-in one tab_main_insds">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs custom_tab_3" role="tablist">
-                        <li role="presentation" class="active happp_wed_a">
-                            <a href="#Happy_Wedding" aria-controls="home" role="tab" data-toggle="tab">
-                            <span><i class="fa fa-user-md"></i></span>
+                        <li role="presentation" class="happp_wed_a" [ngClass]="{'active': data?.activeClass}"  *ngFor='let data of dcData'>
+                            <a aria-controls="home" role="tab" data-toggle="tab" (click)='checkActiveClass(data)'>
+                            <!-- <span><i class="fa fa-user-md"></i></span> -->
                             <span>
-                                Happy Wedding
+                               {{data?.name}}
                             </span>
                         </a>
                         </li>
-                        <li class="family_a" role="presentation">
-                            <a href="#Family_Card" aria-controls="health_checks" role="tab" data-toggle="tab">
-                             <span><i class="fa fa-medkit"></i></span>
-                            <span>
-                                Family Card
-                            </span>
-                        </a>
-                        </li>
-
-                        <li class="senior_a" role="presentation">
-                            <a href="#senior_Citizen" aria-controls="senior_Citizen " role="tab" data-toggle="tab">
-                             <span><i class="fa fa-medkit"></i></span>
-                            <span>
-                                senior Citizen 
-                            </span>
-                        </a>
-                        </li>
-
                     </ul>
 
                     <div class="tab-content">
@@ -41,14 +23,16 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="full_width dc_banner_content">
-                                                <h2>Phealth The Perfect <br>Family Health Card</h2>
-                                                <p class="col-md-10">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                                    Lorem Ipsum has been the industry's standard dummy text ever the when
-                                                    an unknown printer took a galley of type and scrambled </p>
+                                                <h2>{{activeDiscount?.name}}</h2>
+                                                <p class="col-md-10">{{activeDiscount?.description}} </p>
 
                                                 <p class="family_card_de">
-                                                    <span><i class="fa fa-clock-o"></i>&nbsp;Validity 365</span>&nbsp;|&nbsp;
-                                                    <span>Newly Married Couple (Self & Spouse)</span></p>
+                                                    <span><i class="fa fa-clock-o"></i>&nbsp;Valid Till {{activeDiscount?.validity}}</span>&nbsp;|&nbsp;
+                                                    {{activeDiscount?.coverage}}
+                                                    (<span *ngFor='let member of activeDiscount?.applicable_family_members;let last = last'>{{member}} 
+                                                        <span *ngIf='!last'>,</span>
+                                                    </span>)
+                                                </p>
                                                 <a  class="search_vtm btn btn-4 wedding_a btn-4c icon-arrow-right">Buy</a>
                                                 <a  class="search_vtm btn btn-4 btn-4c icon-arrow-right">Gift</a>
                                             </div>
@@ -56,68 +40,7 @@
 
                                         <div class="col-md-6">
                                             <div class="full_width">
-                                                <img src="{{imgPrePath}}married_dc.png">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="Family_Card">
-                            <div class="full_width dc_banner dc_banner_two">
-                                <div class="container">
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="full_width dc_banner_content">
-                                                <h2>Phealth The Perfect <br>Family Health Card</h2>
-                                                <p class="col-md-10">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                                    Lorem Ipsum has been the industry's standard dummy text ever the when
-                                                    an unknown printer took a galley of type and scrambled </p>
-
-                                                <p class="family_card_de">
-                                                    <span><i class="fa fa-clock-o"></i>&nbsp;Validity 365</span>&nbsp;|&nbsp;
-                                                    <span>Newly Married Couple (Self & Spouse)</span></p>
-                                                <a  class="search_vtm btn btn-4 btn-4c family_a icon-arrow-right">Buy</a>
-                                                <a  class="search_vtm btn btn-4 btn-4c icon-arrow-right">Gift</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="full_width">
-                                                <img src="{{imgPrePath}}family_card.png">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div role="tabpanel" class="tab-pane" id="senior_Citizen">
-                            <div class="full_width dc_banner dc_banner_three">
-                                <div class="container">
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="full_width dc_banner_content">
-                                                <h2>Phealth The Perfect <br>Family Health Card</h2>
-                                                <p class="col-md-10">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                                    Lorem Ipsum has been the industry's standard dummy text ever the when
-                                                    an unknown printer took a galley of type and scrambled </p>
-
-                                                <p class="family_card_de">
-                                                    <span><i class="fa fa-clock-o"></i>&nbsp;Validity 365</span>&nbsp;|&nbsp;
-                                                    <span>Newly Married Couple (Self & Spouse)</span></p>
-                                                <a  class="search_vtm btn btn-4 btn-4c seni_citi_a icon-arrow-right">Buy</a>
-                                                <a  class="search_vtm btn btn-4 btn-4c icon-arrow-right">Gift</a>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="full_width">
-                                                <img src="{{imgPrePath}}seni_citi.png">
+                                                <img src="activeDiscount?.image">
                                             </div>
                                         </div>
                                     </div>
@@ -138,7 +61,7 @@
         <div class="row">
 
             <div class="col-md-12">
-                <h2 class="align-center">Exclusive Features of P Health Discount Card</h2>
+                <h2 class="align-center">Exclusive Features of {{activeDiscount?.name}}</h2>
             </div>
 
             <div class="col-xs-18 col-sm-6 col-md-4">
@@ -148,7 +71,7 @@
                         <div class="image_on_text">
                             <img src="{{imgPrePath}}icons/dc1.png">
                         </div>
-                        <h3>Free Basic Health Check <br>(For all 2 Members) - Plan Y<br>our Parentinghood</h3>
+                        <h3>Free Basic Health Check <br>(For all {{activeDiscount?.coverage}} Members) - Plan Y<br>our Parentinghood</h3>
                         <div class="free_tag_dc">
                             <img src="{{imgPrePath}}icons/free_tag.png">
                             <span>Free</span>
@@ -157,180 +80,17 @@
                     </div>
                     <div class="caption">
                         <ul>
-                            <li><i class="fa fa-star"></i><span>Special Counselling By Gynacologist</span></li>
-                            <li><i class="fa fa-star"></i><span>Diabetes Screening, Hypertension Screening, BMI & Family Physician Consultation</span></li>
-                            <li><i class="fa fa-star"></i><span>Oral Health Screening</span></li>
-                            <li><i class="fa fa-star"></i><span>Vision Health Screening</span></li>
-                            <li><i class="fa fa-star"></i><span>Dieat & Fitness Advice</span></li>
+                            <li *ngFor='let checkup of activeDiscount?.health_checkups'><i class="fa fa-star"></i>
+                                <span>{{checkup}}</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
-
-
-                <div class="thumbnail">
-                    <div class="thum_dc">
-                        <img src="{{imgPrePath}}dc_feature2.jpg" alt="">
-                        <div class="image_on_text">
-                            <img src="{{imgPrePath}}icons/dc4.png">
-                        </div>
-                        <h3 style="top: 153px;">Configure Health Allerts</h3>
-                        <div class="free_tag_dc">
-                            <img src="{{imgPrePath}}icons/free_tag.png">
-                            <span>Free</span>
-                        </div>
-
-                    </div>
-                    <div class="caption">
-                        <ul>
-                            <li><i class="fa fa-star"></i><span>Configure Vaccination Allerts</span></li>
-                            <li><i class="fa fa-star"></i><span>Oral Health Screening</span></li>
-                            <li><i class="fa fa-star"></i><span>Configure Health Check Schedule</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="thumbnail">
-                    <div class="thum_dc">
-                        <img src="{{imgPrePath}}dc_feature3.jpg" alt="">
-                        <div class="image_on_text">
-                            <img src="{{imgPrePath}}icons/dc7.png">
-                        </div>
-                        <h3 style="top: 153px;">Hassle Free Appointmenets </h3>
-                        <div class="free_tag_dc">
-                            <img src="{{imgPrePath}}icons/free_tag.png">
-                            <span>Free</span>
-                        </div>
-
-                    </div>
-                    <div class="caption">
-                        <ul>
-                            <li><i class="fa fa-star"></i><span>Book Appointments at Trusted Clinics with Clear and Confirmed Communication</span></li>
-                            <li><i class="fa fa-star"></i><span>Track Appointment Status</span></li>
-                            <li><i class="fa fa-star"></i><span>Get Guaranteed Discounts</span></li>
-                            <li><i class="fa fa-star"></i><span>Special Discounts on All 1st Consultations</span></li>
-                        </ul>
-                    </div>
-                </div>
-
             </div>
-
-            <div class="col-xs-18 col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <div class="thum_dc">
-                        <img src="{{imgPrePath}}dc_feature4.jpg" alt="">
-                        <div class="image_on_text">
-                            <img src="{{imgPrePath}}icons/dc2.png">
-                        </div>
-                        <h3 style="top: 143px;">Guaranteed Discounts upto 50%<br> on All Healthcare Offerings</h3>
-                        <div class="free_tag_dc">
-                            <img src="{{imgPrePath}}icons/free_tag.png">
-                            <span>Free</span>
-                        </div>
-
-                    </div>
-                    <div class="caption">
-                        <ul>
-                            <li><i class="fa fa-star"></i><span>10% Minimum Guaranteed Discount all healthcare offerings (*All Healthcare Offerings by Preferred Service Provider Network)</span></li>
-                            <li><i class="fa fa-star"></i><span>Special Discounts on 1st Consultations</span></li>
-                            <li><i class="fa fa-star"></i><span>Strong Provider Network - More than 100 Institutions and More Than 1000 Clinicians </span></li>
-                        </ul>
-                    </div>
-                </div>
-
-
-                <div class="thumbnail">
-                    <div class="thum_dc">
-                        <img src="{{imgPrePath}}dc_feature5.jpg" alt="">
-                        <div class="image_on_text">
-                            <img src="{{imgPrePath}}icons/dc5.png">
-                        </div>
-                        <h3 style="top: 153px;">Assisted Wellness Planning</h3>
-                        <div class="free_tag_dc">
-                            <img src="{{imgPrePath}}icons/free_tag.png">
-                            <span>Free</span>
-                        </div>
-
-                    </div>
-                    <div class="caption">
-                        <ul>
-                            <li><i class="fa fa-star"></i><span>Personalized Preventive Health Check Plan Advice</span></li>
-                            <li><i class="fa fa-star"></i><span>Personalized Diet and Fitness Plan Advise</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="thumbnail">
-                    <div class="thum_dc">
-                        <img src="{{imgPrePath}}dc_feature6.jpg" alt="">
-                        <div class="image_on_text">
-                            <img src="{{imgPrePath}}icons/dc8.png">
-                        </div>
-                        <h3 style="top: 153px;">Free Unlimited Telecon solutions (Primary Health Advice)</h3>
-                        <div class="free_tag_dc">
-                            <img src="{{imgPrePath}}icons/free_tag.png">
-                            <span>Free</span>
-                        </div>
-
-                    </div>
-                    <div class="caption">
-                        <ul>
-                            <li><i class="fa fa-star"></i><span>Trained doctors assistance for Primary Medical Advice</span></li>
-
-                        </ul>
-                    </div>
-                </div>
-
+            <div class="col-xs-18 col-sm-6 col-md-4" style='margin-top: 25%;'>
+                    <a  class="search_vtm btn btn-4 wedding_a btn-4c icon-arrow-right">Buy</a>
+                    <a  class="search_vtm btn btn-4 btn-4c icon-arrow-right">Gift</a>
             </div>
-
-            <div class="col-xs-18 col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <div class="thum_dc">
-                        <img src="{{imgPrePath}}dc_feature7.jpg" alt="">
-                        <div class="image_on_text">
-                            <img src="{{imgPrePath}}icons/dc3.png">
-                        </div>
-                        <h3 style="top: 143px;">Manage Health Records - Fully Secured</h3>
-                        <div class="free_tag_dc">
-                            <img src="{{imgPrePath}}icons/free_tag.png">
-                            <span>Free</span>
-                        </div>
-
-                    </div>
-                    <div class="caption">
-                        <ul>
-                            <li><i class="fa fa-star"></i><span>Secure Your Health Records with Trusted End-to-End Encrypted Standards</span></li>
-                            <li><i class="fa fa-star"></i><span>Access from anywhere and anytime</span></li>
-                            <li><i class="fa fa-star"></i><span>Accessible for you and your healthpartner only</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-
-                <div class="thumbnail">
-                    <div class="thum_dc">
-                        <img src="{{imgPrePath}}dc_feature8.jpg" alt="">
-                        <div class="image_on_text">
-                            <img src="{{imgPrePath}}icons/dc6.png">
-                        </div>
-                        <h3 style="top: 153px;">Dedicated Facilitation </h3>
-                        <div class="free_tag_dc">
-                            <img src="{{imgPrePath}}icons/free_tag.png">
-                            <span>Free</span>
-                        </div>
-
-                    </div>
-                    <div class="caption">
-                        <ul>
-                            <li><i class="fa fa-star"></i><span>Dedicated Health Manager Assistance for Each and Every Healthneed</span></li>
-                            <li><i class="fa fa-star"></i><span>24/7 Callcentre Support</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-
-
-            </div>
-
         </div>
     </div>
 </section>
