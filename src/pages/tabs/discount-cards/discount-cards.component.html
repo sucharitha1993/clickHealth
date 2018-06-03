@@ -1,23 +1,32 @@
 <div role="tabpanel" class="tab-pane" id="discount_cards">
     <div class="row">
-        <div class="col-md-3 col-sm-3 col-xs-12">
-            <div class="full_width discount_card_tab">
-                <a routerLink='dc_result'><img src="{{imgPrePath}}card.png"></a>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
-            <div class="full_width">
-                <a routerLink='dc_result'><img src="{{imgPrePath}}card1.png"></a>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
-            <div class="full_width">
-                <a routerLink='dc_result'><img src="{{imgPrePath}}card2.png"></a>
-            </div>
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-12 discount_card_tab">
-            <div class="full_width">
-                <a routerLink='dc_result'><img src="{{imgPrePath}}card3.png"></a>
+        <div class="div_slde_main">
+            <div class="large-12 columns">
+                <div class="owl-carousel owl-theme">
+                    <div class="item col-md-3 col-sm-3 col-xs-12" *ngFor='let data of dcData'>
+                        <a routerLink='dc_result'><img src="{{data.image}}"></a>
+                    </div>
+                    <!-- <div class="item">
+                        <img src="{{imgPrePath}}health5.png">
+                        <span>Complete Body Check-Up</span>
+                    </div>
+                    <div class="item">
+                        <img src="{{imgPrePath}}health5.png">
+                        <span>Complete Body Check-Up</span>
+                    </div>
+                    <div class="item">
+                        <img src="{{imgPrePath}}health5.png">
+                        <span>Complete Body Check-Up</span>
+                    </div>
+                    <div class="item">
+                        <img src="{{imgPrePath}}health5.png">
+                        <span>Complete Body Check-Up</span>
+                    </div>
+                    <div class="item">
+                        <img src="{{imgPrePath}}health5.png">
+                        <span>Complete Body Check-Up</span>
+                    </div> -->
+                </div>
             </div>
         </div>
         <div class="col-md-12 disc_div_a">
