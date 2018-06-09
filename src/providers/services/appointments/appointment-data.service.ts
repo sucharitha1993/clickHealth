@@ -25,27 +25,29 @@ export class AppointmentDataService {
     getDocList(reqData) {
         let body = new URLSearchParams();
         body.set('symptom', reqData.symptom);
-        body.set('session', reqData.session);
+        //body.set('session', reqData.session);
         body.set('location_type', reqData.location_type);
         body.set('location', reqData.location);
         body.set('from_date', reqData.from_date);
-        body.set('to_date', reqData.to_date);
+        //body.set('to_date', reqData.to_date);
 
         return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/doctors/`, body.toString(), options)
-            .map(response => {
-                let res = response.json();
-                if (res.status) {
-                    res.data = res.data || {};
-                    for (let i = 0; i < res.data.hospitals.length; i++) {
-                        for (let j = 0; j < res.data.clinicians[res.data.hospitals[i].name].length; j++) {
-                            res.data.clinicians[res.data.hospitals[i].name][j].locations = res.data.locations[i];
-                            res.data.clinicians[res.data.hospitals[i].name][j].provider_id = res.data.hospitals[i].id;
-                            res.data.clinicians[res.data.hospitals[i].name][j].provider_name = res.data.hospitals[i].name;
-                        }
-                    }
-                }
-                return res;
-            });
+            .map(res => res.json()
+                // response => {
+                // let res = response.json();
+                // if (res.status) {
+                //     res.data = res.data || {};
+                //     for (let i = 0; i < res.data.hospitals.length; i++) {
+                //         for (let j = 0; j < res.data.clinicians[res.data.hospitals[i].name].length; j++) {
+                //             res.data.clinicians[res.data.hospitals[i].name][j].locations = res.data.locations[i];
+                //             res.data.clinicians[res.data.hospitals[i].name][j].provider_id = res.data.hospitals[i].id;
+                //             res.data.clinicians[res.data.hospitals[i].name][j].provider_name = res.data.hospitals[i].name;
+                //         }
+                //     }
+                // }
+                // return res;
+                //}
+        );
     }
 
     //to confirm booking Appointment

@@ -56,8 +56,8 @@ export class ApSearchFormComponent implements OnInit {
             "location_type": ['city'],
             "location": [searchParams.location, Validators.required],
             "from_date": [searchParams.from_date, Validators.required],
-            "to_date": [searchParams.to_date, Validators.required],
-            "session": [searchParams.session, Validators.required]
+            "to_date": [searchParams.to_date],
+            "session": [searchParams.session]
         });
         this.appointmentSearchForm.updateValueAndValidity();
     }
@@ -102,9 +102,9 @@ export class ApSearchFormComponent implements OnInit {
             'from_date': this.datePipe.transform(this.appointmentSearchForm.controls['from_date'].value, 'yyyy-MM-dd'),
             'location': this.appointmentSearchForm.controls['location'].value,
             'location_type': this.appointmentSearchForm.controls['location_type'].value,
-            'session': this.appointmentSearchForm.controls['session'].value,
+            //'session': this.appointmentSearchForm.controls['session'].value,
             'symptom': this.appointmentSearchForm.controls['symptom'].value,
-            'to_date': this.datePipe.transform(this.appointmentSearchForm.controls['to_date'].value, 'yyyy-MM-dd'),
+            //'to_date': this.datePipe.transform(this.appointmentSearchForm.controls['to_date'].value, 'yyyy-MM-dd'),
         }
         //let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date'];
         //this.appointmentInfo.setLocalStorageParamsDynamically(args, reqObj);

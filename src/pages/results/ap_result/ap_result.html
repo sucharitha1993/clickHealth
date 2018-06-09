@@ -87,7 +87,7 @@
                                           <h4>09:00 PM - 04:00 PM</h4>
                                           <p>{{ doc?.provider_name + ',' + doc?.locations?.landmark}}
                                           </p>
-                                          <a data-toggle="modal" data-target="#myModal" href="#" (click)="onViewMapClick(doc?.locations.lat,doc?.locations.long,doc?.id)">View map <span class="fa fa-angle-right"></span></a>
+                                          <a data-toggle="modal" data-target="#myModal" href="#" (click)="onViewMapClick(doc?.locations?.lat,doc?.locations?.long,doc?.id)">View map <span class="fa fa-angle-right"></span></a>
                                           <div height="410" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                             <div class="modal-dialog fade" role="document">
                                               <div class="modal-content">
