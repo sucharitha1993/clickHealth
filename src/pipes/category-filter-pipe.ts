@@ -10,11 +10,11 @@ export class CategoryFilterPipe implements PipeTransform {
                     loc = true,
                     lang = true,
                     gender = true;
-                if (medicalSearch && medicalSearch.length > 0) {
-                    medical = medicalSearch.some(medical => medical == item.provider_name);
+                if (medicalSearch && medicalSearch.length > 0 && item.hospital && item.hospital[0]) {
+                    medical = medicalSearch.some(medical => medical == item.hospital[0].name);
                 }
-                if (locSearch && locSearch.length > 0 && item.locations) {
-                    loc = locSearch.some(loc => loc == item.locations.landmark);
+                if (locSearch && locSearch.length > 0 && item.hospital && item.hospital[0] && item.hospital[0].location) {
+                    loc = locSearch.some(loc => loc == item.hospital[0].location.name);
                 }
                 if (langSearch && langSearch.length > 0 && item.language) {
                     lang = langSearch.some(lang => lang.toLowerCase() == item.language.toLowerCase());

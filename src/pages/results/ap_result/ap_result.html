@@ -75,19 +75,19 @@
                                       </b>
                                           </div>
                                           <p *ngFor="let speci of doc?.specialities">
-                                            {{speci.name + ' ' + speci.description}}
+                                            {{speci?.name + ' ' + speci?.description}}
                                           </p>
                                           <span class="lagu_span">consultation: {{doc?.language}}</span>
-                                          <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{doc?.user.mobile}}</span>
+                                          <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{doc?.user?.mobile}}</span>
                                           <a data-toggle="tooltip" title="Add to favorite and get maximum discount" class="heart_fav activet" href=""><i class="fa fa-heart"></i></a>
                                         </div>
                                       </div>
                                       <div class="col-md-4 col-lg-4">
                                         <div class="full_width doctr_details3">
                                           <h4>09:00 PM - 04:00 PM</h4>
-                                          <p>{{ doc?.provider_name + ',' + doc?.locations?.landmark}}
+                                          <p>{{ doc?.provider_name + ',' + doc?.hospital[0]?.location?.landmark }} 
                                           </p>
-                                          <a data-toggle="modal" data-target="#myModal" href="#" (click)="onViewMapClick(doc?.locations?.lat,doc?.locations?.long,doc?.id)">View map <span class="fa fa-angle-right"></span></a>
+                                          <a data-toggle="modal" data-target="#myModal" href="#" (click)="onViewMapClick(doc?.hospital[0]?.location?.lat,doc?.hospital[0]?.location?.long,doc?.id)">View map <span class="fa fa-angle-right"></span></a>
                                           <div height="410" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                             <div class="modal-dialog fade" role="document">
                                               <div class="modal-content">
@@ -109,7 +109,7 @@
                                         <div class="alt-flight-lr pricing_list">
                                           <div class="padding">
                                             <div class="flt-i-price"><span>Rs</span>&nbsp;{{doc?.fee}}</div>
-                                            <div class="flt-i-price-b">Get {{doc?.discount_offerings[0].amount}}% Discount On First Consultation</div>
+                                            <div class="flt-i-price-b">Get {{doc?.discount_offerings[0]?.amount}}% Discount On First Consultation</div>
                                             <a style="cursor: pointer;" class="flight-line-b cat-list-btn popper" data-toggle="popover" id="timeslots" (click)='bookAppointment(doc)'>book appointment</a>
                                           </div>
                                         </div>
