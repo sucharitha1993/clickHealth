@@ -32,21 +32,27 @@ export class AppointmentDataService {
         //body.set('to_date', reqData.to_date);
 
         return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/doctors/`, body.toString(), options)
-            .map(res => res.json()
-                // response => {
-                // let res = response.json();
-                // if (res.status) {
-                //     res.data = res.data || {};
-                //     for (let i = 0; i < res.data.hospitals.length; i++) {
-                //         for (let j = 0; j < res.data.clinicians[res.data.hospitals[i].name].length; j++) {
-                //             res.data.clinicians[res.data.hospitals[i].name][j].locations = res.data.locations[i];
-                //             res.data.clinicians[res.data.hospitals[i].name][j].provider_id = res.data.hospitals[i].id;
-                //             res.data.clinicians[res.data.hospitals[i].name][j].provider_name = res.data.hospitals[i].name;
-                //         }
-                //     }
-                // }
-                // return res;
-                //}
+            .map(
+                //res => res.json()
+                response => {
+                let res = response.json();
+                let hospitalArr = [];
+                let langArr = [];
+                if (res.status) {
+                    res.data = res.data || {};
+                    for (let i in res.data.clinicians) {
+                        for(let  j in res.data.clinicians[i]) {
+                            hospitalArr = hospitalArr.concat(res.data.clinicians[i][j].hospital);
+                            res.data.hospitals = hospitalArr;
+                            for(let k in res.data.hospitals) {
+                                langArr = langArr.concat(res.data.hospitals[k].location);
+                                res.data.languages = langArr
+                            }
+                        }
+                    }
+                }
+                return res;
+                }
         );
     }
 
