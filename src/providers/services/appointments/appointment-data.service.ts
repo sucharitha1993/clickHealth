@@ -46,7 +46,7 @@ export class AppointmentDataService {
                             res.data.hospitals = hospitalArr;
                         }
                         for(let k in res.data.hospitals) {
-                            let loc = locArr.filter(loc => loc.name == res.data.hospitals[k].location.name) || [];
+                            let loc = locArr.filter(loc => loc.id == res.data.hospitals[k].location.id) || [];
                             if (loc.length <= 0) {
                                 locArr = locArr.concat(res.data.hospitals[k].location);
                                 res.data.locations = locArr;
