@@ -64,9 +64,11 @@ export class TimeSlotComponent {
         let doc = this.doc || {};
         doc.user = doc.user || {};
         doc.discount_offerings[0] = doc.discount_offerings[0] || {};
+        doc.hospital[0] = doc.hospital[0] || {};
+        doc.hospital[0].location = doc.hospital[0].location || {};
         this.selectedAppointment.appointmentDetails = {
             clinician_id: doc.id,
-            provider_id: doc.provider_id,
+            provider_id: doc.hospital[0].id,
             date: this.datePipe.transform(this.selectedSlots.date, 'yyyy-MM-dd'),
             time: selectedTime
         }
@@ -82,10 +84,10 @@ export class TimeSlotComponent {
             first_fee: doc.first_fee
         }
         this.selectedAppointment.location = {
-            lat: doc.locations.lat,
-            long: doc.locations.long,
-            address: doc.provider_name + ', ' + doc.locations.landmark ,
-            pincode: doc.locations.pincode
+            lat: doc.location.lat,
+            long: doc.location.long,
+            address: doc.hospital[0].name + ', ' + doc.hospital[0].location.landmark ,
+            pincode: doc.location.pincode
         }
         this.apInfoService.setAppointmentDetails(this.selectedAppointment);
         this.sharingService.setParams('selectedAppointment', this.selectedAppointment);
