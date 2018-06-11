@@ -37,7 +37,7 @@ export class AppointmentDataService {
                 response => {
                 let res = response.json();
                 let hospitalArr = [];
-                let langArr = [];
+                let locArr = [];
                 if (res.status) {
                     res.data = res.data || {};
                     for (let i in res.data.clinicians) {
@@ -45,8 +45,8 @@ export class AppointmentDataService {
                             hospitalArr = hospitalArr.concat(res.data.clinicians[i][j].hospital);
                             res.data.hospitals = hospitalArr;
                             for(let k in res.data.hospitals) {
-                                langArr = langArr.concat(res.data.hospitals[k].location);
-                                res.data.languages = langArr
+                                locArr = locArr.concat(res.data.hospitals[k].location);
+                                res.data.locations = locArr;
                             }
                         }
                     }
