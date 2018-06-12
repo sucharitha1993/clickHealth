@@ -76,15 +76,15 @@ export class AppointmentResultsComponent implements OnInit {
         this.medicalCenters = this.appointmentInfo.getHospitals();
         this.locations = this.appointmentInfo.getLocations();
         this.languages = this.appointmentInfo.getLanguages();
-        this.docList = [];
+        this.docList = clinicians || [];
         this.searchParams = this.getSearchParams();
-        for (let key in clinicians) {
-            if (clinicians[key].length > 0) {
-                for(let i in clinicians[key]) {
-                    this.docList.push(clinicians[key][i]);                    
-                }
-            }
-        }
+        // for (let key in clinicians) {
+        //     if (clinicians[key].length > 0) {
+        //         for(let i in clinicians[key]) {
+        //             this.docList.push(clinicians[key][i]);                    
+        //         }
+        //     }
+        // }
     }
     //to get Search params
     getSearchParams() {

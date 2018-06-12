@@ -26,10 +26,8 @@ export class AppointmentDataService {
         let body = new URLSearchParams();
         body.set('symptom', reqData.symptom);
         //body.set('session', reqData.session);
-        body.set('location_type', reqData.location_type);
-        body.set('location', reqData.location);
- 		body.set('long', reqData.lat);
-        body.set('lat', reqData.long);
+       // body.set('location_type', reqData.location_type);
+        //body.set('location', reqData.location);
         body.set('from_date', reqData.from_date);
         body.set('lat', reqData.lat);
         body.set('long', reqData.long);
@@ -45,26 +43,24 @@ export class AppointmentDataService {
                 let langArr = [];
                 if (res.status) {
                     res.data = res.data || {};
+                    let obj = Object;
+                    res.data.clinicians = obj.values(res.data.clinicians);
                     for (let i in res.data.clinicians) {
-                        for(let  j in res.data.clinicians[i]) {
-                            hospitalArr = hospitalArr.concat(res.data.clinicians[i][j].hospital);
-                            res.data.hospitals = hospitalArr;
-                        }
-                        for(let k in res.data.hospitals) {
-                            let loc = locArr.filter(loc => loc.id == res.data.hospitals[k].location.id) || [];
-                            if (loc.length <= 0) {
-                                locArr = locArr.concat(res.data.hospitals[k].location);
-                                res.data.locations = locArr;
+                        hospitalArr = hospitalArr.concat(res.data.clinicians[i].hospital);
+                        res.data.hospitals = hospitalArr;
+                        for (let j in res.data.clinicians[i].languages) {
+                            let lang = langArr.filter(lang => lang.id == res.data.clinicians[i].languages[j].id) || [];
+                            if (lang.length <= 0) {
+                                langArr = langArr.concat(res.data.clinicians[i].languages);
+                                res.data.languages = langArr;
                             }
                         }
-                        for (let l in res.data.clinicians[i]) {
-                            for (let m in res.data.clinicians[i][l].languages) {
-                                let lang = langArr.filter(lang => lang.id == res.data.clinicians[i][l].languages[m].id) || [];
-                                if (lang.length <= 0) {
-                                    langArr = langArr.concat(res.data.clinicians[i][l].languages);
-                                    res.data.languages = langArr;
-                                }
-                            }
+                    }
+                    for (let k in res.data.hospitals) {
+                        let loc = locArr.filter(loc => loc.id == res.data.hospitals[k].location.id) || [];
+                        if (loc.length <= 0) {
+                            locArr = locArr.concat(res.data.hospitals[k].location);
+                            res.data.locations = locArr;
                         }
                     }
                 }
