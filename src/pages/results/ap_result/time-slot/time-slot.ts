@@ -49,7 +49,7 @@ export class TimeSlotComponent {
 
     ngOnInit() {
         this.doc = this.doc || {};
-        let vacations = this.doc.vacations || [];
+        let vacations = this.doc.timeconfigure || [];
         //let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date']
         this.searchParams = this.apInfoService.getAppointmentSearchParams() || this.sharingService.getParams('appointments') || {};
         this.doc.vacationLists = this.getVacationsDateList(vacations);
@@ -61,6 +61,7 @@ export class TimeSlotComponent {
 
     chosenAppointment(selectedTime, doctor) {
         this.selectedSlots.time = selectedTime;
+        
         let doc = this.doc || {};
         doc.user = doc.user || {};
         doc.discount_offerings[0] = doc.discount_offerings[0] || {};
@@ -69,7 +70,7 @@ export class TimeSlotComponent {
         this.selectedAppointment.appointmentDetails = {
             clinician_id: doc.id,
             provider_id: doc.hospital[0].id,
-            date: this.datePipe.transform(this.selectedSlots.date, 'yyyy-MM-dd'),
+            date: this.datePipe.transform(this.selectedSlots.date.exactDate, 'yyyy-MM-dd'),
             time: selectedTime
         }
         this.selectedAppointment.docDetails = {
@@ -84,46 +85,41 @@ export class TimeSlotComponent {
             first_fee: doc.first_fee
         }
         this.selectedAppointment.location = {
-            lat: doc.location.lat,
-            long: doc.location.long,
+            lat: doc.hospital[0].location.lat,
+            long: doc.hospital[0].location.long,
             address: doc.hospital[0].name + ', ' + doc.hospital[0].location.landmark ,
-            pincode: doc.location.pincode
+            pincode: doc.hospital[0].location.pincode
         }
         this.apInfoService.setAppointmentDetails(this.selectedAppointment);
         this.sharingService.setParams('selectedAppointment', this.selectedAppointment);
     }
 
     getVacationsDateList(vacList) {
-        let vacationList: any = []
-        vacList.forEach(element => {
-            var dates = [],
-                currentDate = new Date(element[0]),
-                addDays = function (days) {
-                    var date = new Date(this.valueOf());
-                    date.setDate(date.getDate() + days);
-                    return date;
-                };
-            while (currentDate <= (new Date(element[1]))) {
-                vacationList.push(currentDate);
-                currentDate = addDays.call(currentDate, 1);
+        var carousalDates = [];
+        var dateObj: any = {};
+        for(let i=0;i<vacList.length;i++) {
+            dateObj = {};
+            dateObj.date = vacList[i].date;
+            var dateExists = false;
+            for(let j=0;j<carousalDates.length;j++) {
+                if(vacList[i].date == carousalDates[j].date) {
+                    dateExists = true;
+                }
             }
-        });
-        let dateRange: any = this.getDateRange();
+            if(!dateExists) {
+                carousalDates.push(dateObj);
+            }
+            
+        }
+        for(let i=0;i<carousalDates.length;i++) {
+            carousalDates[i].activeClass = false;
+            carousalDates[i].exactDate = new Date(carousalDates[i].date);
+            carousalDates[i].date = new Date(carousalDates[i].date).getDate();
+            carousalDates[i].day = new Date(carousalDates[i].date).getDay();
+            carousalDates[i].month = new Date(carousalDates[i].date).getMonth();
 
-        vacationList.forEach(date => {
-            dateRange = dateRange.filter((i) => {
-                return i.toDateString() !== date.toDateString();
-            })
-        });
-
-        dateRange.forEach(obj => {
-            obj.activeClass = false;
-            obj.exactDate = obj;
-            obj.date = obj.getDate();
-            obj.day = obj.getDay();
-            obj.month = obj.getMonth();
-        });
-        return dateRange;
+        }
+        return carousalDates;
     }
 
     getDateRange() {
@@ -144,41 +140,26 @@ export class TimeSlotComponent {
     }
 
     dateSelectEvent(item, index, list?) {
+        var times = this.doc.timeconfigure;
         var unAvailableList = [];
-        for(let i=0;i<list.pending_appointments.length;i++) {
+        for(let i=0;i<times.length;i++) {
             let selectedDate = this.datePipe.transform(item.exactDate, 'yyyy-MM-dd');
-            if(selectedDate == list.pending_appointments[i].date) {
-                unAvailableList.push(list.pending_appointments[i]);
+            if(selectedDate == times[i].date) {
+                unAvailableList.push(times[i]);
             }
             
         }
-        for(let i=0;i<list.confirmed_appointments.length;i++) {
-            let selectedDate = this.datePipe.transform(item.exactDate, 'yyyy-MM-dd');
-            if(selectedDate == list.confirmed_appointments[i].date) {
-                unAvailableList.push(list.confirmed_appointments[i]);
-            }
-        }
         var unAvailableListIntervals = [];
         for(let i=0;i<unAvailableList.length;i++) {
-            unAvailableListIntervals.push(unAvailableList[i].time.substring(0,5));
+            unAvailableListIntervals.push(unAvailableList[i].time_slot.substring(0,5));
         }
         
         list.daysList = list.daysList || {};
         this.selectedSlots.date = item;
         this.selectedSlots.time = null;
-        var intervals = [];
-        var breakIntervals = [];
         var finalIntervals = [];
-        
-        for(var j=0;j<list.work_timings.length;j++) {
-            var element;
-            if (item.day == j) {
-                intervals = this.getIntervals(list.work_timings[j][0],list.work_timings[j][1]);
-                breakIntervals = this.getIntervals(list.break_timings[j][0],list.break_timings[j][1]);
-                finalIntervals = $(intervals).not(breakIntervals).get();
-            }
-        }
-        finalIntervals = $(intervals).not(unAvailableListIntervals).get();
+
+        finalIntervals = unAvailableListIntervals;
         this.timeSession = this.getTimeSessionBasedData(finalIntervals);
         index.forEach(element => {
             element.activeClass = false;

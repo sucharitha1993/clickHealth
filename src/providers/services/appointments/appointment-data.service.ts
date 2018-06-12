@@ -31,6 +31,8 @@ export class AppointmentDataService {
  		body.set('long', reqData.lat);
         body.set('lat', reqData.long);
         body.set('from_date', reqData.from_date);
+        body.set('lat', reqData.lat);
+        body.set('long', reqData.long);
         //body.set('to_date', reqData.to_date);
 
         return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/doctors/`, body.toString(), options)
