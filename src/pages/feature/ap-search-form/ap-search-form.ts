@@ -34,7 +34,8 @@ export class ApSearchFormComponent implements OnInit {
     searchLocation: any;
     selectedSession: any;
     searchParams: any;
-
+    lat: any;
+    long: any;
     constructor(private sharingService: SharingService, private appointmentInfo: AppointmentInfoService, private datePipe: DatePipe, private apiServices: AppointmentDataService, public formBuilder: FormBuilder, private router: Router) {
 
     }
@@ -93,6 +94,8 @@ export class ApSearchFormComponent implements OnInit {
             place = autocomplete.getPlace();
             let loc: any = this.sharingService.placeToJSON(place);
             this.appointmentSearchForm.controls['location'].setValue(loc.name);
+            this.lat = loc.location.lat;
+            this.long = loc.location.lng;
         });
     }
 
@@ -104,6 +107,8 @@ export class ApSearchFormComponent implements OnInit {
             'location_type': this.appointmentSearchForm.controls['location_type'].value,
             //'session': this.appointmentSearchForm.controls['session'].value,
             'symptom': this.appointmentSearchForm.controls['symptom'].value,
+            'lat': this.lat,
+            'long': this.long,
             //'to_date': this.datePipe.transform(this.appointmentSearchForm.controls['to_date'].value, 'yyyy-MM-dd'),
         }
         //let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date'];

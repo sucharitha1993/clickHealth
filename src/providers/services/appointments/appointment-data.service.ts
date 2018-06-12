@@ -28,6 +28,8 @@ export class AppointmentDataService {
         //body.set('session', reqData.session);
         body.set('location_type', reqData.location_type);
         body.set('location', reqData.location);
+ 		body.set('long', reqData.lat);
+        body.set('lat', reqData.long);
         body.set('from_date', reqData.from_date);
         //body.set('to_date', reqData.to_date);
 
@@ -38,6 +40,7 @@ export class AppointmentDataService {
                 let res = response.json();
                 let hospitalArr = [];
                 let locArr = [];
+                let langArr = [];
                 if (res.status) {
                     res.data = res.data || {};
                     for (let i in res.data.clinicians) {
@@ -50,6 +53,15 @@ export class AppointmentDataService {
                             if (loc.length <= 0) {
                                 locArr = locArr.concat(res.data.hospitals[k].location);
                                 res.data.locations = locArr;
+                            }
+                        }
+                        for (let l in res.data.clinicians[i]) {
+                            for (let m in res.data.clinicians[i][l].languages) {
+                                let lang = langArr.filter(lang => lang.id == res.data.clinicians[i][l].languages[m].id) || [];
+                                if (lang.length <= 0) {
+                                    langArr = langArr.concat(res.data.clinicians[i][l].languages);
+                                    res.data.languages = langArr;
+                                }
                             }
                         }
                     }
