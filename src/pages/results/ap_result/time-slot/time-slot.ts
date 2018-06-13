@@ -70,6 +70,7 @@ export class TimeSlotComponent {
         doc.hospital[0].location = doc.hospital[0].location || {};
         doc.specialities[0] = doc.specialities[0] || {};
         this.selectedAppointment.appointmentDetails = {
+            provider_name: doc.hospital[0].name,
             clinician_id: doc.id,
             provider_id: doc.hospital[0].id,
             date: this.datePipe.transform(this.selectedSlots.date.exactDate, 'yyyy-MM-dd'),

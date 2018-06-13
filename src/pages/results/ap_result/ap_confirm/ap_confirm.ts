@@ -15,19 +15,21 @@ export class ConfirmAppointmentComponent {
     doc: any;
     searchParams: any;
     healthSeeker: any;
-    bookingDetails: any;
+    //bookingDetails: any;
     address: any;
     AppConfig = AppConfig;
+    selectedAppointment: any;
 
     constructor(private sharingService: SharingService, private apInfoService: AppointmentInfoService) { }
 
     ngOnInit() {
         this.healthSeeker = this.apInfoService.getUserDetails() || this.sharingService.getParams('healthSeeker') || {};
-        this.bookingDetails = this.apInfoService.getbookingDetails() || this.sharingService.getParams('bookedAppointment') || {};
+        //this.bookingDetails = this.apInfoService.getbookingDetails() || this.sharingService.getParams('bookedAppointment') || {};
         let selectedAppointment = this.apInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};
         this.doc = selectedAppointment.docDetails || {};
         selectedAppointment.location = selectedAppointment.location;
         this.address = selectedAppointment.location.address;
+        this.selectedAppointment = selectedAppointment.appointmentDetails || {};
         this.searchParams = this.apInfoService.getAppointmentSearchParams() || this.sharingService.getParams('appointments');        
     }
 

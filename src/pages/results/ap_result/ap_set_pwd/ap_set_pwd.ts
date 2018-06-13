@@ -54,8 +54,8 @@ export class ApSetPasswordComponent {
         this.apiServices.bookAppointment(this.selectedAppointment)
             .subscribe(res => {
                 if (res.status) {
-                    this.apInfoService.setbookingDetails(res.data);
-                    this.sharingService.setParams('bookedAppointment', res.data)
+                    //this.apInfoService.setbookingDetails(res.data);
+                    //this.sharingService.setParams('bookedAppointment', res.data)
                     this.router.navigateByUrl('/main/ap_confirm')
                 }
             },
