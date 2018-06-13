@@ -118,4 +118,15 @@ export class AppointmentDataService {
         return this.http.post(`${AppConfig.API_ENDPOINT}common/authenticate/`, body.toString(), options)
             .map(response => response.json());
     }
+
+    // to create user 
+    createUser(argument) {
+        let body = new URLSearchParams();
+        body.set('name', argument.name)
+        body.set('username', argument.username)
+        body.set('mobile', argument.mobile);
+        body.set('password', argument.password);
+        return this.http.post(`${AppConfig.API_ENDPOINT}common/create_user/`, body.toString(), options)
+            .map(response => response.json());
+    }
 }

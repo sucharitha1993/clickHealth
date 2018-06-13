@@ -68,13 +68,14 @@ export class TimeSlotComponent {
         doc.discount_offerings[0] = doc.discount_offerings[0] || {};
         doc.hospital[0] = doc.hospital[0] || {};
         doc.hospital[0].location = doc.hospital[0].location || {};
+        doc.specialities[0] = doc.specialities[0] || {};
         this.selectedAppointment.appointmentDetails = {
             clinician_id: doc.id,
             provider_id: doc.hospital[0].id,
             date: this.datePipe.transform(this.selectedSlots.date.exactDate, 'yyyy-MM-dd'),
             time: selectedTime,
-            seeker_id: '128',
-            speciality_id: "71",
+            seeker_id: '',
+            speciality_id: doc.specialities[0].id,
             fee: doc.fee,
         }
         this.selectedAppointment.docDetails = {
