@@ -98,7 +98,7 @@ export class ApSearchFormComponent implements OnInit {
             loc.location = loc.location || {};
             this.appointmentSearchForm.controls['location'].setValue(loc.name);
             this.appointmentSearchForm.controls['lat'].setValue(loc.location.lat);
-            this.appointmentSearchForm.controls['long'].setValue(loc.location.lat);
+            this.appointmentSearchForm.controls['long'].setValue(loc.location.lng);
         });
     }
 
