@@ -50,7 +50,7 @@
                               <input type="checkbox" (change)='agreeTnC($event)' [formControl]="confirmAppointmentForm.controls['agreeing_to_tnc']" >
                               <span class="checkmark"></span>
                             </label>
-                        <a class="search_vtm btn btn-4 btn-4c icon-arrow-right" [class.disabled]='confirmAppointmentForm.invalid' (click)='generateOTP()'>Book Appointment</a>
+                        <a class="search_vtm btn btn-4 btn-4c icon-arrow-right" [class.disabled]='confirmAppointmentForm.invalid' (click)='checkForUserExistence()'>Book Appointment</a>
                     </form>
                 </div>
             </div>

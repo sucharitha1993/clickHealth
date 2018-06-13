@@ -76,8 +76,8 @@ export class AppointmentDataService {
         body.set('provider_id', argument.provider_id);
         body.set('date', argument.date);
         body.set('time', argument.time);
-        // body.set('clinician_id', '6');
-        // body.set('provider_id', '1');
+        body.set('seeker_id', argument.seeker_id);
+        body.set('speciality_id', argument.speciality_id);
         // body.set('date', '2018-03-01');
         // body.set('time', '13:25');
         return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/appointment/`, body.toString(), options)
@@ -91,6 +91,31 @@ export class AppointmentDataService {
         body.set('email', argument.email);
         body.set('mobile', argument.mobile);
         return this.http.post(`${AppConfig.API_ENDPOINT}common/otp/`, body.toString(), options)
+            .map(response => response.json());
+    }
+
+    //to check if user is authenticated or not
+    checkAuthentication() {
+        let url = `${AppConfig.API_ENDPOINT}common/is_authenticated/`;
+        return this.http.get(url, '')
+            .map(res => res.json())
+    }
+
+    //to check User Existence in db
+    checkUserExistence(argument) {
+        let body = new URLSearchParams();
+        body.set('email', argument.email);
+        body.set('mobile', argument.mobile);
+        return this.http.post(`${AppConfig.API_ENDPOINT}common/check_user/`, body.toString(), options)
+            .map(response => response.json());
+    }
+
+    //to verify user entered password
+    checkForPwdAuthentication(argument) {
+        let body = new URLSearchParams();
+        body.set('username', argument.username);
+        body.set('password', argument.password);
+        return this.http.post(`${AppConfig.API_ENDPOINT}common/authenticate/`, body.toString(), options)
             .map(response => response.json());
     }
 }

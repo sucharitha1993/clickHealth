@@ -1,3 +1,4 @@
+import { AppointmentDataService } from './../../../../providers/services/appointments/appointment-data.service';
 import { CaroselService } from './../../../../providers/services/carosel-service';
 import { SharingService } from './../../../../providers/services/sharing-service';
 import { DatePipe } from '@angular/common';
@@ -31,7 +32,7 @@ export class TimeSlotComponent {
     }
     public weekDays: any = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     public monthsList: any = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    public timeSession : any;
+    public timeSession: any;
 
     public carouselConfig = {
         grid: { xs: 1, sm: 1, md: 3, lg: 3, all: 0 },
@@ -45,7 +46,7 @@ export class TimeSlotComponent {
         touch: true
     }
 
-    constructor(public CaroselService: CaroselService, private sharingService: SharingService, private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
+    constructor(public apDataService: AppointmentDataService, public CaroselService: CaroselService, private sharingService: SharingService, private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
 
     ngOnInit() {
         this.doc = this.doc || {};
@@ -61,7 +62,7 @@ export class TimeSlotComponent {
 
     chosenAppointment(selectedTime, doctor) {
         this.selectedSlots.time = selectedTime;
-        
+
         let doc = this.doc || {};
         doc.user = doc.user || {};
         doc.discount_offerings[0] = doc.discount_offerings[0] || {};
@@ -71,7 +72,10 @@ export class TimeSlotComponent {
             clinician_id: doc.id,
             provider_id: doc.hospital[0].id,
             date: this.datePipe.transform(this.selectedSlots.date.exactDate, 'yyyy-MM-dd'),
-            time: selectedTime
+            time: selectedTime,
+            seeker_id: '128',
+            speciality_id: "71",
+            fee: doc.fee,
         }
         this.selectedAppointment.docDetails = {
             fee: doc.fee,
@@ -87,7 +91,7 @@ export class TimeSlotComponent {
         this.selectedAppointment.location = {
             lat: doc.hospital[0].location.lat,
             long: doc.hospital[0].location.long,
-            address: doc.hospital[0].name + ', ' + doc.hospital[0].location.landmark ,
+            address: doc.hospital[0].name + ', ' + doc.hospital[0].location.landmark,
             pincode: doc.hospital[0].location.pincode
         }
         this.apInfoService.setAppointmentDetails(this.selectedAppointment);
@@ -97,21 +101,21 @@ export class TimeSlotComponent {
     getVacationsDateList(vacList) {
         var carousalDates = [];
         var dateObj: any = {};
-        for(let i=0;i<vacList.length;i++) {
+        for (let i = 0; i < vacList.length; i++) {
             dateObj = {};
             dateObj.date = vacList[i].date;
             var dateExists = false;
-            for(let j=0;j<carousalDates.length;j++) {
-                if(vacList[i].date == carousalDates[j].date) {
+            for (let j = 0; j < carousalDates.length; j++) {
+                if (vacList[i].date == carousalDates[j].date) {
                     dateExists = true;
                 }
             }
-            if(!dateExists) {
+            if (!dateExists) {
                 carousalDates.push(dateObj);
             }
-            
+
         }
-        for(let i=0;i<carousalDates.length;i++) {
+        for (let i = 0; i < carousalDates.length; i++) {
             carousalDates[i].activeClass = false;
             carousalDates[i].exactDate = new Date(carousalDates[i].date);
             carousalDates[i].date = new Date(carousalDates[i].date).getDate();
@@ -142,18 +146,18 @@ export class TimeSlotComponent {
     dateSelectEvent(item, index, list?) {
         var times = this.doc.timeconfigure;
         var unAvailableList = [];
-        for(let i=0;i<times.length;i++) {
+        for (let i = 0; i < times.length; i++) {
             let selectedDate = this.datePipe.transform(item.exactDate, 'yyyy-MM-dd');
-            if(selectedDate == times[i].date) {
+            if (selectedDate == times[i].date) {
                 unAvailableList.push(times[i]);
             }
-            
+
         }
         var unAvailableListIntervals = [];
-        for(let i=0;i<unAvailableList.length;i++) {
-            unAvailableListIntervals.push(unAvailableList[i].time_slot.substring(0,5));
+        for (let i = 0; i < unAvailableList.length; i++) {
+            unAvailableListIntervals.push(unAvailableList[i].time_slot.substring(0, 5));
         }
-        
+
         list.daysList = list.daysList || {};
         this.selectedSlots.date = item;
         this.selectedSlots.time = null;
@@ -168,24 +172,54 @@ export class TimeSlotComponent {
     }
 
     navigateToApDetails() {
-        this.router.navigateByUrl('/main/ap_details');
+        this.apDataService.checkAuthentication()
+            .subscribe(res => {
+                console.log(res)
+                if (res.authenticated) {
+                    this.selectedAppointment.appointmentDetails.seeker_id = res.pk;
+                    this.bookAppointment();
+                }
+                else
+                    this.router.navigateByUrl('/main/ap_details');
+            },
+            error => {
+                console.log('authentication api not working!')
+            })
     }
-    getIntervals(fromTime,toTime) {
+
+    //To book Appointment for the authenticated user
+    bookAppointment() {
+        let selectedAppointment = this.apInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};
+        let obj = selectedAppointment.appointmentDetails;
+        this.apDataService.bookAppointment(obj)
+            .subscribe(res => {
+                if (res.status) {
+                    this.apInfoService.setbookingDetails(res.data);
+                    this.sharingService.setParams('bookedAppointment', res.data)
+                    this.router.navigateByUrl('/main/ap_confirm')
+                }
+            },
+            error => {
+                console.log(error);
+            })
+    }
+
+    getIntervals(fromTime, toTime) {
         var duration = 30;
         fromTime = this.convertTimeToInt(fromTime);
         toTime = this.convertTimeToInt(toTime);
         var intervals = [];
-        while(fromTime < toTime){
-            intervals.push(fromTime.toTimeString().substring(0,5));
+        while (fromTime < toTime) {
+            intervals.push(fromTime.toTimeString().substring(0, 5));
             fromTime.setMinutes(fromTime.getMinutes() + duration);
         }
         return intervals;
-      
+
     }
     convertTimeToInt(date_time) {
         var dt = new Date();
-        dt.setHours(date_time.substring(0,2));
-        dt.setMinutes(date_time.substring(3,5));
+        dt.setHours(date_time.substring(0, 2));
+        dt.setMinutes(date_time.substring(3, 5));
         return dt;
     }
 
