@@ -75,3 +75,9 @@ ngx-carousel button[NgxCarouselNext] {
 .owl-carousel {
   z-index : 0 !important;
 }
+.languages-display {
+  display: flex !important;
+}
+.languages-display span{
+  display: flex !important;
+  }
