@@ -9,6 +9,7 @@ import { ConfirmAppointmentComponent } from './../pages/results/ap_result/ap_con
 import { AppointmentOTPComponent } from './../pages/results/ap_result/ap_otp/ap_otp';
 import { BookAppointmentComponent } from './../pages/results/ap_result/ap_details/ap_details';
 import { ApPasswordComponent } from './../pages/results/ap_result/ap_pwd/ap_pwd';
+import { ApSetPasswordComponent } from './../pages/results/ap_result/ap_set_pwd/ap_set_pwd';
 
 import { HCResultsComponent } from './../pages/results/hc_result/hc_result';
 import { HCDetailsComponent } from './../pages/results/hc_result/hc-details/hc-details';
@@ -38,6 +39,8 @@ const routes: Routes = [
                 path: 'ap_confirm', component: ConfirmAppointmentComponent
             }, {
                 path: 'ap_pwd', component: ApPasswordComponent
+            }, {
+                path: 'ap_set_pwd', component: ApSetPasswordComponent
             },
             {
                 path: 'hc_result', component: HCResultsComponent

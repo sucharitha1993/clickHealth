@@ -80,6 +80,7 @@ import { ApSearchFormComponent } from './../pages/feature/ap-search-form/ap-sear
 import { HCSearchFormComponent } from './../pages/feature/hc-search-form/hc-search-form';
 import { CategoryFiltersComponent } from './../pages/feature/category-filters/category-filters.component';
 import { ApPasswordComponent } from './../pages/results/ap_result/ap_pwd/ap_pwd';
+import { ApSetPasswordComponent } from './../pages/results/ap_result/ap_set_pwd/ap_set_pwd';
 
 //Ngx Pagintor Module
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -111,6 +112,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     ConfirmAppointmentComponent,
     AppointmentOTPComponent,
     ApPasswordComponent,
+    ApSetPasswordComponent,
     ChosenDoctorComponent,
     HCResultsComponent,
     HCToggleDetailsComponent,
