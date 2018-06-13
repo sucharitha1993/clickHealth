@@ -78,6 +78,7 @@ export class AppointmentDataService {
         body.set('time', argument.time);
         body.set('seeker_id', argument.seeker_id);
         body.set('speciality_id', argument.speciality_id);
+        body.set('fee', argument.fee);
         // body.set('date', '2018-03-01');
         // body.set('time', '13:25');
         return this.http.post(`${AppConfig.API_ENDPOINT}api/custom/appointment/`, body.toString(), options)

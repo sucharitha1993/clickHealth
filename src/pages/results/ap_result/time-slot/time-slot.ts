@@ -86,7 +86,7 @@ export class TimeSlotComponent {
             specialities: doc.specialities,
             discounts: doc.discount_offerings[0].amount,
             docImage: doc.user.profile_pic,
-            language: doc.language,
+            languages: doc.languages,
             first_fee: doc.first_fee
         }
         this.selectedAppointment.location = {

@@ -24,11 +24,13 @@
                                         <div class="content_confirm">
                                             <div class="content_confirm_in">
                                                 <div class="full_width doctr_details">
-                                                    <h4>Dr. {{doc.name}}</h4>
+                                                    <h4>Dr. {{doc?.name}}</h4>
                                                     <p *ngFor='let speciality of doc?.specialities'>
                                                         {{speciality?.description}}
                                                     </p>
-                                                    <span class="lagu_span">consultation: {{doc?.language}}</span>
+                                                    <span class="lagu_span languages-display">consultation:
+                                                        <span *ngFor='let lang of doc?.languages;let last=last'>{{lang?.name}}<span *ngIf='!last'>,</span></span>
+                                                    </span>
                                                     <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{doc?.mobile}}</span>
                                                 </div>
                                             </div>
@@ -76,21 +78,21 @@
                                 <h4>Health Seeker Details</h4>
                                 <ul>
                                     <li>Name</li>
-                                    <li>{{healthSeeker.name}}</li>
+                                    <li>{{healthSeeker?.name}}</li>
                                 </ul>
 
                                 <ul>
                                     <li>Mobile Number</li>
-                                    <li>{{healthSeeker.mobile}}</li>
+                                    <li>{{healthSeeker?.mobile}}</li>
                                 </ul>
 
                                 <ul>
                                     <li>Email Address</li>
-                                    <li>{{healthSeeker.email}}</li>
+                                    <li>{{healthSeeker?.email}}</li>
                                 </ul>
                                 <ul>
                                     <li>Category</li>
-                                    <li>{{searchParams.symptom}}</li>
+                                    <li>{{searchParams?.symptom}}</li>
                                 </ul>
                             </div>
                         </div>
