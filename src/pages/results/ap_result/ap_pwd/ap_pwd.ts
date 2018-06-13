@@ -15,11 +15,14 @@ export class ApPasswordComponent {
     public pwd: any;
     public healthSeeker: any;
     public isAuthenticated: boolean = true;
+    public selectedAppointment: any;
 
     constructor(public sharingService: SharingService, public router: Router, public apiServices: AppointmentDataService, public apInfoService: AppointmentInfoService) { }
 
     ngOnInit() {
         this.healthSeeker = this.apInfoService.getUserDetails() || this.sharingService.getParams('healthSeeker') || {};
+        let selectedAppointment = this.apInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};
+        this.selectedAppointment = selectedAppointment.appointmentDetails;
     }
 
     //to verify password
@@ -32,6 +35,7 @@ export class ApPasswordComponent {
             .subscribe(res => {
                 if (res.authenticated) {
                     this.isAuthenticated = true;
+                    this.selectedAppointment.seeker_id = res.pk;
                     this.bookAppointment();
                 } else {
                     this.isAuthenticated = false;
@@ -44,13 +48,11 @@ export class ApPasswordComponent {
 
     //To book Appointment for the authenticated user
     bookAppointment() {
-        let selectedAppointment = this.apInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};
-        let obj = selectedAppointment.appointmentDetails;
-        this.apiServices.bookAppointment(obj)
+        this.apiServices.bookAppointment(this.selectedAppointment)
             .subscribe(res => {
                 if (res.status) {
-                    this.apInfoService.setbookingDetails(res.data);
-                    this.sharingService.setParams('bookedAppointment', res.data)
+                    //this.apInfoService.setbookingDetails(res.data);
+                    //this.sharingService.setParams('bookedAppointment', res.data)
                     this.router.navigateByUrl('/main/ap_confirm')
                 }
             },
