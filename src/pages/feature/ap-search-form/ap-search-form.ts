@@ -58,7 +58,9 @@ export class ApSearchFormComponent implements OnInit {
             "location": [searchParams.location, Validators.required],
             "from_date": [searchParams.from_date, Validators.required],
             "to_date": [searchParams.to_date],
-            "session": [searchParams.session]
+            "session": [searchParams.session],
+            "lat":[searchParams.lat],
+            "long":[searchParams.long]
         });
         this.appointmentSearchForm.updateValueAndValidity();
     }
@@ -93,9 +95,10 @@ export class ApSearchFormComponent implements OnInit {
         autocomplete.addListener('place_changed', () => {
             place = autocomplete.getPlace();
             let loc: any = this.sharingService.placeToJSON(place);
+            loc.location = loc.location || {};
             this.appointmentSearchForm.controls['location'].setValue(loc.name);
-            this.lat = loc.location.lat;
-            this.long = loc.location.lng;
+            this.appointmentSearchForm.controls['lat'].setValue(loc.location.lat);
+            this.appointmentSearchForm.controls['long'].setValue(loc.location.lat);
         });
     }
 
@@ -107,8 +110,8 @@ export class ApSearchFormComponent implements OnInit {
             'location_type': this.appointmentSearchForm.controls['location_type'].value,
             //'session': this.appointmentSearchForm.controls['session'].value,
             'symptom': this.appointmentSearchForm.controls['symptom'].value,
-            'lat': this.lat,
-            'long': this.long,
+            'lat': this.appointmentSearchForm.controls['lat'].value,
+            'long': this.appointmentSearchForm.controls['long'].value,
             //'to_date': this.datePipe.transform(this.appointmentSearchForm.controls['to_date'].value, 'yyyy-MM-dd'),
         }
         //let args = ['from_date', 'location', 'location_type', 'session', 'symptom', 'to_date'];

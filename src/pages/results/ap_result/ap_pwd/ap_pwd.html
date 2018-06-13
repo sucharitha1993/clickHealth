@@ -7,7 +7,7 @@
                     <div class="otp_scr2">
                         <div class="input-group">
                             <label for="email" class="fa fa-mobile-phone" rel="tooltip" title="email"></label>
-                            <input id="msg" type="text" [(ngModel)]='pwd' class="form-control" name="msg" placeholder="Otp">
+                            <input id="msg" type="text" [(ngModel)]='pwd' class="form-control" name="msg" placeholder="Password">
                             <a (click)='verifyPassword(pwd)'><span class="input-group-addon">Verify</span></a>
                         </div>
                         <span *ngIf='!isAuthenticated' style='color:red'>please enter correct Password</span>
