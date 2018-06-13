@@ -3,17 +3,15 @@
         <div class="row">
             <div class="col-md-7">
                 <div class="full_width Confirm_Appointment otp_scr">
-                    <p>Enter <span>Password</span> Sent your Mobile</p>
+                    <p>Enter <span>Password</span></p>
                     <div class="otp_scr2">
                         <div class="input-group">
                             <label for="email" class="fa fa-mobile-phone" rel="tooltip" title="email"></label>
                             <input id="msg" type="text" [(ngModel)]='pwd' class="form-control" name="msg" placeholder="Otp">
                             <a (click)='verifyPassword(pwd)'><span class="input-group-addon">Verify</span></a>
                         </div>
-                        <span *ngIf='!isAuthenticated' style='color:red'>please enter correct otp</span>
+                        <span *ngIf='!isAuthenticated' style='color:red'>please enter correct Password</span>
                     </div>
-                    <i>One time Password (OTP) has been sent to your mobile {{healthSeeker.mobile}},<br> 
-                        {{healthSeeker.email}}, Please enter the same here to Login</i>
                 </div>
             </div>
             <app-chosen-doctor-details></app-chosen-doctor-details>

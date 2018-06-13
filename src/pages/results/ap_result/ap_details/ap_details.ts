@@ -34,6 +34,7 @@ export class BookAppointmentComponent implements OnInit {
             "generate": [true],
             "mobile": [null, Validators.compose([Validators.required, Validators.pattern(AppRegExpressionsConfig.mobile)])],
             "reason": [null],
+            "password":[null, Validators.required],
             "agreeing_to_tnc": [null, Validators.required]
         });
     }

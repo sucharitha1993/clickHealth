@@ -39,6 +39,13 @@
                                     <span style='color:red' *ngIf="(confirmAppointmentForm.controls['email'].hasError('required') || confirmAppointmentForm.controls['email'].hasError('pattern')) && confirmAppointmentForm.controls['email'].dirty">{{AppLitteralsConfig.email}}</span>
                                 </div>
                             </div>
+                            <div class="form-group custom_md_3 col-md-6">
+                                <div class="icon-addon addon-md">
+                                    <input type="password" [formControl]="confirmAppointmentForm.controls['password']" placeholder="Set Password" class="form-control" id="password">
+                                    <label for="password" rel="tooltip" title="password"></label>
+                                    <span style='color:red' *ngIf="confirmAppointmentForm.controls['password'].hasError('required') && confirmAppointmentForm.controls['password'].touched">{{AppLitteralsConfig.required}}</span>
+                                </div>
+                            </div>
                             <div class="form-group custom_md_3 col-md-12">
                                 <div class="icon-addon addon-md">
                                     <textarea name="message" [formControl]="confirmAppointmentForm.controls['reason']" >Reasons / Complaints</textarea>

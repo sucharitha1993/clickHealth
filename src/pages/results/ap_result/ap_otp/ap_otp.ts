@@ -33,7 +33,7 @@ export class AppointmentOTPComponent {
             'name': this.healthSeeker.name,
             'username': this.healthSeeker.email,
             'mobile': this.healthSeeker.mobile,
-            'password': this.serverOtp
+            'password': this.healthSeeker.password
         }
         if (otp == this.serverOtp) {
             this.apiServices.createUser(obj)
