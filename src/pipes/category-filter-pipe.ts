@@ -16,8 +16,14 @@ export class CategoryFilterPipe implements PipeTransform {
                 if (locSearch && locSearch.length > 0 && item.hospital && item.hospital[0] && item.hospital[0].location) {
                     loc = locSearch.some(loc => loc == item.hospital[0].location.name);
                 }
-                if (langSearch && langSearch.length > 0 && item.language) {
-                    lang = langSearch.some(lang => lang.toLowerCase() == item.language.toLowerCase());
+                if (langSearch && langSearch.length > 0 && item.languages) {
+                    var langFound = false;
+                    for(let i in item.languages) {
+                        if(langSearch[0].toLowerCase() == item.languages[i].name.toLowerCase()) {
+                            langFound = true;
+                        }
+                    }
+                    lang = langFound;
                 }
                 if (genderSearch && genderSearch.length > 0 && item.user && item.user.gender) {
                     gender = genderSearch.some(gender => gender.toLowerCase() == item.user.gender.toLowerCase());
