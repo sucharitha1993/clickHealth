@@ -122,9 +122,9 @@ export class TimeSlotComponent {
         for (let i = 0; i < carousalDates.length; i++) {
             carousalDates[i].activeClass = false;
             carousalDates[i].exactDate = new Date(carousalDates[i].date);
-            carousalDates[i].date = new Date(carousalDates[i].date).getDate();
-            carousalDates[i].day = new Date(carousalDates[i].date).getDay();
-            carousalDates[i].month = new Date(carousalDates[i].date).getMonth();
+            carousalDates[i].date =carousalDates[i].exactDate.getDate();
+            carousalDates[i].day = carousalDates[i].exactDate.getDay();
+            carousalDates[i].month = carousalDates[i].exactDate.getMonth();
 
         }
         return carousalDates;
