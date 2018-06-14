@@ -1,3 +1,4 @@
+import { LoaderService } from './../../../providers/services/loader-service';
 import { AppointmentDataService } from './../../../providers/services/appointments/appointment-data.service';
 import { AppointmentInfoService } from './../../../providers/services/appointments/appointment-info-service';
 import { Component, OnInit } from '@angular/core';
@@ -12,15 +13,17 @@ export class AppointmentsComponent implements OnInit {
 
     imgPrePath: string = '../../assets/img/';
 
-    constructor(private router: Router, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
+    constructor(public loader: LoaderService, private router: Router, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
 
     ngOnInit() {
     }
 
     onClose(reqObj) {
+        this.loader.showLoader();
         this.apiServices.getDocList(reqObj)
             .subscribe(res => {
+                this.loader.hideLoader();
                 if (res.status) {
                     res.data = res.data || {};
                     this.appointmentInfo.setHospitals(res.data.hospitals);
@@ -30,6 +33,7 @@ export class AppointmentsComponent implements OnInit {
                 }
             },
             error => {
+                this.loader.hideLoader();
                 console.log('unable to load doctors');
             })
     }
