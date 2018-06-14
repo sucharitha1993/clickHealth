@@ -17,13 +17,13 @@ export class CategoryFilterPipe implements PipeTransform {
                     loc = locSearch.some(loc => loc == item.hospital[0].location.name);
                 }
                 if (langSearch && langSearch.length > 0 && item.languages) {
-                    var langFound = false;
-                    for(let i in item.languages) {
-                        if(langSearch[0].toLowerCase() == item.languages[i].name.toLowerCase()) {
-                            langFound = true;
-                        }
+                    let langArr = [];
+                    for (let i in item.languages) {
+                        langArr.push(item.languages[i].name);
                     }
-                    lang = langFound;
+                    for (let i in langSearch) {
+                        lang = langArr.includes(langSearch[i]);
+                    }
                 }
                 if (genderSearch && genderSearch.length > 0 && item.user && item.user.gender) {
                     gender = genderSearch.some(gender => gender.toLowerCase() == item.user.gender.toLowerCase());
