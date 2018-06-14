@@ -89,7 +89,7 @@ export class BookAppointmentComponent implements OnInit {
             },
             err => {
                 this.loader.hideLoader();
-                this.toastr.showToastr('Unable to cehck for User Existence')
+                this.toastr.showToastr('Unable to check for User Existence')
             })
     }
 
