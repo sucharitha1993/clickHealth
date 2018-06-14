@@ -1,3 +1,5 @@
+import { Toastr } from './../../../../providers/services/toastr.service';
+import { LoaderService } from './../../../../providers/services/loader-service';
 import { AppLitteralsConfig } from './../../../../providers/literals/app.literals';
 import { SharingService } from './../../../../providers/services/sharing-service';
 import { AppointmentInfoService } from './../../../../providers/services/appointments/appointment-info-service';
@@ -18,7 +20,7 @@ export class BookAppointmentComponent implements OnInit {
     confirmAppointmentForm: FormGroup;
     selectedAppointment: any;
 
-    constructor(private sharingService: SharingService, private router: Router, public formBuilder: FormBuilder, private apiSerives: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
+    constructor(public toastr: Toastr, public loader: LoaderService, private sharingService: SharingService, private router: Router, public formBuilder: FormBuilder, private apiSerives: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
 
     ngOnInit() {
@@ -40,6 +42,7 @@ export class BookAppointmentComponent implements OnInit {
 
     //to generate otp for booking appointment
     generateOTP() {
+        this.loader.showLoader();
         let obj = {
             "generate": true,
             "email": this.confirmAppointmentForm.controls['email'].value,
@@ -50,20 +53,25 @@ export class BookAppointmentComponent implements OnInit {
         }
         this.apiSerives.generateOtp(obj)
             .subscribe((res) => {
+                this.loader.hideLoader();
                 if (res.status) {
                     res.data = res.data || [];
                     this.appointmentInfo.setOTP(res.data['0']);
                     this.sharingService.setParams('otp', res.data['0']);
                     this.router.navigateByUrl('main/ap_otp');
+                } else {
+                    this.toastr.showToastr('Unable to generate OTP');
                 }
             },
             (err) => {
-                console.log(err);
+                this.loader.hideLoader();
+                this.toastr.showToastr('Unable to generate OTP');
             })
     }
 
     //Check if User Exists
     checkForUserExistence() {
+        this.loader.showLoader();
         this.appointmentInfo.setUserDetails(this.confirmAppointmentForm.value);
         this.sharingService.setParams('healthSeeker', this.confirmAppointmentForm.value);
         let obj = {
@@ -73,13 +81,15 @@ export class BookAppointmentComponent implements OnInit {
         this.apiSerives.checkUserExistence(obj)
             .subscribe(
             res => {
+                this.loader.hideLoader();
                 if (res.existed)
                     this.router.navigateByUrl('main/ap_pwd');
                 else
                     this.generateOTP();
             },
             err => {
-                console.log('issue in check user Existence api call');
+                this.loader.hideLoader();
+                this.toastr.showToastr('Unable to cehck for User Existence')
             })
     }
 

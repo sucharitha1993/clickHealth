@@ -1,3 +1,5 @@
+import { Toastr } from './../../../../providers/services/toastr.service';
+import { LoaderService } from './../../../../providers/services/loader-service';
 import { AppointmentDataService } from './../../../../providers/services/appointments/appointment-data.service';
 import { CaroselService } from './../../../../providers/services/carosel-service';
 import { SharingService } from './../../../../providers/services/sharing-service';
@@ -46,7 +48,7 @@ export class TimeSlotComponent {
         touch: true
     }
 
-    constructor(public apDataService: AppointmentDataService, public CaroselService: CaroselService, private sharingService: SharingService, private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
+    constructor(public toastr: Toastr, public loader: LoaderService, public apDataService: AppointmentDataService, public CaroselService: CaroselService, private sharingService: SharingService, private datePipe: DatePipe, private apInfoService: AppointmentInfoService, private router: Router) { }
 
     ngOnInit() {
         this.doc = this.doc || {};
@@ -174,9 +176,10 @@ export class TimeSlotComponent {
     }
 
     navigateToApDetails() {
+        this.loader.showLoader();
         this.apDataService.checkAuthentication()
             .subscribe(res => {
-                console.log(res)
+                this.loader.hideLoader();
                 if (res.authenticated) {
                     this.selectedAppointment.appointmentDetails.seeker_id = res.pk;
                     this.bookAppointment();
@@ -185,24 +188,30 @@ export class TimeSlotComponent {
                     this.router.navigateByUrl('/main/ap_details');
             },
             error => {
-                console.log('authentication api not working!')
+                this.loader.hideLoader();
+                this.toastr.showToastr('Authentication Failed');
             })
     }
 
     //To book Appointment for the authenticated user
     bookAppointment() {
+        this.loader.showLoader();
         let selectedAppointment = this.apInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};
         let obj = selectedAppointment.appointmentDetails;
         this.apDataService.bookAppointment(obj)
             .subscribe(res => {
+                this.loader.hideLoader();
                 if (res.status) {
                     this.apInfoService.setbookingDetails(res.data);
                     this.sharingService.setParams('bookedAppointment', res.data)
                     this.router.navigateByUrl('/main/ap_confirm')
+                } else {
+                    this.toastr.showToastr('Unable to Book Appointment');
                 }
             },
             error => {
-                console.log(error);
+                this.loader.hideLoader();
+                this.toastr.showToastr('Unable to Book Appointment');
             })
     }
 

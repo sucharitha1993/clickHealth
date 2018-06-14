@@ -31,11 +31,13 @@ export class AppointmentsComponent implements OnInit {
                     this.appointmentInfo.setLocations(res.data.locations);
                     this.appointmentInfo.setClinicians(res.data.clinicians);
                     this.router.navigate(['/main/ap_result']);
+                } else {
+                    this.toastr.showToastr('Unable to load doctors');
                 }
             },
             error => {
                 this.loader.hideLoader();
-                this.toastr.showToastr('unable to load doctors');                
+                this.toastr.showToastr('Unable to load doctors');                
             })
     }
 }

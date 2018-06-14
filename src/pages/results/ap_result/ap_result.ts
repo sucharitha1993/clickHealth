@@ -1,3 +1,4 @@
+import { Toastr } from './../../../providers/services/toastr.service';
 import { LoaderService } from './../../../providers/services/loader-service';
 import { AppConfig } from './../../../providers/services/app-config.service';
 import { ApSearchFormComponent } from './../../feature/ap-search-form/ap-search-form';
@@ -45,7 +46,7 @@ export class AppointmentResultsComponent implements OnInit {
 
     p: number = 1;
 
-    constructor(private loader: LoaderService, private sharingService: SharingService, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
+    constructor(public toastr: Toastr, private loader: LoaderService, private sharingService: SharingService, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
 
     ngOnInit() {
@@ -101,10 +102,10 @@ export class AppointmentResultsComponent implements OnInit {
 
     // to get Doc List
     getDocList(reqObj) {
-       // this.loader.showLoader();
+       this.loader.showLoader();
         this.apiServices.getDocList(reqObj)
             .subscribe((res) => {
-               // this.loader.hideLoader();
+               this.loader.hideLoader();
                 if (res.status) {
                     res.data = res.data || {};
                     this.appointmentInfo.setHospitals(res.data.hospitals);
@@ -112,11 +113,13 @@ export class AppointmentResultsComponent implements OnInit {
                     this.appointmentInfo.setLanguages(res.data.languages);
                     this.appointmentInfo.setClinicians(res.data.clinicians);
                     this.formatClinicians(res.data.clinicians);
+                } else {
+                    this.toastr.showToastr('Unable to load doctors');
                 }
             },
             error => {
-                //this.loader.hideLoader();
-                console.log('unable to load doctors');
+                this.loader.hideLoader();
+                this.toastr.showToastr('Unable to load doctors');
             })
     }
 

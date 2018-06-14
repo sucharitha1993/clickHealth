@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { AppointmentDataService } from './../../../../providers/services/appointments/appointment-data.service';
 import { AppointmentInfoService } from './../../../../providers/services/appointments/appointment-info-service';
 import { Component, Input } from '@angular/core';
-
+import { Toastr } from './../../../../providers/services/toastr.service';
+import { LoaderService } from './../../../../providers/services/loader-service';
 
 @Component({
     selector: 'ap_set_pwd',
@@ -16,7 +17,7 @@ export class ApSetPasswordComponent {
     public healthSeeker: any;
     public selectedAppointment: any;
 
-    constructor(public sharingService: SharingService, public router: Router, public apiServices: AppointmentDataService, public apInfoService: AppointmentInfoService) { }
+    constructor(public toastr: Toastr, public loader: LoaderService, public sharingService: SharingService, public router: Router, public apiServices: AppointmentDataService, public apInfoService: AppointmentInfoService) { }
 
     ngOnInit() {
         this.healthSeeker = this.apInfoService.getUserDetails() || this.sharingService.getParams('healthSeeker') || {};
@@ -26,6 +27,7 @@ export class ApSetPasswordComponent {
 
     //to set password
     savePassword(pwd) {
+        this.loader.showLoader();
         this.healthSeeker.password = pwd;
         this.apInfoService.setUserDetails(this.healthSeeker);
         this.sharingService.setParams('healthSeeker', this.healthSeeker);
@@ -37,30 +39,37 @@ export class ApSetPasswordComponent {
         }
         this.apiServices.createUser(obj)
             .subscribe(res => {
+                this.loader.hideLoader();
                 if (res.authenticated) {
                     this.selectedAppointment.seeker_id = res.pk;
                     this.bookAppointment();
                 } else {
-                    console.log('user creation failed');
+                    this.toastr.showToastr('Unable to Create User');
                 }
             },
             error => {
-                console.log(error);
+                this.loader.hideLoader();
+                this.toastr.showToastr('Unable to Create User');
             })
     }
 
     //To book Appointment for the authenticated user
     bookAppointment() {
+        this.loader.showLoader();
         this.apiServices.bookAppointment(this.selectedAppointment)
             .subscribe(res => {
+                this.loader.hideLoader();
                 if (res.status) {
                     //this.apInfoService.setbookingDetails(res.data);
                     //this.sharingService.setParams('bookedAppointment', res.data)
                     this.router.navigateByUrl('/main/ap_confirm')
+                } else {
+                    this.toastr.showToastr('Unable to Book Appointment');
                 }
             },
             error => {
-                console.log(error);
+                this.loader.hideLoader();
+                this.toastr.showToastr('Unable to Book Appointment');
             })
     }
 }
