@@ -1,3 +1,4 @@
+import { SharingService } from './../../providers/services/sharing-service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,16 +9,18 @@ export class DashboardComponent implements OnInit {
 
 
     imgPrePath: string;
-    activeTab: string = 'appointment';
+    activeTab: string = 'ap';
 
-    constructor() {
+    constructor(public SharingService: SharingService) {
         this.imgPrePath = '../../assets/img/';
     }
 
     ngOnInit() {
+        this.activeTab = this.SharingService.getParams('activeClass') || this.activeTab;
     }
 
     selectedTab(value) {
+        this.SharingService.setParams('activeClass',value);
         this.activeTab = value;
     }
 }

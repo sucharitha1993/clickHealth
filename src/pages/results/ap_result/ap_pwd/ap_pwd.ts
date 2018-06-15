@@ -16,12 +16,15 @@ export class ApPasswordComponent {
 
     public pwd: any;
     public healthSeeker: any;
-    public isAuthenticated: boolean = true;
+    public isAuthentication: boolean = true;
     public selectedAppointment: any;
+    isAuthenticated: boolean;
 
     constructor(public toastr: Toastr, public loader: LoaderService, public sharingService: SharingService, public router: Router, public apiServices: AppointmentDataService, public apInfoService: AppointmentInfoService) { }
 
     ngOnInit() {
+        let authentication =  this.sharingService.getParams('isAuthenticated');
+        this.isAuthenticated = authentication.authenticated;
         this.healthSeeker = this.apInfoService.getUserDetails() || this.sharingService.getParams('healthSeeker') || {};
         let selectedAppointment = this.apInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};
         this.selectedAppointment = selectedAppointment.appointmentDetails;
@@ -38,11 +41,11 @@ export class ApPasswordComponent {
             .subscribe(res => {
                 this.loader.hideLoader();
                 if (res.authenticated) {
-                    this.isAuthenticated = true;
+                    this.isAuthentication = true;
                     this.selectedAppointment.seeker_id = res.pk;
                     this.bookAppointment();
                 } else {
-                    this.isAuthenticated = false;
+                    this.isAuthentication = false;
                     this.toastr.showToastr('Entered password is incorrect')
                 }
             },

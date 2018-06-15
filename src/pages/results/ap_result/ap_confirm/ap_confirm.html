@@ -1,3 +1,5 @@
+<app-header *ngIf='!isAuthenticated'></app-header>
+<app-django-header *ngIf='isAuthenticated'></app-django-header>
 <section class="Confirm_Appointment_main">
     <div class="container">
         <div class="row">
@@ -216,3 +218,4 @@
         </div>
     </div>
 </section>
+<app-footer></app-footer>

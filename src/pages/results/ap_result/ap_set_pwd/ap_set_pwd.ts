@@ -16,10 +16,13 @@ export class ApSetPasswordComponent {
     public pwd: any;
     public healthSeeker: any;
     public selectedAppointment: any;
+    isAuthenticated: boolean;
 
     constructor(public toastr: Toastr, public loader: LoaderService, public sharingService: SharingService, public router: Router, public apiServices: AppointmentDataService, public apInfoService: AppointmentInfoService) { }
 
     ngOnInit() {
+        let authentication =  this.sharingService.getParams('isAuthenticated');
+        this.isAuthenticated = authentication.authenticated;
         this.healthSeeker = this.apInfoService.getUserDetails() || this.sharingService.getParams('healthSeeker') || {};
         let selectedAppointment = this.apInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};
         this.selectedAppointment = selectedAppointment.appointmentDetails || {};

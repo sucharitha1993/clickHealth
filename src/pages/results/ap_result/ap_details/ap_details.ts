@@ -19,11 +19,14 @@ export class BookAppointmentComponent implements OnInit {
     imgPrePath: string = '../../assets/img/';
     confirmAppointmentForm: FormGroup;
     selectedAppointment: any;
+    isAuthenticated: boolean;
 
     constructor(public toastr: Toastr, public loader: LoaderService, private sharingService: SharingService, private router: Router, public formBuilder: FormBuilder, private apiSerives: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
 
     ngOnInit() {
+        let authentication =  this.sharingService.getParams('isAuthenticated');
+        this.isAuthenticated = authentication.authenticated;
         this.initialiseConfirmAppointmentfields();
         let selectedAppointment = this.appointmentInfo.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment');
         this.selectedAppointment = selectedAppointment.appointmentDetails;

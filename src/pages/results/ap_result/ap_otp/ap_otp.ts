@@ -16,10 +16,13 @@ export class AppointmentOTPComponent {
     public otpErr: any;
     public healthSeeker: any;
     public serverOtp: any;
-    
+    isAuthenticated: boolean;
+
     constructor(public sharingService: SharingService, public router: Router, public apiServices: AppointmentDataService, public apInfoService: AppointmentInfoService) { }
 
     ngOnInit() { 
+        let authentication =  this.sharingService.getParams('isAuthenticated');
+        this.isAuthenticated = authentication.authenticated;
         this.healthSeeker = this.apInfoService.getUserDetails() || this.sharingService.getParams('healthSeeker') || {};
         this.serverOtp = this.apInfoService.getOTP() || this.sharingService.getParams('otp');      
     }

@@ -45,6 +45,7 @@ export class AppointmentResultsComponent implements OnInit {
     direction: number;
 
     p: number = 1;
+    isAuthenticated: boolean = false;
 
     constructor(public toastr: Toastr, private loader: LoaderService, private sharingService: SharingService, private apiServices: AppointmentDataService, private appointmentInfo: AppointmentInfoService) {
     }
@@ -174,5 +175,9 @@ export class AppointmentResultsComponent implements OnInit {
     scrollTop(page) {
         this.p = page;
         window.scrollTo(0, 0);
+    }
+
+    checkAuthentication(e) {
+        this.isAuthenticated = e.authenticated;
     }
 }

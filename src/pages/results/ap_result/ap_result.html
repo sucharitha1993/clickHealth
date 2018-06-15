@@ -1,3 +1,5 @@
+<app-header *ngIf='!isAuthenticated'></app-header>
+<app-django-header *ngIf='isAuthenticated'></app-django-header>
 <section class="appointment_result">
   <div class="body-wrapper">
     <div class="container">
@@ -135,7 +137,7 @@
                         </div>
                         <div class="alt-details" *ngIf='doc?.showDetails || doc?.isBookAppointment'>
                           <app-doctor-details *ngIf='doc?.showDetails' [doc]='doc'></app-doctor-details>
-                          <app-time-slot *ngIf='doc?.isBookAppointment' [doc]='doc'></app-time-slot>
+                          <app-time-slot *ngIf='doc?.isBookAppointment' [doc]='doc' (isAuthenticated)='checkAuthentication($event)'></app-time-slot>
                         </div>
                       </div>
               </div>
@@ -167,3 +169,4 @@
     </div>
   </div>
 </section>
+<app-footer></app-footer>

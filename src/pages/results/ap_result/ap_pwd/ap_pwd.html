@@ -1,3 +1,5 @@
+<app-header *ngIf='!isAuthenticated'></app-header>
+<app-django-header *ngIf='isAuthenticated'></app-django-header>
 <section class="succes_main Confirm_Appointment_main">
     <div class="container">
         <div class="row">
@@ -10,7 +12,7 @@
                             <input id="msg" type="text" [(ngModel)]='pwd' class="form-control" name="msg" placeholder="Password">
                             <a (click)='verifyPassword(pwd)'><span class="input-group-addon">Verify</span></a>
                         </div>
-                        <span *ngIf='!isAuthenticated' style='color:red'>please enter correct Password</span>
+                        <span *ngIf='!isAuthentication' style='color:red'>please enter correct Password</span>
                     </div>
                 </div>
             </div>
@@ -18,3 +20,4 @@
         </div>
     </div>
 </section>
+<app-footer></app-footer>

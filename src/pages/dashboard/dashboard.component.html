@@ -4,31 +4,31 @@
     <div class="container">
         <div class="tab_main fade-in one">
             <ul class="nav nav-tabs custom_tab" role="tablist">
-                <li role="presentation" class="active" (click)="selectedTab('appointment')"><a class="radius" href="#appointments" aria-controls="home" role="tab" data-toggle="tab">
+                <li role="presentation" [ngClass]="{'active': activeTab == 'ap'}" (click)="selectedTab('ap')"><a class="radius" href="#appointments" aria-controls="home" role="tab" data-toggle="tab">
                     <span><img src="{{imgPrePath}}appointement.png"></span> Appointments</a>
                 </li>
-                <li role="presentation" (click)="selectedTab('health-checkups')">
+                <li role="presentation" [ngClass]="{'active': activeTab == 'hc'}" (click)="selectedTab('hc')">
                     <a href="#health_checks" aria-controls="health_checks" role="tab" data-toggle="tab">
                     <span><img src="{{imgPrePath}}health_cards.png"></span>  Health Checks
                     </a>
                 </li>
-                <li role="presentation" (click)="selectedTab('discount-cards')">
+                <li role="presentation" [ngClass]="{'active': activeTab == 'dc'}" (click)="selectedTab('dc')">
                     <a href="#discount_cards" aria-controls="discount_cards" role="tab" data-toggle="tab">
                     <span><img src="{{imgPrePath}}gift_cards.png"></span>  Discount Cards</a>
                 </li>
-                <li role="presentation" (click)="selectedTab('gift-health')"><a href="#gift_health" aria-controls="gift_health" role="tab" data-toggle="tab">
+                <li role="presentation" [ngClass]="{'active': activeTab == 'gh'}" (click)="selectedTab('gh')"><a href="#gift_health" aria-controls="gift_health" role="tab" data-toggle="tab">
                     <span><img src="{{imgPrePath}}gift.png"></span> Gift Health</a>
                 </li>
-                <li role="presentation" (click)="selectedTab('serice-providers')"><a class="radius1" href="#service_providers" aria-controls="service_providers" role="tab" data-toggle="tab">
+                <li role="presentation" [ngClass]="{'active': activeTab == 'sp'}" (click)="selectedTab('sp')"><a class="radius1" href="#service_providers" aria-controls="service_providers" role="tab" data-toggle="tab">
                     <span><img src="{{imgPrePath}}serv_prov.png"></span> Service Providers</a>
                 </li>
             </ul>
             <div class="tab-content">
-                <app-appointments *ngIf='activeTab == "appointment"'></app-appointments>
-                <app-health-checkups *ngIf='activeTab == "health-checkups"'></app-health-checkups>
-                <app-discount-cards *ngIf='activeTab == "discount-cards"'></app-discount-cards>
-                <app-gift-health *ngIf='activeTab == "gift-health"'></app-gift-health>
-                <app-service-providers *ngIf='activeTab == "serice-providers"'></app-service-providers>
+                <app-appointments *ngIf='activeTab == "ap"'></app-appointments>
+                <app-health-checkups *ngIf='activeTab == "hc"'></app-health-checkups>
+                <app-discount-cards *ngIf='activeTab == "dc"'></app-discount-cards>
+                <app-gift-health *ngIf='activeTab == "gh"'></app-gift-health>
+                <app-service-providers *ngIf='activeTab == "sp"'></app-service-providers>
             </div>
         </div>
     </div>

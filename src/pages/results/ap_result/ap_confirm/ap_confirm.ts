@@ -19,10 +19,13 @@ export class ConfirmAppointmentComponent {
     address: any;
     AppConfig = AppConfig;
     selectedAppointment: any;
+    isAuthenticated: boolean;
 
     constructor(private sharingService: SharingService, private apInfoService: AppointmentInfoService) { }
 
     ngOnInit() {
+        let authentication =  this.sharingService.getParams('isAuthenticated');
+        this.isAuthenticated = authentication.authenticated;
         this.healthSeeker = this.apInfoService.getUserDetails() || this.sharingService.getParams('healthSeeker') || {};
         //this.bookingDetails = this.apInfoService.getbookingDetails() || this.sharingService.getParams('bookedAppointment') || {};
         let selectedAppointment = this.apInfoService.getAppointmentDetails() || this.sharingService.getParams('selectedAppointment') || {};

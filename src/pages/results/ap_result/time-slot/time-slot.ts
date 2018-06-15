@@ -7,7 +7,7 @@ import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { AppointmentInfoService } from './../../../../providers/services/appointments/appointment-info-service';
 import { AppLitteralsConfig } from './../../../../providers/literals/app.literals';
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 declare var $: any;
 
@@ -21,6 +21,9 @@ export class TimeSlotComponent {
 
     @Input('doc')
     doc: any;
+    @Output('isAuthenticated')
+    isAuthenticated: EventEmitter<boolean> = new EventEmitter<boolean>();
+
     imgPrePath: string = '../../assets/img/';
     searchParams: any = {};
     selectedAppointment: any = {
@@ -180,6 +183,8 @@ export class TimeSlotComponent {
         this.apDataService.checkAuthentication()
             .subscribe(res => {
                 this.loader.hideLoader();
+                this.isAuthenticated.emit(res);   
+                this.sharingService.setParams('isAuthenticated',res);             
                 if (res.authenticated) {
                     this.selectedAppointment.appointmentDetails.seeker_id = res.pk;
                     this.bookAppointment();
