@@ -24,16 +24,22 @@ export class DCResultComponent implements OnInit {
 
     ngOnInit() {
         this.dcData = this.dcInfo.getDCData() || this.sharingService.getParams('dcData') || this.loadDC();
-        this.dcData[0] = this.dcData[0] || {};
-        this.dcData[0].activeClass = true;
-        this.activeDiscount = this.dcData[0];
-        this.url = `${AppConfig.IMG_URL}healthseeker/discountcard_get/?card_id=${this.activeDiscount.id}`;
+        this.setActiveDC();
     }
 
     checkActiveClass(data) {
         data.activeClass == !data.activeClass == undefined ? true : !data.activeClass;
         this.activeDiscount = data;
         this.url = `${AppConfig.IMG_URL}healthseeker/discountcard_get/?card_id=${this.activeDiscount.id}`;
+    }
+
+    setActiveDC() {
+        if (this.dcData) {
+            this.dcData[0] = this.dcData[0] || {};
+            this.dcData[0].activeClass = true;
+            this.activeDiscount = this.dcData[0];
+            this.url = `${AppConfig.IMG_URL}healthseeker/discountcard_get/?card_id=${this.activeDiscount.id}`;
+        }
     }
 
     loadDC() {
@@ -44,13 +50,16 @@ export class DCResultComponent implements OnInit {
                 if (res.results) {
                     res.results = res.results || [];
                     this.dcData = res.results;
+                    this.setActiveDC();
                     this.dcInfo.setDCData(this.dcData);
                     this.sharingService.setParams('dcData', this.dcData);
+                } else {
+                    this.toastr.showToastr('unable to Discounts');
                 }
             },
             error => {
                 this.loader.hideLoader();
-                this.toastr.showToastr('unable to Discounts'); 
+                this.toastr.showToastr('unable to Discounts');
             })
     }
 
