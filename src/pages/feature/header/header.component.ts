@@ -20,4 +20,21 @@ export class HeaderComponent implements OnInit {
     navigateToMain() {
         this.router.navigateByUrl('/main');
     }
+
+    navigateTo(page) {
+        switch (page) {
+            case 'ap':
+                this.activeClass = 'ap';
+                this.router.navigateByUrl('/main/ap_result');
+                break;
+            case 'hc':
+                this.activeClass = 'hc';
+                this.router.navigateByUrl('/main/hc_result');
+                break;
+            case 'dc':
+                this.activeClass = 'dc';
+                this.router.navigateByUrl('/main/dc_result');
+                break;
+        }
+    }
 }

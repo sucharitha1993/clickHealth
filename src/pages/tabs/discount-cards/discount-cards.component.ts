@@ -39,11 +39,13 @@ export class DiscountCardsComponent implements OnInit {
                     this.dcData = res.results;
                     this.dcInfo.setDCData(this.dcData);
                     this.sharingService.setParams('dcData', this.dcData);
+                } else {
+                    this.toastr.showToastr('Unable to load Discounts');                     
                 }
             },
             error => {
                 this.loader.hideLoader();
-                this.toastr.showToastr('unable to Discounts'); 
+                this.toastr.showToastr('Unable to load Discounts'); 
             })
     }
 }

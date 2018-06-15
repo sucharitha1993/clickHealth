@@ -1,3 +1,6 @@
+import { DiscountDataService } from './../../../providers/services/discounts/dc-data.service';
+import { Toastr } from './../../../providers/services/toastr.service';
+import { LoaderService } from './../../../providers/services/loader-service';
 import { AppConfig } from './../../../providers/services/app-config.service';
 import { SharingService } from './../../../providers/services/sharing-service';
 import { DCInfoService } from './../../../providers/services/discounts/dc-info.service';
@@ -15,12 +18,12 @@ export class DCResultComponent implements OnInit {
     activeDiscount: any = {};
     url: any;
 
-    constructor(public dcInfo: DCInfoService, public sharingService: SharingService) {
+    constructor(public loader: LoaderService,public toastr: Toastr,public dcService: DiscountDataService, public dcInfo: DCInfoService, public sharingService: SharingService) {
         this.imgPrePath = '../../assets/img/';
     }
 
     ngOnInit() {
-        this.dcData = this.dcInfo.getDCData() || this.sharingService.getParams('dcData');
+        this.dcData = this.dcInfo.getDCData() || this.sharingService.getParams('dcData') || this.loadDC();
         this.dcData[0] = this.dcData[0] || {};
         this.dcData[0].activeClass = true;
         this.activeDiscount = this.dcData[0];
@@ -31,6 +34,24 @@ export class DCResultComponent implements OnInit {
         data.activeClass == !data.activeClass == undefined ? true : !data.activeClass;
         this.activeDiscount = data;
         this.url = `${AppConfig.IMG_URL}healthseeker/discountcard_get/?card_id=${this.activeDiscount.id}`;
+    }
+
+    loadDC() {
+        this.loader.showLoader();
+        this.dcService.getDiscounts()
+            .subscribe(res => {
+                this.loader.hideLoader();
+                if (res.results) {
+                    res.results = res.results || [];
+                    this.dcData = res.results;
+                    this.dcInfo.setDCData(this.dcData);
+                    this.sharingService.setParams('dcData', this.dcData);
+                }
+            },
+            error => {
+                this.loader.hideLoader();
+                this.toastr.showToastr('unable to Discounts'); 
+            })
     }
 
 }

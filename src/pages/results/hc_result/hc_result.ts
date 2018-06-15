@@ -1,3 +1,4 @@
+import { LoaderService } from './../../../providers/services/loader-service';
 import { Toastr } from './../../../providers/services/toastr.service';
 import { HCSearchFormComponent } from './../../feature/hc-search-form/hc-search-form';
 import { AppConfig } from './../../../providers/services/app-config.service';
@@ -27,7 +28,7 @@ export class HCResultsComponent implements OnInit {
     hcData: any = [];
     address: any;
 
-    constructor(public toastr: Toastr, public router: Router, public hcDataService: HCDataService, public hcInfoService: HCInfoService, public sharingService: SharingService) {
+    constructor(public loader: LoaderService, public toastr: Toastr, public router: Router, public hcDataService: HCDataService, public hcInfoService: HCInfoService, public sharingService: SharingService) {
     }
 
     ngOnInit() {
@@ -37,18 +38,20 @@ export class HCResultsComponent implements OnInit {
     }
 
     searchHCRes(reqObj) {
+        this.loader.showLoader();
         this.hcDataService.getHCSearchResults(reqObj)
             .subscribe((res) => {
+                this.loader.hideLoader();
                 if (res.status) {
                     res.data = res.data || {};
                     this.hcData = res.data;
+                } else {
+                    this.toastr.showToastr('Unable to load doctors');                    
                 }
             },
             error => {
-                let options: any = AppLitteralsConfig.toastOptions;
-                options.body = error;
-                this.toastr.showToastr(options);
-                console.log('unable to load doctors');
+                this.loader.hideLoader();
+                this.toastr.showToastr('Unable to load doctors');
             })
     }
 
