@@ -26,4 +26,16 @@ export class HeaderComponent implements OnInit {
         this.SharingService.setParams('activeClass', page);
         this.router.navigateByUrl('/main');
     }
+
+    navigationTo(page) {
+        this.SharingService.setParams('activeClass', page);
+        switch (page) {
+            case 'fc':
+                this.router.navigateByUrl('/main/for_corporates');
+                break;
+            case 'hp':
+                this.router.navigateByUrl('/main/for_hp');
+                break;
+        }
+    }
 }

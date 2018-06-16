@@ -20,6 +20,7 @@ import { DCResultComponent } from './../pages/results/dc_result/dc_result';
 import { GHResultComponent } from './../pages/results/gh_result/gh_result';
 import { LoginComponent } from './../pages/login/login';
 import { ForCorporatesComponent } from './../pages/for-corporates/for-corporates';
+import { ForHealthProviderComponent } from './../pages/for-hp/for-hp';
 
 const routes: Routes = [
     { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -63,6 +64,8 @@ const routes: Routes = [
                 path: 'login', component: LoginComponent
             },{
                 path: 'for_corporates', component: ForCorporatesComponent
+            },{
+                path: 'for_hp', component: ForHealthProviderComponent
             }
         ]
     }

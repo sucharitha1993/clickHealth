@@ -83,6 +83,7 @@ import { ApPasswordComponent } from './../pages/results/ap_result/ap_pwd/ap_pwd'
 import { ApSetPasswordComponent } from './../pages/results/ap_result/ap_set_pwd/ap_set_pwd';
 import { DjangoHeaderComponent } from './../pages/feature/django-header/django-header';
 import { ForCorporatesComponent } from './../pages/for-corporates/for-corporates';
+import { ForHealthProviderComponent } from './../pages/for-hp/for-hp';
 
 //Ngx Pagintor Module
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -101,6 +102,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     DashboardComponent,
     DjangoHeaderComponent,
     ForCorporatesComponent,
+    ForHealthProviderComponent,
     //tab components
     AppointmentsComponent,
     ApSearchFormComponent,

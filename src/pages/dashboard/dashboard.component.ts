@@ -17,10 +17,12 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit() {
         this.activeTab = this.SharingService.getParams('activeClass') || this.activeTab;
+        if (this.activeTab == 'fc' || this.activeTab == 'hp')
+            this.activeTab = 'ap';
     }
 
     selectedTab(value) {
-        this.SharingService.setParams('activeClass',value);
+        this.SharingService.setParams('activeClass', value);
         this.activeTab = value;
     }
 }
