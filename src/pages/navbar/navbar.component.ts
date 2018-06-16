@@ -1,3 +1,4 @@
+import { SharingService } from './../../providers/services/sharing-service';
 import { AppConfig } from './../../providers/services/app-config.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -16,7 +17,7 @@ export class NavbarComponent implements OnInit {
     sponsorSignin: any = `${AppConfig.API_ENDPOINT}sponsor/signin`;
     adminSignin: any = `${AppConfig.API_ENDPOINT}site_admin/signin`;
 
-    constructor(private router: Router) {
+    constructor(private router: Router, public SharingService: SharingService) {
         this.imgPrePath = '../../assets/img/';
     }
 
@@ -25,5 +26,9 @@ export class NavbarComponent implements OnInit {
 
     navigateToMain() {
         this.router.navigateByUrl('/main');
+    }
+
+    resetActiveClass(page) {
+        this.SharingService.setParams('activeClass', page);
     }
 }

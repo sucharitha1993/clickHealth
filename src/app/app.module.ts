@@ -82,6 +82,7 @@ import { CategoryFiltersComponent } from './../pages/feature/category-filters/ca
 import { ApPasswordComponent } from './../pages/results/ap_result/ap_pwd/ap_pwd';
 import { ApSetPasswordComponent } from './../pages/results/ap_result/ap_set_pwd/ap_set_pwd';
 import { DjangoHeaderComponent } from './../pages/feature/django-header/django-header';
+import { ForCorporatesComponent } from './../pages/for-corporates/for-corporates';
 
 //Ngx Pagintor Module
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -99,6 +100,7 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
     FooterComponent,
     DashboardComponent,
     DjangoHeaderComponent,
+    ForCorporatesComponent,
     //tab components
     AppointmentsComponent,
     ApSearchFormComponent,

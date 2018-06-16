@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top inner_nav_menu reg_menu_main">
+<nav class="navbar navbar-default inner_nav_menu reg_menu_main">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="../index.html"><img src="../img/logo1.png"></a>
+            <a class="navbar-brand" href="../index.html"><img src="{{imgPrePath}}logo1.png"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right custom_nav nav_inner">
@@ -38,7 +38,7 @@
                 </li>
                 <li><a><i class="fa fa-bell"></i></a></li>
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown"><span class="head_prof_AV"><img src="../img/avatar3.png"></span>{{authentication?.name}}<b class="caret"></b></a>
+                    <a class="dropdown-toggle" data-toggle="dropdown"><span class="head_prof_AV"><img src="{{imgPrePath}}avatar3.png" style='height:30px;border-radius: 50%;'></span>{{authentication?.name}}<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a>My Appointments</a></li>
                         <li><a>Health Records</a></li>

@@ -10,9 +10,10 @@ ul li ul.dropdown{
 ul li:hover ul.dropdown, ul li ul.dropdown li{
     display: block;
 }
-.navbar li a {
+.login-dropdown li a {
     color: black !important;
 }
 ul li {
     height: 28px !important;
+    cursor: pointer;
 }
