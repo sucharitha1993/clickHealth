@@ -54,7 +54,7 @@
               <!-- DOCTOR DETAILS GOES HERE -->
               <div class="catalog-row alternative">
                   <p *ngIf="docList?.length == 0 || (docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter).length == 0">NO data found</p>                                                        
-                      <div class="appointment_main_hero" *ngFor='let doc of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter  | paginate: { itemsPerPage: 2, currentPage: p ,totalItems:(docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter).length} | sortBy: selectedSort : direction'>
+                      <div class="appointment_main_hero" *ngFor='let doc of docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter  | paginate: { itemsPerPage: 10, currentPage: p ,totalItems:(docList  | categoryFilter : medicalFilter : locationFilter : langFilter : genderFilter).length} | sortBy: selectedSort : direction'>
                         <div class="app_list_in" *ngIf="docList?.length>0">
                           <div class="appointment_list_in">
                             <div class="appointment_list_clo">
