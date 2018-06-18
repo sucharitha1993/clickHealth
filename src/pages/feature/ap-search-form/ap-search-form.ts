@@ -42,6 +42,7 @@ export class ApSearchFormComponent implements OnInit {
 
     ngOnInit() {
         this.initialiseAppointmentfields(this.isModal);
+        this.setDefaultLoc();        
         this.startObserver();
     }
 
@@ -100,6 +101,19 @@ export class ApSearchFormComponent implements OnInit {
             this.appointmentSearchForm.controls['lat'].setValue(loc.location.lat);
             this.appointmentSearchForm.controls['long'].setValue(loc.location.lng);
         });
+    }
+
+    //to set default location to HYD
+    setDefaultLoc() {
+        let loc = {
+            name : 'Hyderabad',
+            lat : '17.385044',
+            lng : '78.486671'
+        }
+        this.searchLocation = loc.name;
+        this.appointmentSearchForm.controls['location'].setValue(loc.name);
+        this.appointmentSearchForm.controls['lat'].setValue(loc.lat);
+        this.appointmentSearchForm.controls['long'].setValue(loc.lng);
     }
 
     //navigate to Appointment Results
