@@ -180,4 +180,11 @@ export class AppointmentResultsComponent implements OnInit {
     checkAuthentication(e) {
         this.isAuthenticated = e.authenticated;
     }
+
+    formatSpokenLanguages(langArr) {
+        let obj = Object;
+        langArr = obj.values(langArr);
+        let langString = langArr.map(ele => ele.name.trim()).join(",");
+        return langString;
+    }
 }

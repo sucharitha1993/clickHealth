@@ -21,4 +21,11 @@ export class ChosenDoctorComponent {
         this.doc = selectedAppointment.docDetails || {};
         this.doc.mapData = selectedAppointment.location;
     }
+
+    formatSpokenLanguages(langArr) {
+        let obj = Object;
+        langArr = obj.values(langArr);
+        let langString = langArr.map(ele => ele.name.trim()).join(",");
+        return langString;
+    }
 }

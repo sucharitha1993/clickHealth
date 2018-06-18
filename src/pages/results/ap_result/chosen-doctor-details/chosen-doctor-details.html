@@ -15,8 +15,8 @@
                     <p *ngFor="let speci of doc?.specialities">
                         {{speci?.name + ' ' + speci?.description}}
                     </p>
-                    <span class="lagu_span languages-display">consultation: 
-                        <span *ngFor='let lang of doc?.languages;let last=last'>{{lang?.name}}<span *ngIf='!last'>,</span></span>
+                    <span class="lagu_span">consultation: {{formatSpokenLanguages(doc?.languages)}}
+                        <!-- <span *ngFor='let lang of doc?.languages;let last=last'>{{lang?.name}}<span *ngIf='!last'>,</span></span> -->
                     </span>
                     <!-- <span><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;{{doc?.mobile}}</span> -->
                     <h3 class="col-md-5"><small>Rs</small> {{doc?.fee}}</h3>
