@@ -65,6 +65,7 @@ export class ApSetPasswordComponent {
                 if (res.status) {
                     //this.apInfoService.setbookingDetails(res.data);
                     //this.sharingService.setParams('bookedAppointment', res.data)
+                    this.sharingService.setParams('bookingId', res.booking_id);
                     this.router.navigateByUrl('/main/ap_confirm')
                 } else {
                     this.toastr.showToastr('Unable to Book Appointment');
