@@ -85,6 +85,7 @@ export class TimeSlotComponent {
             fee: doc.fee,
         }
         this.selectedAppointment.docDetails = {
+            provider_name: doc.hospital[0].name,
             fee: doc.fee,
             name: doc.user.name,
             id: doc.user.id,

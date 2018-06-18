@@ -10,6 +10,7 @@
             </div>
             <div class="col-md-7">
                 <div class="full_width doctr_details">
+                    <h4>{{doc?.provider_name}}</h4>
                     <h4>Dr. {{doc?.name}}</h4>
                     <p *ngFor="let speci of doc?.specialities">
                         {{speci?.name + ' ' + speci?.description}}
