@@ -30,13 +30,18 @@ export class AppointmentResultsComponent implements OnInit {
     locationFilter: any;
     langFilter: any;
     medicalFilter: any;
-    genderFilter: any;
+    genderFilter: any = null;
 
     sortItems: any = [
     //{ id: 'free', name: 'Free', direction: 1 },
     { id: 'fee', name: 'Price - High to Low', direction: -1 },
     { id: 'fee', name: 'Price - Low to High', direction: 1 },
     //{ id: 'nearest', name: 'Nearest', direction: 1 }
+    ];
+
+    genders: any = [
+        { id: 'F', gender: 'Female' },
+        { id: 'M', gender: 'Male' },
     ];
 
     selectedValue: any = null;
@@ -144,9 +149,7 @@ export class AppointmentResultsComponent implements OnInit {
     //filter data
     filterData(event) {
         this.locationFilter = event.location;
-        this.langFilter = event.language;
         this.medicalFilter = event.medical;
-        this.genderFilter = event.gender;
         this.docList = Object.assign([], this.docList);
     }
 

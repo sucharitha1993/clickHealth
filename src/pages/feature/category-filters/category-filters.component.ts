@@ -68,7 +68,7 @@ export class CategoryFiltersComponent implements OnInit {
                 }
             }
         }
-        let obj = { 'medical': this.medicalArr, 'gender': this.genderArr, 'location': this.locArr, 'language': this.languageArr };
+        let obj = { 'medical': this.medicalArr, 'location': this.locArr };
         this.filterItems.emit(obj);
     }
 }

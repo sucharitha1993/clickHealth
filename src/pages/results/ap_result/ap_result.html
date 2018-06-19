@@ -47,6 +47,17 @@
                     <option *ngFor='let sort of sortItems' [ngValue]="sort" >{{sort.name}}</option>
                   </select>
                 </div>
+                                
+                <div class="search-select">
+                  <select [(ngModel)]="genderFilter">
+                    <option *ngFor='let gnder of genders' [ngValue]="gnder.id" >{{gnder.gender}}</option>
+                  </select>
+              </div>
+                <div class="search-select">
+                  <select [(ngModel)]="langFilter">
+                        <option *ngFor='let lang of languages' [ngValue]="lang.name" >{{lang.name}}</option>
+                      </select>
+                </div>
                 <a href="#" class="show-list"></a>
                 <a class="show-thumbs chosen" href="#"></a>
               </div>

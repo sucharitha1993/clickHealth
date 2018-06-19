@@ -3,8 +3,8 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'categoryFilter'
 })
 export class CategoryFilterPipe implements PipeTransform {
-    transform(items: any, medicalSearch?: string[], locSearch?: string[], langSearch?: string[], genderSearch?: string[]) {
-        if (items && (medicalSearch || locSearch || langSearch || genderSearch) && (medicalSearch.length > 0 || locSearch.length > 0 || langSearch.length > 0 || genderSearch.length > 0)) {
+    transform(items: any, medicalSearch?: string[], locSearch?: string[], langSearch?: string, genderSearch?: string) {
+        if (items && (medicalSearch || locSearch || langSearch || genderSearch) && ( genderSearch || langSearch || (medicalSearch && medicalSearch.length > 0) || (locSearch && locSearch.length > 0) )) {
             return items.filter(item => {
                 let medical = true,
                     loc = true,
@@ -16,17 +16,17 @@ export class CategoryFilterPipe implements PipeTransform {
                 if (locSearch && locSearch.length > 0 && item.hospital && item.hospital[0] && item.hospital[0].location) {
                     loc = locSearch.some(loc => loc == item.hospital[0].location.name);
                 }
-                if (langSearch && langSearch.length > 0 && item.languages) {
+                if (langSearch && item.languages) {
                     let langArr = [];
                     for (let i in item.languages) {
                         langArr.push(item.languages[i].name);
                     }
-                    for (let i in langSearch) {
-                        lang = langArr.includes(langSearch[i]);
+                    for (let i in langArr) {
+                        lang =  langSearch.toLowerCase() == langArr[i].toLowerCase();
                     }
                 }
-                if (genderSearch && genderSearch.length > 0 && item.user && item.user.gender) {
-                    gender = genderSearch.some(gender => gender.toLowerCase() == item.user.gender.toLowerCase());
+                if (genderSearch && item.user && item.user.gender) {
+                    gender =  genderSearch.toLowerCase() == item.user.gender.toLowerCase();
                 }
                 let filterObj = {
                     medical: medical,

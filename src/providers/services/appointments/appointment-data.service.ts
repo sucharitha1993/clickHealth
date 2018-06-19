@@ -46,8 +46,11 @@ export class AppointmentDataService {
                     let obj = Object;
                     res.data.clinicians = obj.values(res.data.clinicians);
                     for (let i in res.data.clinicians) {
-                        hospitalArr = hospitalArr.concat(res.data.clinicians[i].hospital);
-                        res.data.hospitals = hospitalArr;
+                        let hsptls = hospitalArr.filter(loc => loc.name == res.data.clinicians[i].hospital[0].name) || [];
+                        if (hsptls.length <= 0) {
+                            hospitalArr = hospitalArr.concat(res.data.clinicians[i].hospital);
+                            res.data.hospitals = hospitalArr;
+                        }
                         for (let j in res.data.clinicians[i].languages) {
                             let lang = langArr.filter(lang => lang.id == res.data.clinicians[i].languages[j].id) || [];
                             if (lang.length <= 0) {
